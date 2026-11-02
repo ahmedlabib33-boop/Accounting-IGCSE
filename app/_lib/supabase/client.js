@@ -21,6 +21,7 @@ export function friendlyAuthError(error) {
   if (text.includes("email not confirmed")) return "Confirm your email first: open the link we sent you.";
   if (text.includes("already registered") || text.includes("already been registered") || text.includes("already exists")) return "An account with this email already exists. Sign in instead.";
   if (text.includes("password") && text.includes("at least")) return "Use a password with at least 8 characters.";
+  if (text.includes("email rate limit") || text.includes("over_email_send_rate_limit")) return "The email service has reached its hourly limit, so the confirmation email cannot be sent right now. Try again in about an hour.";
   if (text.includes("rate limit") || text.includes("too many")) return "Too many attempts. Wait a minute and try again.";
   if (text.includes("network") || text.includes("fetch")) return "No connection. Check your internet and try again.";
   return error?.message || "Something went wrong. Please try again.";
