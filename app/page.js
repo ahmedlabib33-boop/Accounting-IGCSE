@@ -4,6 +4,8 @@
 
 import StructuredExam from "./structured-exam";
 
+import { BrandMark } from "./_components/brand-mark";
+
 
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -838,7 +840,7 @@ export default function Accounting0452() {
 
   };
 
-  return <div className="app-shell"><aside className="sidebar"><button className="brand" onClick={() => navigate("home")}><span>IGCSE Accounting | Cambridge (0452)</span><small>Mr. Mohamed Basiouny</small></button><div className="brand-rule"/><nav>{NAV_ITEMS.map(([id, label, icon]) => <button key={id} className={activeSection === id ? "nav-item active" : "nav-item"} onClick={() => navigate(id)}><Icon name={icon}/><span>{label}</span></button>)}</nav><footer className="credit"><span>Designed &amp; developed by</span><strong>Eng. Ahmed Labib</strong><small>© 2026 · All rights reserved</small></footer></aside><div className="main-area">{renderSection()}</div></div>;
+  return <div className="app-shell"><aside className="sidebar"><button className="brand" onClick={() => navigate("home")}><span><BrandMark/>IGCSE Accounting | Cambridge (0452)</span><small>Mr. Mohamed Basiouny</small></button><div className="brand-rule"/><nav>{NAV_ITEMS.map(([id, label, icon]) => <button key={id} className={activeSection === id ? "nav-item active" : "nav-item"} onClick={() => navigate(id)}><Icon name={icon}/><span>{label}</span></button>)}</nav><footer className="credit"><span>Designed &amp; developed by</span><strong>Eng. Ahmed Labib</strong><small>© 2026 · All rights reserved</small></footer></aside><div className="main-area">{renderSection()}</div></div>;
 
 }
 

@@ -29,7 +29,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .sidebar { background: rgba(12, 10, 25, .78); border-right: 1px solid var(--line); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
 .brand { margin: 28px 22px 10px; color: var(--text); font: 700 18px/1.15 var(--display); letter-spacing: -.3px; }
 .brand span { display: flex; align-items: center; gap: 12px; }
-.brand span::before { content: "A"; flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; color: var(--bg); background: var(--grad); box-shadow: 0 0 28px rgba(139, 92, 246, .5); font: 700 22px var(--display); }
+.brand-mark { flex: none; filter: drop-shadow(0 0 10px rgba(139, 92, 246, .55)); transition: filter .2s ease; }
+.brand:hover .brand-mark { filter: drop-shadow(0 0 14px rgba(34, 211, 238, .6)); }
 .brand small { padding: 7px 12px; border: 1px solid rgba(244, 114, 182, .4); border-radius: 999px; color: #fbd5ea; background: rgba(244, 114, 182, .1); box-shadow: none; font: 600 12.5px/1.3 var(--font-body), sans-serif; text-shadow: none; letter-spacing: .1px; }
 .brand-rule { width: 40px; height: 3px; margin: 6px 0 22px 24px; border: 0; border-radius: 3px; background: var(--grad); }
 .sidebar nav { display: grid; gap: 4px; padding: 0 14px; border-top: 0; }
