@@ -6,7 +6,8 @@ import { BrandMark } from "../../_components/brand-mark";
 import { Icon } from "../../_components/ui";
 import { friendlyAuthError, supabaseBrowser } from "../../_lib/supabase/client";
 
-// Reached from a password-reset or invitation email once the link has become a session.
+// Reached from a password-reset or invitation email once the link has become a session, or from
+// the account menu ("Change password") while signed in.
 export default function ResetPasswordPage() {
   const router = useRouter();
   const [password, setPassword] = useState("");

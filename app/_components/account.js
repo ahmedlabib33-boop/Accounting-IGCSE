@@ -91,6 +91,7 @@ export function AccountChip({ cloudState = "" }) {
       <div className="account-menu-head"><strong>{name}</strong><small>{user.email}</small><em>{role}</em></div>
       {isAdmin && <a href="/admin" role="menuitem"><Icon name="shield" size={17}/> Admin console</a>}
       {isStaff && <a href="/admin/playbook" role="menuitem" target="_blank" rel="noopener"><Icon name="book" size={17}/> Teaching guide</a>}
+      <a href="/auth/reset" role="menuitem"><Icon name="lock" size={17}/> Change password</a>
       <button role="menuitem" onClick={signOut}><Icon name="external" size={17}/> Sign out</button>
     </div>}
   </div>;
