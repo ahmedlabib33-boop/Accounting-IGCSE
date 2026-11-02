@@ -22,6 +22,8 @@
 .auth-form h2 { margin: 0 0 4px; font: 700 30px/1.1 var(--display); letter-spacing: -1px; }
 .auth-form small { color: var(--faint); line-height: 1.5; }
 .auth-form .primary-button { width: 100%; justify-content: center; }
+.auth-remember { display: flex; align-items: center; gap: 10px; margin: -4px 0 2px; color: var(--muted); font-size: 14px; cursor: pointer; }
+.auth-remember input { width: 18px; height: 18px; margin: 0; accent-color: #8b5cf6; }
 .auth-form .text-button { justify-self: start; }
 .auth-field { display: grid; gap: 7px; }
 .auth-field > span { color: var(--muted); font-size: 13px; font-weight: 500; }

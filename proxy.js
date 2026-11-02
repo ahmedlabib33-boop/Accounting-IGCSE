@@ -20,7 +20,9 @@ export async function proxy(request) {
       setAll(cookiesToSet, headers) {
         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
         response = NextResponse.next({ request });
-        cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+        // "Remember me" off: refreshed session cookies carry no expiry, so they end with the browser.
+        const remember = request.cookies.get("acct-remember")?.value !== "0";
+        cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, (remember || options?.maxAge === 0) ? options : { ...options, maxAge: undefined, expires: undefined }));
         Object.entries(headers || {}).forEach(([name, value]) => response.headers.set(name, value));
       },
     },

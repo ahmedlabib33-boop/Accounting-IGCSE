@@ -16,7 +16,8 @@ export async function supabaseServer() {
     cookies: {
       getAll() { return cookieStore.getAll(); },
       setAll(cookiesToSet) {
-        try { cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options)); }
+        const remember = cookieStore.get("acct-remember")?.value !== "0";
+        try { cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, (remember || options?.maxAge === 0) ? options : { ...options, maxAge: undefined, expires: undefined })); }
         catch { /* Server Components cannot write cookies; the proxy refreshes sessions instead. */ }
       },
     },

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BrandMark } from "../_components/brand-mark";
 import { Icon, fetchJson } from "../_components/ui";
-import { friendlyAuthError, supabaseBrowser } from "../_lib/supabase/client";
+import { REMEMBER_EMAIL_KEY, REMEMBER_KEY, friendlyAuthError, setRememberMe, supabaseBrowser } from "../_lib/supabase/client";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -27,6 +27,24 @@ export function LoginForm({ configured, registrationOpen, maintenance = false, t
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(linkError ? "That link has expired or was already used. Sign in, or request a new one." : "");
   const [notice, setNotice] = useState("");
+  const [remember, setRemember] = useState(true);
+
+  // Remembered choice and email from the last sign-in on this browser.
+  useEffect(() => {
+    try {
+      if (window.localStorage.getItem(REMEMBER_KEY) === "0") setRemember(false);
+      const saved = window.localStorage.getItem(REMEMBER_EMAIL_KEY);
+      if (saved) setEmail((current) => current || saved);
+    } catch { /* storage blocked */ }
+  }, []);
+
+  const applyRemember = () => {
+    setRememberMe(remember);
+    try {
+      window.localStorage.setItem(REMEMBER_KEY, remember ? "1" : "0");
+      if (remember) window.localStorage.setItem(REMEMBER_EMAIL_KEY, email.trim().toLowerCase()); else window.localStorage.removeItem(REMEMBER_EMAIL_KEY);
+    } catch { /* storage blocked */ }
+  };
 
   const finish = () => { router.replace(next || "/"); router.refresh(); };
 
@@ -35,6 +53,7 @@ export function LoginForm({ configured, registrationOpen, maintenance = false, t
     setError(""); setNotice("");
     if (!EMAIL.test(email)) return setError("Enter a valid email address.");
     setBusy(true);
+    applyRemember();
     const { error: authError } = await supabaseBrowser().auth.signInWithPassword({ email: email.trim().toLowerCase(), password });
     setBusy(false);
     if (authError) return setError(friendlyAuthError(authError));
@@ -51,6 +70,7 @@ export function LoginForm({ configured, registrationOpen, maintenance = false, t
     try {
       const result = await fetchJson("/api/auth/signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email.trim().toLowerCase(), password, fullName: name.trim() }) });
       if (result.confirmed) {
+        applyRemember();
         const { error: authError } = await supabaseBrowser().auth.signInWithPassword({ email: email.trim().toLowerCase(), password });
         if (authError) throw authError;
         return finish();
@@ -97,6 +117,7 @@ export function LoginForm({ configured, registrationOpen, maintenance = false, t
           <h2>Welcome back</h2>
           <Field label="Email" type="email" value={email} onChange={setEmail} autoComplete="email" placeholder="you@example.com"/>
           <PasswordField label="Password" value={password} onChange={setPassword} autoComplete="current-password"/>
+          <label className="auth-remember"><input type="checkbox" checked={remember} onChange={(event) => setRemember(event.target.checked)}/><span>Remember me on this browser</span></label>
           <button type="submit" className="primary-button" disabled={busy}>{busy ? "Signing in…" : "Sign in"} <Icon name="arrow" size={18}/></button>
           <button type="button" className="text-button" onClick={() => { setMode("forgot"); setError(""); setNotice(""); }}>Forgot your password?</button>
         </form>}

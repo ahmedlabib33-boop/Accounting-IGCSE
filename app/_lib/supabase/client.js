@@ -1,15 +1,36 @@
 "use client";
 
-import { createBrowserClient } from "@supabase/ssr";
+import { createBrowserClient, parseCookieHeader, serializeCookieHeader } from "@supabase/ssr";
 
 // One browser client for the whole app. Sessions live in cookies so server routes see them too.
 let client = null;
 
 export const supabaseReady = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY);
 
+// "Remember me": a plain cookie the browser client, the proxy and the server all read. When it is
+// "0", session cookies get no expiry, so the sign-in ends when the browser is closed.
+export const REMEMBER_COOKIE = "acct-remember";
+export const REMEMBER_KEY = "accounting-0452:remember";
+export const REMEMBER_EMAIL_KEY = "accounting-0452:remember-email";
+export const rememberMe = () => typeof document === "undefined" || !new RegExp(`(^|; )${REMEMBER_COOKIE}=0(;|$)`).test(document.cookie);
+export function setRememberMe(on) {
+  const secure = window.location.protocol === "https:" ? "; Secure" : "";
+  document.cookie = `${REMEMBER_COOKIE}=${on ? "1" : "0"}; Path=/; Max-Age=${400 * 24 * 60 * 60}; SameSite=Lax${secure}`;
+}
+// Strip the lifetime from a cookie unless it is being deleted (maxAge 0) or the person wants to be remembered.
+export const sessionOnly = (options, remember) => (remember || options?.maxAge === 0) ? options : { ...options, maxAge: undefined, expires: undefined };
+
 export function supabaseBrowser() {
   if (!supabaseReady) return null;
-  client ||= createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY);
+  client ||= createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY, {
+    cookies: {
+      getAll() { return parseCookieHeader(document.cookie); },
+      setAll(cookiesToSet) {
+        const remember = rememberMe();
+        cookiesToSet.forEach(({ name, value, options }) => { document.cookie = serializeCookieHeader(name, value, sessionOnly(options, remember)); });
+      },
+    },
+  });
   return client;
 }
 
