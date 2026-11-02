@@ -300,7 +300,7 @@ function Settings({ supabase, settings, user, flash }) {
       { key: "registration_open", value: form.registration_open },
       { key: "maintenance", value: form.maintenance },
       { key: "announcement", value: form.announcement.trim() },
-      { key: "teacher_name", value: form.teacher_name.trim() || "Mr Bassem Ashraf" },
+      { key: "teacher_name", value: form.teacher_name.trim() || "Mr. Bassem Ashraf" },
       { key: "admin_emails", value: emails },
       { key: "jitsi_domain", value: form.jitsi_domain.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "") },
     ].map((row) => ({ ...row, updated_by: user.id }));

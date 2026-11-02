@@ -87,7 +87,7 @@ export function DadPage({ study: rawStudy, setStudy }) {
   };
   const removeGoal = (item) => { if (item.hasVoice) deleteVoiceNote(item.id).catch(() => {}); setStudy((current) => ({ ...current, goals: withExtras(current).goals.filter((g) => g.id !== item.id) })); };
 
-  return <FeaturePage eyebrow="Dad's view" title="See the progress. Guide the next step." description="A summary for parents and Mr Bassem Ashraf: study time, scores, weak topics and streaks, plus lessons to assign and goals that unlock your messages.">
+  return <FeaturePage eyebrow="Dad's view" title="See the progress. Guide the next step." description="A summary for parents and Mr. Bassem Ashraf: study time, scores, weak topics and streaks, plus lessons to assign and goals that unlock your messages.">
     <p className="device-note"><Icon name="lock" size={16}/> This view shows the progress saved on this device. Progress is saved to the student&apos;s account, so this view also follows them on other devices.</p>
     <div className="dad-tiles">
       <div className="dad-tile"><span>Study time · 7 days</span><strong>{minutesStudied(study, 7, today)} min</strong><small>{minutesStudied(study, 1, today)} min today</small></div>

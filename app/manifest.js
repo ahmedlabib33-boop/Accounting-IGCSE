@@ -2,7 +2,7 @@ export default function manifest() {
   return {
     name: "IGCSE Accounting | Cambridge (0452)",
     short_name: "Accounting 0452",
-    description: "Lessons, daily practice, mocks and an AI coach for Cambridge IGCSE Accounting (0452), by Mr Bassem Ashraf.",
+    description: "Lessons, daily practice, mocks and an AI coach for Cambridge IGCSE Accounting (0452), by Mr. Bassem Ashraf.",
     start_url: "/",
     scope: "/",
     display: "standalone",

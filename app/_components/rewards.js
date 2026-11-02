@@ -26,7 +26,7 @@ function printPage(title, body) {
 }
 
 function printCertificate(topic, date, studentName) {
-  printPage(`Certificate · ${topic.name}`, `<div class="cert"><small>IGCSE Accounting · Cambridge 0452 practice</small><h1>Certificate of Completion</h1><p>This certifies that</p><div><span class="name">${escape(studentName)}</span></div><p>has completed every lesson in</p><h2>Topic ${topic.id}: ${escape(topic.name)}</h2><p>Sections ${topic.sections.join(", ")}</p><small>Awarded ${escape(new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(date)))}</small><div class="sig"><div>Mr Bassem Ashraf<br><small>Teacher</small></div><div>Accounting 0452 study app</div></div></div>`);
+  printPage(`Certificate · ${topic.name}`, `<div class="cert"><small>IGCSE Accounting · Cambridge 0452 practice</small><h1>Certificate of Completion</h1><p>This certifies that</p><div><span class="name">${escape(studentName)}</span></div><p>has completed every lesson in</p><h2>Topic ${topic.id}: ${escape(topic.name)}</h2><p>Sections ${topic.sections.join(", ")}</p><small>Awarded ${escape(new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(date)))}</small><div class="sig"><div>Mr. Bassem Ashraf<br><small>Teacher</small></div><div>Accounting 0452 study app</div></div></div>`);
 }
 
 function printSummary(topic, lessons) {
