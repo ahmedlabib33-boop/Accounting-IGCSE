@@ -103,7 +103,7 @@ export function LoginForm({ configured, registrationOpen, maintenance = false, t
 
         {mode === "signup" && (registrationOpen ? <form onSubmit={signUp} className="auth-form">
           <h2>Create your account</h2>
-          <Field label="Full name" value={name} onChange={setName} autoComplete="name" placeholder="Omar Basiouny"/>
+          <Field label="Full name" value={name} onChange={setName} autoComplete="name" placeholder="Omar Ahmed"/>
           <Field label="Email" type="email" value={email} onChange={setEmail} autoComplete="email" placeholder="you@example.com"/>
           <PasswordField label="Password (8+ characters)" value={password} onChange={setPassword} autoComplete="new-password"/>
           <button type="submit" className="primary-button" disabled={busy}>{busy ? "Creating…" : "Create account"} <Icon name="arrow" size={18}/></button>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { FeaturePage, Icon, ProgressBar, formatDate, loadLearning } from "./ui";
 import { loadVoiceNote } from "./effects";
+import { displayName, useAccount } from "./account";
 import { SECTION_TITLES, TOPICS, badgesFor, goalReached, levelFor, sectionMastery, withExtras, xpFor } from "../_lib/study-engine.mjs";
 
 const LEVEL_LABELS = { new: "Not started", learning: "Learning", good: "Good", mastered: "Mastered" };
@@ -24,8 +25,8 @@ function printPage(title, body) {
   return true;
 }
 
-function printCertificate(topic, date) {
-  printPage(`Certificate · ${topic.name}`, `<div class="cert"><small>IGCSE Accounting · Cambridge 0452 practice</small><h1>Certificate of Completion</h1><p>This certifies that</p><div><span class="name">Omar</span></div><p>has completed every lesson in</p><h2>Topic ${topic.id}: ${escape(topic.name)}</h2><p>Sections ${topic.sections.join(", ")}</p><small>Awarded ${escape(new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(date)))}</small><div class="sig"><div>Mr. Mohamed Basiouny<br><small>Teacher and father</small></div><div>Accounting 0452 study app</div></div></div>`);
+function printCertificate(topic, date, studentName) {
+  printPage(`Certificate · ${topic.name}`, `<div class="cert"><small>IGCSE Accounting · Cambridge 0452 practice</small><h1>Certificate of Completion</h1><p>This certifies that</p><div><span class="name">${escape(studentName)}</span></div><p>has completed every lesson in</p><h2>Topic ${topic.id}: ${escape(topic.name)}</h2><p>Sections ${topic.sections.join(", ")}</p><small>Awarded ${escape(new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(date)))}</small><div class="sig"><div>Mr Bassem Ashraf<br><small>Teacher</small></div><div>Accounting 0452 study app</div></div></div>`);
 }
 
 function printSummary(topic, lessons) {
@@ -58,6 +59,8 @@ function SettingsPanel({ study, setStudy }) {
 }
 
 export function RewardsPage({ study, setStudy, target }) {
+  const { profile, user } = useAccount();
+  const studentName = displayName(profile, user) || "Student";
   const full = withExtras(study);
   const level = levelFor(xpFor(full));
   const badges = badgesFor(full);
@@ -80,7 +83,7 @@ export function RewardsPage({ study, setStudy, target }) {
     <section className="rewards-block"><h2>Badges <small>{earned} of {badges.length} earned</small></h2><div className="badge-grid">{badges.map((badge) => <div key={badge.id} className={badge.earned ? "badge earned" : "badge"}><Icon name={badge.earned ? "trophy" : "lock"} size={24}/><strong>{badge.name}</strong><span>{badge.hint}</span></div>)}</div></section>
 
     <section className="rewards-block"><h2>Certificates and topic summaries</h2><p className="fine-print">A certificate unlocks when every lesson in a topic is complete. One-page summaries are ready any time. Both open a print view that you can save as PDF.</p>
-      <div className="certificate-list">{TOPICS.map((topic) => { const done = goalReached({ kind: "topic", target: topic.id }, full); const dates = topic.sections.flatMap((section) => Object.entries(full.lessonDates).filter(([id]) => id.startsWith(`0452-${section}-`)).map(([, date]) => date)).sort(); return <div key={topic.id} className={done ? "certificate-row done" : "certificate-row"}><Icon name={done ? "star" : "book"} size={20}/><div><strong>Topic {topic.id}: {topic.name}</strong><small>{topic.sections.map((section) => `${mastery[section].lessonsDone}/${mastery[section].lessons}`).join(" · ")} lessons by section</small></div><button className="outline-button compact-button" disabled={!lessons.length} onClick={() => printSummary(topic, lessons)}>Summary</button><button className="primary-button compact-primary" disabled={!done} onClick={() => printCertificate(topic, dates.at(-1) || new Date().toISOString())}>{done ? "Certificate" : <><Icon name="lock" size={15}/> Certificate</>}</button></div>; })}</div>
+      <div className="certificate-list">{TOPICS.map((topic) => { const done = goalReached({ kind: "topic", target: topic.id }, full); const dates = topic.sections.flatMap((section) => Object.entries(full.lessonDates).filter(([id]) => id.startsWith(`0452-${section}-`)).map(([, date]) => date)).sort(); return <div key={topic.id} className={done ? "certificate-row done" : "certificate-row"}><Icon name={done ? "star" : "book"} size={20}/><div><strong>Topic {topic.id}: {topic.name}</strong><small>{topic.sections.map((section) => `${mastery[section].lessonsDone}/${mastery[section].lessons}`).join(" · ")} lessons by section</small></div><button className="outline-button compact-button" disabled={!lessons.length} onClick={() => printSummary(topic, lessons)}>Summary</button><button className="primary-button compact-primary" disabled={!done} onClick={() => printCertificate(topic, dates.at(-1) || new Date().toISOString(), studentName)}>{done ? "Certificate" : <><Icon name="lock" size={15}/> Certificate</>}</button></div>; })}</div>
     </section>
 
     <SettingsPanel study={study} setStudy={setStudy}/>

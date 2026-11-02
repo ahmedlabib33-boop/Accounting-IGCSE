@@ -11,7 +11,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", displ
 
 export const metadata = {
   title: "IGCSE Accounting | Cambridge (0452)",
-  description: "Mr. Mohamed Basiouny",
+  description: "Mr Bassem Ashraf",
 };
 
 export const viewport = {
