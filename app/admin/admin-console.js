@@ -289,19 +289,22 @@ function LiveAdmin({ supabase, users, user, live, flash, reloadLive }) {
 
 // ----- Settings -----
 function Settings({ supabase, settings, user, flash }) {
-  const [form, setForm] = useState({ registration_open: settings.registration_open !== false, maintenance: settings.maintenance === true, announcement: settings.announcement || "", teacher_name: settings.teacher_name || "", admin_emails: (settings.admin_emails || []).join("\n"), jitsi_domain: settings.jitsi_domain || "" });
+  const [form, setForm] = useState({ registration_open: settings.registration_open !== false, maintenance: settings.maintenance === true, announcement: settings.announcement || "", teacher_name: settings.teacher_name || "", admin_emails: (settings.admin_emails || []).join("\n"), teacher_emails: (settings.teacher_emails || []).join("\n"), jitsi_domain: settings.jitsi_domain || "" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  useEffect(() => { setForm({ registration_open: settings.registration_open !== false, maintenance: settings.maintenance === true, announcement: settings.announcement || "", teacher_name: settings.teacher_name || "", admin_emails: (settings.admin_emails || []).join("\n"), jitsi_domain: settings.jitsi_domain || "" }); }, [settings]);
+  useEffect(() => { setForm({ registration_open: settings.registration_open !== false, maintenance: settings.maintenance === true, announcement: settings.announcement || "", teacher_name: settings.teacher_name || "", admin_emails: (settings.admin_emails || []).join("\n"), teacher_emails: (settings.teacher_emails || []).join("\n"), jitsi_domain: settings.jitsi_domain || "" }); }, [settings]);
   const save = async (event) => {
     event.preventDefault(); setBusy(true); setError("");
-    const emails = form.admin_emails.split(/[\n,;]+/).map((item) => item.trim().toLowerCase()).filter((item) => item.includes("@"));
+    const parseEmails = (text) => text.split(/[\n,;]+/).map((item) => item.trim().toLowerCase()).filter((item) => item.includes("@"));
+    const emails = parseEmails(form.admin_emails);
+    const teacherEmails = parseEmails(form.teacher_emails).filter((item) => !emails.includes(item));
     const rows = [
       { key: "registration_open", value: form.registration_open },
       { key: "maintenance", value: form.maintenance },
       { key: "announcement", value: form.announcement.trim() },
       { key: "teacher_name", value: form.teacher_name.trim() || "Mr. Bassem Ashraf" },
       { key: "admin_emails", value: emails },
+      { key: "teacher_emails", value: teacherEmails },
       { key: "jitsi_domain", value: form.jitsi_domain.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "") },
     ].map((row) => ({ ...row, updated_by: user.id }));
     const { error: upsertError } = await supabase.from("app_settings").upsert(rows);
@@ -327,6 +330,7 @@ function Settings({ supabase, settings, user, flash }) {
         <label className="auth-field"><span>Teacher display name</span><div><input value={form.teacher_name} onChange={(event) => setForm({ ...form, teacher_name: event.target.value })} maxLength={80}/></div></label>
         <label className="auth-field"><span>Call server (Jitsi domain). Leave empty for the public meet.jit.si service; a self-hosted or paid Jitsi server removes the one-time host login.</span><div><input value={form.jitsi_domain} onChange={(event) => setForm({ ...form, jitsi_domain: event.target.value })} placeholder="meet.jit.si"/></div></label>
         <label className="auth-field"><span>Administrator emails (one per line). Anyone who signs up with one of these becomes an administrator.</span><div><textarea value={form.admin_emails} onChange={(event) => setForm({ ...form, admin_emails: event.target.value })} rows={3}/></div></label>
+        <label className="auth-field"><span>Teacher emails (one per line). Anyone who signs up with one of these becomes a teacher straight away, and existing student accounts with these addresses are promoted.</span><div><textarea value={form.teacher_emails} onChange={(event) => setForm({ ...form, teacher_emails: event.target.value })} rows={3} placeholder="teacher@example.com"/></div></label>
       </div>
       {error && <p className="coach-error" role="alert">{error}</p>}
       <button className="primary-button compact-primary" type="submit" disabled={busy}>{busy ? "Saving…" : "Save settings"}</button>
