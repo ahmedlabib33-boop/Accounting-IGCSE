@@ -39,7 +39,8 @@ export async function proxy(request) {
     if (pathname !== "/") login.searchParams.set("next", pathname);
     return NextResponse.redirect(login);
   }
-  if (signedIn && pathname === "/login") return NextResponse.redirect(new URL("/", request.url));
+  // The login page itself checks with the Auth server and sends signed-in people home, so a stale
+  // cookie for a deleted account cannot bounce between / and /login.
   return response;
 }
 
