@@ -8,7 +8,7 @@ export async function POST(request) {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: "Groq is not configured yet. Run RUN_APP.bat and securely enter your key when prompted." },
+      { error: "The AI Coach is offline: the GROQ_API_KEY setting is missing on the server. Ask the site owner to add it in Vercel → Settings → Environment Variables." },
       { status: 503 },
     );
   }
