@@ -1,0 +1,21 @@
+# Files Vercel does not need to build or serve the Next.js app.
+# Keeps CLI uploads and build inputs small; the Git integration ignores this file.
+.venv/
+venv/
+__pycache__/
+*.py
+*.pyc
+*.ps1
+*.bat
+*.xlsx
+*.log
+.streamlit/
+ai/
+core/
+loaders/
+generated_outputs/
+backups/
+supabase/
+ngrok.yml
+requirements*.txt
+*-DESKTOP-*.py

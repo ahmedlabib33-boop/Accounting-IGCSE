@@ -13,6 +13,10 @@ All seven syllabus groups and 28 numbered sections are represented. Original sou
 
 Paper 1 practice: 40 questions, 90 minutes, 40 marks; automatically marked. Paper 2 practice: five 20-mark structured questions, 105 minutes; self/teacher assessed using indicative schemes. Mocks are original, not official papers. Versions reuse practice-bank questions or scaled case designs; they are not six independent past papers.
 
+## Deployment
+
+The app deploys for free on Vercel's Hobby plan (recommended), Netlify or Render. See [DEPLOY.md](DEPLOY.md) for the step-by-step setup, the single `GROQ_API_KEY` secret, and the CI workflow that checks every push.
+
 ## Checks
 
 ```powershell
