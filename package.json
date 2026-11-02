@@ -1,0 +1,29 @@
+{
+  "name": "accounting-igcse-0452",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "predev": "node scripts/build-accounting-content.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/build-accounting-content.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint app scripts/build-accounting-content.mjs data/accounting",
+    "content:build": "node scripts/build-accounting-content.mjs",
+    "content:check": "node scripts/build-accounting-content.mjs --check",
+    "test": "node --test scripts/accounting.test.mjs"
+  },
+  "dependencies": {
+    "hls.js": "1.6.15",
+    "next": "16.3.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.0"
+  }
+}

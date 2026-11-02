@@ -1,0 +1,31 @@
+"use client";
+import {useEffect,useRef,useState} from 'react';
+async function request(url,options){const r=await fetch(url,options);const data=await r.json();if(!r.ok)throw Error(data.error||'Request failed');return data;}
+export default function StructuredExam({setStudy}){
+  const [papers,setPapers]=useState([]),[paperId,setPaperId]=useState(''),[paper,setPaper]=useState(null);
+  const [answers,setAnswers]=useState({}),[scheme,setScheme]=useState(null),[marks,setMarks]=useState({});
+  const [seconds,setSeconds]=useState(105*60),[error,setError]=useState(''),[busy,setBusy]=useState(false),[saved,setSaved]=useState(false);
+  const submitting=useRef(false),saving=useRef(false);
+  useEffect(()=>{let active=true;request('/api/content?type=structured').then(d=>{if(active){setPapers(d.papers);setPaperId(d.papers[0]?.id||'');}}).catch(e=>active&&setError(e.message));return()=>{active=false;};},[]);
+  useEffect(()=>{if(!paperId)return;let active=true;setPaper(null);setAnswers({});setScheme(null);setMarks({});setSaved(false);saving.current=false;setSeconds(105*60);setError('');submitting.current=false;
+    request(`/api/content?type=structured-paper&examId=${encodeURIComponent(paperId)}`).then(d=>active&&setPaper(d)).catch(e=>active&&setError(e.message));return()=>{active=false;};},[paperId]);
+  useEffect(()=>{if(!paper||scheme)return;const timer=setInterval(()=>setSeconds(s=>Math.max(0,s-1)),1000);return()=>clearInterval(timer);},[paper,scheme]);
+  async function submit(){if(submitting.current||!paper)return;submitting.current=true;setBusy(true);setError('');try{setScheme(await request('/api/structured',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({examId:paperId})}));}catch(e){submitting.current=false;setError(e.message);}finally{setBusy(false);}}
+  const submitRef=useRef(submit);useEffect(()=>{submitRef.current=submit;});
+  useEffect(()=>{if(seconds===0&&paper&&!scheme&&!busy&&!error)submitRef.current();},[seconds,paper,scheme,busy,error]);
+  const key=(q,p)=>`${q.id}:${p.label}`;
+  const allParts=scheme?.questions.flatMap(q=>q.parts.map(p=>({q,p,key:key(q,p)})))||[];
+  const complete=allParts.length>0&&allParts.every(i=>Number.isInteger(marks[i.key])&&marks[i.key]>=0&&marks[i.key]<=i.p.marks);
+  const score=Object.values(marks).reduce((a,b)=>a+(Number(b)||0),0);
+  function save(){if(!complete||saving.current)return;saving.current=true;
+    const date=new Date().toISOString(),attempt={id:`0452:${paperId}:${Date.now()}`,date,subject:'Accounting',paper:2,examId:paperId,score,total:100,percent:score,marking:'Self-assessed'};
+    const mistakes=allParts.filter(i=>marks[i.key]<i.p.marks).map(i=>({id:`${i.key}:${Date.now()}`,questionId:i.key,subject:'Accounting',section:i.q.section,question:`${i.q.title} (${i.p.label}): ${i.p.prompt}`,selected:answers[i.key]||'Not answered',answer:i.p.model,explanation:i.p.points.join(' · '),examId:paperId,date}));
+    setStudy(current=>({...current,attempts:[attempt,...current.attempts].slice(0,60),mistakes:[...mistakes,...current.mistakes.filter(m=>!mistakes.some(n=>n.questionId===m.questionId))].slice(0,300)}));setSaved(true);
+  }
+  return <section className="section-screen"><div className="section-heading"><span>Exam arena · Paper 2</span><h1>Show the workings.</h1><p>105 minutes · five compulsory questions · 100 marks · 70% weighting. Original practice with an indicative mark scheme. Written work is self-assessed or marked by your teacher; no automatic Cambridge grade is claimed.</p></div>
+    <div className="exam-controls"><label>Structured paper<select value={paperId} disabled={busy} onChange={e=>setPaperId(e.target.value)}>{papers.map(p=><option key={p.id}>{p.id}</option>)}</select></label><strong className="exam-timer">{String(Math.floor(seconds/60)).padStart(2,'0')}:{String(seconds%60).padStart(2,'0')}</strong></div>
+    {error&&<p role="alert" className="coach-error">{error}</p>}
+    {paper&&!scheme&&<><p>Write account headings, debit/credit sides, units and workings. Use the answer boxes for each part; you can also work on paper. Leaving this screen resets this unsaved attempt.</p>{paper.questions.map(q=><article className="lesson-card structured-question" key={q.id}><span>Question {q.number} · 20 marks · {q.section}</span><h2>{q.title}</h2><p className="exam-passage">{q.stimulus}</p>{q.parts.map(p=><label className="structured-part" key={p.label}><strong>({p.label}) {p.prompt} [{p.marks}]</strong><textarea rows={5} value={answers[key(q,p)]||''} disabled={busy||seconds===0} onChange={e=>setAnswers(a=>({...a,[key(q,p)]:e.target.value}))} placeholder="Write your answer and workings…"/></label>)}</article>)}<button className="primary-button compact-primary" disabled={busy} onClick={submit}>{busy?'Submitting…':'Submit and open marking guidance'}</button></>}
+    {scheme&&<><div className="lesson-tip">Attempt submitted. Compare your response with each model and award marks only for matching points. These are indicative practice criteria. A teacher should review alternative methods and consequential errors.</div>{scheme.questions.map(q=><article className="lesson-card structured-question" key={q.id}><h2>Question {q.number}: {q.title}</h2><p>{q.stimulus}</p>{q.parts.map(p=><div className="structured-part" key={p.label}><h3>({p.label}) {p.prompt} [{p.marks}]</h3><p className="submitted-answer"><strong>Your answer</strong><br/>{answers[key(q,p)]||'Not answered'}</p><p><strong>Indicative answer</strong><br/>{p.model}</p><ul>{p.points.map(point=><li key={point}>{point}</li>)}</ul><label>Marks awarded for {q.number}{p.label}<select disabled={saved} value={marks[key(q,p)]??''} onChange={e=>setMarks(m=>({...m,[key(q,p)]:e.target.value===''?undefined:Number(e.target.value)}))}><option value="">Select marks</option>{Array.from({length:p.marks+1},(_,i)=><option key={i} value={i}>{i} / {p.marks}</option>)}</select></label></div>)}</article>)}<div className="exam-result"><h2>{score} / 100 · self-assessed</h2><button className="primary-button compact-primary" disabled={!complete||saved} onClick={save}>{saved?'Result saved to Progress':'Save assessed result'}</button><p>{complete?'Lower-scoring parts will be added to the Review Vault.':'Award a mark for every part before saving.'}</p></div></>}
+  </section>;
+}
