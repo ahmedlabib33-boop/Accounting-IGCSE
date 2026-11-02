@@ -4,7 +4,9 @@
 
 import StructuredExam from "./structured-exam";
 
-import { BrandMark, FeaturePage, Icon, QuestionChoices, Ring, fetchJson, formatDate, formatMinutes, loadLearning, matchLessons, StepReveal } from "./_components/ui";
+import { BrandMark } from "./_components/brand-mark";
+
+import { FeaturePage, Icon, QuestionChoices, Ring, fetchJson, formatDate, formatMinutes, loadLearning, matchLessons, StepReveal } from "./_components/ui";
 
 import { TodayPage, PredictedGrade, recordAnswer } from "./_components/today";
 
