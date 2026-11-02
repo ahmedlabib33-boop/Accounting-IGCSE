@@ -66,5 +66,7 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname.startsWith("/_next/static/")) { event.respondWith(cacheFirst(request)); return; }
   if (url.pathname === "/api/content") { event.respondWith(networkFirst(request, CONTENT)); return; }
   if (url.pathname.startsWith("/api/")) return;
+  // Sign-in, email links and the admin console always need the live server.
+  if (url.pathname.startsWith("/login") || url.pathname.startsWith("/auth/") || url.pathname.startsWith("/admin")) return;
   if (request.mode === "navigate" || url.pathname.match(/\.(png|svg|webmanifest|html)$/)) event.respondWith(networkFirst(request, SHELL));
 });

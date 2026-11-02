@@ -3,6 +3,7 @@ import "./globals.css";
 import "./neon.css";
 import "./features.css";
 import "./mobile.css";
+import "./account.css";
 
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });

@@ -29,4 +29,16 @@ See `docs/SYLLABUS_COVERAGE.md`, `docs/SAT_TO_ACCOUNTING_LOG.md` and `docs/VALID
 
 [Official syllabus](https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf) and [official papers/mark schemes](https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-accounting-0452/past-papers/) define the qualification reference. This app and its authored material are not endorsed by Cambridge.
 
-Completed history is stored locally under `accounting-0452:study:v1`. Jitsi handles live calls; notes and pad are browser-local. Secrets, personal provider credentials, backups, generated JSON and build output are ignored. No student cloud database is introduced.
+Each account's study record is kept in the browser (`accounting-0452:study:v1:<user id>`) and mirrored to Supabase (`study_records`), so progress follows the student between devices and teachers can see it. Notes and the Visual Pad stay browser-local. Secrets, personal provider credentials, backups, generated JSON and build output are ignored.
+
+## Accounts, live classroom and admin console
+
+Sign-in is required for every screen. Supabase provides the accounts (email + password), the database and the realtime channel; the schema lives in `supabase/migrations/`.
+
+- **Roles**: `student`, `teacher`, `admin`. The first account, and any address listed in the `admin_emails` setting, becomes an administrator. Admins promote teachers from `/admin`.
+- **Live class**: a teacher or admin starts a class from Live Studio. Every signed-in student sees a Join button; the call (Jitsi) stays mounted in a corner while people move between screens, and the teacher's current screen (lesson, mock paper, Visual Pad) is pushed to every student who has "Follow teacher" on, through a private realtime channel plus the `live_sessions` row for late joiners.
+- **Admin console** (`/admin`): users (roles, suspend, reset, delete, progress detail), the live class, platform settings (registration, maintenance, announcement, teacher name, call server, admin emails) and an audit log.
+
+Environment variables (see `.env.example`): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, and optionally `SUPABASE_SERVICE_ROLE_KEY`, which lets the console create accounts, set passwords and skip email confirmation. Without it, Supabase's default mailer applies (a few confirmation emails per hour), so for a class either add the key or turn off "Confirm email" in Supabase Auth settings. In Supabase Auth → URL configuration, set the site URL to the deployed origin and allow `<origin>/auth/callback` so password-reset links work.
+
+The public `meet.jit.si` service asks the first person in a room to log in (Google, GitHub or Facebook) to become moderator; the teacher does this once per browser. A self-hosted or paid Jitsi server set in Settings → Call server removes that step.

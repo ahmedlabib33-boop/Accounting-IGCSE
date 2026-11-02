@@ -17,6 +17,8 @@
     "test": "node --test scripts/accounting.test.mjs scripts/study-engine.test.mjs scripts/lab-content.test.mjs scripts/shop-sim.test.mjs scripts/study-records.test.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
     "hls.js": "1.6.15",
     "next": "16.3.0",
     "react": "19.1.1",
