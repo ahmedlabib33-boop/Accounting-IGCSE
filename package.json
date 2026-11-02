@@ -14,7 +14,7 @@
     "lint": "eslint app scripts/build-accounting-content.mjs data/accounting",
     "content:build": "node scripts/build-accounting-content.mjs",
     "content:check": "node scripts/build-accounting-content.mjs --check",
-    "test": "node --test scripts/accounting.test.mjs"
+    "test": "node --test scripts/accounting.test.mjs scripts/study-engine.test.mjs scripts/lab-content.test.mjs scripts/shop-sim.test.mjs scripts/study-records.test.mjs"
   },
   "dependencies": {
     "hls.js": "1.6.15",

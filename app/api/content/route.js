@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { contentSummary, getExam, getExamSummaries, getLearning, normalizeSubject, getStructuredPapers, getStructuredPaper } from "../../_lib/accounting-content";
+import { contentSummary, getExam, getExamSummaries, getLearning, normalizeSubject, getStructuredPapers, getStructuredPaper, getQuestionsByIds } from "../../_lib/accounting-content";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -10,6 +10,10 @@ export async function GET(request) {
   const subject = searchParams.get("subject");
 
   if (type === "summary") return NextResponse.json({ summary: contentSummary() });
+  if (type === "questions") {
+    const ids = (searchParams.get("ids") || "").split(",").map((id) => id.trim()).filter(Boolean).slice(0, 60);
+    return NextResponse.json({ questions: getQuestionsByIds(ids) });
+  }
   if (type === "structured") return NextResponse.json({ papers: getStructuredPapers() });
   if (type === "structured-paper") {
     const paper = getStructuredPaper(searchParams.get('examId'));

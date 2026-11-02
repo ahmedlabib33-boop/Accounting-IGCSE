@@ -4,6 +4,20 @@
 
 import StructuredExam from "./structured-exam";
 
+import { BrandMark, FeaturePage, Icon, QuestionChoices, Ring, fetchJson, formatDate, formatMinutes, loadLearning, matchLessons, StepReveal } from "./_components/ui";
+
+import { TodayPage, PredictedGrade, recordAnswer } from "./_components/today";
+
+import { RewardsPage } from "./_components/rewards";
+
+import { LabPage } from "./_components/lab";
+
+import { DadPage } from "./_components/dad";
+
+import { celebrate } from "./_components/effects";
+
+import { EMPTY_EXTRAS, SECTION_TITLES, TOPICS, addStudyTime, badgesFor, dayKey, goalReached, levelFor, predictGrade, recordMistake, recordReview, reviewState, reviewSummary, scheduleReview, sectionStats, streakFor, updateFreezes, withExtras, xpFor, MASTERED_STAGE } from "./_lib/study-engine.mjs";
+
 
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -11,110 +25,26 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 
 const NAV_ITEMS = [
-
   ["home", "Home", "home"],
-
+  ["today", "Today", "today"],
   ["learning", "Learning", "book"],
-
-  ["coach", "AI Coach", "brain"],
-
-  ["pad", "Visual Pad", "pen"],
-
+  ["lab", "Practice Lab", "lab"],
   ["exam", "Exam Arena", "target"],
-
-  ["live", "Live Studio", "live"],
-
-  ["music", "Focus Music", "headphones"],
-
+  ["coach", "AI Coach", "brain"],
   ["vault", "Review Vault", "vault"],
-
   ["progress", "Progress", "trend"],
-
+  ["rewards", "Rewards", "trophy"],
+  ["pad", "Visual Pad", "pen"],
+  ["live", "Live Studio", "live"],
+  ["music", "Focus Music", "headphones"],
+  ["dad", "Dad's view", "users"],
 ];
 
 
 
 const STORAGE_KEY = "accounting-0452:study:v1";
 
-const EMPTY_STUDY = { completedLessons: [], attempts: [], mistakes: [], reviewedIds: [], musicUrl: "" };
-
-
-
-function Icon({ name, size = 22, stroke = 1.8 }) {
-
-  const common = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: stroke, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true };
-
-  const paths = {
-
-    home: <><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></>,
-
-    book: <><path d="M4 5.7A2.7 2.7 0 0 1 6.7 3H11v17H6.7A2.7 2.7 0 0 0 4 22Z"/><path d="M20 5.7A2.7 2.7 0 0 0 17.3 3H13v17h4.3A2.7 2.7 0 0 1 20 22Z"/></>,
-
-    brain: <><path d="M9.7 4A3.3 3.3 0 0 0 4 6.2 3.5 3.5 0 0 0 4.7 13a3.8 3.8 0 0 0 5 5.3c.8 1.1 1.9 1.7 3.1 1.7V4Z"/><path d="M14.3 4A3.3 3.3 0 0 1 20 6.2a3.5 3.5 0 0 1-.7 6.8 3.8 3.8 0 0 1-5 5.3c-.8 1.1-1.9 1.7-3.1 1.7V4Z"/><path d="M8 9c.7.4 1.4.5 2 .4M16 9c-.7.4-1.4.5-2 .4M9 14c.6.4 1.2.5 2 .4M15 14c-.6.4-1.2.5-2 .4"/></>,
-
-    pen: <><path d="m14.7 4.3 5 5L8 21H3v-5Z"/><path d="m12.2 6.8 5 5"/><path d="M3 21h7"/></>,
-
-    target: <><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2M22 12h-2M12 22v-2M2 12h2"/></>,
-
-    live: <><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M4.4 4.4a10.8 10.8 0 0 0 0 15.2M16.5 7.5a6.4 6.4 0 0 1 0 9M19.6 4.4a10.8 10.8 0 0 1 0 15.2"/><circle cx="12" cy="12" r="1.5"/></>,
-
-    headphones: <><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14a2 2 0 0 1 2-2h1v7H6a2 2 0 0 1-2-2ZM20 14a2 2 0 0 0-2-2h-1v7h1a2 2 0 0 0 2-2Z"/></>,
-
-    vault: <><path d="M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M2 8h20M6 4h12l2 4H4Z"/><path d="M9 13h6"/></>,
-
-    trend: <><path d="m3 17 6-6 4 4 8-9"/><path d="M16 6h5v5"/></>,
-
-    flame: <path d="M12 22c4 0 7-2.7 7-6.5 0-2.8-1.7-5.6-4.2-7.7.2 2-1.2 3.8-2.4 4.3.4-3.5-1.8-6-4.6-8.1C8.1 8.7 5 10.7 5 15.4 5 19.3 8 22 12 22Z"/>,
-
-    sliders: <><path d="M4 5h16M4 12h16M4 19h16"/><circle cx="9" cy="5" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="8" cy="19" r="2"/></>,
-
-    send: <path d="m21 3-7.2 18-3.4-7.4L3 10.2Z"/>,
-
-    plus: <><path d="M12 5v14M5 12h14"/></>,
-
-    heart: <path d="M20.8 8.5c0 6-8.8 11-8.8 11s-8.8-5-8.8-11A4.7 4.7 0 0 1 12 5.8a4.7 4.7 0 0 1 8.8 2.7Z"/>,
-
-    shuffle: <><path d="m18 4 3 3-3 3"/><path d="M3 7h4c4 0 5 10 10 10h4"/><path d="m18 14 3 3-3 3"/><path d="M3 17h4c1.8 0 2.8-2 4-4"/></>,
-
-    previous: <><path d="m19 20-9-8 9-8v16Z"/><path d="M5 19V5"/></>,
-
-    next: <><path d="m5 4 9 8-9 8V4Z"/><path d="M19 5v14"/></>,
-
-    repeat: <><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 0 0-4 4v1"/><path d="m7 22-3-3 3-3"/><path d="M4 19h12a4 4 0 0 0 4-4v-1"/></>,
-
-    calendar: <><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01"/></>,
-
-    arrow: <><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></>,
-
-    external: <><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></>,
-
-    play: <path d="m8 5 11 7-11 7Z"/>,
-
-    pause: <><path d="M8 5v14M16 5v14"/></>,
-
-    check: <path d="m5 12 4.2 4L19 6"/>,
-
-    x: <><path d="m6 6 12 12M18 6 6 18"/></>,
-
-    lock: <><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></>,
-
-    unlock: <><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M16 10V7a4 4 0 0 0-7.6-2.4"/></>,
-
-    copy: <><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>,
-
-  };
-
-  return <svg {...common}>{paths[name] || paths.home}</svg>;
-
-}
-
-
-
-function Ring({ value = 68, label = "68%", blue = false, size = "md" }) {
-
-  return <div className={`ring ring-${size}`} style={{ "--value": Math.max(0, Math.min(100, value)), "--accent": blue ? "#22d3ee" : "#8b5cf6" }}><div><strong>{label}</strong></div></div>;
-
-}
+const EMPTY_STUDY = { completedLessons: [], attempts: [], mistakes: [], reviewedIds: [], musicUrl: "", ...EMPTY_EXTRAS };
 
 
 
@@ -150,37 +80,7 @@ function useStoredStudy() {
 
 
 
-async function fetchJson(url, options) {
-
-  const response = await fetch(url, options);
-
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) throw new Error(data.error || "The request could not be completed.");
-
-  return data;
-
-}
-
-
-
 function safeText(value) { return String(value || "").trim(); }
-
-
-
-function formatMinutes(seconds) {
-
-  return `${Math.floor(seconds / 60).toString().padStart(2, "0")}:${(seconds % 60).toString().padStart(2, "0")}`;
-
-}
-
-
-
-function formatDate(value) {
-
-  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(new Date(value));
-
-}
 
 
 
@@ -408,29 +308,7 @@ function VisualPad() {
 
 
 
-function FeaturePage({ title, eyebrow, children, description }) {
-
-  return <section className="section-screen"><div className="section-heading"><span>{eyebrow}</span><h1>{title}</h1>{description && <p>{description}</p>}</div>{children}</section>;
-
-}
-
-
-
-function QuestionChoices({ question, answer, onAnswer, result }) {
-
-  return <div className="answer-list">{question.choices.map((choice) => {
-
-    const state = result ? (choice.id === result.answer ? "correct" : choice.id === result.selected ? "wrong" : "") : answer === choice.id ? "selected-answer" : "";
-
-    return <button key={choice.id} className={state} onClick={() => !result && onAnswer(choice.id)} disabled={Boolean(result)}><span>{choice.id}</span>{choice.text}{result && choice.id === result.answer && <Icon name="check" size={18}/>} {result && choice.id === result.selected && choice.id !== result.answer && <Icon name="x" size={18}/>}</button>;
-
-  })}</div>;
-
-}
-
-
-
-function LearningPage({ study, setStudy, askCoach }) {
+function LearningPage({ study, setStudy, askCoach, target }) {
 
   const [subject, setSubject] = useState("Accounting");
 
@@ -482,7 +360,9 @@ function LearningPage({ study, setStudy, askCoach }) {
 
   useEffect(() => { setPracticeIndex(0); setAnswer(""); setResult(null); }, [lessonId, subject]);
 
-  const markComplete = () => { if (!lesson) return; setStudy((current) => ({ ...current, completedLessons: [...new Set([...current.completedLessons, lesson.id])]})); };
+  useEffect(() => { if (!target || !data) return; const match = data.lessons.find((item) => target.lessonId ? item.id === target.lessonId : item.section === target.section); if (match) { setTopic(""); setLessonId(match.id); } }, [target, data]);
+
+  const markComplete = () => { if (!lesson) return; setStudy((current) => ({ ...current, completedLessons: [...new Set([...current.completedLessons, lesson.id])], lessonDates: { [lesson.id]: new Date().toISOString(), ...(current.lessonDates || {}) } })); };
 
   const grade = async () => {
 
@@ -494,119 +374,187 @@ function LearningPage({ study, setStudy, askCoach }) {
 
       const response = await fetchJson("/api/grade", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ items: [{ id: question.id, answer }] }) });
 
-      const item = response.results[0]; setResult(item); if (item.correct) markComplete();
+      const item = response.results[0]; setResult(item); if (item.correct) { markComplete(); celebrate(withExtras(study).settings); }
 
-      if (!item.correct) setStudy((current) => ({ ...current, mistakes: [{ ...item, id: `${item.id}:${Date.now()}`, questionId: item.id, date: new Date().toISOString() }, ...current.mistakes.filter((mistake) => mistake.questionId !== item.id)] }));
+      setStudy((current) => recordAnswer(current, { kind: "practice", questionId: item.id, section: item.section }, item.correct, item));
+
 
     } catch (requestError) { setError(requestError.message); } finally { setGrading(false); }
 
   };
 
-  return <FeaturePage eyebrow="Learning map" title="Build the structure first." description="Use the current Accounting 0452 lesson bank, then pressure-test the idea with syllabus-aligned accounting practice."><div className="study-control-bar"><div className="segmented">{["Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div>{data && <span>{data.lessons.length} lessons · {data.practice.length} practice questions</span>}</div>{error && <p className="coach-error">{error}</p>}{!data && !error && <div className="loading-panel">Loading Accounting 0452 lesson bank…</div>}{data && <details className="coverage-panel"><summary>2027–2029 syllabus coverage · 7 topics · 28 sections</summary><p>The lesson map follows the official 0452 syllabus. Teaching and practice are independently authored.</p>{data.topics.map(t=><div key={t.topic_id}><h3>{t.topic_name}</h3>{[...new Set(data.lessons.filter(l=>l.topicId===t.topic_id).map(l=>l.section))].map(section=><p key={section}><strong>{section}</strong> · {data.lessons.filter(l=>l.section===section).map(l=>l.title).join(" · ")}</p>)}</div>)}<a href="https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Open official syllabus and check scope</a></details>}{data && lesson && <div className="learning-workspace"><aside className="lesson-selectors"><label>Domain / topic<select value={topic} onChange={(event) => setTopic(event.target.value)}><option value="">All topics</option>{data.topics.map((item) => <option value={item.topic_id || item.topic_name} key={item.topic_id}>{item.topic_name}</option>)}</select></label><label>Lesson<select value={lesson.id} onChange={(event) => setLessonId(event.target.value)}>{visibleLessons.map((item) => <option value={item.id} key={item.id}>{item.title}</option>)}</select></label><div className="lesson-meter"><span>Progress</span><strong>{study.completedLessons.includes(lesson.id) ? "Complete" : "In progress"}</strong></div><button className="outline-button" onClick={() => askCoach(`Teach me ${lesson.title} for Cambridge IGCSE Accounting (0452), 2027–2029. Formula or rule: ${lesson.formula || lesson.ruleTitle || "not provided"}. Explain it with this example: ${lesson.example}`)}>Ask AI about this lesson <Icon name="arrow" size={17}/></button></aside><article className="lesson-card"><div className="lesson-card-header"><span>{subject} / {lesson.difficulty || "Core skill"}</span><button className="tiny-icon" onClick={markComplete} aria-label="Mark lesson complete"><Icon name="check" size={17}/></button></div><h2>{lesson.title}</h2>{lesson.ruleTitle && <h3>{lesson.ruleTitle}</h3>}{lesson.formula && <div className="formula-block">{lesson.formula}</div>}<p className="lesson-explanation">{lesson.explanation}</p><p className="lesson-source">Syllabus section {lesson.section} · <a href="https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Official Cambridge syllabus</a></p><div className="lesson-example"><span>Example</span><p>{lesson.example}</p></div>{lesson.arabic && <p className="arabic-helper" lang="ar">{lesson.arabic}</p>}{lesson.tip && <div className="lesson-tip">Tip: {lesson.tip}</div>}</article>{question && <aside className="practice-card"><span className="red-tag">PRACTICE</span><h3>{question.lessonTitle || lesson.title}</h3><p>{question.question}</p><QuestionChoices question={question} answer={answer} onAnswer={setAnswer} result={result}/>{!result && <button className="primary-button compact-primary" disabled={!answer || grading} onClick={grade}>{grading ? "Checking…" : "Check answer"}<Icon name="arrow" size={18}/></button>}{result && <div className={result.correct ? "feedback good" : "feedback"}>{result.correct ? "Correct. " : "Not yet. "}{result.explanation}</div>}{result && matchingPractice.length > practiceIndex + 1 && <button className="outline-button compact-button" onClick={() => { setPracticeIndex((value) => value + 1); setAnswer(""); setResult(null); }}>Next practice <Icon name="arrow" size={16}/></button>}</aside>}</div>}</FeaturePage>;
+  return <FeaturePage eyebrow="Learning map" title="Build the structure first." description="Use the current Accounting 0452 lesson bank, then pressure-test the idea with syllabus-aligned accounting practice."><div className="study-control-bar"><div className="segmented">{["Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div>{data && <span>{data.lessons.length} lessons · {data.practice.length} practice questions</span>}</div>{error && <p className="coach-error">{error}</p>}{!data && !error && <div className="loading-panel">Loading Accounting 0452 lesson bank…</div>}{data && <details className="coverage-panel"><summary>2027–2029 syllabus coverage · 7 topics · 28 sections</summary><p>The lesson map follows the official 0452 syllabus. Teaching and practice are independently authored.</p>{data.topics.map(t=><div key={t.topic_id}><h3>{t.topic_name}</h3>{[...new Set(data.lessons.filter(l=>l.topicId===t.topic_id).map(l=>l.section))].map(section=><p key={section}><strong>{section}</strong> · {data.lessons.filter(l=>l.section===section).map(l=>l.title).join(" · ")}</p>)}</div>)}<a href="https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Open official syllabus and check scope</a></details>}{data && lesson && <div className="learning-workspace"><aside className="lesson-selectors"><label>Domain / topic<select value={topic} onChange={(event) => setTopic(event.target.value)}><option value="">All topics</option>{data.topics.map((item) => <option value={item.topic_id || item.topic_name} key={item.topic_id}>{item.topic_name}</option>)}</select></label><label>Lesson<select value={lesson.id} onChange={(event) => setLessonId(event.target.value)}>{visibleLessons.map((item) => <option value={item.id} key={item.id}>{item.title}</option>)}</select></label><div className="lesson-meter"><span>Progress</span><strong>{study.completedLessons.includes(lesson.id) ? "Complete" : "In progress"}</strong></div><button className="outline-button" onClick={() => askCoach(`Teach me ${lesson.title} for Cambridge IGCSE Accounting (0452), 2027–2029. Formula or rule: ${lesson.formula || lesson.ruleTitle || "not provided"}. Explain it with this example: ${lesson.example}`)}>Ask AI about this lesson <Icon name="arrow" size={17}/></button></aside><article className="lesson-card"><div className="lesson-card-header"><span>{subject} / {lesson.difficulty || "Core skill"}</span><button className="tiny-icon" onClick={markComplete} aria-label="Mark lesson complete"><Icon name="check" size={17}/></button></div><h2>{lesson.title}</h2>{lesson.ruleTitle && <h3>{lesson.ruleTitle}</h3>}{lesson.formula && <div className="formula-block">{lesson.formula}</div>}<p className="lesson-explanation">{lesson.explanation}</p><p className="lesson-source">Syllabus section {lesson.section} · <a href="https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Official Cambridge syllabus</a></p><StepReveal key={lesson.id} label="Worked example" text={lesson.example}/>{lesson.arabic && <p className="arabic-helper" lang="ar">{lesson.arabic}</p>}{lesson.tip && <div className="lesson-tip">Tip: {lesson.tip}</div>}</article>{question && <aside className="practice-card"><span className="red-tag">PRACTICE</span><h3>{question.lessonTitle || lesson.title}</h3><p>{question.question}</p><QuestionChoices question={question} answer={answer} onAnswer={setAnswer} result={result}/>{!result && <button className="primary-button compact-primary" disabled={!answer || grading} onClick={grade}>{grading ? "Checking…" : "Check answer"}<Icon name="arrow" size={18}/></button>}{result && <div className={result.correct ? "feedback good" : "feedback"}>{result.correct ? "Correct. " : "Not yet. "}{result.explanation}</div>}{result && matchingPractice.length > practiceIndex + 1 && <button className="outline-button compact-button" onClick={() => { setPracticeIndex((value) => value + 1); setAnswer(""); setResult(null); }}>Next practice <Icon name="arrow" size={16}/></button>}</aside>}</div>}</FeaturePage>;
 
 }
 
 
 
-function CoachPage({ coach, askCoach, setCoach }) {
+// Shrinks a photo to at most 1280 px on the long side and re-encodes it as JPEG, so it uploads quickly.
+function shrinkPhoto(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      const scale = Math.min(1, 1280 / Math.max(image.width, image.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(image.width * scale);
+      canvas.height = Math.round(image.height * scale);
+      canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL("image/jpeg", 0.82));
+    };
+    image.onerror = () => { URL.revokeObjectURL(url); reject(new Error("Unreadable image")); };
+    image.src = url;
+  });
+}
 
+function speak(text) {
+  if (!("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = /[؀-ۿ]/.test(text) ? "ar-EG" : "en-GB";
+  utterance.rate = 0.98;
+  window.speechSynthesis.speak(utterance);
+}
+
+function CoachPage({ coach, askCoach, setCoach, openLesson }) {
   const [prompt, setPrompt] = useState("");
-
+  const [lessons, setLessons] = useState([]);
+  const [asked, setAsked] = useState("");
+  const [listening, setListening] = useState(false);
+  const [voiceLang, setVoiceLang] = useState("en-GB");
+  const [canListen, setCanListen] = useState(false);
+  const recognition = useRef(null);
+  useEffect(() => { loadLearning().then((data) => setLessons(data.lessons)).catch(() => {}); setCanListen(Boolean(window.SpeechRecognition || window.webkitSpeechRecognition)); return () => { recognition.current?.abort?.(); if ("speechSynthesis" in window) window.speechSynthesis.cancel(); }; }, []);
+  const [photo, setPhoto] = useState("");
   const ask = async (question = prompt) => {
-
-    if (!question.trim()) return;
-
+    if (!question.trim() && !photo) return;
+    setAsked(question);
     setCoach({ ...coach, loading: true, error: "" });
-
-    try { const reply = await askCoach(question); setCoach({ loading: false, error: "", answer: reply }); setPrompt(""); }
-
+    try { const reply = await askCoach(question, photo); setCoach({ loading: false, error: "", answer: reply }); setPrompt(""); setPhoto(""); }
     catch (requestError) { setCoach({ loading: false, error: requestError.message, answer: "" }); }
-
   };
-
-  return <FeaturePage eyebrow="AI coach" title="Ask. Test. Understand." description="The coach gives a concise next step for Cambridge IGCSE Accounting (0452) work."><div className="coach-stage"><div className="coach-orb"><Icon name="brain" size={52}/></div><h2>What are you building clarity on?</h2><p>The coach turns a stuck moment into the next useful step.</p><div className="coach-input"><textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Ask about double entry, financial statements, ratios, or your exam plan…"/><button onClick={() => ask()} aria-label="Ask AI coach" disabled={coach.loading}>{coach.loading ? "…" : <Icon name="send" size={20}/>}</button></div><div className="question-chips">{["Explain double entry", "How do I calculate gross profit margin?", "How do I prepare a partnership appropriation account?"].map((q) => <button key={q} onClick={() => ask(q)} disabled={coach.loading}>{q}</button>)}</div>{coach.answer && <div className="coach-answer"><Icon name="brain" size={20}/><p>{coach.answer}</p></div>}{coach.error && <p className="coach-error">{coach.error}</p>}</div></FeaturePage>;
-
+  const choosePhoto = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    try { setPhoto(await shrinkPhoto(file)); } catch { setCoach({ ...coach, error: "That photo could not be opened. Try another one." }); }
+  };
+  const listen = () => {
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!Recognition) return;
+    if (listening) { recognition.current?.stop(); return; }
+    const instance = new Recognition();
+    instance.lang = voiceLang;
+    instance.interimResults = true;
+    instance.onresult = (event) => setPrompt(Array.from(event.results).map((result) => result[0].transcript).join(" "));
+    instance.onend = () => setListening(false);
+    instance.onerror = () => setListening(false);
+    recognition.current = instance;
+    setListening(true);
+    instance.start();
+  };
+  const related = coach.answer ? matchLessons(`${asked} ${asked} ${coach.answer}`, lessons) : [];
+  return <FeaturePage eyebrow="AI coach" title="Ask. Test. Understand." description="The coach gives a concise next step for Cambridge IGCSE Accounting (0452) work. Type, speak in English or Arabic, or snap a photo of a question."><div className="coach-stage"><div className="coach-orb"><Icon name="brain" size={52}/></div><h2>What are you building clarity on?</h2><p>The coach turns a stuck moment into the next useful step.</p><div className="coach-input"><textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Ask about double entry, financial statements, ratios, or your exam plan…" aria-label="Question for the AI coach"/><div className="coach-buttons"><label className="mic-button photo-button" aria-label="Add a photo of a question"><Icon name="camera" size={20}/><input type="file" accept="image/*" capture="environment" onChange={choosePhoto} hidden/></label>{canListen && <button onClick={listen} className={listening ? "mic-button on" : "mic-button"} aria-label={listening ? "Stop listening" : "Ask by voice"} aria-pressed={listening}><Icon name="mic" size={20}/></button>}<button onClick={() => ask()} aria-label="Ask AI coach" disabled={coach.loading}>{coach.loading ? "…" : <Icon name="send" size={20}/>}</button></div></div>{photo && <div className="photo-preview"><img src={photo} alt="Your question photo"/><div><strong>Photo ready</strong><span>Add a note if you like, then send. The coach guides you step by step instead of just giving the answer.</span></div><button className="tiny-icon" aria-label="Remove photo" onClick={() => setPhoto("")}><Icon name="x" size={14}/></button></div>}{canListen && <div className="voice-lang segmented" aria-label="Voice language">{[["en-GB", "Speak English"], ["ar-EG", "اتكلم عربي"]].map(([lang, label]) => <button key={lang} className={voiceLang === lang ? "selected" : ""} onClick={() => setVoiceLang(lang)}>{label}</button>)}</div>}<div className="question-chips">{["Explain double entry", "How do I calculate gross profit margin?", "How do I prepare a partnership appropriation account?"].map((q) => <button key={q} onClick={() => ask(q)} disabled={coach.loading}>{q}</button>)}</div>{coach.answer && <div className="coach-answer"><Icon name="brain" size={20}/><div><p>{coach.answer}</p><button className="text-button read-aloud" onClick={() => speak(coach.answer)}><Icon name="volume" size={16}/> Read aloud</button></div></div>}{related.length > 0 && <div className="coach-links"><span>Go deeper in the app</span>{related.map((lesson) => <button key={lesson.id} className="outline-button compact-button" onClick={() => openLesson(lesson.id)}>{lesson.section} · {lesson.title} · lesson and practice <Icon name="arrow" size={16}/></button>)}</div>}{coach.error && <p className="coach-error">{coach.error}</p>}</div></FeaturePage>;
 }
-
-
 
 function ExamPage({study,setStudy}) {
 
   const [paper,setPaper]=useState(1);
 
-  return <><div className="paper-switch segmented"><button className={paper===1?"selected":""} onClick={()=>setPaper(1)}>Paper 1 · Multiple choice</button><button className={paper===2?"selected":""} onClick={()=>setPaper(2)}>Paper 2 · Structured written</button></div>{paper===1?<MultipleChoiceExam study={study} setStudy={setStudy}/>:<StructuredExam setStudy={setStudy}/>}</>;
+  return <><div className="paper-switch segmented"><button className={paper===1?"selected":""} onClick={()=>setPaper(1)}>Paper 1 · Multiple choice</button><button className={paper===2?"selected":""} onClick={()=>setPaper(2)}>Paper 2 · Structured written</button></div>{paper===1?<MultipleChoiceExam study={study} setStudy={setStudy}/>:<StructuredExam study={study} setStudy={setStudy}/>}</>;
 
 }
 
 
+
+const PAPER1_SECONDS = 90 * 60;
+const TARGET_PER_QUESTION = PAPER1_SECONDS / 40;
+
+// Where the time went: totals per topic, pace against 2 minutes 15 seconds a question, and the slowest questions.
+function TimeReview({ questions, spent, results, used }) {
+  const byId = new Map(results.map((item) => [item.id, item]));
+  const rows = questions.map((question, index) => ({ number: index + 1, id: question.id, section: question.section, seconds: spent[question.id] || 0, correct: byId.get(question.id)?.correct, answered: Boolean(byId.get(question.id)?.selected) }));
+  const topics = TOPICS.map((topic) => {
+    const items = rows.filter((row) => topic.sections.includes(row.section));
+    return { ...topic, seconds: items.reduce((sum, row) => sum + row.seconds, 0), count: items.length, right: items.filter((row) => row.correct).length };
+  }).filter((topic) => topic.count);
+  const longest = Math.max(1, ...topics.map((topic) => topic.seconds));
+  const slowest = [...rows].sort((a, b) => b.seconds - a.seconds).slice(0, 5);
+  const rushed = rows.filter((row) => row.seconds < 30 && row.answered && !row.correct);
+  const unanswered = rows.filter((row) => !row.answered).length;
+  const average = rows.length ? used / rows.length : 0;
+  return <section className="time-review"><h3>Where your time went</h3>
+    <div className="session-stats"><div><strong>{formatMinutes(used)}</strong><span>time used of 90:00</span></div><div><strong>{formatMinutes(Math.round(average))}</strong><span>per question (target 02:15)</span></div><div><strong>{unanswered}</strong><span>left blank</span></div></div>
+    <p className="fine-print">{average > TARGET_PER_QUESTION ? "You were behind the pace. Move on after about 2 minutes and come back to hard questions at the end." : "Good pace. Use any spare time to re-check calculation questions."}{unanswered ? " Never leave a Paper 1 answer blank: there is no penalty for a wrong answer." : ""}</p>
+    <div className="time-bars">{topics.map((topic) => <div key={topic.id}><span>Topic {topic.id} · {topic.name}</span><div className="bar bar-violet"><span style={{ width: `${(topic.seconds / longest) * 100}%` }}/></div><b>{formatMinutes(topic.seconds)} · {topic.right}/{topic.count}</b></div>)}</div>
+    <h4>Slowest questions</h4><ul className="slow-list">{slowest.map((row) => <li key={row.id}><span>Q{row.number} · {row.section}</span><b>{formatMinutes(row.seconds)}</b><em className={row.correct ? "lime-text" : "pink-text"}>{row.correct ? "right" : "wrong"}</em></li>)}</ul>
+    {rushed.length > 0 && <p className="fine-print">Rushed and wrong (under 30 seconds): {rushed.map((row) => `Q${row.number}`).join(", ")}. Slow down on these types.</p>}
+  </section>;
+}
 
 function MultipleChoiceExam({ study, setStudy }) {
-
   const [subject, setSubject] = useState("Accounting");
-
   const [exams, setExams] = useState([]);
-
   const [examId, setExamId] = useState("");
-
   const [questions, setQuestions] = useState([]);
-
   const [index, setIndex] = useState(0);
-
   const [answers, setAnswers] = useState({});
-
-  const [seconds, setSeconds] = useState(90 * 60);
-
+  const [spent, setSpent] = useState({});
+  const [seconds, setSeconds] = useState(PAPER1_SECONDS);
+  const [warning, setWarning] = useState("");
   const [result, setResult] = useState(null);
-
   const [error, setError] = useState("");
-
   const [loading, setLoading] = useState(false);
-
   const submitGuard = useRef(false);
-
+  const settings = withExtras(study).settings;
+  const reset = () => { setAnswers({}); setSpent({}); setIndex(0); setResult(null); setSeconds(PAPER1_SECONDS); setWarning(""); submitGuard.current = false; };
   useEffect(() => { let active = true; setExams([]); setExamId(""); setQuestions([]); setResult(null); fetchJson(`/api/content?type=exams&subject=${subject}`).then((data) => { if (active) { setExams(data.exams); setExamId(data.exams[0]?.id || ""); } }).catch((requestError) => active && setError(requestError.message)); return () => { active = false; }; }, [subject]);
-
-  useEffect(() => { if (!examId) return; let active = true; setQuestions([]); setAnswers({}); setIndex(0); setResult(null); setSeconds(90 * 60); submitGuard.current = false; fetchJson(`/api/content?type=exam&subject=${subject}&examId=${encodeURIComponent(examId)}`).then((data) => active && setQuestions(data.questions)).catch((requestError) => active && setError(requestError.message)); return () => { active = false; }; }, [subject, examId]);
-
-  useEffect(() => { if (!questions.length || result) return undefined; const timer = window.setInterval(() => setSeconds((value) => Math.max(0, value - 1)), 1000); return () => window.clearInterval(timer); }, [questions.length, result]);
-
+  useEffect(() => { if (!examId) return; let active = true; setQuestions([]); reset(); fetchJson(`/api/content?type=exam&subject=${subject}&examId=${encodeURIComponent(examId)}`).then((data) => active && setQuestions(data.questions)).catch((requestError) => active && setError(requestError.message)); return () => { active = false; }; }, [subject, examId]);
   const question = questions[index];
-
+  const running = Boolean(questions.length) && !result && !loading;
+  useEffect(() => {
+    if (!running) return undefined;
+    const id = question?.id;
+    const timer = window.setInterval(() => {
+      setSeconds((value) => Math.max(0, value - 1));
+      if (id) setSpent((current) => ({ ...current, [id]: (current[id] || 0) + 1 }));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [running, question?.id]);
+  useEffect(() => {
+    if (!running) return;
+    const text = seconds === 15 * 60 ? "15 minutes left. Answer every remaining question, even with a best guess." : seconds === 5 * 60 ? "5 minutes left. Fill in any blanks now." : "";
+    if (text) { setWarning(text); if (settings.haptics !== false) navigator.vibrate?.([80, 60, 80]); }
+  }, [seconds, running, settings.haptics]);
   const submit = async () => {
-
     if (!questions.length || submitGuard.current) return;
-
     submitGuard.current = true;
-
     setLoading(true);
-
     try {
-
       const graded = await fetchJson("/api/grade", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ items: questions.map((item) => ({ id: item.id, answer: answers[item.id] || "" })) }) });
-
       setResult(graded);
-
-      const attempt = { id: `${subject}:${examId}:${Date.now()}`, date: new Date().toISOString(), subject, examId, paper: 1, marking: "Automatic", score: graded.score, total: graded.total, percent: graded.percent };
-
-      const mistakes = graded.results.filter((item) => !item.correct && !item.error).map((item) => ({ ...item, id: `${item.id}:${Date.now()}`, questionId: item.id, date: attempt.date, examId }));
-
-      setStudy((current) => ({ ...current, attempts: [attempt, ...current.attempts].slice(0, 60), mistakes: [...mistakes, ...current.mistakes.filter((item) => !mistakes.some((newItem) => newItem.questionId === item.questionId))].slice(0, 300) }));
-
-    } catch (requestError) { submitGuard.current = false; setError(requestError.message); } finally { setLoading(false); }
-
+      const date = new Date().toISOString();
+      const results = graded.results.filter((item) => !item.error).map((item) => ({ id: item.id, section: item.section, correct: item.correct, seconds: spent[item.id] || 0 }));
+      const attempt = { id: `${subject}:${examId}:${Date.now()}`, date, subject, examId, paper: 1, marking: "Automatic", score: graded.score, total: graded.total, percent: graded.percent, seconds: PAPER1_SECONDS - seconds, results };
+      const wrong = graded.results.filter((item) => !item.correct && !item.error).map((item) => ({ ...item, examId }));
+      setStudy((current) => wrong.reduce((next, item) => recordMistake(next, item, date), { ...current, attempts: [attempt, ...current.attempts].slice(0, 60) }));
+      celebrate(settings, graded.percent >= 70);
+    } catch (requestError) { submitGuard.current = false; setError(navigator.onLine === false ? "You're offline. Your answers are kept on this screen; submit again when you're back online." : requestError.message); } finally { setLoading(false); }
   };
-
   const submitRef = useRef(submit);
-
   useEffect(() => { submitRef.current = submit; });
-
   useEffect(() => { if (seconds === 0 && questions.length && !result && !loading && !error) submitRef.current(); }, [seconds, questions.length, result, loading, error]);
-
-  return <FeaturePage eyebrow="Exam arena" title="Pressure makes the plan real." description="Paper 1 · 40 questions · 90 minutes · 40 marks · 30% weighting. Original practice sampled from the lesson bank; not an official Cambridge paper."><div className="exam-controls"><div className="segmented">{["Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div><label>Mock exam<select value={examId} onChange={(event) => setExamId(event.target.value)}>{exams.map((exam) => <option key={exam.id} value={exam.id}>{exam.id} · {exam.questions} questions</option>)}</select></label><strong className="exam-timer">{formatMinutes(seconds)}</strong></div>{error && <p className="coach-error">{error}</p>}{!question && !error && <div className="loading-panel">Preparing the exam arena…</div>}{question && !result && <div className="exam-stage"><div><span className="red-tag">{subject.toUpperCase()} / {question.section || "0452 PRACTICE"}</span><h2>Question {index + 1} of {questions.length}</h2>{question.passage && <blockquote className="exam-passage">{question.passage}</blockquote>}<p>{question.question}</p><QuestionChoices question={question} answer={answers[question.id]} onAnswer={(value) => setAnswers((current) => ({ ...current, [question.id]: value }))}/><div className="exam-navigation"><button className="outline-button compact-button" disabled={index === 0} onClick={() => setIndex((value) => value - 1)}>Previous</button><span>{Object.keys(answers).length} / {questions.length} answered</span>{index < questions.length - 1 ? <button className="outline-button compact-button" onClick={() => setIndex((value) => value + 1)}>Next</button> : <button className="primary-button compact-primary" onClick={submit} disabled={loading}>{loading ? "Grading…" : "Submit exam"}</button>}</div></div><aside className="exam-score"><Ring value={Math.round((Object.keys(answers).length / questions.length) * 100)} label={`${Object.keys(answers).length}/${questions.length}`}/><strong>{formatMinutes(seconds)}</strong><span>Time remaining</span><button className="primary-button compact-primary" onClick={submit} disabled={loading}>{loading ? "Grading…" : "Finish attempt"}</button></aside></div>}{result && <div className="exam-result"><Ring value={result.percent} label={`${result.percent}%`} blue/><div><span>Exam submitted</span><h2>{result.score} / {result.total} correct</h2><p>{result.results.filter((item) => !item.correct).length} questions are now in your Review Vault with their explanations.</p><button className="outline-button compact-button" onClick={() => { setResult(null); setIndex(0); setAnswers({}); setSeconds(90 * 60); submitGuard.current = false; }}>Try this exam again</button></div></div>}</FeaturePage>;
-
+  const answered = Object.keys(answers).length;
+  return <FeaturePage eyebrow="Exam arena · Paper 1 rehearsal" title="Pressure makes the plan real." description="40 questions · 90 minutes · 40 marks · 30% of the grade. Strict timing like the real exam: warnings at 15 and 5 minutes, and the paper is collected automatically when time runs out. Original practice, not an official Cambridge paper.">
+    <div className="exam-controls"><div className="segmented">{["Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div><label>Mock exam<select value={examId} disabled={running && answered > 0} onChange={(event) => setExamId(event.target.value)}>{exams.map((exam) => <option key={exam.id} value={exam.id}>{exam.id} · {exam.questions} questions</option>)}</select></label><strong className={seconds <= 15 * 60 && !result ? "exam-timer warn" : "exam-timer"} aria-live="off">{formatMinutes(seconds)}</strong></div>
+    {warning && !result && <div className="exam-warning" role="alert"><Icon name="clock" size={18}/>{warning}<button className="tiny-icon" aria-label="Dismiss warning" onClick={() => setWarning("")}><Icon name="x" size={14}/></button></div>}
+    {error && <p className="coach-error">{error}</p>}
+    {!question && !error && <div className="loading-panel">Preparing the exam arena…</div>}
+    {question && !result && <div className="exam-stage"><div><span className="red-tag">{subject.toUpperCase()} / {question.section || "0452 PRACTICE"}</span><h2>Question {index + 1} of {questions.length}</h2>{question.passage && <blockquote className="exam-passage">{question.passage}</blockquote>}<p>{question.question}</p><QuestionChoices question={question} answer={answers[question.id]} onAnswer={(value) => setAnswers((current) => ({ ...current, [question.id]: value }))}/><div className="exam-navigation"><button className="outline-button compact-button" disabled={index === 0} onClick={() => setIndex((value) => value - 1)}>Previous</button><span>{answered} / {questions.length} answered · {formatMinutes(spent[question.id] || 0)} on this one</span>{index < questions.length - 1 ? <button className="outline-button compact-button" onClick={() => setIndex((value) => value + 1)}>Next</button> : <button className="primary-button compact-primary" onClick={submit} disabled={loading}>{loading ? "Grading…" : "Submit exam"}</button>}</div><div className="question-dots" aria-label="Jump to a question">{questions.map((item, dot) => <button key={item.id} className={`${answers[item.id] ? "done" : ""}${dot === index ? " current" : ""}`} onClick={() => setIndex(dot)} aria-label={`Question ${dot + 1}${answers[item.id] ? ", answered" : ""}`}>{dot + 1}</button>)}</div></div><aside className="exam-score"><Ring value={Math.round((answered / questions.length) * 100)} label={`${answered}/${questions.length}`}/><strong>{formatMinutes(seconds)}</strong><span>Time remaining</span><button className="primary-button compact-primary" onClick={() => { if (answered < questions.length && !window.confirm(`${questions.length - answered} questions are blank. Submit anyway?`)) return; submit(); }} disabled={loading}>{loading ? "Grading…" : "Finish attempt"}</button></aside></div>}
+    {result && <><div className="exam-result"><Ring value={result.percent} label={`${result.percent}%`} blue/><div><span>Exam submitted</span><h2>{result.score} / {result.total} correct</h2><p>{result.results.filter((item) => !item.correct).length} questions are now in your Review Vault, and they will come back in your daily sessions.</p><button className="outline-button compact-button" onClick={reset}>Try this exam again</button></div></div><TimeReview questions={questions} spent={spent} results={result.results} used={PAPER1_SECONDS - seconds}/></>}
+  </FeaturePage>;
 }
-
-
 
 function liveRoomSlug(value) {
 
@@ -736,25 +684,80 @@ function MusicPage({ seconds, running, onToggle, study, setStudy }) {
 
 
 
-function VaultPage({ study, setStudy }) {
-
-  const [subject, setSubject] = useState("All");
-
-  const mistakes = study.mistakes.filter((item) => subject === "All" || item.subject === subject);
-
-  const reviewed = study.mistakes.filter(item => study.reviewedIds.includes(item.id)).length;
-
-  const clear = () => { if (window.confirm("Clear all saved review mistakes on this device?")) setStudy((current) => ({ ...current, mistakes: [], reviewedIds: [] })); };
-
-  const markReviewed = (id) => setStudy((current) => ({ ...current, reviewedIds: [...new Set([...current.reviewedIds, id])] }));
-
-  return <FeaturePage eyebrow="Review vault" title="Bring back what matters." description="Wrong answers stay here until the idea is secure. Revision decks remain ready for a focused final review."><div className="vault-stage"><div className="vault-mastery"><Ring value={study.mistakes.length ? Math.round((reviewed / study.mistakes.length) * 100) : 100} label={study.mistakes.length ? `${Math.round((reviewed / study.mistakes.length) * 100)}%` : "100%"}/><div><span>Items reviewed</span><h2>{reviewed} / {study.mistakes.length}</h2><p>Saved locally on this device</p><button className="outline-button compact-button" onClick={clear} disabled={!study.mistakes.length}>Clear vault</button></div></div><div className="revision-downloads"><span>Accounting 0452 · 2027–2029</span><a href="https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Official syllabus &amp; ratio formulas <Icon name="external" size={16}/></a><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-accounting-0452/past-papers/" target="_blank" rel="noreferrer">Official papers &amp; mark schemes <Icon name="external" size={16}/></a><a href="/accounting-revision.html" target="_blank" rel="noreferrer">Accounting revision handbook <Icon name="external" size={16}/></a></div></div><div className="vault-filter"><div className="segmented">{["All", "Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div><span>{mistakes.length} item{mistakes.length === 1 ? "" : "s"} to rebuild</span></div><div className="mistake-list">{mistakes.length ? mistakes.map((item) => <article key={item.id} className={study.reviewedIds.includes(item.id) ? "mistake-card reviewed" : "mistake-card"}><div><span>{item.subject} {item.section ? `· ${item.section}` : ""}</span><h3>{item.question}</h3><p>Your answer: <strong>{item.selected || "Not answered"}</strong> · Correct: <strong>{item.answer}</strong></p><p>{item.explanation}</p></div><button className="outline-button compact-button" onClick={() => markReviewed(item.id)}>{study.reviewedIds.includes(item.id) ? "Reviewed" : "Mark reviewed"}</button></article>) : <div className="empty-panel">No mistakes saved yet. Complete a practice question or mock exam to build your vault.</div>}</div></FeaturePage>;
-
+function reviewLabel(state, today) {
+  if (state.stage >= MASTERED_STAGE) return "Mastered";
+  if (!state.due || state.due <= today) return "Due today";
+  const days = Math.round((Date.parse(state.due) - Date.parse(today)) / 86400000);
+  return `Next review in ${days} day${days === 1 ? "" : "s"}`;
 }
 
+// Flashcards built from saved mistakes. The AI rewrites each one into a short card with a memory hook;
+// without the AI, the original question and answer are used.
+function Flashcards({ study, setStudy, mistakes }) {
+  const [index, setIndex] = useState(0);
+  const [flipped, setFlipped] = useState(false);
+  const [status, setStatus] = useState("");
+  const asked = useRef(new Set());
+  const today = dayKey();
+  const settings = withExtras(study).settings;
+  useEffect(() => {
+    const missing = mistakes.filter((item) => !item.card && !asked.current.has(item.id)).slice(0, 8);
+    if (!missing.length) return;
+    missing.forEach((item) => asked.current.add(item.id));
+    setStatus("The AI is writing cards from your mistakes…");
+    fetchJson("/api/cards", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ items: missing.map(({ id, question, answer, explanation }) => ({ id, question, answer, explanation })) }) })
+      .then(({ cards }) => {
+        const byId = new Map(cards.map((card) => [card.id, card]));
+        setStudy((current) => ({ ...current, mistakes: current.mistakes.map((item) => byId.has(item.id) ? { ...item, card: byId.get(item.id) } : item) }));
+        setStatus("");
+      })
+      .catch(() => setStatus("AI cards are unavailable right now, so these cards use your original questions."));
+  }, [mistakes, setStudy]);
+  if (!mistakes.length) return <div className="empty-panel">No mistakes saved yet, so there are no flashcards. Wrong answers become cards automatically.</div>;
+  const item = mistakes[Math.min(index, mistakes.length - 1)];
+  const card = item.card;
+  const state = reviewState(study, item);
+  const next = (knew) => {
+    if (state.stage < MASTERED_STAGE && (!state.due || state.due <= today)) setStudy((current) => recordReview(current, item, knew));
+    if (knew) celebrate(settings);
+    setFlipped(false);
+    setIndex((value) => (value + 1) % mistakes.length);
+  };
+  return <div className="flashcards">
+    {status && <p className="fine-print" aria-live="polite">{status}</p>}
+    <button className={flipped ? "flashcard flipped" : "flashcard"} onClick={() => setFlipped((value) => !value)} aria-label={flipped ? "Show the question" : "Show the answer"}>
+      <span className="flashcard-tag">{item.section || "0452"} · card {index + 1} of {mistakes.length} · {reviewLabel(state, today)}</span>
+      {!flipped ? <strong>{card?.front || item.question}</strong> : <div className="flashcard-back"><strong>{card?.back || `Correct answer: ${item.answer}`}</strong>{!card && item.explanation && <p>{item.explanation}</p>}{card?.hook && <em><Icon name="star" size={14}/> {card.hook}</em>}</div>}
+      <small>{flipped ? "Tap to see the question" : "Tap to flip"}</small>
+    </button>
+    {flipped ? <div className="self-rate"><button className="outline-button compact-button" onClick={() => next(false)}><Icon name="x" size={16}/> Didn&apos;t know it</button><button className="primary-button compact-primary" onClick={() => next(true)}><Icon name="check" size={16}/> Knew it</button></div>
+      : <div className="self-rate"><button className="text-button" onClick={() => { setFlipped(false); setIndex((value) => (value + mistakes.length - 1) % mistakes.length); }}>Previous</button><button className="text-button" onClick={() => { setFlipped(false); setIndex((value) => (value + 1) % mistakes.length); }}>Skip</button></div>}
+    <p className="fine-print">A card that is due counts as a spaced review: knowing it pushes it further out (3, 7, then 14 days).</p>
+  </div>;
+}
 
+function VaultPage({ study, setStudy }) {
+  const [subject, setSubject] = useState("All");
+  const [mode, setMode] = useState("list");
+  const today = dayKey();
+  const mistakes = study.mistakes.filter((item) => subject === "All" || item.subject === subject);
+  const summary = reviewSummary(study, today);
+  const mastery = summary.total ? Math.round((summary.mastered / summary.total) * 100) : 100;
+  const clear = () => { if (window.confirm("Clear all saved review mistakes on this device?")) setStudy((current) => ({ ...current, mistakes: [], reviewedIds: [], reviews: {} })); };
+  const markReviewed = (id) => setStudy((current) => ({ ...current, reviewedIds: [...new Set([...current.reviewedIds, id])] }));
+  return <FeaturePage eyebrow="Review vault" title="Bring back what matters." description="Every wrong answer is saved here and comes back after 1, 3, 7 and 14 days. Get it right four times in a row and it is mastered."><div className="vault-stage"><div className="vault-mastery"><Ring value={mastery} label={`${mastery}%`}/><div><span>Mastered through spaced review</span><h2>{summary.mastered} / {summary.total}</h2><p>{summary.due} due today · saved on this device</p><button className="outline-button compact-button" onClick={clear} disabled={!study.mistakes.length}>Clear vault</button></div></div><div className="revision-downloads"><span>Accounting 0452 · 2027–2029</span><a href="https://www.cambridgeinternational.org/Images/718141-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Official syllabus &amp; ratio formulas <Icon name="external" size={16}/></a><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-accounting-0452/past-papers/" target="_blank" rel="noreferrer">Official papers &amp; mark schemes <Icon name="external" size={16}/></a><a href="/accounting-revision.html" target="_blank" rel="noreferrer">Accounting revision handbook <Icon name="external" size={16}/></a></div></div>
+    <div className="vault-filter"><div className="segmented">{[["list", "Mistake list"], ["cards", "Flashcards"]].map(([id, label]) => <button key={id} onClick={() => setMode(id)} className={mode === id ? "selected" : ""}>{label}</button>)}</div><div className="segmented">{["All", "Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div><span>{mistakes.length} item{mistakes.length === 1 ? "" : "s"} to rebuild</span></div>
+    {mode === "cards" ? <Flashcards study={study} setStudy={setStudy} mistakes={mistakes}/> : <div className="mistake-list">{mistakes.length ? mistakes.map((item) => <article key={item.id} className={study.reviewedIds.includes(item.id) ? "mistake-card reviewed" : "mistake-card"}><div><span>{item.subject} {item.section ? `· ${item.section}` : ""} · {reviewLabel(reviewState(study, item), today)}</span><h3>{item.question}</h3><p>Your answer: <strong>{item.selected || "Not answered"}</strong> · Correct: <strong>{item.answer}</strong></p><p>{item.explanation}</p></div><button className="outline-button compact-button" onClick={() => markReviewed(item.id)}>{study.reviewedIds.includes(item.id) ? "Reviewed" : "Mark reviewed"}</button></article>) : <div className="empty-panel">No mistakes saved yet. Complete a practice question or mock exam to build your vault.</div>}</div>}
+  </FeaturePage>;
+}
 
-function ProgressPage({ study }) {
+// Accuracy in every syllabus section, from practice, reviews and both papers.
+function SectionBreakdown({ study, go }) {
+  const stats = sectionStats(study);
+  return <section className="panel section-breakdown"><div className="panel-title"><span><Icon name="layers"/> Accuracy by section</span><em>All 28</em></div><div className="section-rows">{TOPICS.map((topic) => <div key={topic.id} className="section-topic"><h4>Topic {topic.id} · {topic.name}</h4>{topic.sections.map((section) => { const item = stats[section]; const percent = item.accuracy === null ? null : Math.round(item.accuracy * 100); return <button key={section} className="section-row" onClick={() => go("learning", { section })}><span>{section} {SECTION_TITLES[section]}</span><div className={`bar ${percent === null ? "" : percent >= 70 ? "bar-lime" : "bar-violet"}`}><span style={{ width: `${percent ?? 0}%` }}/></div><b>{percent === null ? "—" : `${percent}%`}</b></button>; })}</div>)}</div></section>;
+}
+
+function ProgressPage({ study, go }) {
 
   const [subject, setSubject] = useState("All");
 
@@ -770,7 +773,7 @@ function ProgressPage({ study }) {
 
   const path = attempts.length ? attempts.map((item, index) => `${index ? "L" : "M"}${20 + index * (660 / Math.max(1, attempts.length - 1))} ${190 - item.percent * 1.5}`).join(" ") : "M20 190 L680 190";
 
-  return <FeaturePage eyebrow="Progress" title="The line is moving up." description="Your private attempt history is calculated from actual Accounting 0452 mock-exam results on this browser."><div className="progress-toolbar"><div className="segmented">{["All", "Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div><span>{attempts.length} recorded attempt{attempts.length === 1 ? "" : "s"}</span></div><div className="progress-screen"><div className="score-summary"><span>Latest score</span><strong>{study.attempts.length ? latest : "—"}{latest ? <small>%</small> : null}</strong><p>Best {best || "—"}% · Average {average || "—"}%</p></div><svg viewBox="0 0 720 250" className="large-chart" role="img" aria-label="Accounting attempt progress chart"><g stroke="#2a2547" strokeWidth="1"><path d="M18 30H700M18 85H700M18 140H700M18 195H700"/></g><path d={path} fill="none" stroke="#22d3ee" strokeWidth="4"/>{attempts.map((item, index) => <circle key={item.id} cx={20 + index * (660 / Math.max(1, attempts.length - 1))} cy={190 - item.percent * 1.5} r="5" fill="#22d3ee"/>)}<g fill="#a09cc0" fontSize="14">{attempts.map((item, index) => <text key={item.id} x={12 + index * (660 / Math.max(1, attempts.length - 1))} y="225">{formatDate(item.date)}</text>)}</g></svg></div><div className="attempt-table">{attempts.length ? attempts.slice().reverse().map((item) => <div key={item.id}><span>{formatDate(item.date)}</span><strong>{item.subject}</strong><span>{item.examId} · {item.marking || "Automatic"}</span><span>{item.score} / {item.total}</span><b>{item.percent}%</b></div>) : <div className="empty-panel">Your score trend will appear after the first submitted mock exam.</div>}</div></FeaturePage>;
+  return <FeaturePage eyebrow="Progress" title="The line is moving up." description="Your mock results, predicted grade and accuracy in every syllabus section, all from your own work on this device."><div className="progress-toolbar"><div className="segmented">{["All", "Accounting"].map((item) => <button key={item} onClick={() => setSubject(item)} className={subject === item ? "selected" : ""}>{item}</button>)}</div><span>{attempts.length} recorded attempt{attempts.length === 1 ? "" : "s"}</span></div><div className="progress-screen"><div className="score-summary"><span>Latest score</span><strong>{study.attempts.length ? latest : "—"}{latest ? <small>%</small> : null}</strong><p>Best {best || "—"}% · Average {average || "—"}%</p></div><svg viewBox="0 0 720 250" className="large-chart" role="img" aria-label="Accounting attempt progress chart"><g stroke="#2a2547" strokeWidth="1"><path d="M18 30H700M18 85H700M18 140H700M18 195H700"/></g><path d={path} fill="none" stroke="#22d3ee" strokeWidth="4"/>{attempts.map((item, index) => <circle key={item.id} cx={20 + index * (660 / Math.max(1, attempts.length - 1))} cy={190 - item.percent * 1.5} r="5" fill="#22d3ee"/>)}<g fill="#a09cc0" fontSize="14">{attempts.map((item, index) => <text key={item.id} x={12 + index * (660 / Math.max(1, attempts.length - 1))} y="225">{formatDate(item.date)}</text>)}</g></svg></div><div className="progress-extra"><PredictedGrade study={study} go={go}/><SectionBreakdown study={study} go={go}/></div><div className="attempt-table">{attempts.length ? attempts.slice().reverse().map((item) => <div key={item.id}><span>{formatDate(item.date)}</span><strong>{item.subject}</strong><span>{item.examId} · {item.marking || "Automatic"}</span><span>{item.score} / {item.total}</span><b>{item.percent}%</b></div>) : <div className="empty-panel">Your score trend will appear after the first submitted mock exam.</div>}</div></FeaturePage>;
 
 }
 
@@ -784,7 +787,10 @@ function Home({ study, setActiveSection, seconds, running, onToggle, coach, setC
 
   const completed = study.completedLessons.length;
 
-  const mastery = study.mistakes.length ? Math.round((study.mistakes.filter(item => study.reviewedIds.includes(item.id)).length / study.mistakes.length) * 100) : 100;
+  const reviews = reviewSummary(study);
+  const mastery = reviews.total ? Math.round((reviews.mastered / reviews.total) * 100) : 100;
+  const streak = streakFor(study);
+  const level = levelFor(xpFor(study));
 
   const latest = study.attempts[0]?.percent || 0;
 
@@ -792,53 +798,83 @@ function Home({ study, setActiveSection, seconds, running, onToggle, coach, setC
 
   const ask = async (value) => { if (!value.trim()) return; setCoach({ ...coach, loading: true, error: "" }); try { setCoach({ loading: false, error: "", answer: await askCoach(value) }); setQuestion(""); } catch (error) { setCoach({ loading: false, error: error.message, answer: "" }); } };
 
-  return <><header className="topbar"><div className="greeting"><h1>Ready to balance the books, Omar?</h1><p>Accounting 0452 · {progress}% of the course complete</p></div><div className="topbar-actions"><div className="streak"><Icon name="flame" size={18}/><strong>{completed}</strong><span>lesson{completed === 1 ? "" : "s"} done</span></div></div></header><main className="dashboard"><section className="hero-card"><div className="hero-copy"><span className="hero-tag">IGCSE Accounting · Cambridge 0452</span><h1>Build the future.</h1><p>Your future. Your rules. <span>/</span> Master the money game.</p><div className="hero-actions"><button className="primary-button" onClick={() => setActiveSection("learning")}>Continue learning <Icon name="arrow" size={18}/></button><button className="outline-button" onClick={() => setActiveSection("exam")}>Take a mock exam <Icon name="arrow" size={18}/></button></div></div><div className="hero-visual"><div className="course-ring" style={{ "--value": progress }}><div><strong>{progress}%</strong><span>{completed} / {lessonCount} lessons</span></div></div><div className="hero-stats"><div><span>Latest mock</span><strong className="lime-text">{latest ? `${latest}%` : "—"}</strong></div><div><span>Mocks taken</span><strong className="cyan-text">{study.attempts.length}</strong></div><div><span>Vault mastery</span><strong className="pink-text">{mastery}%</strong></div></div></div></section><section className="father-note" aria-label="A word from Omar's father"><div className="father-badge"><Icon name="heart" size={26}/></div><div><span className="father-note-tag">A word from Dad</span><p>Omar, my son — every lesson here was written with you in mind. On the long days, it is you who gives me the strength to keep going. You are my greatest motivation and my proudest achievement. Whatever the result, I believe in you, I am proud of you, and I love you more than words can say.</p><strong>— Your father, Mohamed Basiouny</strong></div></section><div className="content-grid top-grid"><section className="panel coach-card"><div className="panel-title"><span><Icon name="brain"/> AI Coach</span><em>Groq</em></div><p>Ask anything. Get clarity.</p><div className="quick-ask"><textarea value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="What’s challenging you today?"/><button onClick={() => ask(question)} aria-label="Ask coach" disabled={coach.loading}>{coach.loading ? "…" : <Icon name="send" size={18}/>}</button></div><div className="suggestions">{["Explain double entry", "How do I prepare a trial balance?", "How do I reconcile a bank statement?"].map((item) => <button key={item} onClick={() => ask(item)} disabled={coach.loading}>{item}</button>)}</div>{coach.answer && <div className="mini-reply">{coach.answer}</div>}{coach.error && <div className="coach-error">{coach.error}</div>}</section><section className="panel music-card"><div className="panel-title"><span><Icon name="headphones"/> Focus Music</span><button className="tiny-icon" onClick={() => setActiveSection("music")} aria-label="Open focus music"><Icon name="plus" size={16}/></button></div><Timer seconds={seconds} running={running} onToggle={onToggle} compact/></section><section className="panel live-card"><div className="panel-title"><span><Icon name="live"/> Live Studio</span><em>Ready</em></div><strong className="blue-display">PRIVATE LINK</strong><h3>Shared Visual Pad</h3><p>Call, notes, and a collaborative whiteboard.</p><button className="outline-button" onClick={() => setActiveSection("live")}>Open studio<Icon name="calendar" size={18}/></button></section><section className="panel arena-card"><div className="panel-title"><span><Icon name="target"/> Exam Arena</span><em className="red-outline">0452 Practice</em></div><p>Use the Accounting 0452 mock-exam bank.</p><strong className="countdown">{latest ? `${latest}%` : "READY"}</strong><div className="countdown-labels"><span>LAST</span><span>EXAM</span><span>RESULT</span></div><button className="primary-button" onClick={() => setActiveSection("exam")}>Enter build mode <Icon name="arrow" size={21}/></button></section></div><div className="content-grid bottom-grid"><section className="panel review-card"><div className="panel-title"><span><Icon name="vault"/> Review Vault</span></div><div className="review-content"><Ring value={mastery} label={`${mastery}%`}/><div><span>Mastery</span><strong>{study.mistakes.filter(item => study.reviewedIds.includes(item.id)).length} / {study.mistakes.length}</strong><p>Items reviewed</p><button className="outline-button" onClick={() => setActiveSection("vault")}>Open Vault <Icon name="external" size={17}/></button></div></div></section><section className="panel progress-card"><div className="panel-title"><span><Icon name="trend"/> Progress</span><button className="range-button" onClick={() => setActiveSection("progress")}>Real attempts <span>↗</span></button></div><div className="progress-content"><div className="score-chip"><span>Latest score</span><strong>{study.attempts.length ? latest : "—"} {latest ? <small>%</small> : null}</strong><p>{study.attempts.length} saved mock attempt{study.attempts.length === 1 ? "" : "s"}</p></div><svg className="mini-chart" viewBox="0 0 690 150" role="img" aria-label="Progress score trend"><g stroke="#2a2547" strokeWidth="1"><path d="M5 25H675M5 75H675M5 125H675"/></g><path d={study.attempts.length ? study.attempts.slice(0, 8).reverse().map((attempt, index, array) => `${index ? "L" : "M"}${6 + index * (668 / Math.max(1, array.length - 1))} ${125 - attempt.percent}`).join(" ") : "M6 125 L674 125"} fill="none" stroke="#22d3ee" strokeWidth="3"/></svg></div></section></div></main></>;
+  return <><header className="topbar"><div className="greeting"><h1>Ready to balance the books?</h1><p>Accounting 0452 · {progress}% of the course complete</p></div><div className="topbar-actions"><button className="streak" onClick={() => setActiveSection("today")} aria-label={`${streak.current}-day streak. Open today`}><Icon name="flame" size={18}/><strong>{streak.current}</strong><span>day{streak.current === 1 ? "" : "s"} streak</span></button><button className="streak level-chip" onClick={() => setActiveSection("rewards")} aria-label={`Level ${level.level}, ${level.rank}. Open rewards`}><Icon name="trophy" size={18}/><strong>Lv {level.level}</strong><span>{level.rank}</span></button></div></header><main className="dashboard"><section className="hero-card"><div className="hero-copy"><span className="hero-tag">IGCSE Accounting · Cambridge 0452</span><h1>Build the future.</h1><p>Your future. Your rules. <span>/</span> Master the money game.</p><div className="hero-actions"><button className="primary-button" onClick={() => setActiveSection("today")}>{reviews.due ? `Today's 15 minutes · ${reviews.due} due` : "Start today's 15 minutes"} <Icon name="arrow" size={18}/></button><button className="outline-button" onClick={() => setActiveSection("learning")}>Continue learning <Icon name="arrow" size={18}/></button><button className="outline-button" onClick={() => setActiveSection("exam")}>Take a mock exam <Icon name="arrow" size={18}/></button></div></div><div className="hero-visual"><div className="course-ring" style={{ "--value": progress }}><div><strong>{progress}%</strong><span>{completed} / {lessonCount} lessons</span></div></div><div className="hero-stats"><div><span>Latest mock</span><strong className="lime-text">{latest ? `${latest}%` : "—"}</strong></div><div><span>Mocks taken</span><strong className="cyan-text">{study.attempts.length}</strong></div><div><span>Vault mastery</span><strong className="pink-text">{mastery}%</strong></div></div></div></section><section className="father-note" aria-label="A word from Omar's father"><div className="father-badge"><Icon name="heart" size={26}/></div><div><span className="father-note-tag">A word from Dad</span><p>Omar, my son — every lesson here was written with you in mind. On the long days, it is you who gives me the strength to keep going. You are my greatest motivation and my proudest achievement. Whatever the result, I believe in you, I am proud of you, and I love you more than words can say.</p><strong>— Your father, Mohamed Basiouny</strong></div></section><div className="content-grid top-grid"><section className="panel coach-card"><div className="panel-title"><span><Icon name="brain"/> AI Coach</span><em>Groq</em></div><p>Ask anything. Get clarity.</p><div className="quick-ask"><textarea value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="What’s challenging you today?"/><button onClick={() => ask(question)} aria-label="Ask coach" disabled={coach.loading}>{coach.loading ? "…" : <Icon name="send" size={18}/>}</button></div><div className="suggestions">{["Explain double entry", "How do I prepare a trial balance?", "How do I reconcile a bank statement?"].map((item) => <button key={item} onClick={() => ask(item)} disabled={coach.loading}>{item}</button>)}</div>{coach.answer && <div className="mini-reply">{coach.answer}</div>}{coach.error && <div className="coach-error">{coach.error}</div>}</section><section className="panel music-card"><div className="panel-title"><span><Icon name="headphones"/> Focus Music</span><button className="tiny-icon" onClick={() => setActiveSection("music")} aria-label="Open focus music"><Icon name="plus" size={16}/></button></div><Timer seconds={seconds} running={running} onToggle={onToggle} compact/></section><section className="panel live-card"><div className="panel-title"><span><Icon name="live"/> Live Studio</span><em>Ready</em></div><strong className="blue-display">PRIVATE LINK</strong><h3>Shared Visual Pad</h3><p>Call, notes, and a collaborative whiteboard.</p><button className="outline-button" onClick={() => setActiveSection("live")}>Open studio<Icon name="calendar" size={18}/></button></section><section className="panel arena-card"><div className="panel-title"><span><Icon name="target"/> Exam Arena</span><em className="red-outline">0452 Practice</em></div><p>Use the Accounting 0452 mock-exam bank.</p><strong className="countdown">{latest ? `${latest}%` : "READY"}</strong><div className="countdown-labels"><span>LAST</span><span>EXAM</span><span>RESULT</span></div><button className="primary-button" onClick={() => setActiveSection("exam")}>Enter build mode <Icon name="arrow" size={21}/></button></section></div><div className="content-grid bottom-grid"><section className="panel review-card"><div className="panel-title"><span><Icon name="vault"/> Review Vault</span></div><div className="review-content"><Ring value={mastery} label={`${mastery}%`}/><div><span>Mastery</span><strong>{reviews.mastered} / {reviews.total}</strong><p>Mastered · {reviews.due} due today</p><button className="outline-button" onClick={() => setActiveSection("vault")}>Open Vault <Icon name="external" size={17}/></button></div></div></section><section className="panel progress-card"><div className="panel-title"><span><Icon name="trend"/> Progress</span><button className="range-button" onClick={() => setActiveSection("progress")}>Real attempts <span>↗</span></button></div><div className="progress-content"><div className="score-chip"><span>Latest score</span><strong>{study.attempts.length ? latest : "—"} {latest ? <small>%</small> : null}</strong><p>{study.attempts.length} saved mock attempt{study.attempts.length === 1 ? "" : "s"}</p></div><svg className="mini-chart" viewBox="0 0 690 150" role="img" aria-label="Progress score trend"><g stroke="#2a2547" strokeWidth="1"><path d="M5 25H675M5 75H675M5 125H675"/></g><path d={study.attempts.length ? study.attempts.slice(0, 8).reverse().map((attempt, index, array) => `${index ? "L" : "M"}${6 + index * (668 / Math.max(1, array.length - 1))} ${125 - attempt.percent}`).join(" ") : "M6 125 L674 125"} fill="none" stroke="#22d3ee" strokeWidth="3"/></svg></div></section></div></main></>;
 
 }
 
 
 
 export default function Accounting0452() {
-
   const [activeSection, setActiveSection] = useState("home");
-
+  const [target, setTarget] = useState(null);
   const [focusSeconds, setFocusSeconds] = useState(45 * 60);
-
   const [focusRunning, setFocusRunning] = useState(false);
-
-  const [study, setStudy] = useStoredStudy();
-
+  const [study, setStudy, hydrated] = useStoredStudy();
   const [coach, setCoach] = useState({ loading: false, answer: "", error: "" });
-
+  const [toast, setToast] = useState(null);
+  const settings = withExtras(study).settings;
   useEffect(() => { if (!focusRunning) return undefined; const timer = window.setInterval(() => setFocusSeconds((current) => current > 0 ? current - 1 : 45 * 60), 1000); return () => window.clearInterval(timer); }, [focusRunning]);
+  const askCoach = useCallback(async (question, image = "") => { const response = await fetchJson("/api/coach", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, image }) }); return response.reply; }, []);
+  const go = useCallback((section, nextTarget = null) => { setTarget(nextTarget); setActiveSection(section); window.scrollTo({ top: 0 }); }, []);
+  const openSection = useCallback((section) => go("learning", { section }), [go]);
+  const openLesson = useCallback((lessonId) => go("learning", { lessonId }), [go]);
 
-  const askCoach = useCallback(async (question) => { const response = await fetchJson("/api/coach", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question }) }); return response.reply; }, []);
+  // Count study time only while the page is visible and Omar has interacted in the last two minutes.
+  const lastInput = useRef(0);
+  useEffect(() => {
+    lastInput.current = Date.now();
+    const mark = () => { lastInput.current = Date.now(); };
+    const events = ["pointerdown", "keydown", "wheel", "touchstart"];
+    events.forEach((name) => window.addEventListener(name, mark, { passive: true }));
+    const timer = window.setInterval(() => { if (document.visibilityState === "visible" && Date.now() - lastInput.current < 120000) setStudy((current) => addStudyTime(current, 15)); }, 15000);
+    return () => { window.clearInterval(timer); events.forEach((name) => window.removeEventListener(name, mark)); };
+  }, [setStudy]);
 
-  const navigate = (section) => setActiveSection(section);
+  // Streak protectors, Dad's goals, level-ups and new badges.
+  const level = useMemo(() => levelFor(xpFor(study)), [study]);
+  const earned = useMemo(() => badgesFor(study).filter((badge) => badge.earned).map((badge) => badge.name), [study]);
+  const seen = useRef(null);
+  useEffect(() => {
+    if (!hydrated) return;
+    const freezes = updateFreezes(study);
+    const unlocked = withExtras(study).goals.filter((goal) => !goal.unlockedAt && goalReached(goal, study));
+    if (freezes || unlocked.length) {
+      const now = new Date().toISOString();
+      setStudy((current) => ({ ...current, ...(freezes ? { freezes } : {}), goals: withExtras(current).goals.map((goal) => unlocked.some((item) => item.id === goal.id) ? { ...goal, unlockedAt: now } : goal) }));
+    }
+    const previous = seen.current;
+    seen.current = { level: level.level, earned };
+    if (!previous) return;
+    const newBadges = earned.filter((name) => !previous.earned.includes(name));
+    let message = null;
+    if (unlocked.length) message = { text: "Dad left you a message, and you just unlocked it.", section: "rewards", target: { goal: unlocked[0].id } };
+    else if (level.level > previous.level) message = { text: `Level up! You're now level ${level.level}: ${level.rank}.`, section: "rewards" };
+    else if (newBadges.length) message = { text: `Badge earned: ${newBadges.join(", ")}.`, section: "rewards" };
+    if (message) { setToast(message); celebrate(withExtras(study).settings, true); }
+  }, [hydrated, study, level, earned, setStudy]);
+  useEffect(() => { if (!toast) return undefined; const timer = window.setTimeout(() => setToast(null), 7000); return () => window.clearTimeout(timer); }, [toast]);
+
+  useEffect(() => { document.documentElement.dataset.theme = settings.theme === "light" ? "light" : "dark"; }, [settings.theme]);
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "production" || !("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.register("/sw.js", { scope: "/", updateViaCache: "none" }).catch(() => {});
+  }, []);
 
   const renderSection = () => {
-
-    if (activeSection === "learning") return <LearningPage study={study} setStudy={setStudy} askCoach={askCoach}/>;
-
-    if (activeSection === "coach") return <CoachPage coach={coach} setCoach={setCoach} askCoach={askCoach}/>;
-
+    if (activeSection === "today") return <TodayPage study={study} setStudy={setStudy} go={go}/>;
+    if (activeSection === "learning") return <LearningPage study={study} setStudy={setStudy} askCoach={askCoach} target={target}/>;
+    if (activeSection === "lab") return <LabPage study={study} setStudy={setStudy} openSection={openSection}/>;
+    if (activeSection === "coach") return <CoachPage coach={coach} setCoach={setCoach} askCoach={askCoach} openLesson={openLesson}/>;
     if (activeSection === "pad") return <VisualPad/>;
-
     if (activeSection === "exam") return <ExamPage study={study} setStudy={setStudy}/>;
-
     if (activeSection === "live") return <LivePage/>;
-
     if (activeSection === "music") return <MusicPage seconds={focusSeconds} running={focusRunning} onToggle={() => setFocusRunning((current) => !current)} study={study} setStudy={setStudy}/>;
-
     if (activeSection === "vault") return <VaultPage study={study} setStudy={setStudy}/>;
-
-    if (activeSection === "progress") return <ProgressPage study={study}/>;
-
-    return <Home study={study} setActiveSection={navigate} seconds={focusSeconds} running={focusRunning} onToggle={() => setFocusRunning((current) => !current)} coach={coach} setCoach={setCoach} askCoach={askCoach}/>;
-
+    if (activeSection === "progress") return <ProgressPage study={study} go={go}/>;
+    if (activeSection === "rewards") return <RewardsPage study={study} setStudy={setStudy} target={target}/>;
+    if (activeSection === "dad") return <DadPage study={study} setStudy={setStudy}/>;
+    return <Home study={study} setActiveSection={go} seconds={focusSeconds} running={focusRunning} onToggle={() => setFocusRunning((current) => !current)} coach={coach} setCoach={setCoach} askCoach={askCoach}/>;
   };
 
-  return <div className="app-shell"><aside className="sidebar"><button className="brand" onClick={() => navigate("home")}><span>IGCSE Accounting | Cambridge (0452)</span><small>Mr. Mohamed Basiouny</small></button><div className="brand-rule"/><nav>{NAV_ITEMS.map(([id, label, icon]) => <button key={id} className={activeSection === id ? "nav-item active" : "nav-item"} onClick={() => navigate(id)}><Icon name={icon}/><span>{label}</span></button>)}</nav><footer className="credit"><span>Designed &amp; developed by</span><strong>Eng. Ahmed Labib</strong><small>© 2026 · All rights reserved</small></footer></aside><div className="main-area">{renderSection()}</div></div>;
-
+  return <div className="app-shell"><a className="skip-link" href="#main">Skip to content</a><aside className="sidebar"><button className="brand" onClick={() => go("home")}><span><BrandMark/>IGCSE Accounting | Cambridge (0452)</span><small>Mr. Mohamed Basiouny</small></button><div className="brand-rule"/><nav aria-label="Main">{NAV_ITEMS.map(([id, label, icon]) => <button key={id} className={activeSection === id ? "nav-item active" : "nav-item"} aria-current={activeSection === id ? "page" : undefined} onClick={() => go(id)}><Icon name={icon}/><span>{label}</span></button>)}</nav><footer className="credit"><span>Designed &amp; developed by</span><strong>Eng. Ahmed Labib</strong><small>© 2026 · All rights reserved</small></footer></aside><div className="main-area" id="main" tabIndex={-1} style={{ zoom: Number(settings.textSize) || 1 }}>{renderSection()}</div>{toast && <div className="toast" role="status"><Icon name="trophy" size={20}/><span>{toast.text}</span>{toast.section && <button className="text-button" onClick={() => { go(toast.section, toast.target || null); setToast(null); }}>Open</button>}<button className="tiny-icon" aria-label="Dismiss" onClick={() => setToast(null)}><Icon name="x" size={14}/></button></div>}</div>;
 }
-
