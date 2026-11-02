@@ -4,6 +4,7 @@ import "./neon.css";
 import "./features.css";
 import "./mobile.css";
 import "./account.css";
+import { SecretLayer } from "./_components/secret-layer";
 
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
@@ -24,7 +25,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>{children}<SecretLayer/></body>
     </html>
   );
 }

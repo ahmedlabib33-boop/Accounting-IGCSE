@@ -235,3 +235,16 @@
   .admin-bar-row > span { grid-column: span 2; }
 }
 :root[data-theme="light"] .admin-top { background: rgba(255, 255, 255, .92); }
+
+/* Secret layer: opened by typing 1 2 3 6 5 4 on a keyboard. */
+.secret-backdrop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px; background: rgba(4, 3, 10, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); animation: secret-fade .35s ease; }
+.secret-card { position: relative; width: min(100%, 640px); max-height: calc(100vh - 48px); overflow: auto; padding: 30px 34px 26px; border: 1px solid rgba(139, 92, 246, .45); border-radius: 22px; background: linear-gradient(160deg, #17132b, #0d0b1a 70%); box-shadow: 0 50px 120px -40px rgba(139, 92, 246, .6); color: var(--text); animation: secret-rise .45s cubic-bezier(.2, .8, .2, 1); }
+.secret-card header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.secret-card header span { display: block; color: var(--cyan); font: 600 11px var(--mono); letter-spacing: .14em; }
+.secret-card header h2 { margin: 2px 0 0; font: 700 24px/1.2 var(--display); letter-spacing: -.5px; }
+.secret-card p { margin: 0 0 14px; font-size: 16.5px; line-height: 1.6; color: var(--cream, #e9e4ff); }
+.secret-card p b { color: #fff; }
+.secret-card footer { margin-top: 6px; color: var(--muted); font-size: 15px; }
+.secret-close { position: absolute; top: 14px; right: 14px; }
+@keyframes secret-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes secret-rise { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
