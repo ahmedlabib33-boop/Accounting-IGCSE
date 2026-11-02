@@ -195,6 +195,10 @@
 .admin-modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .admin-modal-head h2 { margin: 0; font: 700 24px var(--display); letter-spacing: -.6px; }
 .admin-form { max-width: 460px; }
+.admin-guide .admin-heading p { max-width: 70ch; margin: 8px 0 0; }
+.admin-guide-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.admin-guide-actions .primary-button, .admin-guide-actions .outline-button { width: auto; margin-top: 0; }
+.admin-guide-frame { display: block; width: 100%; height: calc(100vh - 230px); min-height: 520px; border: 1px solid var(--line); border-radius: 18px; background: #07060f; }
 .admin-detail { display: grid; gap: 14px; }
 .admin-detail-head { display: flex; align-items: center; gap: 14px; }
 .admin-detail-head strong { display: block; font-size: 15px; }

@@ -10,7 +10,7 @@ import { SECTION_TITLES, TOPICS, levelFor, minutesStudied, predictGrade, reviewS
 
 // The administrator console: people, roles, the live class, platform settings and the audit trail.
 
-const TABS = [["overview", "Overview", "home"], ["users", "Users", "users"], ["live", "Live class", "live"], ["settings", "Settings", "gear"], ["audit", "Audit log", "clock"]];
+const TABS = [["overview", "Overview", "home"], ["users", "Users", "users"], ["live", "Live class", "live"], ["settings", "Settings", "gear"], ["guide", "Teaching guide", "book"], ["audit", "Audit log", "clock"]];
 const DAY = 86400000;
 
 function timeAgo(value) {
@@ -78,10 +78,26 @@ export function AdminConsole({ serviceKey }) {
       {tab === "users" && <Users users={users} loading={loading} me={user} reload={reload} serviceKey={serviceKey} flash={flash} supabase={supabase}/>}
       {tab === "live" && <LiveAdmin supabase={supabase} users={users} user={user} live={live} flash={flash} reloadLive={loadLive}/>}
       {tab === "settings" && <Settings supabase={supabase} settings={settings} user={user} flash={flash}/>}
+      {tab === "guide" && <Guide/>}
       {tab === "audit" && <Audit audit={audit} reload={loadAudit}/>}
     </main>
     {toast && <div className="toast" role="status"><Icon name="check" size={18}/><span>{toast}</span></div>}
   </div>;
+}
+
+// ----- Teaching guide -----
+// The full lesson script (content/teacher-playbook.html), served staff-only from /admin/playbook.
+function Guide() {
+  return <section className="admin-section admin-guide">
+    <div className="admin-heading row">
+      <div><span>Teaching guide</span><h1>The teacher playbook</h1><p className="muted-line">The complete lesson script for Accounting 0452: what to say, the memory tricks, the traps, the exam hints, a 60-minute session routine, a 12-week plan and the flashcard bank. Teachers can open it too, from their account menu.</p></div>
+      <div className="admin-guide-actions">
+        <a className="outline-button compact-button" href="/admin/playbook" target="_blank" rel="noopener"><Icon name="external" size={16}/> Open full page</a>
+        <a className="primary-button compact-button" href="/admin/playbook?print=1" target="_blank" rel="noopener"><Icon name="book" size={16}/> Print / save as PDF</a>
+      </div>
+    </div>
+    <iframe className="admin-guide-frame" src="/admin/playbook" title="Teacher playbook"/>
+  </section>;
 }
 
 // ----- Overview -----

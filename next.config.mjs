@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // The teacher playbook is read from disk at request time, so it must ship with the route.
+  outputFileTracingIncludes: { "/admin/playbook": ["./content/**/*"] },
   async headers() {
     return [
       {

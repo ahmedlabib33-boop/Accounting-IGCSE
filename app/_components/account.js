@@ -68,7 +68,7 @@ export const useAccount = () => useContext(AccountContext);
 
 // Name, role and a menu with the admin console and sign out.
 export function AccountChip({ cloudState = "" }) {
-  const { user, profile, enabled, isAdmin, signOut } = useAccount();
+  const { user, profile, enabled, isAdmin, isStaff, signOut } = useAccount();
   const [open, setOpen] = useState(false);
   const box = useRef(null);
   useEffect(() => {
@@ -90,6 +90,7 @@ export function AccountChip({ cloudState = "" }) {
     {open && <div className="account-menu" role="menu">
       <div className="account-menu-head"><strong>{name}</strong><small>{user.email}</small><em>{role}</em></div>
       {isAdmin && <a href="/admin" role="menuitem"><Icon name="shield" size={17}/> Admin console</a>}
+      {isStaff && <a href="/admin/playbook" role="menuitem" target="_blank" rel="noopener"><Icon name="book" size={17}/> Teaching guide</a>}
       <button role="menuitem" onClick={signOut}><Icon name="external" size={17}/> Sign out</button>
     </div>}
   </div>;

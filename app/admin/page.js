@@ -11,7 +11,7 @@ export default async function AdminPage() {
   const { supabase, user, profile } = await currentAccount();
   if (!user) redirect("/login?next=/admin");
   if (profile?.role !== "admin" || profile.status !== "active") {
-    return <main className="auth-screen auth-screen-single"><section className="auth-card"><div className="auth-form"><span className="hero-tag">Restricted</span><h2>Administrators only.</h2><p className="muted-line">This console is for platform administrators. If you should have access, ask an administrator to change your role.</p><Link className="outline-button" href="/">Back to the app</Link></div></section></main>;
+    return <main className="auth-screen auth-screen-single"><section className="auth-card"><div className="auth-form"><span className="hero-tag">Restricted</span><h2>Administrators only.</h2><p className="muted-line">This console is for platform administrators. If you should have access, ask an administrator to change your role.</p>{profile?.role === "teacher" && profile.status === "active" && <a className="primary-button" href="/admin/playbook">Open the teaching guide</a>}<Link className="outline-button" href="/">Back to the app</Link></div></section></main>;
   }
   const settings = await loadSettings(supabase);
   const safeUser = { id: user.id, email: user.email, user_metadata: user.user_metadata || {} };

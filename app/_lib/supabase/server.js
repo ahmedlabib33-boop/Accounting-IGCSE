@@ -35,7 +35,12 @@ export async function currentAccount() {
   const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { supabase, user: null, profile: null };
-  const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
+  let { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
+  if (!profile) {
+    // Accounts created before the profiles table existed get their row on first visit.
+    const { data: created } = await supabase.rpc("ensure_profile");
+    profile = created || null;
+  }
   return { supabase, user, profile };
 }
 

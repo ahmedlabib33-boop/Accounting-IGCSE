@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>دليل مستر بسيوني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one reading column with a sticky chapter rail; each topic is a "lesson script" block: say-it lines, memory cards, traps, exam hint, quick check. */
+:root {
+  --bg: #07060f; --surface: #110e22; --raised: #19152f; --line: #2b2550;
+  --fg: #f3f0ff; --muted: #aaa4cc; --faint: #7a74a0;
+  --violet: #a78bfa; --cyan: #22d3ee; --lime: #a3e635; --pink: #f472b6; --amber: #fbbf24; --rose: #fb7185;
+  --display: "Readex Pro", "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  --body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { direction: rtl; }
+body { margin: 0; background: radial-gradient(900px 500px at 10% -10%, rgba(139,92,246,.22), transparent 60%), radial-gradient(700px 500px at 100% 100%, rgba(34,211,238,.1), transparent 60%), var(--bg); background-color: var(--bg); color: var(--fg); font: 400 17px/1.85 var(--body); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+.wrap { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 48px; }
+header.hero { max-width: 1160px; margin: 0 auto; padding-block: 56px 36px; }
+.eyebrow { font: 500 12px var(--mono); letter-spacing: .14em; color: var(--cyan); direction: ltr; text-align: right; }
+h1 { font: 700 clamp(34px, 5.5vw, 60px)/1.2 var(--display); margin: 12px 0 14px; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--violet); }
+.lede { max-width: 64ch; color: var(--muted); font-size: 19px; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 14px; font-size: 14px; color: var(--muted); }
+nav.rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); align-self: start; display: grid; gap: 1px; font-size: 14px; max-height: calc(100vh - 40px); overflow-y: auto; }
+nav.rail a { color: var(--muted); text-decoration: none; padding: 5px 12px; border-radius: 10px; border-inline-start: 2px solid transparent; }
+nav.rail a.sub { padding-inline-start: 26px; font-size: 13px; color: var(--faint); }
+nav.rail a:hover, nav.rail a:focus-visible { color: var(--fg); background: var(--raised); border-inline-start-color: var(--violet); outline: none; }
+main { min-width: 0; }
+section { padding-block: 34px; border-top: 1px solid var(--line); }
+section:first-child { border-top: 0; padding-top: 0; }
+h2 { font: 700 clamp(24px, 3vw, 32px)/1.35 var(--display); margin: 0 0 6px; text-wrap: balance; }
+h2 .n { font: 500 13px var(--mono); color: var(--faint); display: block; letter-spacing: .1em; direction: ltr; text-align: right; }
+h3 { font: 700 21px/1.5 var(--display); margin: 34px 0 6px; color: var(--fg); }
+h3 .sec { font: 500 13px var(--mono); color: var(--cyan); margin-inline-start: 8px; unicode-bidi: isolate; direction: ltr; }
+h4 { font: 700 16px/1.5 var(--display); margin: 22px 0 6px; color: var(--violet); }
+p, li { max-width: 70ch; }
+p { margin: 10px 0; }
+ul, ol { padding-inline-start: 22px; margin: 10px 0; }
+li { margin: 6px 0; }
+li::marker { color: var(--violet); }
+strong { color: #fff; font-weight: 600; }
+.en { font-family: var(--mono); font-size: .84em; color: var(--cyan); unicode-bidi: isolate; direction: ltr; white-space: nowrap; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+.box { border-radius: 16px; padding: 14px 18px; margin: 14px 0; border: 1px solid var(--line); background: var(--surface); }
+.box > b:first-child { display: block; font: 700 14px var(--display); margin-bottom: 4px; }
+.box p { margin: 4px 0; }
+.box ul { margin: 4px 0; }
+.say { border-color: rgba(167,139,250,.45); background: rgba(167,139,250,.08); }
+.say > b:first-child { color: var(--violet); }
+.say p::before { content: "« "; color: var(--violet); }
+.say p::after { content: " »"; color: var(--violet); }
+.trap { border-color: rgba(251,113,133,.45); background: rgba(251,113,133,.07); }
+.trap > b:first-child { color: var(--rose); }
+.hint { border-color: rgba(251,191,36,.45); background: rgba(251,191,36,.07); }
+.hint > b:first-child { color: var(--amber); }
+.tip { border-color: rgba(34,211,238,.35); background: rgba(34,211,238,.07); }
+.tip > b:first-child { color: var(--cyan); }
+.note { border-color: rgba(244,114,182,.4); background: rgba(244,114,182,.08); }
+.note > b:first-child { color: var(--pink); }
+.check-q { border-color: rgba(163,230,53,.4); background: rgba(163,230,53,.06); }
+.check-q > b:first-child { color: var(--lime); }
+.check-q details summary { cursor: pointer; color: var(--lime); font-size: 15px; margin-top: 4px; }
+.mems { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; margin: 14px 0; }
+.mem { background: linear-gradient(140deg, rgba(139,92,246,.16), rgba(17,14,34,.9)); border: 1px solid rgba(139,92,246,.4); border-radius: 18px; padding: 16px 18px; min-width: 0; }
+.mem .code { font: 700 22px/1.3 var(--mono); color: var(--fg); letter-spacing: .06em; direction: ltr; text-align: right; display: block; overflow-wrap: anywhere; }
+.mem .code.ar { font-family: var(--display); letter-spacing: 0; direction: rtl; font-size: 20px; }
+.mem .exp { color: var(--muted); font-size: 15px; line-height: 1.75; margin-top: 6px; }
+.mem .exp .ltr { color: var(--cyan); font-family: var(--mono); font-size: 13.5px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; min-width: 0; }
+.card h5 { margin: 0 0 6px; font: 700 17px var(--display); }
+.card p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.75; }
+.card .tag { display: inline-block; font: 500 11px var(--mono); color: var(--lime); letter-spacing: .1em; margin-bottom: 6px; direction: ltr; }
+.table { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 16px; }
+table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: 15px; }
+th, td { text-align: right; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--raised); font: 600 14px var(--display); color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.f { font: 500 13.5px/1.6 var(--mono); color: var(--cyan); direction: ltr; text-align: left; }
+td .min { font: 500 13px var(--mono); color: var(--amber); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.formula { font: 500 15px/1.7 var(--mono); color: #e2ddff; background: #0c0a1b; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; direction: ltr; text-align: left; margin: 10px 0; overflow-x: auto; white-space: pre; }
+.prompt { position: relative; background: #0c0a1b; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 14px 92px; margin: 10px 0; font-size: 15.5px; color: #e2ddff; }
+.prompt button { position: absolute; left: 10px; top: 10px; font: 500 12px var(--body); color: var(--fg); background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: 5px 12px; cursor: pointer; }
+.prompt button:hover, .prompt button:focus-visible { border-color: var(--violet); outline: none; }
+.flash { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin-top: 14px; }
+.flash details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; min-width: 0; }
+.flash details[open] { border-color: var(--violet); background: var(--raised); }
+.flash summary { cursor: pointer; list-style: none; font: 700 16px var(--display); display: flex; justify-content: space-between; gap: 8px; }
+.flash summary::-webkit-details-marker { display: none; }
+.flash summary::after { content: "اقلب"; font: 500 11px var(--body); color: var(--faint); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; align-self: center; }
+.flash details[open] summary::after { content: "خلاص"; }
+.flash summary .t { font: 500 11px var(--mono); color: var(--cyan); display: block; letter-spacing: .08em; }
+.flash p { margin: 8px 0 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.hype { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; list-style: none; padding: 0; }
+.hype li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; margin: 0; font-family: var(--display); font-weight: 500; }
+.hype li small { display: block; font-family: var(--body); color: var(--faint); font-weight: 400; font-size: 13.5px; }
+.check { list-style: none; padding: 0; }
+.check li { display: flex; gap: 10px; align-items: flex-start; }
+.check li::before { content: "✓"; color: var(--lime); font-weight: 700; }
+footer { max-width: 1160px; margin: 40px auto 0; color: var(--faint); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; }
+@media (max-width: 880px) { .wrap { grid-template-columns: 1fr; gap: 0; } nav.rail { display: none; } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+<style>@media print { body { background: #fff; color: #111; } nav.rail { display: none; } .wrap { grid-template-columns: 1fr; } .box, .card, .mem, .flash details { break-inside: avoid; } }</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="eyebrow">TEACHER PLAYBOOK · ACCOUNTING 0452 · FULL SCRIPT</div>
+  <h1>السكريبت الكامل عشان تبقى <em>أشطر مستر أكاونتنج</em> في مصر</h1>
+  <p class="lede">يا مستر محمد، ده مش مجرد دليل للموقع. ده سكريبت حصص كامل: هتلاقي فيه الجملة اللي تقولها للطالب بالحرف، والتريك اللي يحفّظه القاعدة في ثانية، والفخ اللي الطلبة بتقع فيه، والهينت اللي بيجيب الدرجة في الامتحان. كله بالمصري الشبابي الكلاسي اللي ولادنا بيحبوه.</p>
+  <div class="meta"><span class="chip">Cambridge IGCSE 0452 · 2027–2029</span><span class="chip">7 توبيكس · 28 سكشن · 65 درس</span><span class="chip">+40 تريك حفظ وجملة سحرية</span></div>
+</header>
+
+<div class="wrap">
+  <nav class="rail" aria-label="فهرس الدليل">
+    <a href="#how">إزاي تقرا السكريبت</a>
+    <a href="#mindset">الفكرة الأساسية</a>
+    <a href="#tour">الموقع في 5 دقايق</a>
+    <a href="#science">علم المذاكرة الذكية</a>
+    <a href="#lesson">روتين الحصة</a>
+    <a href="#t1">Topic 1 · الأساسيات</a>
+    <a href="#t2">Topic 2 · التسجيل</a>
+    <a href="#t3">Topic 3 · المراجعة</a>
+    <a href="#t4">Topic 4 · التسويات</a>
+    <a href="#t5">Topic 5 · القوائم</a>
+    <a class="sub" href="#t5-sole">Sole trader</a>
+    <a class="sub" href="#t5-part">Partnership</a>
+    <a class="sub" href="#t5-ltd">Limited company</a>
+    <a class="sub" href="#t5-club">Clubs</a>
+    <a class="sub" href="#t5-mfg">Manufacturing</a>
+    <a class="sub" href="#t5-ir">Incomplete records</a>
+    <a href="#t6">Topic 6 · التحليل</a>
+    <a href="#t7">Topic 7 · المفاهيم</a>
+    <a href="#formulas">شيت الفورمولات</a>
+    <a href="#exam">استراتيجية الامتحان</a>
+    <a href="#ai">الـ AI Coach</a>
+    <a href="#genz">جمل الحماس و Gen Z</a>
+    <a href="#bank">بنك التريكات (Flashcards)</a>
+    <a href="#plan">خطة 12 أسبوع</a>
+    <a href="#checklist">Checklist يومي</a>
+  </nav>
+
+  <main>
+    <section id="how">
+      <h2><span class="n">HOW TO USE</span>إزاي تقرا السكريبت ده</h2>
+      <p>كل توبيك متقسم لنفس البلوكات، عشان تلاقي اللي محتاجه بسرعة وانت في نص الحصة:</p>
+      <div class="grid">
+        <div class="box say"><b>قول للطالب</b><p>الجملة اللي تقولها بالحرف. مجربة إنها بتفتح المخ.</p></div>
+        <div class="box" style="border-color:rgba(139,92,246,.4)"><b style="color:var(--violet)">تريك الحفظ</b>اختصار أو جملة مسجوعة الطالب يحفظها مرة ومتطيرش.</div>
+        <div class="box trap"><b>الفخ</b>الغلطة اللي 80% من الطلبة بتقع فيها. اصطادها بدري.</div>
+        <div class="box hint"><b>هينت الامتحان</b>إزاي الحاجة دي بتيجي في الامتحان وإزاي تاخد درجتها كاملة.</div>
+        <div class="box check-q"><b>اختبره في دقيقة</b>سؤال سريع، والإجابة مستخبية تحته.</div>
+      </div>
+    </section>
+
+    <section id="mindset">
+      <h2><span class="n">00 · MINDSET</span>الفكرة الأساسية قبل أي حاجة</h2>
+      <p>الطالب النهارده مش محتاج حد يقرأله الكتاب. محتاج حد <strong>يفهّمه الـ logic</strong> ويخليه يجرّب بإيده ويغلط قدامك بدري، بدل ما يغلط في الامتحان. المحاسبة مادة "بتتلعب" مش بتتحفظ، وكل قاعدة فيها ليها سبب منطقي.</p>
+      <ul>
+        <li><strong>قاعدة 20/80:</strong> 20% من الحصة انت بتشرح، و80% الطالب هو اللي بيشتغل. انت الكوتش مش المحاضر.</li>
+        <li><strong>كل قاعدة ليها "ليه":</strong> متقولش "الـ debit على الشمال وخلاص". قول "عشان كل عملية ليها وشّين: فلوس داخلة مكان وخارجة من مكان".</li>
+        <li><strong>الغلط بيتصاد مش بيتعاقب:</strong> كل غلطة بتتسجل لوحدها في الـ <span class="en">Review Vault</span>، ودي أغلى حاجة عندك. هي خريطة المراجعة الجاهزة.</li>
+        <li><strong>قصة قبل قانون:</strong> ابدأ بموقف من الحياة (عمر بيبيع هدوم أونلاين، كافيه في التجمع، محل موبايلات في سيتي ستارز)، وبعدين طلّع منه القاعدة.</li>
+        <li><strong>نفس الشكل كل مرة:</strong> القوائم والجداول ليها "هيكل" ثابت. لو الطالب حفظ الهيكل، نص الدرجة مضمونة قبل ما يكتب ولا رقم.</li>
+      </ul>
+    </section>
+
+    <section id="tour">
+      <h2><span class="n">01 · THE APP</span>الموقع في 5 دقايق: كل حتة بتعمل إيه</h2>
+      <div class="grid">
+        <div class="card"><span class="tag">HOME</span><h5>الصفحة الرئيسية</h5><p>نسبة الكورس اللي خلص، آخر درجة امتحان، نسبة إتقان الغلطات، ورسالتك لعمر. ابدأ بيها كل يوم.</p></div>
+        <div class="card"><span class="tag">LEARNING</span><h5>التعلّم</h5><p>65 درس على 7 توبيكس و28 سكشن بنفس ترتيب كامبريدج. كل درس: قاعدة، شرح، مثال محلول، وسؤال تدريب.</p></div>
+        <div class="card"><span class="tag">AI COACH</span><h5>المساعد الذكي</h5><p>بيشرح أي نقطة بمثال وسؤال صغير، عربي أو إنجليزي. للوقت اللي انت مش موجود فيه.</p></div>
+        <div class="card"><span class="tag">VISUAL PAD</span><h5>السبورة</h5><p>ارسم T-accounts وجداول بسرعة. بتتحفظ على الجهاز وتتنزل صورة.</p></div>
+        <div class="card"><span class="tag">EXAM ARENA</span><h5>ساحة الامتحان</h5><p>Paper 1: تلت امتحانات MCQ، 40 سؤال في 90 دقيقة، تصحيح أوتوماتيك. Paper 2: تلت امتحانات Structured بنموذج إجابة للتصحيح الذاتي.</p></div>
+        <div class="card"><span class="tag">LIVE STUDIO</span><h5>الحصة الأونلاين</h5><p>ابدأ الحصة من هنا، والطلبة هيلاقوا زرار Join في أي صفحة. المكالمة بتفضل شغالة وانت بتتنقل بين الأقسام، وأي طالب مفعّل Follow teacher شاشته بتمشي وراك.</p></div>
+        <div class="card"><span class="tag">FOCUS MUSIC</span><h5>تايمر المذاكرة</h5><p>تايمر 45 دقيقة مع موسيقى تركيز، عشان المذاكرة تبقى sprints.</p></div>
+        <div class="card"><span class="tag">REVIEW VAULT</span><h5>خزنة الغلطات</h5><p>كل سؤال اتغلط فيه بيتحفظ هنا مع التفسير. خطة المراجعة جاهزة.</p></div>
+        <div class="card"><span class="tag">PROGRESS</span><h5>التقدم</h5><p>رسمة لدرجات كل الامتحانات. بتوريك الطالب طالع ولا نازل.</p></div>
+      </div>
+      <div class="box note"><b>خلي بالك</b>كل طالب ليه أكونت، والتقدم والغلطات بيتحفظوا على السيرفر مع الأكونت. يعني عمر يذاكر من الموبايل أو اللابتوب وكله بيتابعه. وانت تشوف مستوى كل طالب من Admin console ← Users.</div>
+    </section>
+
+    <section id="science">
+      <h2><span class="n">02 · LEARNING SCIENCE</span>علم المذاكرة الذكية: 6 تكنيكات مثبتة علميًا</h2>
+      <p>دي مش آراء. دي تكنيكات اتجربت في أبحاث كتير، وبتفرق جامد في الحفظ والفهم. وكل واحدة ليها مكان في الموقع:</p>
+      <div class="grid">
+        <div class="card"><span class="tag">RETRIEVAL</span><h5>استرجع، متقراش تاني</h5><p>اسأله قبل ما تشرحله. محاولة التذكر حتى لو فشلت بتثبت المعلومة أكتر من إعادة القراية 3 مرات. استخدم أسئلة الـ Practice في أول الحصة.</p></div>
+        <div class="card"><span class="tag">SPACING</span><h5>قاعدة 1-3-7-14</h5><p>راجع الدرس بعد يوم، وبعد 3 أيام، وبعد أسبوع، وبعد أسبوعين. كل مراجعة 5 دقايق بس من الـ Review Vault.</p></div>
+        <div class="card"><span class="tag">INTERLEAVING</span><h5>اخلط التوبيكس</h5><p>بعد ما يخلص 3 توبيكس، متديهوش 10 أسئلة depreciation ورا بعض. اخلط depreciation مع accruals مع errors، زي الامتحان بالظبط.</p></div>
+        <div class="card"><span class="tag">FEYNMAN</span><h5>اشرحها لأخوك الصغير</h5><p>لو مش عارف يشرحها بكلام بسيط، يبقى لسه مفهمهاش. خليه يشرحلك كل درس في دقيقة.</p></div>
+        <div class="card"><span class="tag">DUAL CODING</span><h5>ارسم وانت بتتكلم</h5><p>كل قاعدة تتقال وتترسم: T-account، سهم، جدول. استخدم الـ Visual Pad دايمًا.</p></div>
+        <div class="card"><span class="tag">FADING</span><h5>شيل السقالة واحدة واحدة</h5><p>مثال محلول كامل، بعده مثال ناقص خطوة، بعده ناقص خطوتين، لحد ما يحل لوحده.</p></div>
+      </div>
+    </section>
+
+    <section id="lesson">
+      <h2><span class="n">03 · THE SESSION</span>روتين الحصة الذكية: 60 دقيقة بالظبط</h2>
+      <div class="table"><table>
+        <thead><tr><th>الوقت</th><th>المرحلة</th><th>بتعمل إيه</th><th>من الموقع</th></tr></thead>
+        <tbody>
+          <tr><td><span class="min">0–5</span></td><td>Warm-up</td><td>سؤالين من غلطات الحصة اللي فاتت، وجملة سحرية من الأسبوع اللي فات. "قولّي DEAD CLIC يعني إيه في 10 ثواني."</td><td>Review Vault</td></tr>
+          <tr><td><span class="min">5–15</span></td><td>Hook + القاعدة</td><td>موقف من الحياة، وبعدين القاعدة و"ليه"، وبعدين تريك الحفظ. متزودش عن 10 دقايق.</td><td>Learning</td></tr>
+          <tr><td><span class="min">15–30</span></td><td>أنا، إحنا، انت</td><td>تحل مثال قدامه، تحلوا واحد سوا، وبعدين هو لوحده على السبورة وانت ساكت.</td><td>Visual Pad</td></tr>
+          <tr><td><span class="min">30–45</span></td><td>Practice</td><td>أسئلة الدرس. لو غلط، يقرأ التفسير ويقولك بصوته الغلطة كانت فين.</td><td>Learning · Practice</td></tr>
+          <tr><td><span class="min">45–55</span></td><td>Mini-exam</td><td>5 أسئلة امتحان على نفس التوبيك مع توبيك قديم، بتايمر.</td><td>Exam Arena</td></tr>
+          <tr><td><span class="min">55–60</span></td><td>Exit ticket</td><td>"قولّي في جملة اتعلمت إيه، وقولّي التريك." وبعدين "Mark complete".</td><td>Learning ✓</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ===================== TOPIC 1 ===================== -->
+    <section id="t1">
+      <h2><span class="n">TOPIC 1 · 1.1–1.2</span>أساسيات المحاسبة</h2>
+
+      <h3>ليه المحاسبة أصلًا؟ <span class="sec">1.1</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>تخيل إنك فتحت براند تيشيرتات على إنستجرام. بعد 3 شهور حد سألك: انت كسبان ولا خسران؟ لو مش مسجل ولا حاجة، هتقول "حاسس إني كسبان". المحاسبة هي اللي بتحول "حاسس" لـ "متأكد".</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الدفتر بيحكي، المحاسب بيفهم</span><div class="exp"><span class="ltr">Bookkeeping</span> = تسجيل العمليات بالتفصيل. <span class="ltr">Accounting</span> = تصنيف وتلخيص وتفسير الأرقام عشان ناخد قرار.</div></div>
+        <div class="mem"><span class="code ar">الربح رأي، والكاش حقيقة</span><div class="exp">ممكن تبيع بالآجل وتطلع كسبان على الورق، ومعكش جنيه تدفع بيه للمورد. الربح مش زي الفلوس اللي في البنك.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يفتكر إن الربح = الفلوس اللي في البنك. أول درس في الموقع مبني على الفكرة دي بالظبط: بضاعة تكلفتها 600 اتباعت بـ 900 آجل. الربح 300، والكاش صفر.</div>
+
+      <h3>معادلة المحاسبة <span class="sec">1.2</span></h3>
+      <div class="formula">Assets = Liabilities + Capital</div>
+      <div class="box say"><b>قول للطالب</b><p>كل جنيه موجود في البيزنس جه من حد. يا إما صاحبه حطه (Capital)، يا إما حد سلّفه (Liabilities). عشان كده الاتنين مع بعض لازم يساووا كل اللي عندك (Assets).</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">اللي معاك = اللي عليك + اللي ليك</span><div class="exp">اللي معاك = <span class="ltr">Assets</span>. اللي عليك للناس = <span class="ltr">Liabilities</span>. اللي ليك انت كصاحب = <span class="ltr">Capital</span>.</div></div>
+        <div class="mem"><span class="code">"The balance never breaks"</span><div class="exp">أي عملية بتغير طرفين بنفس المبلغ، فالمعادلة عمرها ما بتتكسر. لو اتكسرت، فيه غلطة.</div></div>
+      </div>
+      <div class="box hint"><b>هينت الامتحان</b>سؤال كلاسيكي في Paper 1: "Which transaction increases both assets and liabilities?" الإجابة: شراء بضاعة أو أصل بالآجل. علّمه يكتب العملية كـ (+/−) على الطرفين قبل ما يختار.</div>
+      <div class="box check-q"><b>اختبره في دقيقة</b>صاحب المحل سحب 500 كاش لنفسه. إيه اللي حصل في المعادلة؟
+        <details><summary>الإجابة</summary>Assets (cash) نقصت 500، و Capital نقص 500 (drawings). المعادلة لسه متساوية.</details></div>
+    </section>
+
+    <!-- ===================== TOPIC 2 ===================== -->
+    <section id="t2">
+      <h2><span class="n">TOPIC 2 · 2.1–2.3</span>تسجيل العمليات</h2>
+
+      <h3>القيد المزدوج Double entry <span class="sec">2.1</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>الـ double entry زي التحويل على إنستاباي بالظبط. الفلوس خرجت من حساب ودخلت حساب تاني. مفيش جنيه بيظهر من العدم ولا بيختفي. عشان كده كل عملية بتتكتب مرتين: مرة Debit ومرة Credit.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code">DEAD CLIC</span><div class="exp"><b>DEAD</b> = بيزيدوا بالـ Debit: <span class="ltr">Debit · Expenses · Assets · Drawings</span>.<br><b>CLIC</b> = بيزيدوا بالـ Credit: <span class="ltr">Credit · Liabilities · Income · Capital</span>.<br>واللي بيزيد بجنب، بينقص بالجنب التاني.</div></div>
+        <div class="mem"><span class="code ar">اللي استلم مدين، واللي سلّم دائن</span><div class="exp"><span class="ltr">Debit the receiver, credit the giver</span>. اشتريت عربية بشيك؟ العربية استلمت (Debit Vehicles)، والبنك سلّم (Credit Bank).</div></div>
+        <div class="mem"><span class="code ar">الرصيد بينزل في الجنب الخفيف</span><div class="exp">لما تقفل الحساب: <span class="ltr">Balance c/d</span> يتكتب في الجنب اللي مجموعه أقل عشان يساوي، و <span class="ltr">Balance b/d</span> يطلع في الجنب التاني أول الفترة الجاية.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يعكس الـ debit والـ credit في المصاريف والإيرادات. يقول "المصروف فلوس خرجت يبقى Credit". صحّحله: الفلوس اللي خرجت هي اللي Credit في حساب البنك، لكن المصروف نفسه بيزيد، فـ Debit.</div>
+      <div class="box check-q"><b>اختبره في دقيقة</b>دفعنا إيجار 1,000 بشيك. Debit إيه و Credit إيه؟
+        <details><summary>الإجابة</summary>Debit Rent (Expense زاد) 1,000 · Credit Bank (Asset نقص) 1,000.</details></div>
+
+      <h3>المستندات Business documents <span class="sec">2.2</span></h3>
+      <div class="table"><table>
+        <thead><tr><th>المستند</th><th>بيقول إيه</th><th>يروح فين</th><th>الجملة اللي تتحفظ</th></tr></thead>
+        <tbody>
+          <tr><td>Invoice</td><td>بيع أو شراء بالآجل</td><td>Sales / Purchases journal</td><td>"الفاتورة = بيعة آجل"</td></tr>
+          <tr><td>Credit note</td><td>بضاعة رجعت أو تخفيض</td><td>Returns journals</td><td>"الكريدت نوت = رجوع"</td></tr>
+          <tr><td>Debit note</td><td>طلب من المشتري للمورد بتخفيض أو رجوع</td><td>بيمهد لـ Purchases returns</td><td>"الديبت نوت = طلب"</td></tr>
+          <tr><td>Receipt</td><td>إثبات استلام فلوس</td><td>Cash book</td><td>"الإيصال = فلوس اتقبضت"</td></tr>
+          <tr><td>Cheque counterfoil</td><td>كعب الشيك اللي كتبناه</td><td>Cash book (bank column)</td><td>"الكعب = فلوس طلعت بشيك"</td></tr>
+          <tr><td>Paying-in slip</td><td>إيداع في البنك</td><td>Cash book (bank column)</td><td>"قسيمة الإيداع = فلوس دخلت البنك"</td></tr>
+          <tr><td>Statement of account</td><td>ملخص الحساب بين العميل والمورد</td><td>للمراجعة، مش للتسجيل</td><td>"الكشف للمراجعة بس"</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>دفاتر القيد الأولي Books of prime entry <span class="sec">2.3</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الجورنال آجل، الكاش بوك كاش، والجنرال للغريب</span><div class="exp">Sales/Purchases/Returns journals = عمليات بالآجل بس. Cash book = أي فلوس كاش أو بنك. General journal = كل حاجة غريبة: شراء أصل بالآجل، تصحيح غلطات، ديون معدومة، قيود افتتاحية.</div></div>
+        <div class="mem"><span class="code ar">الـ Trade بيختفي، والـ Cash بيتكتب</span><div class="exp"><span class="ltr">Trade discount</span> مبيدخلش الدفاتر خالص، بنكتب السعر بعده. <span class="ltr">Cash (settlement) discount</span> بيتسجل.</div></div>
+        <div class="mem"><span class="code ar">اديت = خسارة، خدت = مكسب</span><div class="exp"><span class="ltr">Discount allowed</span> (اديته للعميل) = Expense. <span class="ltr">Discount received</span> (خدته من المورد) = Income.</div></div>
+        <div class="mem"><span class="code ar">اللي اتصرف هو اللي يرجع</span><div class="exp">Petty cash بنظام الـ <span class="ltr">Imprest</span>: الكاشير الصغير بياخد نفس المبلغ اللي صرفه بالظبط، فيرجع الرصيد للرقم الثابت.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يسجل بيع كاش في الـ Sales journal. الـ Sales journal للآجل بس. ويسجل شراء أصل بالآجل في الـ Purchases journal، وده مكانه الـ General journal لأن الـ Purchases journal للبضاعة اللي هتتباع تاني بس.</div>
+      <div class="box hint"><b>هينت الامتحان</b>في الـ three-column cash book، عمود الـ discount مش حساب. هو تذكرة بس، والمجاميع بتترحل للـ ledger آخر الشهر. والـ <span class="en">contra entry</span> (كاش اتودع في البنك) بتتكتب في الجنبين وجنبها حرف <b>C</b>.</div>
+      <div class="box check-q"><b>اختبره في دقيقة</b>بعنا بضاعة سعرها 2,000 بخصم تجاري 10% بالآجل. هتتسجل في الـ Sales journal بكام؟
+        <details><summary>الإجابة</summary>1,800. الخصم التجاري بيختفي ومبيتسجلش لوحده.</details></div>
+    </section>
+
+    <!-- ===================== TOPIC 3 ===================== -->
+    <section id="t3">
+      <h2><span class="n">TOPIC 3 · 3.1–3.4</span>مراجعة السجلات</h2>
+
+      <h3>ميزان المراجعة Trial balance <span class="sec">3.1</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>الـ trial balance زي إنك توزن الشنطة قبل السفر. لو الكفتين مش متساويين، أكيد فيه حاجة غلط. بس لو متساويين؟ ده مش معناه إن كل حاجة صح. فيه 6 غلطات بتعدي من الميزان من غير ما يحس بيها.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code">CROPOC</span><div class="exp">الـ 6 غلطات اللي الـ TB مبيكشفهاش:<br><span class="ltr">Commission · Reversal · Omission · Principle · Original entry · Compensating</span><br>قولها "كروبوك" وهتفتكرها على طول.</div></div>
+        <div class="mem"><span class="code ar">كل واحدة بجملة</span><div class="exp"><b>Omission</b>: مسجلتهاش خالص.<br><b>Commission</b>: الحساب الصح من النوع الصح بس للشخص الغلط (Ahmed بدل Ali).<br><b>Principle</b>: نوع حساب غلط (أصل اتسجل مصروف).<br><b>Original entry</b>: الرقم غلط من الأول في الجنبين.<br><b>Reversal</b>: الـ Debit والـ Credit اتعكسوا.<br><b>Compensating</b>: غلطتين بيلغوا بعض.</div></div>
+      </div>
+
+      <h3>تصحيح الأخطاء و Suspense <span class="sec">3.2</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الساسبنس بيقف في الجنب الناقص</span><div class="exp">لو مجموع الـ Debit أقل من الـ Credit، الفرق يتحط Debit في <span class="ltr">Suspense account</span> عشان الميزان يتقفل، لحد ما نلاقي الغلطة.</div></div>
+        <div class="mem"><span class="code ar">صحّح بقيد، متشطبش</span><div class="exp">التصحيح دايمًا بـ <span class="ltr">Journal entry</span> + narrative. اسأل نفسك: "كان المفروض يتسجل إزاي؟ اتسجل إزاي؟ أعمل إيه عشان أوصل للصح؟"</div></div>
+      </div>
+      <div class="box hint"><b>هينت الامتحان</b>سؤال "effect on profit" بيتكرر كل سنة. اعمل جدول 3 عواميد: الغلطة، Profit (+/−)، المبلغ. المصروف الزايد بيقلل الربح، والإيراد الناقص بيقلل الربح، والغلطة بين حسابين في الميزانية (زي حسابين عملاء) ملهاش أثر على الربح.</div>
+
+      <h3>تسوية البنك Bank reconciliation <span class="sec">3.3</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>دي حوار بينك وبين البنك. البنك عارف حاجات انت متعرفهاش (المصاريف البنكية، الفوايد، الخصم التلقائي). وانت عارف حاجات البنك لسه ميعرفهاش (شيك كتبته ولسه محدش صرفه، فلوس ودعتها النهارده). الحاجات اللي البنك يعرفها بتصلحها في دفترك، والحاجات اللي انت بس عارفها بتعمل بيها التسوية.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">البنك يعرف ← صحّح الكاش بوك</span><div class="exp"><span class="ltr">Bank charges, interest, standing orders, direct debits, credit transfers, dishonoured cheques</span> كلهم يدخلوا الـ cash book الأول.</div></div>
+        <div class="mem"><span class="code ar">انت تعرف ← اعمل التسوية</span><div class="exp"><span class="ltr">Unpresented cheques</span> (شيكات كتبناها ولسه ماتصرفتش) و <span class="ltr">Uncredited deposits</span> (إيداعات لسه منزلتش في الكشف).</div></div>
+        <div class="mem"><span class="code">Bank + Deposits − Cheques</span><div class="exp">رصيد كشف البنك + الإيداعات اللي لسه منزلتش − الشيكات اللي لسه ماتصرفتش = رصيد الكاش بوك بعد التعديل. احفظها "بي دي سي".</div></div>
+        <div class="mem"><span class="code ar">كشف البنك بيشوف الدنيا بالمقلوب</span><div class="exp">رصيدك عند البنك = فلوسك، يعني للبنك هو دين عليه. عشان كده الرصيد الموجب بيظهر <span class="ltr">Credit</span> في كشف البنك و <span class="ltr">Debit</span> في الكاش بوك بتاعك.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يحط الـ bank charges في التسوية بدل ما يصلح بيها الكاش بوك. القاعدة: لو الحاجة ظاهرة في كشف البنك ومش في دفترك، يبقى مكانها الكاش بوك.</div>
+
+      <h3>حسابات المراقبة Control accounts <span class="sec">3.4</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>تخيل كل العملاء اتجمعوا في عميل واحد عملاق. الـ <span class="en">Sales ledger control</span> هو حساب العميل العملاق ده. كل اللي بيحصل لأي عميل بيحصل له بالمجموع.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code">SLC = Asset · PLC = Liability</span><div class="exp">الـ <span class="ltr">Sales ledger control</span> بيتصرف زي أصل: بيزيد Debit (credit sales، شيكات مرتدة، فوايد على العميل). بينقص Credit (فلوس اتحصلت، discount allowed، returns inwards، ديون معدومة، contra).<br>الـ <span class="ltr">Purchases ledger control</span> العكس بالظبط.</div></div>
+        <div class="mem"><span class="code ar">الكونترا ليها رجل في كل حساب</span><div class="exp">لما عميل يبقى مورد في نفس الوقت ونقاصّ بينهم: <span class="ltr">Debit PLC · Credit SLC</span>.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يحط الـ cash sales أو الـ discount received في الـ SLC. الـ SLC للعملاء بالآجل بس، والـ discount received مكانه الـ PLC.</div>
+    </section>
+
+    <!-- ===================== TOPIC 4 ===================== -->
+    <section id="t4">
+      <h2><span class="n">TOPIC 4 · 4.1–4.5</span>التسويات</h2>
+
+      <h3>Capital vs Revenue <span class="sec">4.1</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الشراء والتركيب كابيتال، والتصليح والبنزين ريفينيو</span><div class="exp"><span class="ltr">Capital expenditure</span> = شراء أو تحسين أصل بيزود قيمته أو عمره، ومعاه مصاريف النقل والتركيب والقانونية. <span class="ltr">Revenue expenditure</span> = مصاريف التشغيل اليومي.</div></div>
+      </div>
+      <div class="box hint"><b>هينت الامتحان</b>لو capital اتسجل revenue: الربح يقل والأصول تقل. لو revenue اتسجل capital: الربح يزيد والأصول تزيد. اعرضها كجدول أثر.</div>
+
+      <h3>الإهلاك Depreciation <span class="sec">4.2</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>العربية اللي أبوك اشتراها بـ 500 ألف، هتبقى بكام بعد 3 سنين؟ أكيد أقل. الفرق ده مش خسارة مفاجئة، ده تكلفة استخدام بنوزعها على السنين اللي استفدنا فيها بالعربية.</p></div>
+      <div class="formula">Straight-line   = (Cost − Residual value) ÷ Useful life
+Reducing balance = Rate % × Carrying amount (Cost − Accumulated dep.)
+Revaluation      = Opening value + Purchases − Closing value</div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الـ Straight مسطرة، والـ Reducing دوامة بتصغر</span><div class="exp">Straight-line = نفس الرقم كل سنة. Reducing balance = نفس النسبة، بس على الرقم اللي فاضل، فالمبلغ بيقل كل سنة.</div></div>
+        <div class="mem"><span class="code ar">بعت بأكتر من الـ NBV؟ مكسب</span><div class="exp">Profit/loss on disposal = Proceeds − Carrying amount. لو حساب الـ <span class="ltr">Disposal</span> محتاج رقم في الـ Debit عشان يتقفل يبقى ربح، ولو في الـ Credit يبقى خسارة.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>في الـ reducing balance يحسب النسبة على الـ cost كل سنة. مثال: 10,000 بنسبة 20%: السنة الأولى 2,000، التانية 1,600 (مش 2,000)، التالتة 1,280.</div>
+      <div class="box check-q"><b>اختبره في دقيقة</b>آلة تكلفتها 12,000، الإهلاك المجمع 7,000، اتباعت بـ 4,000. ربح ولا خسارة؟
+        <details><summary>الإجابة</summary>Carrying amount = 12,000 − 7,000 = 5,000. اتباعت بـ 4,000، يبقى خسارة 1,000.</details></div>
+
+      <h3>المستحقات والمقدمات Accruals &amp; prepayments <span class="sec">4.3</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>المصروف بيتحسب على السنة اللي استفدت فيها، مش السنة اللي دفعت فيها. زي اشتراك الجيم: لو دفعت سنة قدام في ديسمبر، مش معناه إن ديسمبر كلّفك سنة كاملة.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code">AA · PP</span><div class="exp">للمصاريف: <b>A</b>ccrued = <b>A</b>dd (زوّد على المصروف، وطلّعه current liability). <b>P</b>repaid = <b>P</b>ull out (اطرح من المصروف، وطلّعه current asset).</div></div>
+        <div class="mem"><span class="code ar">لسه مدفعتش = دين، دفعت بدري = أصل</span><div class="exp">وفي الإيرادات العكس: إيراد مستحق لسه مقبضتوش = أصل (<span class="ltr">accrued income</span>). إيراد قبضته مقدم = التزام (<span class="ltr">income in advance</span>).</div></div>
+      </div>
+      <div class="box check-q"><b>اختبره في دقيقة</b>إيجار السنة 12,000، دفعنا 10,000 بس. المصروف في الـ income statement كام؟ وإيه اللي يظهر في الميزانية؟
+        <details><summary>الإجابة</summary>المصروف 12,000. ويظهر accrued rent (other payable) بـ 2,000 في الـ current liabilities.</details></div>
+
+      <h3>الديون المعدومة والمشكوك فيها <span class="sec">4.4</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الـ allowance تحويشة، والمحمّل هو الفرق بس</span><div class="exp">الـ allowance مبلغ متحوّش للديون اللي ممكن تضرب. اللي بيدخل الـ income statement هو <b>التغيير</b> بس: الزيادة مصروف، والنقص إيراد.</div></div>
+        <div class="mem"><span class="code ar">اسمين لنفس الحاجة</span><div class="exp"><span class="ltr">Allowance for irrecoverable debts</span> = <span class="ltr">Provision for doubtful debts</span> في الكتب والامتحانات القديمة. نفس القيد بالظبط.</div></div>
+        <div class="mem"><span class="code ar">الدين اللي رجع مش بيعة جديدة</span><div class="exp">Recovered debt: رجّع الدين على العميل الأول، وبعدين سجّل الفلوس اللي دخلت. عشان يبان في تاريخ العميل إنه دفع.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يحمّل الـ allowance كلها على الربح كل سنة. لو المطلوب 1,000 والموجود 700، المصروف 300 بس.</div>
+
+      <h3>تقييم المخزون Inventory <span class="sec">4.5</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">Cost ولا NRV؟ الأوطى يكسب</span><div class="exp">المخزون بيتقيم بالأقل بين التكلفة و <span class="ltr">Net realisable value</span> (سعر البيع − مصاريف التجهيز والبيع). ده مبدأ الـ prudence.</div></div>
+        <div class="mem"><span class="code ar">الجرد الزايد بيضحك عليك السنة دي ويضربك السنة الجاية</span><div class="exp">Closing inventory زايد ← cost of sales أقل ← ربح السنة دي أعلى. والسنة الجاية الـ opening inventory هيبقى زايد، فربحها يقل.</div></div>
+      </div>
+      <div class="box hint"><b>هينت الامتحان</b>المقارنة بتتعمل لكل صنف لوحده، مش للمخزون كله مرة واحدة. اعمل جدول: الصنف، Cost، NRV، الأقل.</div>
+    </section>
+
+    <!-- ===================== TOPIC 5 ===================== -->
+    <section id="t5">
+      <h2><span class="n">TOPIC 5 · 5.1–5.6</span>القوائم المالية</h2>
+      <div class="box say"><b>قول للطالب</b><p>كل نوع بيزنس ليه "شكل" قوائم، بس الهيكل الأساسي واحد. لو حفظت الهيكل الفاضي، الامتحان بقى مجرد ملي خانات.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الـ Income statement فيلم، والميزانية صورة</span><div class="exp">Income statement بيغطي فترة، فعنوانه <span class="ltr">"for the year ended 31 December 2027"</span>. Statement of financial position لقطة في يوم، فعنوانه <span class="ltr">"at 31 December 2027"</span>.</div></div>
+      </div>
+
+      <h3 id="t5-sole">Sole trader <span class="sec">5.1</span></h3>
+      <div class="formula">Cost of sales = Opening inventory + Purchases − Purchases returns + Carriage inwards − Closing inventory
+Gross profit  = Net revenue − Cost of sales
+Profit        = Gross profit + Other income − Expenses
+Closing capital = Opening capital + Capital introduced + Profit − Drawings</div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">اللي كان + اللي اشتريته − اللي فضل = اللي اتباع</span><div class="exp">ده الـ cost of sales في جملة واحدة.</div></div>
+        <div class="mem"><span class="code ar">الـ Inwards بيدخل البضاعة، والـ Outwards بيوصلها</span><div class="exp"><span class="ltr">Carriage inwards</span> ← cost of sales. <span class="ltr">Carriage outwards</span> ← مصروف بيع تحت الـ gross profit.</div></div>
+        <div class="mem"><span class="code ar">اللي صاحب المحل ياخده لنفسه drawings مش مصروف</span><div class="exp">بضاعة خدها لنفسه: <span class="ltr">Debit Drawings · Credit Purchases</span>.</div></div>
+        <div class="mem"><span class="code ar">الأصول بتترتب من الأصعب للأسهل في التسييل</span><div class="exp">Current assets: Inventory ← Trade receivables ← Other receivables ← Bank ← Cash.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يحط الـ drawings كمصروف في الـ income statement. ويحط الـ carriage outwards في الـ cost of sales.</div>
+
+      <h3 id="t5-part">Partnership <span class="sec">5.2</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>اتنين صحاب عملوا مشروع. واحد حط فلوس أكتر، والتاني بيشتغل أكتر. هنقسم الربح إزاي بالعدل؟ الأول كل واحد ياخد فايدة على فلوسه، وبعدين مرتب على شغله، وبعدين الباقي يتقسم بالنسبة المتفق عليها.</p></div>
+      <div class="formula">Profit for the year
++ Interest on drawings
+− Interest on capital
+− Partners' salaries
+= Residual profit  → shared in profit-sharing ratio</div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">فايدة، مرتب، وبعدين اقسموا</span><div class="exp">ده ترتيب الـ <span class="ltr">Appropriation account</span>.</div></div>
+        <div class="mem"><span class="code ar">اللي بيسحب بدري بيدفع غرامة</span><div class="exp"><span class="ltr">Interest on drawings</span> بيتجمع على الربح، لأنه غرامة على الشريك مش مصروف على المشروع.</div></div>
+        <div class="mem"><span class="code ar">الكابيتال ثابت، والكرنت بيتحرك</span><div class="exp"><span class="ltr">Fixed capital accounts</span> مبتتغيرش. كل الفوايد والمرتبات ونصيب الربح والمسحوبات بتعدي على الـ <span class="ltr">current accounts</span>.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ الأكبر</b>مرتب الشريك مش مصروف في الـ income statement، ده توزيع ربح. لكن فايدة القرض اللي الشريك سلّفه للمشروع (<span class="en">interest on partner's loan</span>) مصروف عادي قبل الـ appropriation.</div>
+
+      <h3 id="t5-ltd">Limited company <span class="sec">5.3</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الأسهم ملكية، والسندات دين</span><div class="exp"><span class="ltr">Ordinary shares</span> = ملاك بمخاطرة وتوزيعات متغيرة وحق تصويت. <span class="ltr">Preference shares</span> = توزيعات ثابتة وأولوية. <span class="ltr">Debentures</span> = قرض بفايدة ثابتة، والفايدة مصروف، والسند non-current liability.</div></div>
+        <div class="mem"><span class="code ar">الشركة شخص لوحدها</span><div class="exp"><span class="ltr">Separate legal entity + limited liability</span>: الملاك بيخسروا اللي حطوه بس، مش بيوتهم.</div></div>
+        <div class="mem"><span class="code">RE = Open + Profit − Div − Reserve</span><div class="exp">Retained earnings آخر السنة = أول السنة + ربح السنة − التوزيعات المدفوعة − المحوّل للـ general reserve.</div></div>
+      </div>
+      <div class="box hint"><b>هينت الامتحان</b>الـ Equity في الميزانية = Share capital + General reserve + Retained earnings. وخلي بالك من الفرق بين <span class="en">issued</span> و <span class="en">called-up</span> و <span class="en">paid-up</span> capital.</div>
+
+      <h3 id="t5-club">Clubs and societies <span class="sec">5.5</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">R&amp;P كاش وبس، و I&amp;E على أصوله</span><div class="exp"><span class="ltr">Receipts and payments account</span> = ملخص الكاش بوك. <span class="ltr">Income and expenditure account</span> = زي الـ income statement بالـ accruals.</div></div>
+        <div class="mem"><span class="code ar">النادي مبيكسبش، النادي بيعمل surplus</span><div class="exp">Profit ← <span class="ltr">Surplus</span>. Loss ← <span class="ltr">Deficit</span>. Capital ← <span class="ltr">Accumulated fund</span>.</div></div>
+      </div>
+      <div class="formula">Subscriptions (I&amp;E) = Cash received − Arrears at start + Arrears at end + Advance at start − Advance at end</div>
+      <div class="box hint"><b>هينت الامتحان</b>الـ bar أو الـ refreshments ليها <span class="en">trading account</span> صغير لوحدها، وربحه بس هو اللي يدخل الـ I&amp;E.</div>
+
+      <h3 id="t5-mfg">Manufacturing <span class="sec">5.4</span></h3>
+      <div class="formula">Direct materials = Opening raw materials + Purchases + Carriage inwards − Closing raw materials
+Prime cost      = Direct materials + Direct labour + Direct expenses
+Production cost = Prime cost + Factory overheads + Opening WIP − Closing WIP</div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الـ Direct بيتلمس، والـ Overheads بتشغّل</span><div class="exp">Direct = بيدخل في المنتج نفسه (خامة، عامل على الخط). Overheads = بيشغّل المصنع (إيجار المصنع، المشرف، إهلاك الآلات).</div></div>
+        <div class="mem"><span class="code">Prime = Direct كله</span><div class="exp">اجمع كل حاجة اسمها Direct، يطلع الـ prime cost.</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يحط إيجار المكتب أو مرتب مدير المبيعات في الـ factory overheads. أي حاجة مش في المصنع مكانها الـ income statement.</div>
+
+      <h3 id="t5-ir">Incomplete records <span class="sec">5.6</span></h3>
+      <div class="box say"><b>قول للطالب</b><p>صاحب محل مكانش بيسجل حاجة، وجالك يقولك "أنا كسبان كام؟" هتشتغل محقق. هتجمع الدلايل: اللي عنده أول السنة وآخرها، واللي سحبه، واللي ضخه، وتطلع الربح.</p></div>
+      <div class="formula">Capital (Statement of affairs) = Assets − Liabilities
+Profit = Closing capital − Opening capital + Drawings − Capital introduced</div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">الفرق + اللي سحبته − اللي ضخيته = الربح</span><div class="exp">لو رأس المال زاد 10,000 وصاحبه سحب 5,000، يبقى المشروع كسب 15,000 حتى لو مكانش فيه دفاتر.</div></div>
+        <div class="mem"><span class="code ar">Mark-UP من تحت، Margin من فوق</span><div class="exp"><span class="ltr">Mark-up</span> = الربح ÷ التكلفة. <span class="ltr">Margin</span> = الربح ÷ سعر البيع.</div></div>
+        <div class="mem"><span class="code ar">زوّد واحد على المقام</span><div class="exp">Mark-up 1/4 ← Margin 1/5. Mark-up 1/2 ← Margin 1/3. ومن الـ margin للـ mark-up: انقص واحد من المقام.</div></div>
+      </div>
+      <div class="box check-q"><b>اختبره في دقيقة</b>Cost of sales = 40,000 و mark-up 25%. المبيعات كام؟
+        <details><summary>الإجابة</summary>Gross profit = 25% × 40,000 = 10,000. المبيعات = 50,000. (والـ margin هنا 20% = 1/5.)</details></div>
+    </section>
+
+    <!-- ===================== TOPIC 6 ===================== -->
+    <section id="t6">
+      <h2><span class="n">TOPIC 6 · 6.1–6.5</span>التحليل المالي</h2>
+      <div class="box say"><b>قول للطالب</b><p>لو معاك فلوس وعايز تستثمرها في محل من اتنين، هتختار مين؟ مش هتبص على مين بيبيع أكتر، هتبص على مين بيكسب أحسن من كل جنيه، ومين يقدر يدفع اللي عليه. الـ ratios هي اللي بتجاوبك.</p></div>
+      <div class="mems">
+        <div class="mem"><span class="code ar">3 أسئلة: بيكسب؟ يقدر يدفع؟ بيدير كويس؟</span><div class="exp">Profitability (margins, ROCE). Liquidity (current, acid test). Efficiency (inventory turnover، أيام العملاء والموردين).</div></div>
+        <div class="mem"><span class="code ar">الـ Acid من غير مخزون</span><div class="exp">Current ratio = كل الـ current assets. Acid test = من غيرها المخزون، لأن المخزون لسه مش فلوس.</div></div>
+        <div class="mem"><span class="code ar">العملاء بسرعة، الموردين على مهلنا</span><div class="exp">Trade receivables days عايزينها قليلة. Trade payables days ممكن تكون أطول، بس من غير ما نخسر سمعتنا أو الخصم.</div></div>
+        <div class="mem"><span class="code">R · C · R · S</span><div class="exp">صيغة أي إجابة تفسير: <b>R</b>esult الرقم ← <b>C</b>ompare قارن ← <b>R</b>eason السبب ← <b>S</b>uggest اقتراح. بالمصري: "رقم، قارن، ليه، اعمل إيه".</div></div>
+      </div>
+      <div class="box trap"><b>الفخ</b>يحسب الـ ratio صح وبعدين يكتب "it is good" وخلاص. كامبريدج بتدي درجات أكتر على التفسير والسبب والاقتراح من الحساب نفسه.</div>
+      <h4>مين بيقرا الحسابات؟ <span class="en">6.4</span></h4>
+      <div class="mems">
+        <div class="mem"><span class="code ar">كل واحد بيدور على سؤال</span><div class="exp">البنك: "هيرجّع القرض؟" المورد: "هيدفعلي؟" المالك: "بكسب؟" الموظف: "شغلي في أمان؟" الحكومة: "الضريبة كام؟" المستثمر: "أحط فلوسي؟"</div></div>
+        <div class="mem"><span class="code ar">قارن تفاحة بتفاحة</span><div class="exp">المقارنة بين شركتين (<span class="ltr">inter-firm</span>) تنفع لو نفس الصناعة والحجم والسياسات والفترة.</div></div>
+        <div class="mem"><span class="code ar">الأرقام بتحكي الماضي، ومش بتحكي كل الحكاية</span><div class="exp">Limitations: historic cost، سياسات مختلفة، معلومات غير مالية مش ظاهرة (سمعة، جودة الموظفين، المنافسين).</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== TOPIC 7 ===================== -->
+    <section id="t7">
+      <h2><span class="n">TOPIC 7 · 7.1–7.3</span>المفاهيم والأخلاقيات والتكنولوجيا</h2>
+      <h3>المبادئ المحاسبية <span class="sec">7.1</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code" style="font-size:17px">Big Dreams Go High, Many Men Make Plans, Rarely Change</span><div class="exp">أول حرف من كل كلمة = مبدأ:<br><span class="ltr">Business entity · Duality · Going concern · Historic cost · Matching · Materiality · Money measurement · Prudence · Realisation · Consistency</span></div></div>
+      </div>
+      <div class="table"><table>
+        <thead><tr><th>المبدأ</th><th>الجملة اللي تتحفظ</th><th>مثال امتحان</th></tr></thead>
+        <tbody>
+          <tr><td>Business entity</td><td>"صاحب المحل غير المحل"</td><td>فاتورة كهربا بيت المالك مش مصروف للمشروع</td></tr>
+          <tr><td>Duality</td><td>"كل عملية ليها وشّين"</td><td>أساس الـ double entry</td></tr>
+          <tr><td>Going concern</td><td>"البيزنس هيكمل، مش هيقفل بكرة"</td><td>الأصول بالتكلفة مش بسعر البيع الفوري</td></tr>
+          <tr><td>Historic cost</td><td>"سجّل بالسعر اللي دفعته"</td><td>أرض اشتريناها بمليون وبقت بـ 3، تفضل بمليون</td></tr>
+          <tr><td>Matching</td><td>"المصروف مع إيراده في نفس السنة"</td><td>Accruals و prepayments</td></tr>
+          <tr><td>Materiality</td><td>"الحاجة الصغيرة متستاهلش تعقيد"</td><td>دباسة بـ 50 جنيه تبقى مصروف مش أصل</td></tr>
+          <tr><td>Money measurement</td><td>"اللي مالوش رقم ميتسجلش"</td><td>روح الفريق الحلوة مش أصل في الميزانية</td></tr>
+          <tr><td>Prudence</td><td>"الخسارة سجّلها، والمكسب استناه"</td><td>Allowance للديون، والمخزون بالأقل</td></tr>
+          <tr><td>Realisation</td><td>"الإيراد لما البضاعة تتسلم، مش لما الفلوس تيجي"</td><td>بيع آجل يتسجل يوم التسليم</td></tr>
+          <tr><td>Consistency</td><td>"متغيرش الطريقة كل سنة على مزاجك"</td><td>نفس طريقة الإهلاك كل سنة</td></tr>
+        </tbody>
+      </table></div>
+      <h3>الأخلاقيات المهنية <span class="sec">7.2</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code ar">أمين، محايد، شاطر، كتوم، محترم</span><div class="exp">المبادئ الخمسة: <span class="ltr">Integrity</span> (أمين) · <span class="ltr">Objectivity</span> (محايد) · <span class="ltr">Professional competence &amp; due care</span> (شاطر وحريص) · <span class="ltr">Confidentiality</span> (كتوم) · <span class="ltr">Professional behaviour</span> (محترم).</div></div>
+      </div>
+      <div class="box hint"><b>هينت الامتحان</b>سؤال الأخلاقيات بييجي سيناريو: "المدير طلب منك تأجل تسجيل مصروف عشان الربح يبان أعلى". الإجابة: اذكر المبدأ اللي اتكسر، وقول ليه، واقترح التصرف الصح (ترفض بأدب، توثّق، تبلّغ المسؤول المناسب).</div>
+      <h3>التكنولوجيا في المحاسبة <span class="sec">7.3</span></h3>
+      <div class="mems">
+        <div class="mem"><span class="code">3 · 2 · 1</span><div class="exp">قاعدة الـ backup: 3 نسخ من البيانات، على نوعين تخزين مختلفين، واحدة منهم بره المكان (cloud مثلًا).</div></div>
+        <div class="mem"><span class="code ar">الكمبيوتر سريع بس مش بيفكر</span><div class="exp">السوفت وير بيحسب صح، بس لو دخّلت رقم غلط هيطلع نتيجة غلط بسرعة (<span class="ltr">garbage in, garbage out</span>). وفيه مخاطر: اختراق، فيروسات، وقوع السيستم.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== FORMULAS ===================== -->
+    <section id="formulas">
+      <h2><span class="n">FORMULA SHEET</span>شيت الفورمولات مع تريك لكل واحدة</h2>
+      <div class="table"><table>
+        <thead><tr><th>الـ Ratio</th><th>الفورمولا</th><th>التريك</th></tr></thead>
+        <tbody>
+          <tr><td>Gross margin</td><td class="f">Gross profit ÷ Revenue × 100</td><td>"Margin دايمًا على المبيعات"</td></tr>
+          <tr><td>Mark-up</td><td class="f">Gross profit ÷ Cost of sales × 100</td><td>"Mark-UP من تحت، على التكلفة"</td></tr>
+          <tr><td>Profit margin</td><td class="f">Profit for the year ÷ Revenue × 100</td><td>"من كل 100 جنيه بيع، فضل كام في الجيب؟"</td></tr>
+          <tr><td>ROCE</td><td class="f">Profit ÷ Capital employed × 100</td><td>"فلوسي اللي في المشروع بتجيب كام؟" (Capital employed = Capital + Non-current liabilities، واتأكد من تعريف السؤال)</td></tr>
+          <tr><td>Current ratio</td><td class="f">Current assets : Current liabilities</td><td>"عندي كام قصاد كل جنيه عليا قريب؟"</td></tr>
+          <tr><td>Acid test</td><td class="f">(Current assets − Inventory) : Current liabilities</td><td>"من غير المخزون، أقدر أدفع؟"</td></tr>
+          <tr><td>Inventory turnover</td><td class="f">Cost of sales ÷ Average inventory (times)</td><td>"المخزون بيلف كام لفة في السنة؟" (Average = (Opening + Closing) ÷ 2)</td></tr>
+          <tr><td>Receivables days</td><td class="f">Trade receivables ÷ Credit sales × 365</td><td>"العميل بياخد كام يوم عشان يدفع؟"</td></tr>
+          <tr><td>Payables days</td><td class="f">Trade payables ÷ Credit purchases × 365</td><td>"احنا بناخد كام يوم عشان ندفع؟"</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box tip"><b>تريك الكروت</b>اعمل كارت لكل فورمولا: الاسم على وش، والفورمولا والتريك على الضهر. 2 دقيقة كل حصة، ولما يحفظ كارت 3 مرات ورا بعض صح، يخرج من الرزمة.</div>
+    </section>
+
+    <!-- ===================== EXAM ===================== -->
+    <section id="exam">
+      <h2><span class="n">EXAM STRATEGY</span>استراتيجية الامتحان: Paper 1 و Paper 2</h2>
+      <div class="grid">
+        <div class="card"><span class="tag">PAPER 1 · MCQ</span><h5>40 سؤال · 90 دقيقة</h5><p>دقيقتين وربع للسؤال. اللي واخد أكتر من 3 دقايق يتعلّم عليه ويرجعله في الآخر. مفيش خصم على الغلط، فمفيش سؤال يتساب فاضي. وفي الموقع ترتيب الإجابات عشوائي، فـ "دايمًا A" مش هتنفع.</p></div>
+        <div class="card"><span class="tag">PAPER 2 · STRUCTURED</span><h5>الـ workings هي الدرجات</h5><p>حتى لو الرقم النهائي غلط، الـ method بياخد درجات، والرقم اللي غلط بيتحاسب صح في الخطوات اللي بعده. اكتب كل خطوة.</p></div>
+        <div class="card"><span class="tag">SELF-MARKING</span><h5>التصحيح الذاتي</h5><p>بعد Paper 2 في الموقع، الطالب بيشوف نموذج الإجابة ويدي نفسه الدرجة. اقعد معاه أول مرتين عشان يتعلم يبقى صريح.</p></div>
+      </div>
+      <h4>كلمات السؤال Command words: الكلمة بتقولك تعمل إيه</h4>
+      <div class="table"><table>
+        <thead><tr><th>الكلمة</th><th>المطلوب</th><th>الجملة اللي تتحفظ</th></tr></thead>
+        <tbody>
+          <tr><td>State / Identify</td><td>إجابة قصيرة، من غير شرح</td><td>"قولها وامشي"</td></tr>
+          <tr><td>Explain</td><td>النقطة + ليه أو إزاي</td><td>"النقطة + because"</td></tr>
+          <tr><td>Calculate</td><td>الرقم مع الـ workings</td><td>"الخطوات قبل الرقم"</td></tr>
+          <tr><td>Prepare</td><td>قائمة أو حساب كامل بالشكل الرسمي</td><td>"العنوان، التاريخ، الهيكل"</td></tr>
+          <tr><td>Advise / Recommend</td><td>اختار، وبرر، وشوف الجنب التاني</td><td>"أنصحه بـ… عشان… بس لازم يخلي باله من…"</td></tr>
+          <tr><td>Discuss / Evaluate</td><td>مميزات وعيوب، وبعدين حكم</td><td>"مع وضد، وبعدين رأيي"</td></tr>
+        </tbody>
+      </table></div>
+      <h4>جدول الامتحانات التجريبية</h4>
+      <ol>
+        <li>بعد Topics 1 لـ 3: Paper 1 · Mock 1 كتمرين من غير تايمر.</li>
+        <li>بعد Topic 5: Paper 1 · Mock 2 بالتايمر الحقيقي، و Paper 2 · Mock 1.</li>
+        <li>آخر شهر: Paper 1 · Mock 3 و Paper 2 · Mock 2 و 3 في ظروف امتحان كاملة، الصبح وفي هدوء.</li>
+        <li>بعد كل امتحان: ساعة على الـ Review Vault، مش امتحان جديد على طول.</li>
+      </ol>
+      <div class="box note"><b>للأمانة</b>امتحانات الموقع تمارين أصلية مكتوبة على منهج 0452، مش امتحانات كامبريدج الرسمية. حلّوا كمان الـ past papers الرسمية من موقع كامبريدج (اللينك في الـ Review Vault).</div>
+    </section>
+
+    <!-- ===================== AI ===================== -->
+    <section id="ai">
+      <h2><span class="n">AI COACH</span>استخدم الـ AI Coach زي المحترفين</h2>
+      <p>الـ AI Coach مش بديل ليك، هو المساعد اللي بيكمّل شغلك لما انت مش موجود. اضغط "نسخ" والزق السؤال في الـ AI Coach:</p>
+      <div class="prompt"><button type="button" data-copy>نسخ</button>Explain the difference between straight-line and reducing-balance depreciation with a 3-year example, then give me one check question.</div>
+      <div class="prompt"><button type="button" data-copy>نسخ</button>اشرحلي الـ bank reconciliation بالعربي البسيط بمثال فيه unpresented cheque و bank charges.</div>
+      <div class="prompt"><button type="button" data-copy>نسخ</button>Give me 5 Paper 1 style MCQs on partnership appropriation accounts with answers and short explanations.</div>
+      <div class="prompt"><button type="button" data-copy>نسخ</button>I calculated a current ratio of 0.8. Explain what it means and suggest two ways the business can improve it.</div>
+      <div class="prompt"><button type="button" data-copy>نسخ</button>What are the most common student mistakes in incomplete records for IGCSE Accounting 0452? Give one example for each.</div>
+      <div class="box note"><b>تحذير صغير</b>الـ AI ممكن يغلط أحيانًا في رقم أو مصطلح. علّم الطالب يراجع الإجابة بالدرس اللي في الموقع، ودي نفسها تمرين تفكير نقدي ممتاز.</div>
+    </section>
+
+    <!-- ===================== GEN Z ===================== -->
+    <section id="genz">
+      <h2><span class="n">GEN Z</span>جمل الحماس والتعامل مع جيل Gen Z</h2>
+      <h4>جمل تتقال في الحصة وتتحول لـ "شعار"</h4>
+      <ul class="hype">
+        <li>"الدفاتر زي الميزان، لازم تتقفل متساوية."<small>كل ما يخلص حساب أو trial balance</small></li>
+        <li>"مفيش جنيه بيضيع، دوّر عليه."<small>لما الأرقام متطلعش متساوية</small></li>
+        <li>"الـ workings هي الدرجات يا بطل."<small>قبل أي سؤال Paper 2</small></li>
+        <li>"اقرا السؤال مرتين، وحل مرة."<small>قبل كل امتحان</small></li>
+        <li>"الغلطة النهارده = درجة يوم الامتحان."<small>لما يغلط ويتضايق</small></li>
+        <li>"المحاسبة لغة البيزنس، وانت بتتعلم تتكلمها."<small>لما يسأل "هستفيد بإيه؟"</small></li>
+        <li>"ارسمها، متتخيلهاش."<small>لما يحاول يحل في دماغه</small></li>
+        <li>"Build the future، حرف حرف وقيد قيد."<small>آخر كل أسبوع</small></li>
+      </ul>
+      <h4>إزاي تكسب الطالب</h4>
+      <ul>
+        <li><strong>جرعات قصيرة:</strong> 25 لـ 45 دقيقة شغل، وبعدين 5 دقايق بريك. استخدم الـ Focus timer.</li>
+        <li><strong>الـ Streak سحر:</strong> عدّاد "lessons done" في الرئيسية. اتفقوا على درس واحد يوميًا مهما حصل.</li>
+        <li><strong>احتفل بالمكسب الصغير:</strong> أول 10/10 في practice، أول امتحان فوق 70%. "عاش يا بطل" من أبوه بتفرق أكتر ما تتخيل.</li>
+        <li><strong>اسمعه أكتر ما تتكلم:</strong> اسأله "إيه أصعب حاجة؟" قبل ما تبدأ.</li>
+        <li><strong>متقارنش بحد:</strong> قارنه بنفسه بس. صفحة الـ Progress بتوريله خطه هو.</li>
+        <li><strong>خليه يعمل التريكات بنفسه:</strong> التريك اللي الطالب يألفه بيتحفظ أكتر من أي تريك جاهز. اطلب منه كل أسبوع يعمل تريك واحد جديد.</li>
+      </ul>
+      <div class="box tip"><b>كأب ومدرس في نفس الوقت</b>افصل بين الدورين. وقت الحصة انت المستر، وبعدها انت بابا. متخليش درجة امتحان تأثر على علاقتكم. الرسالة اللي كتبتها لعمر في الصفحة الرئيسية هي أهم سطر في الموقع كله.</div>
+    </section>
+
+    <!-- ===================== MEMORY BANK ===================== -->
+    <section id="bank">
+      <h2><span class="n">MEMORY BANK</span>بنك التريكات: Flashcards للمراجعة السريعة</h2>
+      <p>اضغط على أي كارت عشان تقلبه. استخدمهم في الـ warm-up: اقرا الاسم، والطالب يقول التريك قبل ما تقلب.</p>
+      <div class="flash">
+        <details><summary><span><span class="t">1.2</span>معادلة المحاسبة</span></summary><p>اللي معاك = اللي عليك + اللي ليك. Assets = Liabilities + Capital.</p></details>
+        <details><summary><span><span class="t">1.1</span>الربح والكاش</span></summary><p>الربح رأي، والكاش حقيقة.</p></details>
+        <details><summary><span><span class="t">2.1</span>DEAD CLIC</span></summary><p>Debit: Expenses, Assets, Drawings. Credit: Liabilities, Income, Capital.</p></details>
+        <details><summary><span><span class="t">2.1</span>الحسابات الشخصية</span></summary><p>اللي استلم مدين، واللي سلّم دائن.</p></details>
+        <details><summary><span><span class="t">2.1</span>قفل الحساب</span></summary><p>الرصيد بينزل (c/d) في الجنب الخفيف، ويطلع (b/d) في الجنب التاني.</p></details>
+        <details><summary><span><span class="t">2.3</span>دفاتر القيد</span></summary><p>الجورنال آجل، الكاش بوك كاش، والجنرال للغريب.</p></details>
+        <details><summary><span><span class="t">2.3</span>الخصومات</span></summary><p>الـ Trade بيختفي، والـ Cash بيتكتب. اديت = خسارة، خدت = مكسب.</p></details>
+        <details><summary><span><span class="t">2.3</span>Petty cash</span></summary><p>اللي اتصرف هو اللي يرجع (Imprest).</p></details>
+        <details><summary><span><span class="t">3.1</span>CROPOC</span></summary><p>Commission, Reversal, Omission, Principle, Original entry, Compensating. الغلطات اللي الـ TB مبيكشفهاش.</p></details>
+        <details><summary><span><span class="t">3.2</span>Suspense</span></summary><p>الساسبنس بيقف في الجنب الناقص.</p></details>
+        <details><summary><span><span class="t">3.3</span>تسوية البنك</span></summary><p>البنك يعرف ← صحّح الكاش بوك. انت تعرف ← اعمل التسوية. Bank + Deposits − Cheques.</p></details>
+        <details><summary><span><span class="t">3.4</span>Control accounts</span></summary><p>SLC = Asset، PLC = Liability. الكونترا ليها رجل في كل حساب.</p></details>
+        <details><summary><span><span class="t">4.1</span>Capital vs Revenue</span></summary><p>الشراء والتركيب كابيتال، والتصليح والبنزين ريفينيو.</p></details>
+        <details><summary><span><span class="t">4.2</span>الإهلاك</span></summary><p>الـ Straight مسطرة، والـ Reducing دوامة بتصغر.</p></details>
+        <details><summary><span><span class="t">4.2</span>Disposal</span></summary><p>بعت بأكتر من الـ NBV؟ مكسب.</p></details>
+        <details><summary><span><span class="t">4.3</span>AA · PP</span></summary><p>Accrued = Add، Prepaid = Pull out. لسه مدفعتش = دين، دفعت بدري = أصل.</p></details>
+        <details><summary><span><span class="t">4.4</span>Allowance</span></summary><p>تحويشة، والمحمّل على الربح هو الفرق بس.</p></details>
+        <details><summary><span><span class="t">4.5</span>المخزون</span></summary><p>Cost ولا NRV؟ الأوطى يكسب.</p></details>
+        <details><summary><span><span class="t">5.1</span>القوائم</span></summary><p>الـ Income statement فيلم (for the year ended)، والميزانية صورة (at).</p></details>
+        <details><summary><span><span class="t">5.1</span>Cost of sales</span></summary><p>اللي كان + اللي اشتريته − اللي فضل = اللي اتباع.</p></details>
+        <details><summary><span><span class="t">5.1</span>Carriage</span></summary><p>الـ Inwards بيدخل البضاعة (cost of sales)، والـ Outwards بيوصلها (مصروف).</p></details>
+        <details><summary><span><span class="t">5.2</span>Appropriation</span></summary><p>فايدة، مرتب، وبعدين اقسموا. واللي بيسحب بدري بيدفع غرامة.</p></details>
+        <details><summary><span><span class="t">5.3</span>الشركات</span></summary><p>الأسهم ملكية، والسندات دين. والشركة شخص لوحدها.</p></details>
+        <details><summary><span><span class="t">5.5</span>النوادي</span></summary><p>R&amp;P كاش وبس، و I&amp;E على أصوله. النادي مبيكسبش، النادي بيعمل surplus.</p></details>
+        <details><summary><span><span class="t">5.4</span>التصنيع</span></summary><p>الـ Direct بيتلمس، والـ Overheads بتشغّل. Prime = Direct كله.</p></details>
+        <details><summary><span><span class="t">5.6</span>Incomplete records</span></summary><p>الفرق + اللي سحبته − اللي ضخيته = الربح.</p></details>
+        <details><summary><span><span class="t">5.6</span>Mark-up و Margin</span></summary><p>Mark-UP من تحت، Margin من فوق. زوّد واحد على المقام: 1/4 ← 1/5.</p></details>
+        <details><summary><span><span class="t">6.1</span>السيولة</span></summary><p>الـ Acid من غير مخزون.</p></details>
+        <details><summary><span><span class="t">6.2</span>التفسير</span></summary><p>R·C·R·S: رقم، قارن، ليه، اعمل إيه.</p></details>
+        <details><summary><span><span class="t">6.5</span>الحدود</span></summary><p>الأرقام بتحكي الماضي، ومش بتحكي كل الحكاية.</p></details>
+        <details><summary><span><span class="t">7.1</span>المبادئ العشرة</span></summary><p>Big Dreams Go High, Many Men Make Plans, Rarely Change.</p></details>
+        <details><summary><span><span class="t">7.2</span>الأخلاقيات</span></summary><p>أمين، محايد، شاطر، كتوم، محترم.</p></details>
+        <details><summary><span><span class="t">7.3</span>Backup</span></summary><p>3 نسخ، على نوعين تخزين، واحدة بره المكان.</p></details>
+      </div>
+    </section>
+
+    <!-- ===================== PLAN ===================== -->
+    <section id="plan">
+      <h2><span class="n">12-WEEK PLAN</span>خطة 12 أسبوع لتغطية المنهج كله</h2>
+      <p>مبنية على 4 حصص في الأسبوع، و5 دروس تقريبًا كل أسبوع. لو الوقت أقل، اضرب كل مرحلة في 1.5.</p>
+      <div class="table"><table>
+        <thead><tr><th>الأسابيع</th><th>التوبيك</th><th>السكاشن</th><th>التريكات اللي لازم تتحفظ</th><th>آخر الفترة</th></tr></thead>
+        <tbody>
+          <tr><td><span class="min">1</span></td><td>الأساسيات</td><td>1.1 – 1.2</td><td>المعادلة، الربح رأي</td><td>كويز 10 أسئلة</td></tr>
+          <tr><td><span class="min">2–3</span></td><td>تسجيل العمليات</td><td>2.1 – 2.3</td><td>DEAD CLIC، الجورنال آجل</td><td>تمرين journals و ledgers كامل</td></tr>
+          <tr><td><span class="min">4–5</span></td><td>مراجعة السجلات</td><td>3.1 – 3.4</td><td>CROPOC، Bank + Deposits − Cheques</td><td>Paper 1 · Mock 1 (من غير تايمر)</td></tr>
+          <tr><td><span class="min">6–7</span></td><td>التسويات</td><td>4.1 – 4.5</td><td>AA·PP، مسطرة ودوامة، الأوطى يكسب</td><td>جداول depreciation و allowance</td></tr>
+          <tr><td><span class="min">8–9</span></td><td>القوائم المالية</td><td>5.1 – 5.6</td><td>فيلم وصورة، فايدة مرتب اقسموا</td><td>Paper 1 · Mock 2 + Paper 2 · Mock 1</td></tr>
+          <tr><td><span class="min">10</span></td><td>التحليل + المفاهيم</td><td>6.1 – 7.3</td><td>R·C·R·S، Big Dreams…</td><td>كروت فورمولات + سيناريوهات</td></tr>
+          <tr><td><span class="min">11</span></td><td>مراجعة الغلطات</td><td>Review Vault كله</td><td>بنك التريكات كامل</td><td>Paper 2 · Mock 2</td></tr>
+          <tr><td><span class="min">12</span></td><td>محاكاة الامتحان</td><td>كل المنهج</td><td>جمل الحماس</td><td>Paper 1 · Mock 3 + Paper 2 · Mock 3 + past papers رسمية</td></tr>
+        </tbody>
+      </table></div>
+      <h4>تتابع المستوى إزاي</h4>
+      <ul>
+        <li><strong>كل يوم (دقيقة):</strong> الصفحة الرئيسية. اتأكد إن عدّاد الدروس زاد.</li>
+        <li><strong>كل أسبوع (10 دقايق):</strong> الـ Review Vault. التوبيك اللي غلطاته زادت هو اللي يتعاد.</li>
+        <li><strong>بعد كل امتحان:</strong> صفحة الـ Progress. الهدف إن الخط يطلع لفوق.</li>
+        <li><strong>علامات الخطر:</strong> 3 أيام من غير ولا درس، أو نفس الغلطة 3 مرات، أو درجة نزلت أكتر من 15%. ساعتها قعدة هادية قبل أي ضغط.</li>
+      </ul>
+    </section>
+
+    <section id="checklist">
+      <h2><span class="n">DAILY CHECKLIST</span>الـ Checklist بتاعة المستر</h2>
+      <ul class="check">
+        <li>بصّيت على الـ Review Vault قبل الحصة واخترت سؤالين للـ warm-up.</li>
+        <li>اخترت كارت أو اتنين من بنك التريكات للمراجعة.</li>
+        <li>جهزت هوك من الحياة للدرس الجديد.</li>
+        <li>شرح القاعدة مخدش أكتر من 10 دقايق، ومعاها تريك الحفظ.</li>
+        <li>الطالب حل لوحده على الـ Visual Pad.</li>
+        <li>حل أسئلة الـ practice وقرأ التفسير بتاع كل غلطة.</li>
+        <li>شرحلي في الآخر بجملة واحدة، وقالي التريك.</li>
+        <li>داس "Mark complete" على الدرس.</li>
+        <li>قلتله كلمة حلوة على مجهوده، مش على الدرجة بس.</li>
+      </ul>
+      <div class="box note"><b>آخر كلمة يا مستر</b>أحسن مدرس مش اللي بيعرف أكتر، هو اللي بيخلي الطالب يصدّق إنه يقدر. والموقع ده معمول عشان يشيل عنك الشغل الروتيني، وتفضالك الحتة دي بالظبط.</div>
+    </section>
+  </main>
+</div>
+
+<footer>دليل المدرس · موقع IGCSE Accounting 0452 · أ. محمد بسيوني · تصميم وتطوير م. أحمد لبيب · 2026</footer>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.parentElement.textContent.replace(btn.textContent, '').trim();
+    var done = function () { btn.textContent = 'اتنسخ ✓'; setTimeout(function () { btn.textContent = 'نسخ'; }, 1600); };
+    var select = function () { var r = document.createRange(); r.selectNodeContents(btn.parentElement); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done).catch(select); } else { select(); }
+  });
+});
+</script>
+<script>
+if (new URLSearchParams(location.search).get("print") === "1") { (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { setTimeout(function () { window.print(); }, 300); }); }
+</script>
+</body>
+</html>
