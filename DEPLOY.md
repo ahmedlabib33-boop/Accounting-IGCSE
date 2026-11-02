@@ -20,10 +20,13 @@ it the coach returns a clear "not configured" message and everything else runs.
 ### One-time setup through the dashboard
 
 1. Sign in at https://vercel.com with the GitHub account that owns this repo.
-2. Click **Add New → Project** and pick `ahmedlabib33-boop/deployment-site`.
-   If the repo is not listed, click **Adjust GitHub App Permissions** and grant
-   the Vercel GitHub app access to `deployment-site`. This is the only step that
-   currently blocks automatic deployments for this repository.
+2. Open the pre-filled import page:
+   https://vercel.com/new/import?s=https://github.com/ahmedlabib33-boop/deployment-site
+   If Vercel says it cannot find the repository, the Vercel GitHub app has not
+   been given access to `deployment-site` yet. Fix that at
+   https://github.com/settings/installations → **Vercel** → **Repository access**
+   → add `deployment-site` → **Save**, then reload the import page. This is the
+   only step that currently blocks automatic deployments for this repository.
 3. Leave the detected settings as they are (Framework: Next.js, Install: `npm ci`,
    Build: `npm run build`). They come from `vercel.json`.
 4. Optional: under **Environment Variables** add `GROQ_API_KEY` for Production
