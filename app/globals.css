@@ -96,6 +96,14 @@ button { color: inherit; cursor: pointer; }
 
 .content-grid { display: grid; gap: 12px; margin-top: 12px; }
 
+.father-note { margin-top: 18px; padding: 22px 26px; border: 1px solid var(--soft-line); border-left: 3px solid var(--red); border-radius: 13px; background: linear-gradient(105deg, #161012, #0f1213 60%); }
+
+.father-note-tag { display: inline-flex; align-items: center; gap: 8px; color: var(--red); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+
+.father-note p { max-width: 900px; margin: 12px 0 10px; color: var(--cream); font: italic 400 clamp(17px, 1.5vw, 21px)/1.55 Georgia, serif; }
+
+.father-note strong { color: var(--muted); font-weight: 500; font-size: 15px; }
+
 .top-grid { grid-template-columns: 1.12fr 1.02fr .94fr 1.07fr; }
 
 .bottom-grid { grid-template-columns: 1.12fr 2.88fr; }
