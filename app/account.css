@@ -195,6 +195,9 @@
 .admin-modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .admin-modal-head h2 { margin: 0; font: 700 24px var(--display); letter-spacing: -.6px; }
 .admin-form { max-width: 460px; }
+.admin-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px; }
+.admin-dialog-actions .primary-button, .admin-dialog-actions .outline-button { width: auto; margin-top: 0; }
+.primary-button.danger-button { background: linear-gradient(135deg, #fb7185, #e11d48); color: #fff; }
 .admin-guide .admin-heading p { max-width: 70ch; margin: 8px 0 0; }
 .admin-guide-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .admin-guide-actions .primary-button, .admin-guide-actions .outline-button { width: auto; margin-top: 0; }

@@ -141,6 +141,7 @@ function Users({ users, loading, me, reload, serviceKey, flash, supabase }) {
   const [showSuspended, setShowSuspended] = useState(true);
   const [adding, setAdding] = useState(false);
   const [detail, setDetail] = useState(null);
+  const [dialog, setDialog] = useState(null);
   const [busy, setBusy] = useState("");
   const [error, setError] = useState("");
 
@@ -157,17 +158,12 @@ function Users({ users, loading, me, reload, serviceKey, flash, supabase }) {
   };
   const patch = (id, body, label) => act(label, () => fetchJson("/api/admin/users", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, ...body }) }));
   const post = (body, label) => act(label, () => fetchJson("/api/admin/users", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }));
-  const remove = (item) => {
-    const typed = window.prompt(`Delete ${displayName(item)} and all of their progress? This cannot be undone.\n\nType their email to confirm:`);
-    if (typed === null) return;
-    if (typed.trim().toLowerCase() !== item.email.toLowerCase()) { setError("The email did not match, so nothing was deleted."); return; }
-    act(`Deleted ${item.email}`, () => fetchJson("/api/admin/users", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: item.id }) }));
-  };
-  const setPassword = (item) => {
-    const password = window.prompt(`New password for ${displayName(item)} (at least 8 characters):`, randomPassword());
-    if (!password) return;
-    post({ action: "set_password", id: item.id, password }, `Password changed for ${item.email}`);
-  };
+  // Browser prompt() boxes are suppressed in installed web apps and some in-app browsers, so
+  // confirmations are in-page dialogs.
+  const remove = (item) => setDialog({ kind: "delete", item });
+  const setPassword = (item) => setDialog({ kind: "password", item });
+  const confirmDelete = (item) => { setDialog(null); act(`Deleted ${item.email}`, () => fetchJson("/api/admin/users", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: item.id }) })); };
+  const confirmPassword = (item, password) => { setDialog(null); post({ action: "set_password", id: item.id, password }, `Password changed for ${item.email}`); };
 
   return <section className="admin-section">
     <div className="admin-heading row"><div><span>Users</span><h1>People on the platform</h1></div><button className="primary-button compact-primary" onClick={() => setAdding(true)}><Icon name="plus" size={16}/> Add account</button></div>
@@ -201,7 +197,32 @@ function Users({ users, loading, me, reload, serviceKey, flash, supabase }) {
     </table></div>
     {adding && <AddAccount serviceKey={serviceKey} onClose={() => setAdding(false)} onCreated={(email) => { setAdding(false); reload(); flash(`Account created for ${email}`); }}/>}
     {detail && <UserDetail item={users.find((candidate) => candidate.id === detail.id) || detail} supabase={supabase} onClose={() => setDetail(null)} onRename={(name) => patch(detail.id, { full_name: name }, "Name updated")}/>}
+    {dialog?.kind === "delete" && <PromptDialog title={`Delete ${displayName(dialog.item)}?`} message="Their account and all of their progress are removed. This cannot be undone. Type their email to confirm." label="Email" placeholder={dialog.item.email} confirmLabel="Delete account" danger onClose={() => setDialog(null)} validate={(value) => value.trim().toLowerCase() === dialog.item.email.toLowerCase() ? "" : "The email does not match."} onConfirm={() => confirmDelete(dialog.item)}/>}
+    {dialog?.kind === "password" && <PromptDialog title={`New password for ${displayName(dialog.item)}`} message="At least 8 characters. Share it with the person; they can change it from the account menu." label="New password" defaultValue={randomPassword()} confirmLabel="Set password" onClose={() => setDialog(null)} validate={(value) => value.length >= 8 ? "" : "Use at least 8 characters."} onConfirm={(value) => confirmPassword(dialog.item, value)}/>}
   </section>;
+}
+
+// A small form in a modal: one text field, a Cancel and a confirm button.
+function PromptDialog({ title, message, label, defaultValue = "", placeholder, confirmLabel, danger = false, validate, onConfirm, onClose }) {
+  const [value, setValue] = useState(defaultValue);
+  const [error, setError] = useState("");
+  const submit = (event) => {
+    event.preventDefault();
+    const problem = validate ? validate(value) : "";
+    if (problem) { setError(problem); return; }
+    onConfirm(value);
+  };
+  return <Modal title={title} onClose={onClose}>
+    <form onSubmit={submit} className="auth-form admin-form">
+      <p className="muted-line">{message}</p>
+      <label className="auth-field"><span>{label}</span><div><input value={value} onChange={(event) => setValue(event.target.value)} placeholder={placeholder} autoFocus autoComplete="off"/></div></label>
+      {error && <p className="coach-error" role="alert">{error}</p>}
+      <div className="admin-dialog-actions">
+        <button type="button" className="outline-button compact-button" onClick={onClose}>Cancel</button>
+        <button type="submit" className={danger ? "primary-button danger-button" : "primary-button"}>{confirmLabel}</button>
+      </div>
+    </form>
+  </Modal>;
 }
 
 function AddAccount({ serviceKey, onClose, onCreated }) {
