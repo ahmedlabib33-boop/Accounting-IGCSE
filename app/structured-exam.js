@@ -4,7 +4,9 @@ import {Icon,StepReveal,formatMinutes} from './_components/ui';
 import {celebrate} from './_components/effects';
 import {recordMistake,withExtras} from './_lib/study-engine.mjs';
 async function request(url,options){const r=await fetch(url,options);const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||'Request failed');return data;}
-const PAPER2_SECONDS=105*60;
+const DEFAULT_SECONDS=105*60;
+const paperSeconds=(paper)=>((paper?.minutes||105)*60);
+const paperMarks=(paper)=>(paper?.marks||100);
 
 function AiVerdict({verdict}){
   return <div className="ai-verdict" aria-live="polite">
@@ -18,14 +20,14 @@ function AiVerdict({verdict}){
 export default function StructuredExam({study,setStudy}){
   const [papers,setPapers]=useState([]),[paperId,setPaperId]=useState(''),[paper,setPaper]=useState(null);
   const [answers,setAnswers]=useState({}),[scheme,setScheme]=useState(null),[marks,setMarks]=useState({});
-  const [seconds,setSeconds]=useState(PAPER2_SECONDS),[error,setError]=useState(''),[busy,setBusy]=useState(false),[saved,setSaved]=useState(false);
+  const [seconds,setSeconds]=useState(DEFAULT_SECONDS),[error,setError]=useState(''),[busy,setBusy]=useState(false),[saved,setSaved]=useState(false);
   const [spent,setSpent]=useState({}),[current,setCurrent]=useState(''),[warning,setWarning]=useState('');
   const [verdicts,setVerdicts]=useState({}),[marking,setMarking]=useState({});
   const submitting=useRef(false),saving=useRef(false);
   const settings=withExtras(study).settings;
   useEffect(()=>{let active=true;request('/api/content?type=structured').then(d=>{if(active){setPapers(d.papers);setPaperId(d.papers[0]?.id||'');}}).catch(e=>active&&setError(e.message));return()=>{active=false;};},[]);
-  useEffect(()=>{if(!paperId)return;let active=true;setPaper(null);setAnswers({});setScheme(null);setMarks({});setSaved(false);saving.current=false;setSeconds(PAPER2_SECONDS);setError('');setSpent({});setCurrent('');setWarning('');setVerdicts({});submitting.current=false;
-    request(`/api/content?type=structured-paper&examId=${encodeURIComponent(paperId)}`).then(d=>{if(active){setPaper(d);setCurrent(d.questions[0]?.id||'');}}).catch(e=>active&&setError(e.message));return()=>{active=false;};},[paperId]);
+  useEffect(()=>{if(!paperId)return;let active=true;setPaper(null);setAnswers({});setScheme(null);setMarks({});setSaved(false);saving.current=false;setSeconds(DEFAULT_SECONDS);setError('');setSpent({});setCurrent('');setWarning('');setVerdicts({});submitting.current=false;
+    request(`/api/content?type=structured-paper&examId=${encodeURIComponent(paperId)}`).then(d=>{if(active){setPaper(d);setSeconds(paperSeconds(d));setCurrent(d.questions[0]?.id||'');}}).catch(e=>active&&setError(e.message));return()=>{active=false;};},[paperId]);
   // The clock runs until submission. Time is charged to the question Omar is working on.
   useEffect(()=>{if(!paper||scheme)return;const timer=setInterval(()=>{setSeconds(s=>Math.max(0,s-1));if(current)setSpent(t=>({...t,[current]:(t[current]||0)+1}));},1000);return()=>clearInterval(timer);},[paper,scheme,current]);
   useEffect(()=>{if(!paper||scheme)return;const text=seconds===15*60?'15 minutes left. Make sure every question has at least an attempt with workings.':seconds===5*60?'5 minutes left. Finish the part you are on and add headings.':'';if(text){setWarning(text);if(settings.haptics!==false)navigator.vibrate?.([80,60,80]);}},[seconds,paper,scheme,settings.haptics]);
@@ -46,17 +48,17 @@ export default function StructuredExam({study,setStudy}){
   function save(){if(!complete||saving.current)return;saving.current=true;
     const date=new Date().toISOString();
     const aiCount=allParts.filter(i=>verdicts[i.key]?.marks===marks[i.key]).length;
-    const attempt={id:`0452:${paperId}:${Date.now()}`,date,subject:'Accounting',paper:2,examId:paperId,score,total:100,percent:score,seconds:PAPER2_SECONDS-seconds,
+    const attempt={id:`0452:${paperId}:${Date.now()}`,date,subject:'Accounting',paper:2,examId:paperId,score,total:paperMarks(paper),percent:Math.round(score/paperMarks(paper)*100),seconds:paperSeconds(paper)-seconds,
       marking:aiCount===allParts.length?'AI-marked':aiCount?'AI and self-assessed':'Self-assessed',parts:allParts.map(i=>({id:i.key,section:i.q.section,marks:marks[i.key],max:i.p.marks}))};
     const weak=allParts.filter(i=>marks[i.key]<i.p.marks).map(i=>({id:i.key,subject:'Accounting',section:i.q.section,question:`${i.q.title} (${i.p.label}): ${i.p.prompt}`,selected:answers[i.key]||'Not answered',answer:i.p.model,explanation:i.p.points.join(' · '),examId:paperId}));
-    setStudy(cur=>weak.reduce((next,item)=>recordMistake(next,item,date),{...cur,attempts:[attempt,...cur.attempts].slice(0,60)}));setSaved(true);celebrate(settings,score>=70);
+    setStudy(cur=>weak.reduce((next,item)=>recordMistake(next,item,date),{...cur,attempts:[attempt,...cur.attempts].slice(0,60)}));setSaved(true);celebrate(settings,score/paperMarks(paper)>=0.7);
   }
-  return <section className="section-screen"><div className="section-heading"><span>Exam arena · Paper 2 rehearsal</span><h1>Show the workings.</h1><p>105 minutes · five compulsory questions · 100 marks · 70% of the grade. Warnings at 15 and 5 minutes, and the paper is collected when time runs out. Afterwards, the AI marker checks each part against the mark scheme, point by point. Original practice; no official Cambridge grade is claimed.</p></div>
+  return <section className="section-screen"><div className="section-heading"><span>Exam arena · Paper 2 rehearsal</span><h1>Show the workings.</h1><p>{paper&&!paper.id.includes('Original mock')?`${paper.minutes} minutes · ${paper.questions.length} questions of 20 marks · ${paperMarks(paper)} marks · topic practice.`:'105 minutes · five compulsory questions · 100 marks · 70% of the grade.'} Warnings at 15 and 5 minutes, and the paper is collected when time runs out. Afterwards, the AI marker checks each part against the mark scheme, point by point. Original practice; no official Cambridge grade is claimed.</p></div>
     <div className="exam-controls"><label>Structured paper<select value={paperId} disabled={busy} onChange={e=>setPaperId(e.target.value)}>{papers.map(p=><option key={p.id}>{p.id}</option>)}</select></label><strong className={seconds<=15*60&&!scheme?'exam-timer warn':'exam-timer'}>{formatMinutes(seconds)}</strong></div>
     {warning&&!scheme&&<div className="exam-warning" role="alert"><Icon name="clock" size={18}/>{warning}<button className="tiny-icon" aria-label="Dismiss warning" onClick={()=>setWarning('')}><Icon name="x" size={14}/></button></div>}
     {error&&<p role="alert" className="coach-error">{error}</p>}
     {paper&&!scheme&&<><p>Write account headings with dates, debit/credit sides, units and workings. Leaving this screen resets this unsaved attempt.</p>{paper.questions.map(q=><article className={`lesson-card structured-question${current===q.id?' working':''}`} key={q.id} onFocusCapture={()=>setCurrent(q.id)}><span>Question {q.number} · 20 marks · {q.section} · {formatMinutes(spent[q.id]||0)} spent (aim for about 21:00)</span><h2>{q.title}</h2><p className="exam-passage">{q.stimulus}</p>{q.parts.map(p=><label className="structured-part" key={p.label}><strong>({p.label}) {p.prompt} [{p.marks}]</strong><textarea rows={5} value={answers[key(q,p)]||''} disabled={busy||seconds===0} onChange={e=>setAnswers(a=>({...a,[key(q,p)]:e.target.value}))} placeholder="Write your answer and workings…"/></label>)}</article>)}<button className="primary-button compact-primary" disabled={busy} onClick={submit}>{busy?'Submitting…':'Submit and open marking'}</button></>}
-    {scheme&&<><div className="lesson-tip">Submitted after {formatMinutes(PAPER2_SECONDS-seconds)}. Mark each part with the AI marker, or compare it with the model yourself, then save. The AI follows the mark points strictly; you can change any mark it gives. <button className="outline-button compact-button" disabled={saved||Object.values(marking).some(Boolean)} onClick={aiMarkAll}><Icon name="brain" size={16}/> Mark every part with AI</button></div>
+    {scheme&&<><div className="lesson-tip">Submitted after {formatMinutes(paperSeconds(paper)-seconds)}. Mark each part with the AI marker, or compare it with the model yourself, then save. The AI follows the mark points strictly; you can change any mark it gives. <button className="outline-button compact-button" disabled={saved||Object.values(marking).some(Boolean)} onClick={aiMarkAll}><Icon name="brain" size={16}/> Mark every part with AI</button></div>
       <div className="time-bars p2-time">{scheme.questions.map(q=><div key={q.id}><span>Q{q.number} · {q.title}</span><div className="bar bar-violet"><span style={{width:`${Math.min(100,((spent[q.id]||0)/(21*60))*100)}%`}}/></div><b>{formatMinutes(spent[q.id]||0)}</b></div>)}</div>
       {scheme.questions.map(q=><article className="lesson-card structured-question" key={q.id}><h2>Question {q.number}: {q.title}</h2><p>{q.stimulus}</p>{q.parts.map(p=>{const item={q,p,key:key(q,p)};const verdict=verdicts[item.key];return <div className="structured-part" key={p.label}><h3>({p.label}) {p.prompt} [{p.marks}]</h3><p className="submitted-answer"><strong>Your answer</strong><br/>{answers[item.key]||'Not answered'}</p>
         <StepReveal key={item.key} label="Model answer, step by step" text={p.model}/>

@@ -248,3 +248,59 @@
 .secret-close { position: absolute; top: 14px; right: 14px; }
 @keyframes secret-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes secret-rise { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+
+/* Study guide under each lesson, and the revision page. */
+.guide { margin-top: 22px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); }
+.guide-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.guide-head h2 { margin: 6px 0 4px; font: 700 clamp(22px, 2.4vw, 30px)/1.15 var(--display); letter-spacing: -.6px; }
+.guide-head p { max-width: 70ch; margin: 0; color: var(--muted); }
+.guide-progress { display: grid; justify-items: end; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; }
+.guide-progress strong { font: 700 22px var(--display); color: var(--cyan); } .guide-progress span { color: var(--muted); font-size: 12px; }
+.guide-objectives { margin: 16px 0 6px; padding: 12px 16px; border-left: 3px solid var(--violet-soft, #a78bfa); background: rgba(139, 92, 246, .08); border-radius: 0 12px 12px 0; }
+.guide-objectives b { display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--violet-soft, #a78bfa); }
+.guide-objectives ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; } .guide-objectives li { margin: 3px 0; }
+.guide-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
+.guide-tabs button { min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); font-size: 13.5px; font-weight: 500; }
+.guide-tabs button.active { color: var(--bg); background: var(--grad); border-color: transparent; font-weight: 600; }
+.guide-notes article { padding: 14px 0; border-top: 1px solid var(--soft-line); } .guide-notes article:first-child { border-top: 0; padding-top: 4px; }
+.guide-notes h3, .guide-example h3, .guide-tips h3 { margin: 0 0 8px; font: 700 17px var(--display); }
+.guide-notes p, .guide-scenario { max-width: 76ch; margin: 8px 0; color: var(--cream, #e9e4ff); line-height: 1.65; font-size: 15.5px; }
+.guide-table { overflow-x: auto; margin: 12px 0; border: 1px solid var(--line); border-radius: 12px; }
+.guide-table table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.guide-table th { padding: 9px 12px; background: rgba(255,255,255,.04); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; text-align: left; }
+.guide-table td { padding: 9px 12px; border-top: 1px solid var(--soft-line); vertical-align: top; }
+.guide-table .formula-cell { font-family: var(--mono); font-size: 13px; color: var(--cyan); }
+.guide-examples { display: grid; gap: 14px; }
+.guide-example { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.02); }
+.guide-example ol { margin: 10px 0; padding-left: 22px; } .guide-example li { margin: 6px 0; line-height: 1.55; }
+.guide-answer { margin-top: 10px; padding: 12px 14px; border-radius: 10px; background: rgba(163, 230, 53, .1); color: var(--cream, #e9e4ff); }
+.guide-answer b, .guide-model b { display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--lime); }
+.guide-terms { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 0; }
+.guide-terms div { padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; } .guide-terms dt { font-weight: 700; margin-bottom: 4px; } .guide-terms dd { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.guide-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .guide-tips > div { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; }
+.guide-tips h3 { display: flex; align-items: center; gap: 8px; } .guide-tips ul { margin: 0; padding-left: 18px; } .guide-tips li { margin: 8px 0; line-height: 1.5; font-size: 14.5px; }
+.guide-tips li strong { display: block; color: var(--rose); } .guide-tips li span { color: var(--muted); }
+.guide-exercises { display: grid; gap: 14px; }
+.guide-exercise { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; } .guide-exercise.done { border-color: rgba(163, 230, 53, .4); }
+.guide-exercise header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; color: var(--muted); font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; }
+.guide-exercise header b { font-size: 14px; color: var(--amber); text-transform: none; } .guide-exercise header b.good { color: var(--lime); }
+.guide-exercise > p { margin: 0 0 10px; line-height: 1.6; white-space: pre-wrap; }
+.guide-exercise textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(23, 20, 43, .8); color: var(--text); font: 500 14px/1.6 var(--mono); resize: vertical; }
+.guide-exercise-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; } .guide-exercise-actions .primary-button { width: auto; margin: 0; }
+.guide-model { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: rgba(34, 211, 238, .07); border: 1px solid rgba(34, 211, 238, .25); }
+.guide-model p { margin: 0 0 8px; white-space: pre-wrap; line-height: 1.6; } .guide-model ol { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+.guide-selfmark { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.guide-selfmark button { min-width: 34px; height: 32px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--text); font-weight: 600; } .guide-selfmark button.selected { background: var(--grad); color: var(--bg); border-color: transparent; }
+.guide-quiz-head { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+.guide-quiz-question { font-size: 17px; line-height: 1.55; margin: 0 0 12px; } .guide-quiz .primary-button { width: auto; margin-top: 10px; }
+.guide-quiz-done { text-align: center; padding: 24px; } .guide-quiz-done strong { display: block; font: 700 42px var(--display); color: var(--cyan); } .guide-quiz-done .primary-button { width: auto; margin: 10px auto 0; }
+.revision-tabs { align-items: center; } .revision-tabs .outline-button { margin-left: auto; }
+.revision-summaries section { margin-bottom: 26px; } .revision-summaries h2 { font: 700 20px var(--display); margin: 0 0 10px; }
+.revision-card { padding: 16px 18px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.revision-card header { display: flex; align-items: baseline; gap: 10px; } .revision-card header span { font: 600 12px var(--mono); color: var(--cyan); } .revision-card h3 { margin: 0; font: 700 17px var(--display); }
+.revision-card p { margin: 8px 0; color: var(--cream, #e9e4ff); line-height: 1.6; } .revision-card ul { margin: 0 0 8px; padding-left: 18px; color: var(--muted); font-size: 14px; }
+.revision-glossary dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin: 14px 0 0; }
+.revision-glossary dl div { padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); } .revision-glossary dt { font-weight: 700; } .revision-glossary dt small { color: var(--cyan); font: 600 11px var(--mono); margin-left: 6px; } .revision-glossary dd { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.revision-formulas h2 { font: 700 18px var(--display); margin: 18px 0 6px; }
+.revision-edexcel h2 { font: 700 18px var(--display); margin: 20px 0 8px; } .revision-edexcel td .text-button { margin-right: 8px; }
+@media (max-width: 760px) { .guide { padding: 16px; } .guide-tips { grid-template-columns: 1fr; } .revision-tabs .outline-button { margin-left: 0; } }

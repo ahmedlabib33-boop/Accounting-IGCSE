@@ -11,7 +11,7 @@ import { ROLE_LABELS, displayName, initialsOf, useAccount } from "./account";
 const DEFAULT_JITSI_DOMAIN = "meet.jit.si";
 const jitsiDomainFrom = (settings) => String(settings?.jitsi_domain || "").trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "") || DEFAULT_JITSI_DOMAIN;
 
-export const SECTION_LABELS = { home: "Home", today: "Today", learning: "Learning", lab: "Practice Lab", exam: "Exam Arena", coach: "AI Coach", vault: "Review Vault", progress: "Progress", rewards: "Rewards", pad: "Visual Pad", live: "Live Studio", music: "Focus Music", dad: "Dad's view", admin: "Admin" };
+export const SECTION_LABELS = { home: "Home", today: "Today", learning: "Learning", revision: "Revision", lab: "Practice Lab", exam: "Exam Arena", coach: "AI Coach", vault: "Review Vault", progress: "Progress", rewards: "Rewards", pad: "Visual Pad", live: "Live Studio", music: "Focus Music", dad: "Dad's view", admin: "Admin" };
 
 export function liveRoomSlug(name) {
   const cleaned = String(name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");

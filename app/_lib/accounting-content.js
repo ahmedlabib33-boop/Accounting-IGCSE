@@ -45,8 +45,13 @@ export function gradeItems(items) {
 }
 
 export function contentSummary() {
+  const guides = Object.values(content.guides || {});
   return {
-    Accounting: { lessons: content.learning.Accounting.lessons.length, practice: content.learning.Accounting.practice.length, exams: getExamSummaries("Accounting").length, structuredExams: content.structured.length },
+    Accounting: {
+      lessons: content.learning.Accounting.lessons.length, practice: content.learning.Accounting.practice.length,
+      exams: getExamSummaries("Accounting").length, structuredExams: content.structured.length,
+      guides: guides.length, exercises: guides.reduce((n, g) => n + g.exercises.length, 0),
+    },
   };
 }
 
@@ -57,7 +62,6 @@ export function getStructuredPaper(id, reveal=false){
   if(!paper)return null;
   return {...paper,questions:paper.questions.map(q=>({...q,parts:q.parts.map(p=>reveal?p:{label:p.label,marks:p.marks,prompt:p.prompt})}))};
 }
-
 
 export function getQuestionsByIds(ids) {
   const wanted = new Set(ids);
@@ -71,4 +75,38 @@ export function getStructuredPart(examId, questionId, label) {
   const question = paper?.questions.find((item) => item.id === questionId);
   const part = question?.parts.find((item) => item.label === label);
   return part ? { question, part } : null;
+}
+
+// ----- Study guides (textbook-depth material per syllabus section) -----
+
+// The guide for one section, with exercise model answers held back until the student asks for them.
+export function getGuide(section) {
+  const guide = content.guides?.[section];
+  if (!guide) return null;
+  const { mcq, exercises, ...rest } = guide;
+  return { ...rest, exercises: exercises.map(({ model, points, ...exercise }) => exercise), quizCount: mcq.length };
+}
+
+export function getGuideSections() {
+  return Object.values(content.guides || {}).map((g) => ({ section: g.section, title: g.title, topicId: g.topicId, exercises: g.exercises.length, quiz: g.mcq.length })).sort((a, b) => a.section.localeCompare(b.section, "en", { numeric: true }));
+}
+
+export function getExercise(id) {
+  for (const guide of Object.values(content.guides || {})) {
+    const exercise = guide.exercises.find((item) => item.id === id);
+    if (exercise) return { section: guide.section, title: guide.title, exercise };
+  }
+  return null;
+}
+
+// Bank multiple-choice questions for one or more sections, shuffled, answers withheld.
+export function getQuiz(sections, count = 10) {
+  const wanted = new Set(sections);
+  const pool = content.learning.Accounting.practice.filter((q) => q.bank && wanted.has(q.section));
+  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+  return pool.slice(0, Math.max(1, Math.min(40, count))).map(publicQuestion);
+}
+
+export function getRevision() {
+  return content.revision || { summaries: [], glossary: [], formulas: [], edexcel: null };
 }

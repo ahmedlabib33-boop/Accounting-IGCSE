@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getStructuredPart } from "../../_lib/accounting-content";
+import { getExercise, getStructuredPart } from "../../_lib/accounting-content";
 import { callGroq, parseJsonReply } from "../../_lib/groq";
 
 export const runtime = "nodejs";
@@ -13,11 +13,20 @@ Return JSON only, in this shape:
 export async function POST(request) {
   let body;
   try { body = await request.json(); } catch { return NextResponse.json({ error: "Send the answer to mark." }, { status: 400 }); }
-  const { examId, questionId, label } = body || {};
+  const { examId, questionId, label, exerciseId } = body || {};
   const answer = typeof body?.answer === "string" ? body.answer.trim().slice(0, 4000) : "";
-  const found = getStructuredPart(examId, questionId, label);
-  if (!found) return NextResponse.json({ error: "That question part was not found." }, { status: 404 });
-  const { question, part } = found;
+  let question, part;
+  if (exerciseId) {
+    // A workbook exercise from a study guide: marked against its own points.
+    const found = getExercise(String(exerciseId));
+    if (!found) return NextResponse.json({ error: "That exercise was not found." }, { status: 404 });
+    question = { number: found.section, title: `${found.title} (study guide exercise)`, stimulus: "See the exercise prompt." };
+    part = { label: "exercise", marks: found.exercise.marks, prompt: found.exercise.prompt, model: found.exercise.model, points: found.exercise.points };
+  } else {
+    const found = getStructuredPart(examId, questionId, label);
+    if (!found) return NextResponse.json({ error: "That question part was not found." }, { status: 404 });
+    ({ question, part } = found);
+  }
   const points = part.points.map((text, index) => ({ n: index + 1, text }));
 
   if (!answer) {

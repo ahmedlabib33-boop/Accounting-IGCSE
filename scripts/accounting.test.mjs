@@ -24,7 +24,7 @@ test('Grading normalises input, counts blanks wrong and refuses duplicate or unk
 });
 test('Paper formats have the specified question counts and mark totals',()=>{
   for(const id of new Set(content.exams.Accounting.map(q=>q.examId))){const qs=content.exams.Accounting.filter(q=>q.examId===id);assert.equal(qs.length,40);assert(qs.every(q=>q.minutes===90));assert.equal(new Set(qs.map(q=>q.sourceQuestionId)).size,40);}
-  for(const p of content.structured){assert.equal(p.minutes,105);assert.equal(p.questions.length,5);for(const q of p.questions){assert.equal(q.parts.reduce((s,p)=>s+p.marks,0),20);assert(q.parts.every(p=>p.points.length===p.marks&&p.model));}}
+  for(const p of content.structured){if(p.id.includes('Original mock')){assert.equal(p.minutes,105);assert.equal(p.questions.length,5);}else{assert.equal(p.minutes,21*p.questions.length);assert.equal(p.marks,20*p.questions.length);}for(const q of p.questions){assert.equal(q.parts.reduce((s,p)=>s+p.marks,0),20);assert(q.parts.every(p=>p.points.length===p.marks&&p.model));}}
 });
 test('Key worked numerical answers match independent arithmetic',()=>{
   const find=(title)=>content.learning.Accounting.practice.find(q=>q.lessonTitle===title);
@@ -33,4 +33,19 @@ test('Key worked numerical answers match independent arithmetic',()=>{
   assert.equal(chosen(find('Depreciation methods')),`$${((10000-1000)/3).toLocaleString('en-US')}`);
   assert.equal(chosen(find('Inventory item-by-item comparison')),`$${Math.min(100,80)+Math.min(100,130)}`);
   assert.equal(chosen(find('Working-capital decisions')),`$${(25000-18000).toLocaleString('en-US')}`);
+});
+
+test('Every section has a textbook-depth study guide, exercises with mark schemes and a question bank',()=>{
+  const expected=['1.1','1.2','2.1','2.2','2.3','3.1','3.2','3.3','3.4','4.1','4.2','4.3','4.4','4.5','5.1','5.2','5.3','5.4','5.5','5.6','6.1','6.2','6.3','6.4','6.5','7.1','7.2','7.3'];
+  for(const section of expected){
+    const g=content.guides[section];assert(g,`guide ${section}`);
+    assert(g.notes.length>=5&&g.workedExamples.length>=3&&g.keyTerms.length>=6,section);
+    assert(g.exercises.length>=8&&g.exercises.every(x=>x.points.length===x.marks&&x.model),section);
+    assert.equal(g.mcq.length,10);assert.equal(g.structured.length,2);
+    for(const q of g.structured)assert.equal(q.parts.reduce((s,p)=>s+p.marks,0),20);
+    assert(content.learning.Accounting.practice.filter(q=>q.bank&&q.section===section).length===10,section);
+  }
+  assert(content.revision.glossary.length>=150);assert(content.revision.formulas.length>=5);assert(content.revision.edexcel.areas.length>=10);
+  const p1=new Set(content.exams.Accounting.map(q=>q.examId));assert(p1.size>=8,'eight Paper 1 mocks');
+  assert(content.structured.filter(p=>p.id.includes('Topic practice')).length===7,'seven topic practice papers');
 });
