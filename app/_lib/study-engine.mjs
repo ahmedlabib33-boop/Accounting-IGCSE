@@ -2,25 +2,25 @@
 // Everything here works from the study object saved in the browser, so it can be unit-tested.
 
 export const TOPICS = [
-  { id: "1", name: "Accounting foundations", sections: ["1.1", "1.2"] },
-  { id: "2", name: "Recording transactions", sections: ["2.1", "2.2", "2.3"] },
-  { id: "3", name: "Checking records", sections: ["3.1", "3.2", "3.3", "3.4"] },
-  { id: "4", name: "Accounting adjustments", sections: ["4.1", "4.2", "4.3", "4.4", "4.5"] },
-  { id: "5", name: "Financial statements", sections: ["5.1", "5.2", "5.3", "5.4", "5.5", "5.6"] },
-  { id: "6", name: "Financial analysis", sections: ["6.1", "6.2", "6.3", "6.4", "6.5"] },
-  { id: "7", name: "Concepts, ethics and technology", sections: ["7.1", "7.2", "7.3"] },
+  { id: "1", name: "The fundamentals of accounting", sections: ["1.1", "1.2"] },
+  { id: "2", name: "Sources and recording of data", sections: ["2.1", "2.2", "2.3"] },
+  { id: "3", name: "Verification of accounting records", sections: ["3.1", "3.2", "3.3", "3.4"] },
+  { id: "4", name: "Accounting procedures", sections: ["4.1", "4.2", "4.3", "4.4", "4.5"] },
+  { id: "5", name: "Preparation of financial statements", sections: ["5.1", "5.2", "5.3", "5.4", "5.5", "5.6"] },
+  { id: "6", name: "Analysis and interpretation", sections: ["6.1", "6.2", "6.3", "6.4", "6.5"] },
+  { id: "7", name: "Accounting concepts and modern practice", sections: ["7.1", "7.2", "7.3"] },
 ];
 
 export const SECTIONS = TOPICS.flatMap((topic) => topic.sections);
 
 export const SECTION_TITLES = {
-  "1.1": "Purpose of accounting", "1.2": "The accounting equation",
-  "2.1": "Double entry", "2.2": "Business documents", "2.3": "Books of prime entry",
-  "3.1": "Trial balance", "3.2": "Correction of errors", "3.3": "Bank reconciliation", "3.4": "Control accounts",
-  "4.1": "Capital and revenue", "4.2": "Depreciation and disposal", "4.3": "Accruals and prepayments", "4.4": "Irrecoverable debts", "4.5": "Inventory valuation",
-  "5.1": "Sole traders", "5.2": "Partnerships", "5.3": "Limited companies", "5.4": "Manufacturing", "5.5": "Clubs and societies", "5.6": "Incomplete records",
-  "6.1": "Calculating ratios", "6.2": "Interpreting ratios", "6.3": "Inter-firm comparison", "6.4": "Users of accounts", "6.5": "Limitations",
-  "7.1": "Accounting principles", "7.2": "Professional ethics", "7.3": "Technology in accounting",
+  "1.1": "The purpose of accounting", "1.2": "The accounting equation",
+  "2.1": "Double entry book-keeping", "2.2": "Business documents", "2.3": "Books of prime entry",
+  "3.1": "The trial balance", "3.2": "Correction of errors", "3.3": "Bank reconciliation", "3.4": "Control accounts",
+  "4.1": "Capital and revenue expenditure and receipts", "4.2": "Depreciation and disposal of non-current assets", "4.3": "Other payables and other receivables", "4.4": "Irrecoverable debts and allowance", "4.5": "Valuation of inventory",
+  "5.1": "Sole traders", "5.2": "Partnerships", "5.3": "Limited companies", "5.4": "Manufacturing accounts", "5.5": "Clubs and societies", "5.6": "Incomplete records",
+  "6.1": "Calculating accounting ratios", "6.2": "Interpretation of accounting ratios", "6.3": "Inter-business comparison", "6.4": "Interested parties", "6.5": "Limitations of accounting statements",
+  "7.1": "Accounting concepts", "7.2": "Ethical considerations", "7.3": "Technology and sustainability",
 };
 
 // Questions per section in each original Paper 1 mock (40 in total).

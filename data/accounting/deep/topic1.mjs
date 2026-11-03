@@ -3,11 +3,11 @@
 
 export const topic = {
   id: "1",
-  name: "Accounting foundations",
+  name: "The fundamentals of accounting",
   sections: [
     {
       section: "1.1",
-      title: "Purpose of accounting",
+      title: "The purpose of accounting",
       summary:
         "Book-keeping records every transaction accurately; accounting classifies, summarises and interprets those records so that the owner and other people can make decisions. The main reason for keeping accounts is to measure profit or loss for a period and to show the financial position at a date. Profit and cash are not the same thing, which is why both statements are needed.",
       objectives: [
@@ -15,7 +15,7 @@ export const topic = {
         "State the purpose of measuring profit or loss and calculate a simple profit for the year.",
         "Explain why a business can make a profit and still have less money in the bank.",
         "Describe what the statement of profit or loss and the statement of financial position each show.",
-        "Explain the role of accounting in providing information for decision-making.",
+        "Explain the role of accounting in providing information for monitoring progress and for decision-making.",
         "Identify which stages of the accounting process are book-keeping and which are accounting.",
       ],
       keyTerms: [
@@ -29,18 +29,18 @@ export const topic = {
         { term: "Loss for the year", definition: "The amount by which the total expenses of a period are greater than the total income of the same period." },
         { term: "Statement of profit or loss", definition: "The financial statement that measures the profit or loss of a business over a period of time, usually one year." },
         { term: "Statement of financial position", definition: "The financial statement that lists the assets, liabilities and capital of a business at one particular date." },
-        { term: "Drawings", definition: "Cash or goods taken out of the business by the owner for personal use; they reduce capital and are not an expense." },
+        { term: "Drawings", definition: "Cash, goods or other resources taken out of the business by the owner for personal use; they reduce capital and are not an expense." },
       ],
       notes: [
         {
           heading: "What book-keeping is",
           body:
-            "Book-keeping is the recording part of accounting. Every time a business buys, sells, pays or receives something, a transaction happens. The book-keeper writes each transaction down in an organised way, using the figures shown on source documents such as invoices and receipts. The entries go first into books of prime entry and then into ledger accounts. The aim is simple: to keep a complete, accurate and permanent record of everything that has happened in money terms.\n\nBook-keeping does not try to explain the figures. It does not decide whether a selling price is too low or whether a customer is slow to pay. It only makes sure that the facts are recorded correctly, in the right account, on the right side and with the right amount. If the recording is wrong, everything built on it later will also be wrong. That is why neat, systematic book-keeping is the foundation of the whole subject.",
+            "Book-keeping is the recording part of accounting. Every time a business buys, sells, pays or receives something, a transaction happens. The book-keeper writes each transaction down in an organised way, using the figures shown on source documents such as invoices and receipts. The entries go first into books of prime entry and then into ledger accounts, either on paper or in a digital accounting system. The aim is simple: to keep a complete, accurate and permanent record of everything that has happened in money terms.\n\nBook-keeping does not try to explain the figures. It does not decide whether a selling price is too low or whether a customer is slow to pay. It only makes sure that the facts are recorded correctly, in the right account, on the right side and with the right amount. If the recording is wrong, everything built on it later will also be wrong. That is why neat, systematic book-keeping is the foundation of the whole subject.",
         },
         {
           heading: "What accounting adds",
           body:
-            "Accounting starts where book-keeping stops. The accountant takes the recorded figures and classifies them into groups such as income, expenses, assets and liabilities. The figures are then summarised into financial statements, mainly the statement of profit or loss and the statement of financial position. Finally the accountant interprets the results. Is profit rising or falling? Can the business pay its debts on time? Which products earn the most?\n\nA short way to remember the difference is that book-keeping records and accounting reports. The book-keeper asks what happened. The accountant asks what it means and what should be done next. In a very small business one person may do both jobs, but the two skills are still different. In the exam, if you are asked to distinguish between them, give the purpose of each one, not just a list of tasks.",
+            "Accounting starts where book-keeping stops. The accountant takes the recorded figures and classifies them into groups such as income, expenses, assets and liabilities. The figures are then summarised into financial statements, mainly the statement of profit or loss and the statement of financial position. Finally the accountant interprets the results. Is profit rising or falling? Can the business pay its debts on time? Which products earn the most?\n\nA short way to remember the difference is that book-keeping records and accounting reports. The book-keeper asks what happened. The accountant asks what it means and what should be done next. In a very small business one person may do both jobs, but the two skills are still different. In the exam, if you are asked to explain the difference between them, give the purpose of each one, not just a list of tasks.",
           table: {
             head: ["Feature", "Book-keeping", "Accounting"],
             rows: [
@@ -54,7 +54,7 @@ export const topic = {
         {
           heading: "Why a business measures profit or loss",
           body:
-            "Profit is what is left when the expenses of a period are taken away from the income earned in the same period. A loss arises when expenses are greater than income. Measuring profit is the main reason most owners keep accounts. First, profit shows whether the business is worth running. An owner who could earn more in a paid job than the business earns may decide to close it. Second, the profit figure tells the owner how much can safely be taken as drawings. Taking out more than the profit reduces the capital invested. Third, other people need the figure: the tax authority uses it to calculate tax, and a bank uses it to judge whether a loan can be repaid.\n\nMeasuring profit also allows comparison. An owner can compare this year with last year, or one branch with another, and ask why the figures changed. Without a measured profit, every decision is a guess.",
+            "Profit is what is left when the expenses of a period are taken away from the income earned in the same period. A loss arises when expenses are greater than income. Measuring profit is the main reason most owners keep accounts. First, profit shows whether the business is worth running. An owner who could earn more in a paid job than the business earns may decide to close it. Second, the profit figure tells the owner how much can safely be taken as drawings. Taking out more than the profit reduces the capital invested. Third, other people need the figure: the tax authority uses it to calculate tax, and a bank uses it to judge whether a loan can be repaid.\n\nMeasuring a loss matters just as much. A loss reduces the owner's capital, and repeated losses can use it up completely. Knowing the size of the loss early gives the owner time to cut costs, change prices or stop an unprofitable activity.\n\nMeasuring profit also allows comparison. An owner can compare this year with last year, or one branch with another, and ask why the figures changed. Without a measured profit, every decision is a guess.",
         },
         {
           heading: "The two main financial statements",
@@ -71,12 +71,12 @@ export const topic = {
         {
           heading: "Profit is not the same as cash",
           body:
-            "Many students assume that a profitable business must have money in the bank. It often does not. Profit is measured when a sale is made, even if the customer has not yet paid. Cash is only received when the customer actually pays. A business that sells a lot on credit can show a healthy profit while its bank account is overdrawn.\n\nOther transactions change the bank balance without touching profit at all. Buying a motor van reduces the bank, but the van is an asset, not an expense. Drawings reduce the bank, but they are the owner taking out capital, not a business expense. Receiving a loan increases the bank, but a loan is a liability, not income. Capital introduced by the owner increases the bank, but it is not profit.\n\nThis is why both statements are needed. The statement of profit or loss measures performance over the period. The bank balance in the statement of financial position shows how much money is available right now. A careful owner watches both figures.",
+            "Many students assume that a profitable business must have money in the bank. It often does not. Profit is measured when a sale is made, even if the customer has not yet paid. Cash is only received when the customer actually pays. A business that sells a lot on credit can show a healthy profit while its bank account is overdrawn.\n\nOther transactions change the bank balance without touching profit at all. Buying a motor van reduces the bank, but the van is an asset, not an expense (only a part of its cost, called depreciation, is charged against profit each year, as you will see in Topic 4). Drawings reduce the bank, but they are the owner taking out capital, not a business expense. Receiving a loan increases the bank, but a loan is a liability, not income. Capital introduced by the owner increases the bank, but it is not profit.\n\nThis is why both statements are needed. The statement of profit or loss measures performance over the period. The bank balance in the statement of financial position shows how much money is available right now. A careful owner watches both figures.",
         },
         {
-          heading: "How accounting helps decisions",
+          heading: "Monitoring progress and making decisions",
           body:
-            "Accounting information turns a feeling about the business into facts. For pricing, knowing the cost of each item and the gross profit margin tells the owner whether a selling price covers costs. For expansion, a record of past profits and the present bank balance shows whether a second shop can be afforded or whether a loan is needed. For credit control, a list of trade receivables shows which customers owe money and for how long, so slow payers can be chased before cash runs out. For cost control, comparing this year's wages or electricity with last year's reveals costs that are growing faster than revenue.\n\nPeople outside the business use the same information. A bank reads the statements before lending. A supplier checks them before giving credit. The tax authority uses them to calculate the tax due. Because so many decisions depend on them, the figures must be complete, accurate and prepared on consistent rules. The role of accounting is to provide reliable information for decision-making, not just to keep records.",
+            "Accounting information turns a feeling about the business into facts. It has two uses. Monitoring progress means checking regularly how the business is doing against the past or against a target: is revenue up on last year, is the profit margin falling, are customers paying more slowly? Decision-making means choosing what to do next using those facts.\n\nFor pricing, knowing the cost of each item and the gross profit margin tells the owner whether a selling price covers costs. For expansion, a record of past profits and the present bank balance shows whether a second shop can be afforded or whether a loan is needed. For credit control, a list of trade receivables shows which customers owe money and for how long, so slow payers can be chased before cash runs out. For cost control, comparing this year's wages or electricity with last year's reveals costs that are growing faster than revenue.\n\nPeople outside the business use the same information. A bank reads the statements before lending. A supplier checks them before giving credit. The tax authority uses them to calculate the tax due. Because so many decisions depend on them, the figures must be complete, accurate and consistent. The role of accounting is to provide reliable information for monitoring progress and for decision-making, not just to keep records.",
         },
         {
           heading: "From source document to decision",
@@ -158,7 +158,7 @@ export const topic = {
         { error: "Answering why accounts are kept with a vague phrase such as to see how the business is doing.", fix: "Be specific: to measure profit or loss for the period, to show assets, liabilities and capital at a date, and to provide information for decisions such as pricing, borrowing and expansion." },
       ],
       examTips: [
-        "When asked to explain the purpose of accounting, give two separate ideas: measuring profit or loss, and providing information for decisions. One sentence with both ideas usually earns only one mark.",
+        "When asked to explain the purpose of accounting, give separate ideas: measuring profit or loss, showing the financial position, and providing information for monitoring progress and for decisions. Make each idea its own point and develop it with a reason or an example; a list of words with no explanation earns little.",
         "For any difference question (book-keeping versus accounting) write one sentence about each side. Examiners cannot award a comparison mark if only one side is described.",
         "If a question gives revenue, cost of sales and expenses, show gross profit as a separate line before profit for the year. The intermediate figure often carries its own mark.",
         "Learn the exact headings: statement of profit or loss for the year ended, statement of financial position at. Marks for the heading are easy to win and easy to lose.",
@@ -220,23 +220,23 @@ export const topic = {
           marks: 5,
           prompt: "For each of the following items, state whether it appears in the statement of profit or loss or in the statement of financial position: (a) profit for the year; (b) trade payables; (c) rent paid for the year; (d) bank balance; (e) wages.",
           model: "(a) Profit for the year is the final figure of the statement of profit or loss (and is then added to capital in the statement of financial position). (b) Trade payables are a current liability in the statement of financial position. (c) Rent is an expense in the statement of profit or loss. (d) The bank balance is a current asset in the statement of financial position. (e) Wages are an expense in the statement of profit or loss.",
-          points: ["(a) statement of profit or loss (1)", "(b) statement of financial position (1)", "(c) statement of profit or loss (1)", "(d) statement of financial position (1)", "(e) statement of profit or loss (1)"],
+          points: ["(a) statement of profit or loss; also accept both statements, as it is added to capital (1)", "(b) statement of financial position (1)", "(c) statement of profit or loss (1)", "(d) statement of financial position (1)", "(e) statement of profit or loss (1)"],
         },
         {
           id: "ex-1.1-8",
           type: "explain",
           marks: 6,
           prompt: "Heba owns one clothes shop and is thinking of opening a second shop in another town. Explain three ways in which her accounting records will help her to make this decision.",
-          model: "First, the statement of profit or loss shows the profit for the year of the existing shop. If profit is steady or rising, a second shop is more likely to succeed and Heba can estimate what a second shop might earn. Second, the statement of financial position shows her bank balance and other assets, so she can see whether she can pay for the new shop herself or will need a loan. Third, her records of expenses such as rent, wages and electricity give her realistic figures to forecast the costs of the second shop. If she needs a loan, the bank will also want to see these statements before lending.",
-          points: ["Profit for the year shows whether the existing shop is successful (1)", "Developed: used to estimate what a second shop could earn (1)", "Statement of financial position shows bank and other resources available (1)", "Developed: tells her whether she needs to borrow (1)", "Records of past expenses help forecast the costs of the new shop (1)", "Developed: bank or lender will require the statements before lending (1)"],
+          model: "First, the statement of profit or loss shows the profit for the year of the existing shop. If profit is steady or rising, a second shop is more likely to succeed and Heba can estimate what a second shop might earn. Second, the statement of financial position shows her bank balance and other assets, so she can see whether she can pay for the new shop herself or will need a loan. Third, her records of expenses such as rent, wages and electricity give her realistic figures to forecast the costs of the second shop. Comparing these forecast costs with the revenue she expects tells her whether the second shop is likely to make a profit or a loss.",
+          points: ["Profit for the year shows whether the existing shop is successful (1)", "Developed: used to estimate what a second shop could earn (1)", "Statement of financial position shows bank and other resources available (1)", "Developed: tells her whether she needs to borrow (1)", "Records of past expenses help forecast the costs of the new shop (1)", "Developed: forecast costs compared with expected revenue show whether the new shop would be profitable (1)"],
         },
         {
           id: "ex-1.1-9",
           type: "calculation",
           marks: 8,
-          prompt: "Samir's furniture shop had the following results. Year ended 31 December 2025: revenue $90,000, cost of sales $54,000, expenses $21,600. Year ended 31 December 2026: revenue $108,000, cost of sales $70,200, expenses $24,300. Calculate for each year the gross profit, the profit for the year and the profit for the year as a percentage of revenue. Comment on what the figures show.",
-          model: "2025: gross profit $90,000 less $54,000 equals $36,000; profit for the year $36,000 less $21,600 equals $14,400; profit as a percentage of revenue $14,400 divided by $90,000 equals 16%. 2026: gross profit $108,000 less $70,200 equals $37,800; profit for the year $37,800 less $24,300 equals $13,500; percentage $13,500 divided by $108,000 equals 12.5%. Comment: revenue rose by $18,000 (20%) but profit for the year fell by $900 and the profit percentage fell from 16% to 12.5%. The main cause is cost of sales, which rose from 60% of revenue to 65% of revenue, so gross profit as a percentage of revenue fell from 40% to 35%. Samir may be paying more for his goods or charging lower prices.",
-          points: ["Gross profit 2025 $36,000 (1)", "Profit for the year 2025 $14,400 (1)", "Gross profit 2026 $37,800 (1)", "Profit for the year 2026 $13,500 (1)", "Percentage 2025 16% (1)", "Percentage 2026 12.5% (1)", "Comment: revenue up but profit and percentage down (1)", "Reason: cost of sales rose faster than revenue, gross profit margin fell from 40% to 35% (1)"],
+          prompt: "Samir's furniture shop had the following results. Year ended 31 December 2025: revenue $90,000, cost of sales $54,000, expenses $21,600. Year ended 31 December 2026: revenue $108,000, cost of sales $70,200, expenses $24,300. Calculate for each year the gross profit, the profit for the year and the profit margin (profit for the year as a percentage of revenue). Analyse what the figures show about the progress of the business.",
+          model: "2025: gross profit $90,000 less $54,000 equals $36,000; profit for the year $36,000 less $21,600 equals $14,400; profit margin $14,400 divided by $90,000 times 100 equals 16%. 2026: gross profit $108,000 less $70,200 equals $37,800; profit for the year $37,800 less $24,300 equals $13,500; profit margin $13,500 divided by $108,000 times 100 equals 12.5%. Analysis: revenue rose by $18,000 (20%) but profit for the year fell by $900 and the profit percentage fell from 16% to 12.5%. The main cause is cost of sales, which rose from 60% of revenue to 65% of revenue, so gross profit as a percentage of revenue fell from 40% to 35%. Samir may be paying more for his goods or charging lower prices.",
+          points: ["Gross profit 2025 $36,000 (1)", "Profit for the year 2025 $14,400 (1)", "Gross profit 2026 $37,800 (1)", "Profit for the year 2026 $13,500 (1)", "Profit margin 2025 16% (1)", "Profit margin 2026 12.5%; own figures accepted (1)", "Revenue up but profit for the year and profit margin down (1)", "Reason: cost of sales rose faster than revenue, gross profit margin fell from 40% to 35% (1)"],
         },
         {
           id: "ex-1.1-10",
@@ -264,7 +264,7 @@ export const topic = {
           id: "mcq-1.1-3",
           question: "A business made a profit of $6,000 for the year but its bank balance fell. Which is a possible reason?",
           choices: ["Customers bought goods on credit and have not yet paid", "Expenses were greater than revenue", "The owner introduced additional capital", "Goods were sold for less than they cost"],
-          explanation: "Credit sales increase profit immediately but bring no cash until the customer pays, so profit and bank move apart. Expenses above revenue would mean a loss, not a profit. Capital introduced increases the bank. Selling below cost reduces profit, not the bank balance.",
+          explanation: "Credit sales increase profit immediately but bring no cash until the customer pays, so profit and bank move apart. Expenses above revenue would mean a loss, not a profit. Capital introduced increases the bank. Selling goods below cost reduces profit, but the cash received still increases the bank, so it does not explain why the bank fell while profit was made.",
         },
         {
           id: "mcq-1.1-4",
@@ -274,9 +274,9 @@ export const topic = {
         },
         {
           id: "mcq-1.1-5",
-          question: "Which statement shows the financial position of a business at one date?",
-          choices: ["Statement of financial position", "Statement of profit or loss", "Cash book", "Sales journal"],
-          explanation: "The statement of financial position is a snapshot of assets, liabilities and capital at a date. The statement of profit or loss covers a period. The cash book and sales journal are book-keeping records, not financial statements.",
+          question: "Which of the following is a purpose of measuring the profit of a business?",
+          choices: ["To decide how much the owner can safely take as drawings", "To find how much money is in the business bank account", "To record each sale on the day it is made", "To value the owner's private house and car"],
+          explanation: "Profit shows how much the business has earned for the owner, so it guides how much can be withdrawn without reducing capital. Profit is not the bank balance (credit sales, asset purchases and loans make them differ). Recording each sale is book-keeping. The owner's private assets are outside the business under the business entity concept.",
         },
         {
           id: "mcq-1.1-6",
@@ -298,9 +298,9 @@ export const topic = {
         },
         {
           id: "mcq-1.1-9",
-          question: "Revenue for the year was $31,200 and cost of sales was $19,500. What was the gross profit?",
-          choices: ["$11,700", "$50,700", "$19,500", "$12,700"],
-          explanation: "Gross profit is revenue less cost of sales: $31,200 less $19,500 equals $11,700. $50,700 adds instead of subtracting, $19,500 is the cost of sales itself and $12,700 is an arithmetic slip.",
+          question: "A shop owner wants to monitor the progress of her business. Which use of accounting information does this?",
+          choices: ["Comparing this year's profit margin with last year's", "Entering credit sales in the sales journal", "Posting the purchases journal total to the purchases account", "Filing copies of sales invoices by date"],
+          explanation: "Monitoring progress means comparing results over time or against a target, so comparing the profit margin of two years is the answer. The other three are book-keeping tasks: they record and store the information but do not show whether the business is doing better or worse.",
         },
         {
           id: "mcq-1.1-10",
@@ -314,7 +314,7 @@ export const topic = {
           id: "sq-1.1-1",
           title: "Layla Mobile: profit, cash and the loan decision",
           stimulus:
-            "Layla owns a shop selling mobile phone accessories, trading as Layla Mobile. She keeps simple records and holds no inventory at the year end. For the year ended 30 June 2026 her records show: revenue $86,400; cost of sales $51,840; wages $12,600; rent $7,200; advertising $1,950; insurance $1,110; general expenses $2,300. Her bank balance was $4,100 on 1 July 2025 and $1,200 on 30 June 2026. During the year she paid $6,000 by bank transfer for new shop fittings, took drawings of $4,800, and the amount owed to her by credit customers rose from $3,200 to $4,700. All suppliers and expenses were paid in full during the year. Layla now wants to borrow $15,000 from a bank to open a second shop.",
+            "Layla owns a shop selling mobile phone accessories, trading as Layla Mobile. She keeps simple records and held no inventory at the start or at the end of the year. Ignore depreciation. For the year ended 30 June 2026 her records show: revenue $86,400; cost of sales $51,840; wages $12,600; rent $7,200; advertising $1,950; insurance $1,110; general expenses $2,300. Her bank balance was $4,100 on 1 July 2025 and $1,200 on 30 June 2026. During the year she paid $6,000 by bank transfer for new shop fittings, took drawings of $4,800, and the amount owed to her by credit customers rose from $3,200 to $4,700. All suppliers and expenses were paid in full during the year. Layla now wants to borrow $15,000 from a bank to open a second shop.",
           parts: [
             {
               label: "a",
@@ -335,7 +335,7 @@ export const topic = {
             {
               label: "c",
               marks: 4,
-              prompt: "Distinguish between book-keeping and accounting, giving one example of each from Layla's business.",
+              prompt: "Explain the difference between book-keeping and accounting, giving one example of each from Layla's business.",
               model:
                 "Book-keeping is the systematic recording of transactions, for example recording each day's sales and the payment of rent in Layla's books. Accounting is the classifying, summarising and interpreting of those records to provide information for decisions, for example preparing the statement of profit or loss above and using it to decide whether the second shop is affordable.",
               points: ["Book-keeping defined as recording transactions systematically (1)", "Example from Layla, for example recording daily sales or the rent payment (1)", "Accounting defined as classifying, summarising and interpreting for decisions (1)", "Example from Layla, for example preparing the statement or using it to decide on the second shop (1)"],
@@ -343,10 +343,10 @@ export const topic = {
             {
               label: "d",
               marks: 6,
-              prompt: "Explain three ways in which Layla's accounting records will help her and the bank to decide whether she should borrow $15,000 to open a second shop.",
+              prompt: "Advise Layla whether she should borrow $15,000 from the bank to open a second shop. Use the figures in the question and justify your answer.",
               model:
-                "First, the statement of profit or loss shows a profit for the year of $9,400. This tells Layla and the bank that the existing shop earns enough to make loan repayments possible, and it gives an idea of what a second shop might earn. Second, her records of expenses such as rent $7,200 and wages $12,600 give realistic figures for forecasting the costs of a second shop, so the loan request is based on evidence rather than hope. Third, the bank balance of only $1,200 and the trade receivables of $4,700 show the bank how much cash Layla has now and how much is still owed to her, so the bank can judge the risk of lending and Layla can see that she cannot fund the shop herself.",
-              points: ["Profit for the year shows the business is successful (1)", "Developed: shows ability to repay the loan or estimate second shop earnings (1)", "Records of expenses allow realistic forecast of second shop costs (1)", "Developed: makes the loan application credible to the bank (1)", "Bank balance and receivables show cash available now (1)", "Developed: lets the bank judge risk and shows Layla she needs to borrow (1)"],
+                "For borrowing: the business is profitable, with a profit for the year of $9,400 and a profit margin of about 10.9% ($9,400 divided by $86,400 times 100). After drawings of $4,800, $4,600 of profit stayed in the business, which could help to pay loan interest and repayments. Her records of rent $7,200 and wages $12,600 also give realistic figures for forecasting the costs of a second shop, which a bank will want to see. Against borrowing: the bank balance fell to only $1,200, so there is very little cash to meet repayments if the new shop is slow to make a profit. Loan interest will be a new expense that reduces profit. Trade receivables rose by $1,500, so cash is already being tied up. Advice: Layla can consider the loan, because the existing shop is profitable, but only if her forecast for the second shop shows enough profit to cover the interest and repayments, and she should first reduce drawings and collect money from credit customers faster. A smaller loan would also lower the risk.",
+              points: ["Argument for: profit for the year $9,400 (or profit margin about 10.9%) shows the shop is profitable (1)", "Developed: profit retained after drawings, $4,600, could help to meet interest and repayments (1)", "Argument for: expense records give realistic forecasts for the bank (1)", "Argument against: bank balance only $1,200, little cash to meet repayments (1)", "Argument against: interest is a new expense, or rising receivables tie up cash (1)", "Justified decision, for example borrow only if forecasts cover repayments and drawings are reduced (1)"],
             },
           ],
         },
@@ -354,7 +354,7 @@ export const topic = {
           id: "sq-1.1-2",
           title: "Omar's Repair Workshop: two years compared",
           stimulus:
-            "Omar runs a motorcycle repair workshop. His assistant, Nour, keeps the books and an accountant visits once a year. Results for the two years ended 31 December: 2025: revenue from repairs $48,000; parts used $14,400; wages of assistant $12,000; rent $6,000; other expenses $3,600. 2026: revenue from repairs $57,600; parts used $20,160; wages of assistant $13,200; rent $6,600; other expenses $4,680. Omar prepares only a statement of profit or loss each year. The following tasks were carried out during 2026: (1) Nour recorded each customer's payment in the cash book; (2) the accountant explained to Omar why his profit percentage had changed; (3) Nour entered the supplier's invoices for parts in the purchases journal; (4) the accountant prepared the statement of profit or loss; (5) Nour balanced the ledger accounts at the end of each month.",
+            "Omar runs a motorcycle repair workshop. His assistant, Nour, keeps the books and an accountant visits once a year. Results for the two years ended 31 December: 2025: revenue from repairs $48,000; parts used $14,400; wages of assistant $12,000; rent $6,000; other expenses $3,600. 2026: revenue from repairs $57,600; parts used $20,160; wages of assistant $13,200; rent $6,600; other expenses $4,680. Omar prepares only a statement of profit or loss each year. The following tasks were carried out during 2026: (1) Nour recorded each customer's payment in the cash book; (2) the accountant explained to Omar why his profit margin had changed; (3) Nour entered the supplier's invoices for parts in the purchases journal; (4) the accountant prepared the statement of profit or loss; (5) Nour balanced the ledger accounts at the end of each month.",
           parts: [
             {
               label: "a",
@@ -367,26 +367,26 @@ export const topic = {
             {
               label: "b",
               marks: 6,
-              prompt: "Calculate for each year the total expenses, the profit for the year, and the profit for the year as a percentage of revenue.",
+              prompt: "Calculate for each year the total expenses, the profit for the year, and the profit margin (profit for the year as a percentage of revenue).",
               model:
                 "2025: total expenses $14,400 plus $12,000 plus $6,000 plus $3,600 equals $36,000; profit for the year $48,000 less $36,000 equals $12,000; percentage $12,000 divided by $48,000 equals 25%. 2026: total expenses $20,160 plus $13,200 plus $6,600 plus $4,680 equals $44,640; profit for the year $57,600 less $44,640 equals $12,960; percentage $12,960 divided by $57,600 equals 22.5%.",
               points: ["Total expenses 2025 $36,000 (1)", "Profit for the year 2025 $12,000 (1)", "Percentage 2025 25% (1)", "Total expenses 2026 $44,640 (1)", "Profit for the year 2026 $12,960 (1)", "Percentage 2026 22.5% (1)"],
             },
             {
               label: "c",
-              marks: 5,
-              prompt: "Using your answer to (b) and the figures in the question, comment on the performance of the workshop in 2026 compared with 2025. Suggest one action Omar could take.",
-              model:
-                "Revenue rose by $9,600, which is 20%, and profit for the year rose by $960. However, the profit percentage fell from 25% to 22.5%, so each dollar of revenue earned less profit. The main reason is the cost of parts, which rose from 30% of revenue in 2025 ($14,400 of $48,000) to 35% in 2026 ($20,160 of $57,600). Wages and rent rose roughly in line with revenue. Omar could look for a cheaper supplier of parts, or charge customers more for the parts he fits, so that the parts cost returns to about 30% of revenue.",
-              points: ["Revenue increased by $9,600 or 20% (1)", "Profit increased in money terms by $960 (1)", "Profit percentage fell from 25% to 22.5% (1)", "Reason: parts cost rose from 30% to 35% of revenue (1)", "Sensible action, for example cheaper supplier or charge more for parts (1)"],
-            },
-            {
-              label: "d",
               marks: 4,
               prompt: "Omar prepares only a statement of profit or loss. Explain two reasons why he should also prepare a statement of financial position.",
               model:
-                "A statement of financial position would show Omar the assets he owns, such as tools, parts in stock and his bank balance, and the liabilities he owes, such as amounts due to suppliers. This tells him whether he can pay his debts when they fall due, which profit alone does not show. It would also show his capital and how it has changed through profit and drawings, so he can see whether he is taking out more than the business earns. A bank or supplier would also expect to see it before lending or giving credit.",
+                "A statement of financial position would show Omar the assets he owns, such as tools, his inventory of parts and his bank balance, and the liabilities he owes, such as amounts due to suppliers. This tells him whether he can pay his debts when they fall due, which profit alone does not show. It would also show his capital and how it has changed through profit and drawings, so he can see whether he is taking out more than the business earns. A bank or supplier would also expect to see it before lending or giving credit.",
               points: ["Shows assets and liabilities at a date (1)", "Developed: shows whether debts can be paid, which profit alone does not show (1)", "Shows capital and the effect of profit and drawings on it (1)", "Developed: warns if drawings exceed profit, or needed by lenders and suppliers (1)"],
+            },
+            {
+              label: "d",
+              marks: 5,
+              prompt: "Using your answer to (b) and the figures in the question, evaluate the performance of the workshop in 2026 compared with 2025. Suggest one action Omar could take.",
+              model:
+                "Revenue rose by $9,600, which is 20%, and profit for the year rose by $960, so in money terms the workshop did better. However, the profit margin fell from 25% to 22.5%, so each dollar of revenue earned less profit. The main reason is the cost of parts, which rose from 30% of revenue in 2025 ($14,400 of $48,000) to 35% in 2026 ($20,160 of $57,600). Wages and rent each rose by only 10%, slower than revenue, so they are not the cause; other expenses rose by 30%, from 7.5% to about 8.1% of revenue. Overall the workshop is growing but becoming less profitable per dollar of revenue. Omar could look for a cheaper supplier of parts, or charge customers more for the parts he fits, so that the parts cost returns to about 30% of revenue.",
+              points: ["Revenue increased by $9,600 or 20% (1)", "Profit for the year increased in money terms by $960 (1)", "But profit margin fell from 25% to 22.5%; own figures from (b) accepted (1)", "Reason: parts cost rose from 30% to 35% of revenue (1)", "Sensible action, for example cheaper supplier or charge more for parts (1)"],
             },
           ],
         },
@@ -396,15 +396,16 @@ export const topic = {
       section: "1.2",
       title: "The accounting equation",
       summary:
-        "Everything a business owns (assets) was paid for either by the owner (capital) or by outsiders (liabilities), so assets always equal capital plus liabilities. Every transaction changes at least two items and leaves the equation balanced. The statement of financial position is this equation written out at one date, and capital changes only through capital introduced, profit or loss, and drawings.",
+        "Everything a business owns (assets) was paid for either by the owner (capital, which the syllabus calls owner's equity) or by outsiders (liabilities), so assets always equal capital plus liabilities. Every transaction changes at least two items and leaves the equation balanced. The statement of financial position is this equation written out at one date, and capital changes only through capital introduced, profit or loss, and drawings.",
       objectives: [
-        "Define assets, liabilities and capital and give examples of each.",
-        "Distinguish non-current assets from current assets, and non-current liabilities from current liabilities.",
+        "Define assets, liabilities and owner's equity (capital) and give examples of each.",
+        "Explain the difference between non-current and current assets, and between non-current and current liabilities.",
         "State the accounting equation and rearrange it to find a missing figure.",
         "Show the effect of a series of transactions on assets, liabilities and capital.",
         "Calculate closing capital from opening capital, capital introduced, profit or loss and drawings, and work backwards to find profit.",
         "Prepare a simple statement of financial position and explain why it balances.",
-        "Apply the business entity principle to decide what belongs to the business.",
+        "Apply the business entity concept to decide what belongs to the business.",
+        "Explain the effect of capital introduced, profit, loss and drawings on owner's equity.",
       ],
       keyTerms: [
         { term: "Asset", definition: "Something of value owned or controlled by the business from which future benefit is expected, such as premises, inventory or money in the bank." },
@@ -413,12 +414,12 @@ export const topic = {
         { term: "Liability", definition: "An amount owed by the business to a person or organisation outside the business." },
         { term: "Current liability", definition: "A liability due to be paid within one year, such as trade payables or a bank overdraft." },
         { term: "Non-current liability", definition: "A liability not due to be paid within one year, such as a bank loan repayable in three years." },
-        { term: "Capital", definition: "The amount the business owes to its owner, equal to assets less liabilities; also called owner's equity or net assets." },
+        { term: "Capital (owner's equity)", definition: "The owner's claim on the business, the amount the business owes to its owner; it always equals assets less liabilities (net assets)." },
         { term: "Drawings", definition: "Resources, usually cash or goods, taken out of the business by the owner for personal use, which reduce capital." },
         { term: "Trade receivables", definition: "Amounts owed to the business by customers who have bought goods or services on credit." },
         { term: "Trade payables", definition: "Amounts owed by the business to suppliers from whom it has bought goods or services on credit." },
         { term: "Accounting equation", definition: "The rule that assets equal capital plus liabilities at every moment in the life of a business." },
-        { term: "Business entity", definition: "The principle that the business is treated as separate from its owner, so only business assets, liabilities and transactions are recorded." },
+        { term: "Business entity", definition: "The accounting concept that the business is treated as separate from its owner, so only business assets, liabilities and transactions are recorded." },
       ],
       notes: [
         {
@@ -444,12 +445,12 @@ export const topic = {
         {
           heading: "Capital: the owner's claim",
           body:
-            "Capital is the amount the business owes to its owner. This sounds strange at first. The key idea is the business entity principle: for accounting purposes the business is treated as separate from the person who owns it. When Hana pays $10,000 of her savings into her shop's bank account, the shop has an asset of $10,000 in the bank and it owes Hana $10,000. That amount owed to the owner is called capital.\n\nCapital changes in only four ways. It increases when the owner puts in more resources (capital introduced) and when the business makes a profit, because profit belongs to the owner. It decreases when the owner takes resources out for personal use (drawings) and when the business makes a loss. Day-to-day transactions such as paying a supplier or buying a van do not change capital at all; they only move value between assets and liabilities.\n\nBecause capital equals assets less liabilities, it is sometimes called net assets or owner's equity. All three names mean the same figure.",
+            "Capital is the amount the business owes to its owner. This sounds strange at first. The key idea is the business entity concept: for accounting purposes the business is treated as separate from the person who owns it. When Hana pays $10,000 of her savings into her shop's bank account, the shop has an asset of $10,000 in the bank and it owes Hana $10,000. That amount owed to the owner is called capital.\n\nCapital changes in only four ways. It increases when the owner puts in more resources (capital introduced) and when the business makes a profit, because profit belongs to the owner. It decreases when the owner takes resources out for personal use (drawings) and when the business makes a loss. Transactions such as paying a supplier, buying a van or receiving a loan do not change capital at all; they only move value between assets and liabilities. Income and expenses do change capital, but only through the profit or loss they create.\n\nThe syllabus calls the owner's claim owner's equity; capital is the usual name for it in a sole trader's books. Its figure always equals net assets, which means total assets less total liabilities.",
         },
         {
           heading: "The equation and its three forms",
           body:
-            "The accounting equation states that assets equal capital plus liabilities. Everything the business owns was paid for either by the owner (capital) or by outsiders (liabilities). There is no third source of finance, which is why the two sides must always be equal.\n\nThe equation can be rearranged to find whichever figure is missing. If you know assets and liabilities, capital is assets less liabilities. If you know capital and liabilities, assets are the two added together. If you know assets and capital, liabilities are assets less capital. Learn the first form and the other two follow by simple algebra.\n\nFor example, a business with assets of $41,000 and liabilities of $9,500 has capital of $31,500. If a year later its assets are $44,000 and its capital is $33,200, its liabilities must be $10,800. Always write down the form of the equation you are using before you put the numbers in; the method mark depends on it.",
+            "The accounting equation states that assets equal capital plus liabilities. Written with the syllabus term it is assets equal liabilities plus owner's equity; the order of the two right-hand items does not matter. Everything the business owns was paid for either by the owner (capital) or by outsiders (liabilities). There is no third source of finance, which is why the two sides must always be equal.\n\nThe equation can be rearranged to find whichever figure is missing. If you know assets and liabilities, capital is assets less liabilities. If you know capital and liabilities, assets are the two added together. If you know assets and capital, liabilities are assets less capital. Learn the first form and the other two follow by simple algebra.\n\nFor example, a business with assets of $41,000 and liabilities of $9,500 has capital of $31,500. If a year later its assets are $44,000 and its capital is $33,200, its liabilities must be $10,800. Always write down the form of the equation you are using before you put the numbers in; the method mark depends on it.",
           table: {
             head: ["Known figures", "Missing figure", "Formula"],
             rows: [
@@ -462,7 +463,7 @@ export const topic = {
         {
           heading: "Every transaction keeps the equation balanced",
           body:
-            "A transaction always changes at least two things, and after the change the equation still balances. This is the principle of duality, and it is the reason double entry works. There are only a few patterns to learn.\n\nSometimes one asset goes up and another goes down by the same amount, so total assets do not change: buying a computer for cash, or a customer paying what they owe. Sometimes an asset and a liability rise together: buying goods on credit, or receiving a loan. Sometimes an asset and a liability fall together: paying a supplier, or repaying a loan. Sometimes an asset and capital move together: the owner introducing cash, the owner taking drawings, or the business earning income or paying an expense.\n\nIncome increases capital because it increases profit, which belongs to the owner. Expenses decrease capital for the same reason. When you analyse a transaction, name the two items, say whether each goes up or down, and check that the equation still holds.",
+            "A transaction always changes at least two things, and after the change the equation still balances. This is the duality concept, and it is the reason double entry works. There are only a few patterns to learn.\n\nSometimes one asset goes up and another goes down by the same amount, so total assets do not change: buying a computer for cash, or a customer paying what they owe. Sometimes an asset and a liability rise together: buying goods on credit, or receiving a loan. Sometimes an asset and a liability fall together: paying a supplier, or repaying a loan. Sometimes an asset and capital move together: the owner introducing cash, the owner taking drawings, or the business earning income or paying an expense.\n\nIncome increases capital because it increases profit, which belongs to the owner. Expenses decrease capital for the same reason. When you analyse a transaction, name the two items, say whether each goes up or down, and check that the equation still holds.",
           table: {
             head: ["Transaction", "Assets", "Liabilities", "Capital"],
             rows: [
@@ -545,7 +546,7 @@ export const topic = {
         },
       ],
       commonErrors: [
-        { error: "Including the owner's private house, car or savings among the business assets.", fix: "Apply the business entity principle. Only items owned by the business are recorded. Private items appear only if the owner formally brings them into the business as capital introduced." },
+        { error: "Including the owner's private house, car or savings among the business assets.", fix: "Apply the business entity concept. Only items owned by the business are recorded. Private items appear only if the owner formally brings them into the business as capital introduced." },
         { error: "Treating drawings as an expense, or as a liability, instead of a reduction of capital.", fix: "Drawings are the owner taking back part of the capital. Deduct them from capital in the statement of financial position, never in the statement of profit or loss." },
         { error: "Thinking capital is the same as the money in the bank.", fix: "Capital is assets less liabilities. A business can have capital of $40,000 and only $500 in the bank if most of its value is in premises and inventory." },
         { error: "Recording a purchase on credit as an increase in assets only.", fix: "Buying on credit increases an asset (inventory or equipment) and increases a liability (trade payables) by the same amount. Two items always change." },
@@ -689,19 +690,19 @@ export const topic = {
           id: "mcq-1.2-8",
           question: "A business owns a van that cost $9,000. The owner also has a private car worth $15,000. What total for vehicles should appear in the business statement of financial position?",
           choices: ["$9,000", "$24,000", "$15,000", "$6,000"],
-          explanation: "The business entity principle says that only the assets of the business are recorded. The private car belongs to the owner, not the business, so only the $9,000 van is shown.",
+          explanation: "The business entity concept says that only the assets of the business are recorded. The private car belongs to the owner, not the business, so only the $9,000 van is shown.",
         },
         {
           id: "mcq-1.2-9",
-          question: "A business receives a bank loan of $5,000 which is paid into its bank account. What is the effect on capital?",
-          choices: ["No change", "Increases by $5,000", "Decreases by $5,000", "Increases by $10,000"],
-          explanation: "A loan increases the asset bank and increases the liability loan. It is money owed to an outsider, not owed to the owner, so capital is unchanged.",
+          question: "Which of the following is a correct form of the accounting equation?",
+          choices: ["Assets less liabilities equals owner's equity", "Assets plus liabilities equals owner's equity", "Owner's equity plus assets equals liabilities", "Liabilities less owner's equity equals assets"],
+          explanation: "Assets equal liabilities plus owner's equity, so taking liabilities from both sides gives assets less liabilities equals owner's equity. The other three put the items on the wrong sides: owner's equity is what is left for the owner after outsiders' claims are deducted from the assets, never assets plus liabilities.",
         },
         {
           id: "mcq-1.2-10",
           question: "Capital was $20,000 on 1 January and $24,500 on 31 December. Drawings for the year were $6,000 and no capital was introduced. What was the profit for the year?",
-          choices: ["$10,500", "$4,500", "$1,500", "$30,500"],
-          explanation: "Profit equals the increase in capital plus drawings: $4,500 plus $6,000 equals $10,500. $4,500 ignores the drawings; $1,500 deducts the drawings instead of adding them; $30,500 adds drawings to closing capital.",
+          choices: ["Profit of $10,500", "Profit of $4,500", "Loss of $1,500", "Profit of $30,500"],
+          explanation: "Profit equals the increase in capital plus drawings: $4,500 plus $6,000 equals $10,500. Profit of $4,500 ignores the drawings; a loss of $1,500 deducts the drawings instead of adding them back ($4,500 less $6,000); $30,500 adds drawings to closing capital.",
         },
       ],
       structured: [
@@ -737,10 +738,10 @@ export const topic = {
             {
               label: "d",
               marks: 4,
-              prompt: "Explain why the loan from Nile Bank is not part of Bassem's capital, and why his drawings reduce his capital.",
+              prompt: "Bassem's friend says: your bank balance is $14,200, so you can safely take $10,000 out for yourself in May. Evaluate this advice, using the accounting equation and the figures.",
               model:
-                "The loan is money owed to an outsider, the bank, and it must be repaid in 2029. Capital is the amount owed to the owner, so under the business entity principle the loan is a liability and is shown separately from capital. Drawings are resources that Bassem has taken out of the business for his own use. Because capital measures what the business owes its owner, taking money out reduces that amount. Drawings are not an expense, so they reduce capital directly rather than reducing profit.",
-              points: ["Loan is owed to an outsider and must be repaid, so it is a liability (1)", "Capital is owed to the owner only; business entity principle (1)", "Drawings are resources taken out by the owner for personal use (1)", "They reduce the amount owed to the owner, not profit (1)"],
+                "Taking $10,000 would reduce bank (an asset) by $10,000 and reduce capital by $10,000, from $28,700 to $18,700, because drawings come out of the owner's equity. The business made a profit of only $1,300 in April, so drawings of $10,000 would be far more than the business has earned and would use up Bassem's own investment. Also, much of the bank balance is not his: $8,000 of it came from the Nile Bank loan, which must be repaid, and $2,400 is still owed to Wheels Ltd. After paying Wheels Ltd only $1,800 would be left in the bank. The advice is not sound. Bassem should keep his drawings below the profit the shop earns and keep enough cash to pay suppliers and the loan.",
+              points: ["Drawings would reduce bank and capital by $10,000, capital falling to $18,700 (1)", "April profit only $1,300, so drawings far exceed profit and reduce his investment (1)", "Much of the bank balance is financed by liabilities: loan $8,000 and trade payables $2,400 (1)", "Justified conclusion: advice not sound, keep drawings below profit and keep cash for debts (1)"],
             },
           ],
         },
@@ -773,17 +774,17 @@ export const topic = {
             },
             {
               label: "d",
-              marks: 4,
-              prompt: "Sara says the business must be failing because the bank is overdrawn even though it made a profit. Explain two reasons why the bank balance fell from $2,350 to an overdraft of $820.",
-              model: "First, Sara's drawings of $9,600 were much greater than the profit of $5,760. She took out $3,840 more than the business earned, and that money came from the bank. Second, she repaid $2,000 of her father's loan during the year (it fell from $5,000 to $3,000). Repaying a loan reduces the bank but is not an expense, so it does not reduce profit. Smaller reasons: inventory rose by $900 and trade receivables rose by $550, which tie up cash. The business is profitable; the problem is how the cash has been used.",
-              points: ["Drawings $9,600 exceeded profit $5,760 (1)", "Developed: the excess of $3,840 came out of the bank (1)", "Loan repayment of $2,000 reduced the bank (1)", "Developed: repaying a loan is not an expense so profit is unaffected; or increase in inventory and receivables tied up cash (1)"],
+              marks: 3,
+              prompt: "Explain, with reference to the accounting equation, why Sara's father is wrong to say that his loan is part of Sara's capital.",
+              model: "The loan is owed to Sara's father, who is not the owner of the business, so it is a liability of the business. Capital is the amount the business owes to its owner, Sara, and under the business entity concept only her own investment and the profits left in the business count as capital. In the equation assets equal capital plus liabilities, moving the $3,000 loan into capital would still make the totals agree, but it would overstate Sara's capital at $12,010 and hide the fact that $3,000 must be repaid.",
+              points: ["Loan is owed to an outsider, so it is a liability not capital (1)", "Capital is the owner's claim only, business entity concept (1)", "Treating it as capital would overstate capital and understate liabilities even though the totals still balance (1)"],
             },
             {
               label: "e",
-              marks: 3,
-              prompt: "Explain, with reference to the accounting equation, why Sara's father is wrong to say that his loan is part of Sara's capital.",
-              model: "The loan is owed to Sara's father, who is not the owner of the business, so it is a liability of the business. Capital is the amount the business owes to its owner, Sara, and under the business entity principle only her own investment and the profits left in the business count as capital. In the equation assets equal capital plus liabilities, moving the $3,000 loan into capital would still make the totals agree, but it would overstate Sara's capital at $12,010 and hide the fact that $3,000 must be repaid.",
-              points: ["Loan is owed to an outsider, so it is a liability not capital (1)", "Capital is the owner's claim only, business entity principle (1)", "Treating it as capital would overstate capital and understate liabilities even though the totals still balance (1)"],
+              marks: 4,
+              prompt: "Sara says the business must be failing because the bank is overdrawn even though it made a profit. Evaluate Sara's view, using the figures.",
+              model: "Sara's view is not correct. The business made a profit for the year of $5,760 and her capital rose from $8,850 to $9,010, so the business is not failing. The overdraft is caused by how the cash was used, not by losses. She repaid $2,000 of her father's loan (it fell from $5,000 to $3,000); repaying a loan reduces the bank but is not an expense, so profit is unaffected. Her drawings of $9,600 were $3,840 more than the profit, and only her extra capital of $4,000 stopped this from draining the bank further. Inventory rose by $900 and trade receivables by $550, and she paid suppliers so that trade payables fell by $340, all of which tied up cash. Conclusion: the business is profitable but has a cash problem. Sara should reduce her drawings to below the profit and collect money from customers more quickly.",
+              points: ["Profit $5,760 made and capital increased, so the business is not failing (1)", "Loan repayment of $2,000 reduced the bank but is not an expense (1)", "Drawings $9,600 exceeded profit, or increases in inventory $900 and receivables $550 tied up cash (1)", "Justified conclusion: a cash problem not a profit problem, with advice such as cutting drawings or collecting debts faster (1)"],
             },
           ],
         },

@@ -59,7 +59,10 @@ export const topic = {
 
 ## Quality bar
 
-- Cambridge terminology throughout: statement of profit or loss, statement of financial position, trade receivables, trade payables, inventory, irrecoverable debts, provision for doubtful debts (0452 uses "provision"), carriage inwards/outwards, drawings, capital, non-current assets, current liabilities, cost of sales, gross profit, profit for the year.
+The syllabus check in `REVIEW-BRIEF.md` (official terminology, the only accepted ratio formulas, scope notes) overrides anything below.
+
+
+- Cambridge terminology throughout: statement of profit or loss, statement of financial position, trade receivables, trade payables, inventory, irrecoverable debts, allowance for irrecoverable debts (the 2027–2029 syllabus term), carriage inwards/outwards, drawings, capital, non-current assets, current liabilities, cost of sales, gross profit, profit for the year.
 - Money as `$1,250` with thousands separators; dates as `1 January 2026`; years 2025–2027.
 - Arithmetic must be right. Work every figure through before writing it. Re-add every total.
 - Debit/credit sides, account names and balance b/d and c/d must be correct and consistent.
@@ -73,13 +76,13 @@ export const topic = {
 
 ## Sections and titles
 
-Topic 1 Accounting foundations: 1.1 Purpose of accounting · 1.2 The accounting equation
-Topic 2 Recording transactions: 2.1 Double entry · 2.2 Business documents · 2.3 Books of prime entry
-Topic 3 Checking records: 3.1 Trial balance · 3.2 Correction of errors · 3.3 Bank reconciliation · 3.4 Control accounts
-Topic 4 Accounting adjustments: 4.1 Capital and revenue · 4.2 Depreciation and disposal · 4.3 Accruals and prepayments · 4.4 Irrecoverable debts · 4.5 Inventory valuation
-Topic 5 Financial statements: 5.1 Sole traders · 5.2 Partnerships · 5.3 Limited companies · 5.4 Manufacturing · 5.5 Clubs and societies · 5.6 Incomplete records
-Topic 6 Financial analysis: 6.1 Calculating ratios · 6.2 Interpreting ratios · 6.3 Inter-firm comparison · 6.4 Users of accounts · 6.5 Limitations
-Topic 7 Concepts, ethics and technology: 7.1 Accounting principles · 7.2 Professional ethics · 7.3 Technology in accounting
+Topic 1 The fundamentals of accounting: 1.1 Purpose of accounting · 1.2 The accounting equation
+Topic 2 Sources and recording of data: 2.1 Double entry · 2.2 Business documents · 2.3 Books of prime entry
+Topic 3 Verification of accounting records: 3.1 Trial balance · 3.2 Correction of errors · 3.3 Bank reconciliation · 3.4 Control accounts
+Topic 4 Accounting procedures: 4.1 Capital and revenue · 4.2 Depreciation and disposal · 4.3 Accruals and prepayments · 4.4 Irrecoverable debts · 4.5 Inventory valuation
+Topic 5 Preparation of financial statements: 5.1 Sole traders · 5.2 Partnerships · 5.3 Limited companies · 5.4 Manufacturing · 5.5 Clubs and societies · 5.6 Incomplete records
+Topic 6 Analysis and interpretation: 6.1 Calculating ratios · 6.2 Interpreting ratios · 6.3 Inter-business comparison · 6.4 Interested parties · 6.5 Limitations
+Topic 7 Accounting concepts and modern practice: 7.1 Accounting concepts · 7.2 Ethical considerations · 7.3 Technology and sustainability
 
 ## Syllabus scope reminders per section
 
@@ -95,7 +98,7 @@ Topic 7 Concepts, ethics and technology: 7.1 Accounting principles · 7.2 Profes
 - 4.1: capital vs revenue expenditure and receipts; effect of misclassification on profit and assets.
 - 4.2: causes of depreciation, straight-line, reducing balance, revaluation methods; ledger entries including provision for depreciation and disposal account; part-exchange.
 - 4.3: other payables and receivables, adjustments in ledger accounts and statements, prepaid and accrued income.
-- 4.4: irrecoverable debts written off, recovery, provision for doubtful debts (creation, increase, decrease), effect on statements.
+- 4.4: irrecoverable debts written off, irrecoverable debts recovered, allowance for irrecoverable debts (creation, increase, decrease), effect on statements.
 - 4.5: lower of cost and net realisable value, effect of errors in inventory valuation on profit.
 - 5.1: income statement and statement of financial position for a sole trader (trading and service businesses), classification of items, working capital.
 - 5.2: partnership agreements, appropriation account, capital and current accounts, interest on capital/drawings, salaries, loans from partners, statement of financial position.
@@ -110,4 +113,4 @@ Topic 7 Concepts, ethics and technology: 7.1 Accounting principles · 7.2 Profes
 - 6.5: limitations of accounting statements (historic cost, non-financial factors, differing policies, timing).
 - 7.1: business entity, going concern, historic cost, matching/accruals, prudence, consistency, materiality, money measurement, realisation, duality; applying them.
 - 7.2: ethical principles (integrity, objectivity, professional competence and due care, confidentiality, professional behaviour), consequences of unethical behaviour.
-- 7.3: ICT in accounting: spreadsheets, accounting software, cloud; advantages, disadvantages, data security.
+- 7.3: digital applications for all or part of the records; storing data safely and sustainably and the risks of not doing so; storage systems (manual, data storage devices, cloud services, other digital services) with advantages and disadvantages. No specific software packages.

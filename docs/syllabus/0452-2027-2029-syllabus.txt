@@ -1,0 +1,905 @@
+=== PAGE 1 ===
+Version 1
+For the purposes of screen readers, any mention in this document of Cambridge IGCSE 
+refers to Cambridge International General Certificate of Secondary Education.
+Syllabus
+Cambridge IGCSE™
+Accounting 0452
+Use this syllabus for exams in 2027 , 2028 and 2029.
+Exams are available in the June and November series.
+Exams are also available in the March series in India.
+=== PAGE 2 ===
+Why choose Cambridge?
+We work with schools worldwide to build an education that shapes knowledge, understanding and skills. 
+Together, we give learners the confidence they need to thrive and make a positive impact in a changing world. 
+As part of the University of Cambridge, we offer a globally trusted and flexible framework for education from 
+age 3 to 19, informed by research, experience, and listening to educators. 
+With recognised qualifications, high-quality resources, comprehensive support and valuable insights, we help 
+schools prepare every student for the opportunities and challenges ahead. 
+Qualifications that are recognised and valued worldwide 
+From the world’s top-ranked universities to local higher education institutions, Cambridge qualifications open 
+doors to a world of opportunities.  
+Setting a global standard 
+With over 160 years of experience in delivering fair, valid and reliable assessments to students worldwide, we 
+offer a global, recognised performance standard for international education. 
+Your path, your way 
+Schools can adapt our curriculum, high-quality teaching and learning resources and flexible assessments to 
+their local context. Our aligned offer helps Cambridge schools support every learner to reach their potential and 
+thrive.  
+Learning with lasting impact 
+Cambridge learners build subject knowledge and conceptual understanding, and develop a broad range of 
+skills, learning habits and attributes to help make them ready for the world. 
+Improving learning outcomes through data-led insight and action 
+Our trusted baseline and diagnostic assessments, together with our insights and evaluation service, help 
+schools turn data into knowledge and actionable insights, to inform teaching decisions and improve learner 
+outcomes. 
+Bringing together a community of experts 
+We bring together the collective knowledge of experts and our diverse community of educators worldwide, 
+supporting them to learn from one another and share ideas and information. 
+Tackling the climate crisis together
+We believe that education is key to tackling the climate crisis. Together with Cambridge schools, we can 
+empower young people with the skills and knowledge to take action on climate change, helping them be ready 
+for the world.
+School feedback:  ‘We think the Cambridge curriculum is superb preparation for university.’
+Feedback from: Christoph Guttentag, Dean of Undergraduate Admissions, Duke University, USA
+© Cambridge University Press & Assessment September 2024
+Cambridge International Education is the name of our awarding body and a part of Cambridge University Press & Assessment, which is a 
+department of the University of Cambridge.
+Cambridge University Press & Assessment retains the copyright on all its publications. Registered centres are permitted to copy 
+material from this booklet for their own internal use. However, we cannot give permission to centres to photocopy any material that is 
+acknowledged to a third party even for internal use within a centre.
+=== PAGE 3 ===
+3www.cambridgeinternational.org/igcse
+Important: C hanges to this syllabus
+For information about changes to this syllabus for 2027, 2028 and 2029, go to page 28.
+Contents
+Why choose Cambridge? ............................................................................................... 2
+1 Why choose this syllabus?  ........................................................................................4
+2 Syllabus overview  .......................................................................................................7
+Aims 7
+Content overview 8
+Assessment overview 9
+Assessment objectives 10
+3 Subject content  .........................................................................................................11
+Accounting ratios 21
+4 Details of the assessment  .......................................................................................22
+Paper 1 – Multiple Choice  22
+Paper 2 – Structured Written Paper  22
+Command words 23
+5 What else you need to know  ................................................................................... 24
+Before you start 24
+Making entries 25
+Accessibility and equality  26
+After the exam 27
+How students and teachers can use the grades 27
+Changes to this syllabus for 2027 , 2028 and 2029 28
+=== PAGE 4 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029.
+4www.cambridgeinternational.org/igcseBack to contents page
+1 Why choose this syllabus? 
+Key benefits 
+Cambridge IGCSE is the world’s most popular international 
+qualification for 14 to 16 year olds, although it can be taken 
+by students at any age. Taught by over 5000 schools in 150 
+countries, it is tried, tested and trusted. 
+Students can choose from 70 subjects in any combination, 
+including 30 languages.
+Our programmes promote a thorough knowledge and 
+understanding of a subject and help to develop the skills 
+learners need for their next steps in education or employment. 
+Cambridge IGCSE Accounting  introduces learners to the 
+wide-ranging opportunities which come with having a firm 
+grounding in the purpose and role of accounting. Studying this 
+subject introduces learners to the foundations of recording transactions all the way through to completing 
+financial statements and analysing the results to make the most positive decisions.
+These transferable skills are an ideal foundation for further study and for a future career within accounting or 
+related professions.
+Our approach in Cambridge IGCSE Accounting encourages learners to be:
+confident, in using accounting terminology and concepts, selecting and analysing data to make informed 
+recommendations and communicating these effectively to stakeholders
+responsible, through considering the ethical concerns affecting accounting stakeholders and society
+reflective, by considering how quantitative data, as well as qualitative information available, helps form 
+evaluative decisions
+innovative, in understanding the rapidly changing pace of technology in accounting and identifying how it can 
+be used to enhance problem solving
+engaged, through developing an interest in the enormous impact accounting has on both the private and 
+public sectors and small and large organisations across the world.
+School feedback:  ‘The strength of Cambridge IGCSE qualifications is internationally 
+recognised and has provided an international pathway for our students to continue their studies 
+around the world.’
+Feedback from:  Gary Tan, Head of Schools and CEO, Raffles Group of Schools, Indonesia
+=== PAGE 5 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Why choose this syllabus?  
+5www.cambridgeinternational.org/igcseBack to contents page
+Qualifications that are recognised and valued worldwide
+Cambridge qualifications prepare and equip learners with the skills they need to thrive at university and beyond. 
+The world’s best higher education institutions recognise our qualifications and value the critical thinking skills, 
+independent research abilities and deep subject knowledge that Cambridge learners bring. 
+We continually work with universities and colleges in every part of the world to ensure that they understand and 
+accept our qualifications. Cambridge IGCSE provides a springboard to the Cambridge Advanced stage, as 
+well as other post-16 routes. The combination of knowledge and skills in Cambridge IGCSE Accounting gives 
+learners a solid foundation for further study. Candidates who achieve grades A* to C are well prepared to follow 
+a wide range of courses including Cambridge International AS & A Level Accounting.
+Many universities require a combination of Cambridge International AS & A Levels and Cambridge IGCSEs or 
+equivalent to meet their entry requirements.
+UK ENIC, the national agency in the UK for the recognition and comparison of international qualifications and 
+skills, has carried out an independent benchmarking study of Cambridge IGCSE and found it to be comparable 
+to the standard of the GCSE in the UK. This means students can be confident that their Cambridge IGCSE 
+qualifications are accepted as equivalent to UK GCSEs by leading universities worldwide.
+Learn more at www.cambridgeinternational.org/recognition
+School feedback:  ‘Cambridge IGCSE is one of the most sought-after and recognised 
+qualifications in the world. It is very popular in Egypt because it provides the perfect 
+preparation for success at advanced level programmes.’
+Feedback from:  Managing Director of British School of Egypt BSE
+=== PAGE 6 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Why choose this syllabus?  
+6www.cambridgeinternational.org/igcseBack to contents page
+Supporting teachers
+We believe education works best when teaching and learning are closely aligned to the curriculum, resources 
+and assessment. Our high-quality teaching support helps to maximise teaching time and enables teachers to 
+engage learners of all backgrounds and abilities. 
+We aim to provide the following support for each Cambridge qualification: 
+ • Syllabus
+ • Specimen question papers and mark schemes
+ • Specimen paper answers
+ • Schemes of Work
+ • Example candidate responses
+ • Past papers and mark schemes
+ • Principal examiner reports for teachers
+These resources are available on the School Support Hub at  www.cambridgeinternational.org/support , our 
+secure online site for Cambridge teachers. Your exams officer can provide you with a login. 
+Additional teaching & learning resources are also available for many syllabuses and vary according to 
+the nature of the subject and the structure of the assessment of each syllabus. These can include ready-
+built lesson materials, digital resources and multimedia for the classroom and homework, guidance on 
+assessment and much more. Beyond the resources available on the Schools Support Hub, a wide range 
+of endorsed textbooks and associated teaching and learning support are available from Cambridge at 
+www.cambridge.org/education  and from other publishers. Resources vary according to the nature of the 
+subject and the structure of the assessment of each syllabus.
+You can also contact our global Cambridge community or talk to a senior examiner on our discussion forums.
+Sign up for email notifications about changes to syllabuses, including new and revised products and services, 
+at www.cambridgeinternational.org/syllabusupdates
+Professional development
+Find the next step on your professional development journey. 
+ • Introduction courses  – An introduction to Cambridge programmes and qualifications. For teachers who 
+are new to Cambridge programmes or new to a specific syllabus.  
+ • Focus on Teaching courses – These are for teachers who want to explore a specific area of teaching 
+and learning within a syllabus or programme.  
+ • Focus on Assessment courses  – These are for teachers who want to understand the assessment of a 
+syllabus in greater depth.
+ • Marking workshops  – These workshops help you become more familiar with what examiners are looking 
+for, and provide an opportunity to raise questions and share your experiences of the syllabus.  
+ • Enrichment Professional Development – Transform your approach to teaching with our Enrichment 
+workshops. Each workshop focuses on a specific area of teaching and learning practice.
+ • Cambridge Professional Development Qualifications (PDQs)  – Practice-based programmes that 
+transform professional learning for practicing teachers. Available at Certificate and Diploma level.
+For more information visit www.cambridgeinternational.org/support-for-teachers
+Supporting exams officers
+We provide comprehensive support and guidance for all Cambridge exams officers.  
+Find out more at: www.cambridgeinternational.org/eoguide
+=== PAGE 7 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029.
+7www.cambridgeinternational.org/igcseBack to contents page
+2 Syllabus overview 
+Aims
+The aims describe the purposes of a course based on this syllabus. 
+The aims are to enable students to:
+ • explore the purpose and role of accounting for businesses, non-trading organisations and individuals, as 
+well as considering the impact on society as a whole 
+ • build a confident working knowledge of key accounting terms, concepts, techniques and processes to 
+understand the skills required to succeed in this industry
+ • develop numeracy and literacy skills, as well as building confidence in communication, presentation, 
+interpretation, analysis and evaluation
+ • explore technological factors influencing the world of modern accounting to understand the practicalities of 
+the field
+ • develop an understanding of sustainability and ethical considerations and how these impact accountants 
+and business owners
+ • discover the impact and importance of accounting, inspiring an interest that could lead to further study or 
+employment.
+We are an education organisation and politically neutral. The contents of this syllabus,  
+examination papers and associated materials do not endorse any political view. We endeavour to treat all 
+aspects of the exam process neutrally.
+=== PAGE 8 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Syllabus overview  
+8www.cambridgeinternational.org/igcseBack to contents page
+Content overview
+1 The fundamentals of accounting
+1.1 The purpose of accounting
+1.2 The accounting equation
+2 Sources and recording of data
+2.1 The double entry system of book-keeping
+2.2 Business documents
+2.3 Books of prime entry
+3 Verification of accounting records
+3.1 The trial balance
+3.2 Correction of errors
+3.3 Bank reconciliation 
+3.4 Control accounts 
+4 Accounting procedures
+4.1 Capital and revenue expenditure and receipts 
+4.2 Accounting for depreciation and disposal of non-current assets 
+4.3 Other payables and other receivables 
+4.4 Irrecoverable debts and allowance for irrecoverable debts 
+4.5 Valuation of inventory
+5 Preparation of financial statements
+5.1 Sole traders
+5.2 Partnerships
+5.3 Limited companies 
+5.4 Manufacturing accounts
+5.5 Clubs and societies 
+5.6 Incomplete records 
+6 Analysis and interpretation
+6.1 Calculation and understanding of accounting ratios 
+6.2 Interpretation of accounting ratios
+6.3 Inter-business comparison 
+6.4 Interested parties 
+6.5 Limitations of accounting statements 
+7 Accounting concepts and modern practice 
+7 .1 Accounting concepts 
+7.2 Ethical considerations 
+7.3 Technology and sustainability 
+Accounting ratios
+The accounting ratios are given in full.
+=== PAGE 9 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Syllabus overview  
+9www.cambridgeinternational.org/igcseBack to contents page
+Assessment overview
+All candidates take two papers. Candidates will be eligible for grades A* to G.
+All candidates take: and:
+Paper 1 1 hour 30 minutes 
+Multiple Choice 30%
+40 marks
+Candidates answer 40 multiple-choice questions.
+Externally assessed
+Paper 2 1 hour 45 minutes 
+Structured Written Paper 70%
+100 marks
+Candidates answer five compulsory questions.
+Externally assessed 
+Information on availability is in the Before you start section .
+=== PAGE 10 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Syllabus overview  
+10www.cambridgeinternational.org/igcseBack to contents page
+Assessment objectives
+The assessment objectives (AOs) are:
+AO1 Knowledge and understanding
+ • Demonstrate knowledge and understanding of facts, terms, concepts, policies, procedures and 
+techniques. 
+ • Apply this knowledge and understanding to a variety of accounting situations and problems, and present 
+outcomes in an appropriate form.
+AO2 Analysis
+ • Select, calculate and interpret relevant data and information.
+ • Analyse financial accounting information.
+ • Communicate outcomes in the most appropriate form.
+AO3 Evaluation
+ • Interpret and evaluate accounting information and draw conclusions.
+Weighting for assessment objectives
+The approximate weightings allocated to each of the assessment objectives (AOs) are summarised below.
+Assessment objectives as a percentage of the qualification
+Assessment objective Weighting in IGCSE %
+AO1 Knowledge and understanding 66
+AO2 Analysis 24
+AO3 Evaluation 10
+Total 100
+Assessment objectives as a percentage of each component
+Assessment objective Weighting in components %
+Paper 1 Paper 2
+AO1 Knowledge and understanding 80 60
+AO2 Analysis 20 25
+AO3 Evaluation 0 15
+Total 100 100
+=== PAGE 11 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029.
+11www.cambridgeinternational.org/igcseBack to contents page
+3 Subject content 
+This syllabus gives you the flexibility to design a course that will interest, challenge and engage your learners. 
+Where appropriate you are responsible for selecting  resources and examples and subject contexts to support 
+your learners’ study. These should be appropriate for the learners’ age, cultural background and learning 
+context as well as complying with your school policies and local legal requirements.
+In all of the following, candidates are required to apply their understanding to a variety of accounting scenarios. 
+Candidates should be able to make simple decisions based upon the analysis and evaluation of information 
+provided.
+1 The fundamentals of accounting
+This topic introduces the subject by explaining the difference between book-keeping and accounting. The 
+role of accounting in providing information and the purposes of measuring business profit and loss are also 
+explored. Basic accounting terms and the accounting equation are introduced.
+1.1 The purpose of accounting
+Candidates should have an understanding of: 
+ • the difference between book-keeping and accounting
+ • the purposes of measuring business profit and loss
+ • the role of accounting in providing information for monitoring progress and decision-making
+1.2 The accounting equation
+Candidates should have an understanding of: 
+ • assets, liabilities and owner’s equity
+ • the accounting equation
+ • how to apply the accounting equation  
+=== PAGE 12 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+12www.cambridgeinternational.org/igcseBack to contents page
+2 Sources and recording of data
+The main focus of this topic is the double entry system of book-keeping and how this is applied in the 
+preparation of ledger accounts. The division of the ledger is considered. Business documents and their 
+use as sources of information are also included. Consideration is given to the procedures for processing 
+information in books of prime entry.
+2.1 The double entry system of book-keeping
+Candidates should have an understanding of:
+ • the double entry system of book-keeping
+ • how to prepare ledger accounts
+ • how to post transactions to the ledger accounts
+ • how to calculate ledger account balances and make transfers to financial statements
+ • how to interpret ledger accounts and their balances
+ • ledger accounts that may be presented using a three-column running balance format
+ • the division of the ledger into the sales ledger, the purchases ledger and the nominal (general) ledger
+ • how ledger accounts can be kept digitally 
+Note: Candidates do not need to explain or use folio columns.
+2.2 Business documents
+Candidates should have an understanding of:
+ • business documents: invoice, debit note, credit note, cheque counterfoil, paying-in slip, receipt, bank 
+statement, statement of account  
+ • how these business documents are used as sources of information
+ • these business documents being produced and recorded manually or digitally 
+2.3 Books of prime entry
+Candidates should have an understanding of:
+ • how to process accounting data in the books of prime entry: cash book, petty cash book, sales journal, 
+purchases journal, sales returns journal, purchases returns journal and the general journal
+ • how to post the ledger entries from the books of prime entry
+ • trade discount and cash discount and how these are treated 
+ • the dual function of the cash book as a book of prime entry and as a ledger account for bank and cash
+ • how to record receipts and payments made by cash, cheques, debit and credit cards, online and bank 
+transfers
+ • the purpose of the imprest system of petty cash 
+ • how to apply the imprest system 
+ • the benefits and limitations of keeping cash at the business property 
+ • the benefits and limitations of using manual methods for the original entry of business transactions 
+ • the benefits and limitations of using digital methods for the original entry of business transactions 
+=== PAGE 13 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+13www.cambridgeinternational.org/igcseBack to contents page
+3 Verification of accounting records
+This topic concentrates on the use of trial balances, bank reconciliation statements and control accounts as 
+means of verifying accounting records. The procedures for the correction of errors are also covered.
+3.1 The trial balance
+Candidates should have an understanding of:
+ • the purposes and limitations of a trial balance
+ • how to prepare a trial balance from a given list of balances and amend a trial balance which contains 
+errors
+ • the types of errors which do not affect the trial balance: commission, compensating, complete reversal, 
+omission, original entry, principle
+3.2 Corrections of errors
+Candidates should have an understanding of:
+ • how to correct errors using journal entries
+ • the use of a suspense account as a temporary measure to balance the trial balance
+ • how to correct errors using a suspense account
+ • how to adjust a profit or loss for an accounting period after the correction of errors
+ • the effect of correction of errors on a statement of financial position
+3.3 Bank reconciliation
+Candidates should have an understanding of:
+ • the use and purpose of a bank statement
+ • how to update the cash book for bank charges, bank interest paid and received, correction of errors, 
+credit transfers, direct debits, and standing orders
+ • the purpose and preparation of a bank reconciliation statement to include bank errors, uncredited 
+deposits and unpresented cheques
+ • the impact of digital business transactions on the bank reconciliation process
+3.4 Control accounts
+Candidates should have an understanding of:
+ • the purposes of purchases ledger and sales ledger control accounts
+ • the books of prime entry as sources of information for the control account entries
+ • how to prepare purchases ledger and sales ledger control accounts to include credit purchases and 
+sales, receipts and payments, cash discounts, returns, irrecoverable debts, dishonoured cheques, 
+interest on overdue accounts, contra entries, refunds, opening and closing balances (debit and credit 
+within each account)
+ • the impact of digital recording of business transactions on the preparation and use of control accounts
+Note: Candidates do not need to reconcile control account balances with the sales and purchases ledger 
+balances.
+=== PAGE 14 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+14www.cambridgeinternational.org/igcseBack to contents page
+4 Accounting procedures
+Within this topic, consideration is given to the importance of distinguishing between capital and revenue 
+expenditure and receipts. Non-current assets are further explored in terms of accounting for depreciation 
+and disposals. Procedures to record adjustments for accruals and prepayments, irrecoverable debts, 
+provision of doubtful debts and the recovery of debts written off are included. Inventory valuation, and its 
+impact on financial statements, is also covered.
+4.1 Capital and revenue expenditure and receipts
+Candidates should have an understanding of:
+ • the distinction between capital expenditure and revenue expenditure
+ • how to account for capital expenditure and revenue expenditure
+ • the distinction between capital receipts and revenue receipts
+ • how to account for capital receipts and revenue receipts
+ • how to identify and calculate the effect on profit of incorrect treatment
+ • how to identify and calculate the effect on asset valuations of incorrect treatment
+4.2 Accounting for depreciation and disposal of non-current assets
+Candidates should have an understanding of:
+ • the meaning of depreciation
+ • the need to account for depreciation
+ • how to calculate depreciation using the straight-line, reducing balance and revaluation methods 
+ • the appropriate methods of depreciation that can be applied to different types of non-current assets 
+ • how to prepare journal entries and ledger accounts to record depreciation
+ • how to prepare journal entries to record the purchase and sale of non-current assets
+ • how to prepare ledger accounts to record the purchase and sale of non-current assets: non-current 
+asset account, provision for depreciation account, and disposal of non-current asset account 
+ • how to calculate profit or loss on disposal of a non-current asset 
+4.3 Other payables and other receivables
+Candidates should have an understanding of:
+ • the importance of matching costs and revenues
+ • how to apply the matching / accruals concepts by using accruals and pre-payments 
+ • how to prepare journal entries and ledger accounts to record accrued and prepaid expenses
+ • how to prepare journal entries and ledger accounts to record accrued and prepaid incomes
+=== PAGE 15 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+15www.cambridgeinternational.org/igcseBack to contents page
+4.4 Irrecoverable debts and allowance for irrecoverable debts
+Candidates should have an understanding of:
+ • the meaning of irrecoverable debts and irrecoverable debts recovered
+ • how to prepare journal entries and ledger accounts to record irrecoverable debts
+ • how to prepare journal entries and ledger accounts to record irrecoverable debts recovered
+ • the need for maintaining an allowance for irrecoverable debts
+ • how to prepare journal entries and ledger accounts to record the creation of, and adjustments to, an 
+allowance for irrecoverable debts
+4.5 Valuation of inventory
+Candidates should have an understanding of:
+ • the valuation of inventory at the lower of cost and net realisable value
+ • how to calculate the value of inventory  
+ • the effect of an incorrect valuation of inventory on gross profit, profit for the year, equity and asset 
+valuation
+5 Preparation of financial statements
+The focus of this topic is the preparation of financial statements, including year-end adjustments, for different 
+types of businesses (sole traders, partnerships and limited companies). Consideration is also given to the 
+financial statements of clubs and societies and manufacturing businesses. The procedures employed when 
+only incomplete records are available are also covered.
+5.1 Sole traders
+Candidates should have an understanding of:
+ • the advantages and disadvantages of operating as a sole trader
+ • how a sole trader can be a trading, service, manufacturing business or a combination of these 
+ • the importance of preparing statements of profit or loss and statements of financial position 
+ • how to prepare statements of profit or loss for trading, service, manufacturing businesses, or businesses 
+which are a combination of these 
+ • the importance of producing statements of financial position to record assets and liabilities on a specified 
+date
+ • how to define the content of a statement of financial position: non-current assets, intangible assets, 
+current assets, current liabilities, non-current liabilities and capital
+ • the effect of a change in an account balance on other account balances in the financial statements 
+ • how to prepare statements of financial position for trading, service, manufacturing businesses, or 
+businesses which are a combination of these
+ • how to make adjustments for accumulated depreciation using the straight line, reducing balance and 
+revaluation methods
+ • how to make adjustments for accrued and prepaid expenses and accrued and prepaid income
+ • how to make adjustments for irrecoverable debts and allowance for irrecoverable debts
+ • how to make adjustments for drawings: goods and other assets taken by the owner, owner’s private 
+expenses paid by the business
+=== PAGE 16 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+16www.cambridgeinternational.org/igcseBack to contents page
+5.2 Partnerships
+Candidates should have an understanding of:
+ • how a partnership can be a trading, service, manufacturing business or a combination of these 
+ • the advantages and disadvantages of forming a partnership
+ • the importance and contents of a partnership agreement
+ • the purpose of an appropriation account
+ • how to prepare statements of profit or loss, appropriation accounts and statements of financial position
+ • how to record interest on partners’ loans, interest on capital, interest on drawings, partners’ salaries and 
+the division of the balance of profit or loss
+ • how to make adjustments to financial statements as detailed in 5.1 (sole traders)
+ • the uses of and differences between partners’ capital and current accounts
+ • how to prepare partners’ capital and current accounts in ledger account form and as part of a statement 
+of financial position
+Note: Candidates will not be required to answer questions on the dissolution of a partnership, changes to a 
+profit-sharing ratio or a limited liability partnership. 
+Candidates will not be required to prepare financial statements on the admission/departure of a partner.
+5.3 Limited companies
+Candidates should have understanding of:
+ • how a limited company can be a trading, service, manufacturing business or a combination of these 
+ • the advantages and disadvantages of operating as a limited company
+ • the term ‘limited liability’
+ • the term ‘equity’
+ • the capital structure of a limited company comprising preference share capital, ordinary share capital, 
+general reserve and retained earnings
+ • the features of ordinary share capital and loan capital (debentures)
+ • share capital: issued, called-up, and paid-up 
+ • how to prepare statements of profit or loss, statements of changes in equity and statements of financial 
+position
+ • how to make adjustments to financial statements as detailed in 5.1 (sole traders)
+=== PAGE 17 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+17www.cambridgeinternational.org/igcseBack to contents page
+5.4 Manufacturing accounts
+Candidates should have an understanding of:
+ • direct and indirect costs
+ • direct material, direct labour, prime cost and factory overheads
+ • how to make adjustments for work in progress
+ • how to calculate factory cost of production
+ • how to prepare manufacturing accounts, statements of profit or loss and statements of financial position 
+ • how to make adjustments to financial statements as detailed in 5.1 (sole traders)
+5.5 Clubs and societies
+Candidates should have an understanding of:
+ • receipts and payments accounts and income and expenditure accounts
+ • how to prepare receipts and payments accounts
+ • how to prepare accounts for revenue-generating activities, e.g. refreshments, subscriptions
+ • how to prepare income and expenditure accounts and statements of financial position
+ • how to make adjustments to financial statements as detailed in 5.1 (sole traders)
+ • how to define and calculate the accumulated fund
+5.6 Incomplete records
+Candidates should have an understanding of:
+ • why businesses keep different types of accounting records rather than using the full double entry system  
+ • the advantages and disadvantages of not maintaining a full set of accounting records
+ • how to prepare opening and closing statements of affairs
+ • how to calculate profit or loss for the year from changes in capital over time
+ • how to calculate sales, purchases, gross profit, trade receivables and trade payables and other figures 
+from incomplete information
+ • how to prepare statements of profit or loss and statements of financial position from incomplete records
+ • how to make adjustments to financial statements as detailed in 5.1 (sole traders)
+ • how to apply the techniques of mark-up, margin and inventory turnover to arrive at missing figures
+Note: Candidates will only be asked questions on incomplete records in relation to sole trader businesses.
+Candidates will not be asked questions on incomplete records for service or manufacturing businesses.
+=== PAGE 18 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+18www.cambridgeinternational.org/igcseBack to contents page
+6 Analysis and interpretation
+This topic introduces the calculation and the interpretation of the main accounting ratios. The use of ratios in 
+inter-firm comparison is also included. Consideration is also given to the uses of accounting information by 
+interested parties. The limitations of accounting statements are also explored.
+6.1 Calculation and understanding of accounting ratios
+Candidates should have an understanding of and know how to calculate the following ratios:
+ • gross profit margin
+ • mark-up 
+ • profit margin
+ • return on capital employed (ROCE)
+ • current (working capital) ratio 
+ • acid test (liquid) ratio 
+ • rate of inventory turnover (times)
+ • inventory turnover (days) 
+ • trade receivables turnover (days)
+ • trade payables turnover (days)
+Note: Candidates must use the formulas given in the Accounting ratios included at the end of this section. 
+These are the only formulas accepted in candidate responses.
+6.2 Interpretation of accounting ratios
+Candidates should have an understanding of: 
+ • how to prepare and comment on statements showing comparison of results for different years
+ • how to interpret the ratios calculated in 6.1 
+ • make suggestions and recommendations for improving profitability, liquidity and working capital 
+ • the gross profit margin and the profit margin as indicators of a business’s profitability 
+ • how gross profit for the year can be affected by the valuation of inventory, sales quantity and changes in 
+selling and purchasing prices
+ • how profit for the year can be affected by changes in gross profit, other income and expenses 
+ • the reasons for the difference between cash and profit 
+6.3 Inter-business comparison
+Candidates should have an understanding of: 
+ • the factors that may affect the ratios of two businesses 
+ • the problems of inter-business comparison
+=== PAGE 19 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+19www.cambridgeinternational.org/igcseBack to contents page
+6.4 Interested parties
+Candidates should have an understanding of how accounting information may be used for decision-making 
+by the following interested parties:
+ • owners
+ • managers
+ • employees
+ • banks
+ • investors and lenders 
+ • suppliers
+ • customers 
+ • governments / tax authorities 
+ • club members
+ • other interested parties, e.g. public and environmental bodies
+6.5 Limitations of accounting statements
+Candidates should have an understanding of the limitations of accounting statements due to the following 
+factors:
+ • historic cost
+ • application of accounting policies 
+ • non-financial aspects for example, skill of the workforce, location of the business, economic climate
+7 Accounting concepts and modern practice
+The main accounting concepts are introduced together with how they are applied in accounting records 
+and statements. Consideration is also given to meet the need to operate within an ethical framework in 
+accounting and an awareness of the role that technology can play in modern accounting practice.
+7.1 Accounting concepts
+Candidates should have an understanding of:
+ • business entity
+ • consistency
+ • duality
+ • going concern
+ • historic cost
+ • matching / accruals
+ • materiality
+ • money measurement
+ • prudence
+ • realisation
+=== PAGE 20 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+20www.cambridgeinternational.org/igcseBack to contents page
+7.2 Ethical considerations
+Candidates should have an understanding of: 
+ • the need for an ethical framework in accounting
+ • the fundamental principles of: 
+– integrity 
+– objectivity
+– professional competence and due care
+– confidentiality
+– professional behaviour
+ • the significance to stakeholders and society of applying an ethical framework
+7.3 Technology and sustainability
+Candidates should have an understanding of:
+ • the use of digital applications for all or part of the accounting records 
+ • the need to store accounting data safely and sustainably  
+ • the risks associated with not storing accounting data safely and sustainably  
+ • the different types of storage systems: manual, data storage devices, cloud services, other digital 
+services 
+ • the advantages and disadvantages of the different types of storage systems
+Note: Candidates do not need to have knowledge of or access to specific accounting software packages or 
+programs.
+=== PAGE 21 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Subject content 
+21www.cambridgeinternational.org/igcseBack to contents page
+Accounting ratios
+Candidates should know the following accounting ratios:
+Profitability ratios
+Gross profit margin (%) Gross profit
+Revenue × 100
+Mark-up (%) Gross profit
+Cost of sales × 100
+Profit margin (%) Profit for the year
+Revenue × 100
+Return on capital employed (ROCE) (%) Profit for the year before interest
+Capital employed × 100
+Capital employed = issued shares + reserves + non-current 
+liabilities
+Liquidity ratios
+Current (working capital) ratio Current assets
+Current liabilities
+Answer presented as a ratio
+Acid test (liquid) ratio Current assets – inventory
+Current liabilities
+Answer presented as a ratio
+Efficiency ratios
+Rate of inventory turnover (times) Cost of sales
+Average inventory
+Inventory turnover (days) Average inventory
+Cost of sales  × 365 days
+Trade receivables turnover (days) Trade receivables
+Credit sales  × 365 days
+Trade payables turnover (days) Trade payables
+Credit purchases  × 365 days
+Faculty feedback:  ‘Understanding how and why our climate is changing and providing the 
+knowledge and skills to explore the challenges plays a key role in every student’s education.’
+Feedback from:  Dr Amy Munro-Faure, Head of Education and Student Engagement of Cambridge Zero
+=== PAGE 22 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029.
+22www.cambridgeinternational.org/igcseBack to contents page
+4 Details of the assessment 
+Paper 1 – Multiple Choice 
+Multiple-choice paper, 1 hour 30 minutes, 40 marks
+This is a compulsory paper consisting of 40 multiple-choice questions. 
+Questions are based on all the subject content.
+Candidates answer all questions. There will be questions that require candidates to perform calculations. 
+Calculators may be used in the examination.
+The paper assesses the following assessment objectives:
+AO1 Knowledge and understanding 
+AO2 Analysis
+Paper 2 – Structured Written Paper 
+Written paper, 1 hour 45 minutes, 100 marks
+This is a compulsory structured paper consisting of five questions worth 20 marks each.  
+Questions are based on all the subject content.
+Candidates answer all questions. 
+All questions are based on stimulus material followed by a variety of tasks. Candidates may be required to 
+perform calculations, complete a cash book, complete an incomplete statement of accounts, or prepare 
+accounts based on information given in the question, or prepare suspense accounts and journal entries.
+By completing authentic tasks candidates are given the opportunity to show their knowledge and 
+understanding of the concepts, purposes and procedures of accounting. Candidates are expected to analyse 
+financial data and evaluate outcomes.
+Candidates should use the marks for each question as a guide to the amount of detail and length of response 
+expected for a question, and to help them manage their time effectively.
+Calculators may be used in the examination.
+The paper assesses the following assessment objectives: 
+AO1 Knowledge and understanding
+AO2 Analysis 
+AO3 Evaluation
+=== PAGE 23 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. Details of the assessment  
+23www.cambridgeinternational.org/igcseBack to contents page
+Command words
+Command words and their meanings help candidates know what is expected from them in the exams. The 
+table below includes command words used in the assessment for this syllabus. The use of the command word 
+will relate to the subject context.
+Command word What it means
+Advise write down a suggested course of action in a given situation
+Analyse examine in detail to show meaning, identify elements and the relationship between 
+them
+Calculate work out from given facts, figures or information
+Compare identify/comment on similarities and/or differences
+Define give precise meaning
+Demonstrate show how or give an example
+Describe state the points of a topic / give characteristics and main features
+Discuss write about issue(s) or topic(s) in depth in a structured way
+Evaluate judge or calculate the quality, importance, amount, or value of something
+Explain set out purposes or reasons / make the relationships between things clear / say why 
+and/or how and support with relevant evidence
+Give produce an answer from a given source or recall/memory
+Identify name/select/recognise
+Justify support a case with evidence/argument
+Prepare present information in a suitable format
+State express in clear terms
+Suggest apply knowledge and understanding to situations where there are a range of valid 
+responses in order to make proposals / put forward considerations
+=== PAGE 24 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029.
+24www.cambridgeinternational.org/igcseBack to contents page
+5 What else you need to know 
+This section is an overview of other information you need to know about this syllabus. It will help to share the 
+administrative information with your exams officer so they know when you will need their support. Find more 
+information about our administrative processes at www.cambridgeinternational.org/eoguide
+Before you start
+Previous study
+We recommend that learners starting this course should have studied a broad curriculum such as the 
+Cambridge Lower Secondary programme or equivalent national educational framework.
+We do not expect learners starting this course to have previously studied accounting. 
+Guided learning hours
+We design Cambridge IGCSE syllabuses to require about 130 guided learning hours for each subject. This is 
+for guidance only. The number of hours a learner needs to achieve the qualification may vary according to each 
+school and the learners’ previous experience of the subject.
+Availability and timetables 
+All Cambridge schools are allocated to one of six administrative zones. Each zone has a specific timetable.  
+Find your administrative zone at www.cambridgeinternational.org/adminzone  
+You can view the timetable for your administrative zone at www.cambridgeinternational.org/timetables
+You can enter candidates in the June and November exam series. If your school is in India, you can also enter 
+your candidates in the March exam series.
+Check you are using the syllabus for the year the candidate is taking the exam. 
+Private candidates can enter for this syllabus. For more information, please refer to the Cambridge Guide to 
+Making Entries. 
+Combining with other syllabuses
+Candidates can take this syllabus alongside other Cambridge International syllabuses in a single exam series. 
+The only exceptions are:
+ • Cambridge IGCSE (9–1) Accounting (0985)
+ • Cambridge O Level Accounting (7707)
+ • syllabuses with the same title at the same level.
+Cambridge IGCSE, Cambridge IGCSE (9–1) and Cambridge O Level syllabuses are at the same level.
+=== PAGE 25 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. What else you need to know  
+25www.cambridgeinternational.org/igcseBack to contents page
+Group awards: Cambridge ICE 
+Cambridge ICE (International Certificate of Education) is a group award for Cambridge IGCSE. It encourages 
+schools to offer a broad and balanced curriculum by recognising the achievements of learners who pass exams 
+in a range of different subjects. 
+Learn more about Cambridge ICE at www.cambridgeinternational.org/cambridgeice
+Making entries
+Exams officers are responsible for submitting entries. We encourage them to work closely with you to make 
+sure they enter the right number of candidates for the right combination of syllabus components. Entry option 
+codes and instructions for submitting entries are in the Cambridge Guide to Making Entries. Your exams officer 
+has access to this guide.
+Exam administration
+To keep our exams secure, we produce question papers for different areas of the world, known as 
+administrative zones. We allocate all Cambridge schools to an administrative zone determined by their location. 
+Each zone has a specific timetable. 
+Some of our syllabuses offer candidates different assessment options. An entry option code is used to identify 
+the components the candidate will take relevant to the administrative zone and the available assessment 
+options.
+Support for exams officers
+We know how important exams officers are to the successful running of exams. We provide them with the 
+support they need to make entries on time. Your exams officer will find this support, and guidance for all other 
+phases of the Cambridge Exams Cycle, at www.cambridgeinternational.org/eoguide
+Retakes
+Candidates can retake the whole qualification as many times as they want to. Information on retake entries is at 
+www.cambridgeinternational.org/retakes  
+Language
+This syllabus and the related assessment materials are available in English only. 
+=== PAGE 26 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. What else you need to know  
+26www.cambridgeinternational.org/igcseBack to contents page
+Accessibility and equality
+Syllabus and assessment design 
+At Cambridge we recognise that our candidates have highly diverse socio-economic, cultural and linguistic 
+backgrounds, and may also have a variety of protected characteristics. Protected characteristics include 
+special educational needs and disability (SEND), religion and belief, and characteristics related to gender and 
+identity. 
+We follow accessible design principles to make our syllabuses and assessment materials as accessible and 
+inclusive as possible. We review language accessibility, visual resources, question layout and the contexts 
+used in questions. Using this approach means that we give all candidates the fairest possible opportunity to 
+demonstrate their knowledge, skills and understanding.
+Access arrangements 
+Our design principles aim to make sure our assessment materials are accessible for all candidates. To further 
+minimise barriers faced by candidates with SEND, illness or injury, we offer a range of access arrangements 
+and modified papers. This is the principal way in which we comply with our duty to make ‘reasonable 
+adjustments’, as guided by the UK Equality Act 2010. 
+Important: 
+Requested access arrangements should be based on evidence of the candidate’s barrier to taking an 
+assessment and should also reflect their normal way of working. This is explained in section 1.3 of the 
+Cambridge Handbook www.cambridgeinternational.org/eoguide
+ • For Cambridge to approve an access arrangement, we need to agree that it constitutes a reasonable 
+adjustment and does not affect the security or integrity of the assessment. 
+ • Details of our standard access arrangements and modified question papers are available in section 1.3 of 
+the Cambridge Handbook www.cambridgeinternational.org/eoguide  
+ • Centres are expected to check the availability of access arrangements and modified question papers at 
+the start of the course. All applications should be made by the deadlines published in section 1.3 of the 
+Cambridge Handbook www.cambridgeinternational.org/eoguide
+ • Contact us at the start of the course to find out if we can approve an access arrangement that is not 
+included in the list of standard access arrangements.
+ • Candidates who cannot access parts of the assessment may be able to receive an award based on the 
+parts they have completed.
+=== PAGE 27 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. What else you need to know  
+27www.cambridgeinternational.org/igcseBack to contents page
+After the exam
+Grading and reporting
+Grades A*, A, B, C, D, E, F or G indicate the standard a candidate achieved at Cambridge IGCSE. 
+A* is the highest and G is the lowest. ‘Ungraded’ means that the candidate’s performance did not meet the 
+standard required for grade G. ‘Ungraded’ is reported on the statement of results but not on the certificate. 
+In specific circumstances your candidates may see one of the following letters on their statement of results:
+ • Q (PENDING)
+ • X (NO RESULT).
+These letters do not appear on the certificate.
+On the statement of results, Cambridge IGCSE is shown as INTERNATIONAL GENERAL CERTIFICATE OF 
+SECONDARY EDUCATION (IGCSE).
+On certificates, Cambridge IGCSE is shown as International General Certificate of Secondary Education.
+How students and teachers can use the grades
+Assessment at Cambridge IGCSE has two purposes:
+1 to measure learning and achievement
+ The assessment confirms achievement and performance in relation to the knowledge, understanding and 
+skills specified in the syllabus.
+2 to show likely future success
+ The outcomes help predict which students are well prepared for or likely to be successful in a particular 
+course or career. 
+ The outcomes help students choose the most suitable course or career.
+=== PAGE 28 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. What else you need to know  
+28www.cambridgeinternational.org/igcseBack to contents page
+Changes to this syllabus for 2027 , 2028 and 2029
+The syllabus has been reviewed and revised for first examination in 2027.
+You must read the whole syllabus before planning your teaching programme.
+Changes to syllabus content  • The syllabus aims have been updated.
+ • We have included a description of how the syllabus can support 
+students to develop as Cambridge Learners.
+ • The list of command words has been updated.
+Subject content 
+ • The subject content has been revised and updated. 
+ • The order of some of the content has changed and wording has 
+been updated to improve clarity.
+ • New content has been added – 7.2 Ethical considerations and 7.3 
+Technology and sustainability. 
+ • The title for Topic 7 has changed to ‘Accounting concepts and 
+modern practice’.
+ • An introductory explanation for each of the topics has been added.
+ • The accounting ratios have been updated. 
+ • The international standards list has been removed from the syllabus.
+Changes to assessment 
+(including changes to 
+specimen papers)
+Assessment objectives
+ • The wording of the assessment objectives have been updated. The 
+newly worded assessment objectives test the same knowledge and 
+skills as in the previous syllabus.
+ • In the ‘Assessment objectives as a percentage of the qualification’ 
+table we have rounded AO1 and AO2 differently.
+Paper 1
+ • The number of questions/marks has increased from 35 to 40. 
+ • The duration has increased from 1 hour 15 minutes to 1 hour 30 
+minutes. 
+Paper 2 
+ • There are no changes to Paper 2.
+=== PAGE 29 ===
+Cambridge IGCSE Accounting 0452 syllabus for 2027, 2028 and 2029. What else you need to know  
+29www.cambridgeinternational.org/igcseBack to contents page
+In addition to reading the syllabus, you should refer to the updated specimen assessment materials. The 
+specimen papers will help your students become familiar with exam requirements and command words in 
+questions. The specimen mark schemes show how students should answer questions to meet the assessment 
+objectives.
+Any textbooks endorsed to support the syllabus for examination from 2027 are suitable for use 
+with this syllabus.   
+Syllabuses and specimen materials represent the final authority on the content and structure of all of our 
+assessments. 
+With a Customer Services team available 24 hours a day, 6 days a week, and dedicated regional teams 
+supporting schools in 160 countries, we understand your local context and are here to guide you so you can 
+provide your learners with everything they need to prepare for Cambridge IGCSE.
+Quality management
+We are committed to providing exceptional quality. In line with this commitment, our quality management 
+system for the provision of international education programmes and qualifications for students aged 5 to 19 
+is independently certified as meeting the internationally recognised standard, ISO 9001:2015.  
+Learn more at www.cambridgeinternational.org/about-us/our-standards/
+=== PAGE 30 ===
+School feedback:  ‘While studying Cambridge IGCSE and Cambridge International A Levels, students 
+broaden their horizons through a global perspective and develop a lasting passion for learning.’
+Feedback from: Zhai Xiaoning, Deputy Principal, The High School Affiliated to Renmin University of China
+We are committed to making our documents accessible in accordance with the WCAG 2.1 Standard. We are always looking to improve 
+the accessibility of our documents. If you find any problems or you think we are not meeting accessibility requirements, contact us at 
+info@cambridgeinternational.org  with the subject heading: Digital accessibility. If you need this document in a different format, contact 
+us and supply your name, email address and requirements and we will respond within 15 working days.
+Cambridge International Education, The Triangle Building, Shaftesbury Road, Cambridge, CB2 8EA, United Kingdom
+t : +44 (0)1223 553554  email : info@cambridgeinternational.org  www.cambridgeinternational.org
+© Cambridge University Press & Assessment September 2024

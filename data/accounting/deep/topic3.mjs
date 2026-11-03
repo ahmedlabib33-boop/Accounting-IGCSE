@@ -2,15 +2,16 @@
 // Not Cambridge-authored. All businesses, figures and questions are invented for this app.
 export const topic = {
   id: "3",
-  name: "Checking records",
+  name: "Verification of accounting records",
   sections: [
     {
       section: "3.1",
-      title: "Trial balance",
+      title: "The trial balance",
       summary: "A trial balance is a list of every ledger balance on one date, with debit balances in one column and credit balances in the other. If the two columns agree, the arithmetic of the double entry is probably correct. Agreement does not prove that every entry is right, because six types of error leave the totals equal.",
       objectives: [
-        "Explain the purpose of a trial balance and what it can and cannot prove.",
+        "Explain the purposes and the limitations of a trial balance.",
         "Prepare a trial balance from a list of ledger balances, placing each balance in the correct column.",
+        "Amend a trial balance which contains errors, such as balances in the wrong column, items that should not be included or figures copied wrongly.",
         "Decide which column an unfamiliar balance belongs in by asking what kind of account it is.",
         "Identify and explain the six types of error that are not revealed by a trial balance.",
         "Recognise errors that do make a trial balance disagree, such as one-sided entries and wrong additions.",
@@ -54,8 +55,12 @@ export const topic = {
           body: "Start with a heading that names the business and says Trial balance at, followed by the date. A trial balance is always at one date, never for a period. Then list the accounts in a sensible order. Many students use the order of the financial statements: revenue and expenses first, then assets, liabilities, capital and drawings. Any order is accepted as long as every balance appears once.\n\nWrite each balance in only one column. Use the rules in the table above. If you are unsure, think about the entries that built the balance. Rent received came from Dr Bank, Cr Rent received, so its balance is a credit.\n\nFinally add both columns and write the totals on the same line. If they agree, rule them off. If they do not agree, do not force them. Find the difference, check the additions and the postings, and if the error is still hidden, enter the difference in a suspense account so that the totals agree for now.",
         },
         {
-          heading: "What agreement does and does not prove",
-          body: "When the two totals agree, the double entry is arithmetically complete: for every debit there has been an equal credit. This is useful, but it is a limited test. The trial balance only compares totals. It cannot see whether an entry went to the right account, whether the amount was the right one in the first place, or whether a transaction was recorded at all.\n\nThink of it like checking that two shopping lists add up to the same money. The lists can agree even if you bought the wrong item, paid the wrong price twice, or forgot an item on both lists. In the same way, an agreed trial balance can still hide serious mistakes that change the profit for the year and the statement of financial position.\n\nBecause of this, businesses use other checks as well: bank reconciliation statements (section 3.3) and control accounts (section 3.4). An agreed trial balance is a good sign, not a guarantee.",
+          heading: "Purposes and limitations of a trial balance",
+          body: "When the two totals agree, the double entry is arithmetically complete: for every debit there has been an equal credit. This is useful, but it is a limited test, and you must be able to explain its limitations.\n\nFirst, the trial balance only compares totals. It cannot show whether an entry went to the right account, whether the amount was right in the first place, or whether a transaction was recorded at all. The six types of error explained below all stay hidden. Second, when the totals disagree, the trial balance shows that an error exists, but not where it is or how many errors there are. Third, it is not a financial statement. It does not show the profit for the year or the financial position, and it usually does not yet include closing inventory or year-end adjustments such as accruals, prepayments and depreciation for the year. Fourth, it is only as reliable as the balances copied into it: a balance missed out or copied wrongly gives a false result.\n\nAn agreed trial balance is therefore a good sign, not a guarantee. Businesses also use bank reconciliation statements (section 3.3) and control accounts (section 3.4) to check their records.",
+        },
+        {
+          heading: "Amending a trial balance which contains errors",
+          body: "Examination questions often show a trial balance prepared by someone else that does not agree, and ask you to prepare a corrected version. Work through it line by line and ask three questions about each item.\n\nIs it in the right column? Check every balance against the rules in the table above. Typical mistakes are returns, discounts, carriage and rent received placed on the wrong side, and capital or a loan shown as a debit.\n\nShould it be there at all? Closing inventory is not a ledger balance on the trial balance date, so it is removed and shown as a note underneath. Each ledger balance appears once only.\n\nIs the figure right? If the question says that a balance was copied wrongly, or that an error has been found and corrected in the ledger, use the corrected figure. For example, if rent paid by cheque of $90 was posted to the rent account as $900, the rent balance is reduced by $810.\n\nThen add both columns again. If the corrected totals agree, any suspense account that was opened is no longer needed. Show a short working for each change so the examiner can follow it.",
         },
         {
           heading: "The six errors a trial balance does not reveal",
@@ -110,7 +115,7 @@ export const topic = {
         },
         {
           title: "Naming the type of error",
-          scenario: "The book-keeper of Dina Fashions found the following after the trial balance at 31 December 2026 had agreed. (a) A printer bought on credit from Office Hub for $450 was debited to the purchases account. (b) Cash sales of $720 were entered in the cash book and in the sales account as $270. (c) A payment of $300 to supplier A. Fathy was credited to A. Fathy and debited to bank. (d) A credit sale of $180 to M. Adel was debited to the account of M. Aly. (e) The wages account was overcast by $100 and the purchases account was undercast by $100. (f) An invoice for $260 received from a supplier was not entered anywhere. Name each type of error and explain why the trial balance still agreed.",
+          scenario: "The book-keeper of Dina Fashions found the following after the trial balance at 31 December 2026 had agreed. (a) A printer bought on credit from Office Hub for $450 was debited to the purchases account. (b) Cash sales of $720 were entered in the cash book and in the sales account as $270. (c) A payment of $300 to supplier A. Fathy was credited to A. Fathy and debited to bank. (d) A credit sale of $180 to M. Adel was debited to the account of M. Aly. (e) The wages account was overcast by $100 and the purchases account was undercast by $100. (f) An invoice for $260 received from a supplier was not entered anywhere. Identify each type of error and explain why the trial balance still agreed.",
           steps: [
             "Step 1: (a) The printer is a non-current asset but was treated as an expense. The classes of account are different, so this is an error of principle. A debit of $450 and a credit of $450 were both made.",
             "Step 2: (b) The wrong amount, $270, was used for both the debit and the credit, so the totals still agree. This is an error of original entry.",
@@ -120,6 +125,19 @@ export const topic = {
             "Step 6: (f) Nothing was entered at all, so no debit and no credit were made. This is an error of omission. Both totals are short by $260 and still agree.",
           ],
           answer: "(a) principle; (b) original entry; (c) complete reversal; (d) commission; (e) compensating; (f) omission. In every case a debit and an equal credit were made (or both were missing), so the trial balance totals were unaffected.",
+        },
+        {
+          title: "Amending a trial balance which contains errors",
+          scenario: "A trainee prepared the following trial balance for Sara Nabil at 31 August 2026. Debit column: premises 40,000; inventory 1 September 2025 5,600; inventory 31 August 2026 6,100; trade receivables 4,700; purchases 33,200; wages 16,820; discount received 260; drawings 7,500; general expenses 1,540; total $115,720. Credit column: capital 45,000; revenue 58,900; trade payables 3,850; bank overdraft 1,200; carriage inwards 450; rent received 2,400; total $111,800. The wages account in the ledger shows a balance of $18,620. Prepare a corrected trial balance at 31 August 2026.",
+          steps: [
+            "Step 1: Check the totals given. Debit 115,720 and credit 111,800, a difference of $3,920, so the trial balance contains errors.",
+            "Step 2: Remove the closing inventory of $6,100. It is not a ledger balance on the trial balance date. Debit column 115,720 minus 6,100 = 109,620.",
+            "Step 3: Move discount received $260 to the credit column, because it is income. Debit 109,620 minus 260 = 109,360; credit 111,800 plus 260 = 112,060.",
+            "Step 4: Move carriage inwards $450 to the debit column, because it is an expense. Debit 109,360 plus 450 = 109,810; credit 112,060 minus 450 = 111,610.",
+            "Step 5: Correct the wages figure. The trainee copied 18,620 as 16,820, so wages rise by 1,800. Debit 109,810 plus 1,800 = 111,610.",
+            "Step 6: Both columns now total $111,610. Rewrite the trial balance in full with the corrected figures. No suspense account is needed.",
+          ],
+          answer: "Sara Nabil, Trial balance at 31 August 2026 (corrected).\nDebit column: premises 40,000; inventory 1 September 2025 5,600; trade receivables 4,700; purchases 33,200; wages 18,620; carriage inwards 450; general expenses 1,540; drawings 7,500. Total $111,610.\nCredit column: capital 45,000; revenue 58,900; trade payables 3,850; bank overdraft 1,200; rent received 2,400; discount received 260. Total $111,610.\nClosing inventory of $6,100 is shown as a note below the trial balance.",
         },
       ],
       commonErrors: [
@@ -153,7 +171,7 @@ export const topic = {
         },
         {
           id: "ex-3.1-3", type: "explain", marks: 4,
-          prompt: "Name the type of error in each case. (a) A credit purchase of $390 from T. Wael was entered in the purchases journal as $930. (b) A cheque for $150 received from customer L. Hani was credited to the account of L. Hany. (c) A motor van bought for $7,500 was debited to the motor expenses account. (d) A credit note for $80 sent to a customer was not recorded in any book.",
+          prompt: "Identify the type of error in each case. (a) A credit purchase of $390 from T. Wael was entered in the purchases journal as $930. (b) A cheque for $150 received from customer L. Hani was credited to the account of L. Hany. (c) A motor van bought for $7,500 was debited to the motor expenses account. (d) A credit note for $80 sent to a customer was not recorded in any book.",
           model: "(a) Error of original entry, because the wrong amount was used in the book of prime entry so both entries are wrong by the same amount. (b) Error of commission, because the right amount went to the wrong account of the same class (another customer). (c) Error of principle, because a non-current asset was treated as an expense, which is a different class of account. (d) Error of omission, because the transaction was left out of the books completely.",
           points: ["(a) original entry (1)", "(b) commission (1)", "(c) principle (1)", "(d) omission (1)"],
         },
@@ -177,13 +195,13 @@ export const topic = {
         },
         {
           id: "ex-3.1-7", type: "explain", marks: 5,
-          prompt: "For each of the following errors, state whether the trial balance would still agree. Where it would agree, name the type of error. (i) Wages of $500 were entered once in the cash book but posted twice to the wages account. (ii) The sales journal was undercast by $200. (iii) Rent of $400 paid was entered in both the cash book and the rent account as $40. (iv) Repairs to a delivery van costing $250 were debited to the motor vehicles account. (v) The purchases account and the sales account were both overcast by $150.",
+          prompt: "For each of the following errors, state whether the trial balance would still agree. Where it would agree, identify the type of error. (i) Wages of $500 were entered once in the cash book but posted twice to the wages account. (ii) The sales journal was undercast by $200. (iii) Rent of $400 paid was entered in both the cash book and the rent account as $40. (iv) Repairs to a delivery van costing $250 were debited to the motor vehicles account. (v) The purchases account and the sales account were both overcast by $150.",
           model: "(i) Would not agree: the debit total is $500 too high because the debit was posted twice while only one credit was made. (ii) Would not agree: the sales account was credited with $200 too little while the customers' accounts were debited with the correct amounts. (iii) Would agree: error of original entry, the same wrong figure was used for both entries. (iv) Would agree: error of principle, an expense was treated as a non-current asset. (v) Would agree: compensating errors, an extra $150 debit is cancelled by an extra $150 credit.",
           points: ["(i) does not agree, debit side overstated (1)", "(ii) does not agree, credit to sales too small (1)", "(iii) agrees, original entry (1)", "(iv) agrees, principle (1)", "(v) agrees, compensating (1)"],
         },
         {
           id: "ex-3.1-8", type: "statement", marks: 6,
-          prompt: "A trainee prepared the following trial balance for Rashid at 31 October 2026, but the totals did not agree. Debit column: capital 30,000; drawings 5,500; machinery 36,000; inventory 1 November 2025 3,900; purchases 38,400; purchases returns 600; trade receivables 6,300; bank 2,100; wages 12,500; rent received 1,500; insurance 900. Credit column: revenue 61,200; sales returns 800; trade payables 4,700; loan repayable 2030 8,000; discount received 400. Redraft the trial balance correctly.",
+          prompt: "A trainee prepared the following trial balance for Rashid at 31 October 2026, but the totals did not agree. Debit column: capital 30,000; drawings 5,500; machinery 36,000; inventory 1 November 2025 3,900; purchases 38,400; purchases returns 600; trade receivables 6,300; bank 2,100; wages 12,500; rent received 1,500; insurance 900. Credit column: revenue 61,200; sales returns 800; trade payables 4,700; loan repayable 2030 8,000; discount received 400. Prepare a corrected trial balance.",
           model: "Rashid, Trial balance at 31 October 2026 (corrected).\nDebit column: machinery 36,000; inventory 1 November 2025 3,900; trade receivables 6,300; bank 2,100; purchases 38,400; sales returns 800; wages 12,500; insurance 900; drawings 5,500. Total $106,400.\nCredit column: capital 30,000; revenue 61,200; purchases returns 600; trade payables 4,700; rent received 1,500; loan 8,000; discount received 400. Total $106,400.\nFour balances were in the wrong column: capital (credit), sales returns (debit), purchases returns (credit) and rent received (credit).",
           points: ["Capital moved to the credit column (1)", "Sales returns moved to the debit column (1)", "Purchases returns moved to the credit column (1)", "Rent received moved to the credit column (1)", "All other balances kept in their correct columns (1)", "Both columns total $106,400 (1)"],
         },
@@ -204,7 +222,7 @@ export const topic = {
         { id: "mcq-3.1-7", question: "The debit column of a trial balance totals $54,320 and the credit column totals $54,020. What suspense account entry is needed?", choices: ["Credit balance of $300", "Debit balance of $300", "Credit balance of $600", "Debit balance of $150"], explanation: "The difference is $300 and the credit column is the smaller side, so the suspense account has a credit balance of $300 to make the totals agree." },
         { id: "mcq-3.1-8", question: "The purchases account was overcast by $250 and the discount received account was also overcast by $250. What type of errors are these?", choices: ["Compensating errors", "Errors of original entry", "Errors of principle", "Complete reversal of entries"], explanation: "An extra $250 debit in purchases is cancelled by an extra $250 credit in discount received, so the trial balance agrees. Two errors that cancel each other are compensating errors." },
         { id: "mcq-3.1-9", question: "A payment of $500 to a supplier was debited to the bank account and credited to the supplier's account. What type of error is this?", choices: ["Complete reversal of entries", "Error of commission", "Error of omission", "Error of principle"], explanation: "The correct accounts and amount were used but the debit and credit were swapped. This is a complete reversal of entries, and the trial balance still agrees." },
-        { id: "mcq-3.1-10", question: "In which column of a trial balance does a bank overdraft appear?", choices: ["Credit column", "Debit column", "It is not included in the trial balance", "In both columns"], explanation: "An overdraft is money owed to the bank, a liability, so its balance is a credit. It must be included because it is a ledger balance." },
+        { id: "mcq-3.1-10", question: "A trainee's trial balance has a debit total of $62,500 and a credit total of $58,900. The debit column wrongly includes closing inventory of $4,000, and discount allowed of $200 has been entered in the credit column. What are the corrected totals?", choices: ["$58,700 in each column", "Debit $58,500 and credit $58,700", "Debit $62,700 and credit $58,700", "Debit $58,300 and credit $59,100"], explanation: "Remove the closing inventory: 62,500 minus 4,000 = 58,500. Move discount allowed (an expense) to the debit column: debit 58,500 plus 200 = 58,700 and credit 58,900 minus 200 = 58,700. The distractors forget to add the $200 to the debit column, leave the inventory in, or move the discount the wrong way." },
       ],
       structured: [
         {
@@ -220,7 +238,7 @@ export const topic = {
             },
             {
               label: "b", marks: 4,
-              prompt: "Name the type of error in each of errors 1 to 4.",
+              prompt: "Identify the type of error in each of errors 1 to 4.",
               model: "Error 1: error of commission, because the sale was posted to the wrong customer, an account of the same class. Error 2: error of principle, because a non-current asset was treated as purchases, which is a different class of account. Error 3: error of original entry, because the wrong amount was used for both the debit and the credit. Error 4: error of omission, because the transaction was left out of the books completely.",
               points: ["Error 1 commission (1)", "Error 2 principle (1)", "Error 3 original entry (1)", "Error 4 omission (1)"],
             },
@@ -257,21 +275,21 @@ export const topic = {
             },
             {
               label: "c", marks: 2,
-              prompt: "Name the type of error in items (iii) and (iv).",
+              prompt: "Identify the type of error in items (iii) and (iv).",
               model: "(iii) Error of commission: the right amount and side but the wrong account of the same class (a customer for a customer). (iv) Error of principle: tyres are a revenue expense (motor expenses) but were treated as a non-current asset.",
               points: ["(iii) commission (1)", "(iv) principle (1)"],
             },
             {
-              label: "d", marks: 4,
-              prompt: "Explain what a suspense account is and how it is used when a trial balance does not agree.",
-              model: "A suspense account is a temporary account opened for the difference on a trial balance. The balance is placed on the smaller side so that the two totals agree while the errors are traced. Each error that affected the agreement of the trial balance is then corrected by a journal entry, with one side of the entry going to the suspense account. When every such error has been corrected the suspense account has no balance and is closed. If financial statements must be prepared before the errors are found, a remaining balance is shown in the statement of financial position.",
-              points: ["Temporary account for the difference on the trial balance (1)", "Balance entered on the smaller side so the totals agree (1)", "Corrections are made by journal entries, one side to suspense (1)", "Balance becomes nil when all errors are corrected, or remaining balance shown in the statement of financial position (1)"],
-            },
-            {
-              label: "e", marks: 2,
+              label: "d", marks: 2,
               prompt: "Calculate the balance remaining on the suspense account after items (i) and (ii) have been corrected.",
               model: "The suspense account opened with a debit balance of $240. Correcting (i) credits suspense with $120 (Debit Insurance $120, Credit Suspense $120). Correcting (ii) credits suspense with $120 (Debit Motor expenses $120, Credit Suspense $120). 240 minus 120 minus 120 = nil. No balance remains, which confirms that items (i) and (ii) explain the whole difference.",
               points: ["Both corrections credit suspense with $120 each (1)", "Remaining balance nil (1)"],
+            },
+            {
+              label: "e", marks: 4,
+              prompt: "Youssef says: \"Once items (i) and (ii) are corrected, the suspense account is closed and my trial balance agrees, so my financial statements will be correct.\" Evaluate Youssef's view, referring to items (iii) and (iv).",
+              model: "Youssef is partly right. Correcting (i) and (ii) clears the suspense account, so the debit and credit totals now agree. However, this proves only the arithmetic of the double entry, which is a limitation of a trial balance. Items (iii) and (iv) did not affect the totals, so they stay hidden unless they are found by other checks. Item (iii) is an error of commission: H. Samir's account is understated by $310 and H. Sami's is overstated by $310, so the wrong customer may be asked to pay, although total trade receivables and profit are not affected. Item (iv) is an error of principle: motor vehicles are overstated by $140 and motor expenses understated by $140, so profit for the year and non-current assets are both overstated by $140. Youssef's view is therefore wrong: he must also correct (iii) and (iv) by journal entries before he prepares his financial statements.",
+              points: ["Correcting (i) and (ii) clears suspense but proves only that debits equal credits (1)", "Items (iii) and (iv) did not affect the trial balance, so they remain hidden (1)", "Effect explained: (iv) overstates profit and non-current assets by $140, or (iii) leaves two customer balances wrong by $310 (1)", "Justified conclusion: the view is wrong; (iii) and (iv) must be corrected before the statements are prepared (1)"],
             },
           ],
         },
@@ -334,7 +352,7 @@ export const topic = {
         },
         {
           heading: "Effect of errors on profit",
-          body: "Many errors change the profit for the year because they overstate or understate income or expenses. Once an error is corrected, the profit must be recalculated. The rule is simple. If the error made an expense too high or income too low, profit was understated, so the correction increases profit. If the error made an expense too low or income too high, profit was overstated, so the correction reduces profit.\n\nSome errors do not change profit at all. Moving an amount between two expense accounts (commission) leaves total expenses the same. Moving an amount between two income accounts does the same for income. Errors in asset and liability accounts only, such as a receipt posted to the wrong customer, do not touch profit either. Errors involving carriage change gross profit without changing profit for the year, because carriage inwards is part of cost of sales while carriage outwards is an expense below gross profit, but both are deducted before profit for the year.\n\nThe table lists the common patterns. Learn to ask: which income or expense figure was wrong, and in which direction?",
+          body: "Many errors change the profit for the year because they overstate or understate income or expenses. Once an error is corrected, the profit must be recalculated. The rule is simple. If the error made an expense too high or income too low, profit was understated, so the correction increases profit. If the error made an expense too low or income too high, profit was overstated, so the correction reduces profit.\n\nSome errors do not change profit at all. Moving an amount between two expense accounts (commission) leaves total expenses the same. Moving an amount between two income accounts does the same for income. Errors in asset and liability accounts only, such as a receipt posted to the wrong customer, do not touch profit either. An amount moved between carriage inwards and carriage outwards changes gross profit without changing profit for the year, because carriage inwards is part of cost of sales while carriage outwards is an expense below gross profit, but both are deducted before profit for the year. In the same way, income posted to revenue instead of another income account changes gross profit but not profit for the year.\n\nThe table lists the common patterns. Learn to ask: which income or expense figure was wrong, and in which direction?",
           table: {
             head: ["Error", "Effect on gross profit", "Effect on profit for the year"],
             rows: [
@@ -387,7 +405,7 @@ export const topic = {
           scenario: "Tarek's draft statement of profit or loss for the year ended 30 June 2026 showed a profit for the year of $24,600. The following errors were then found. 1. A display cabinet costing $850 had been debited to the purchases account. 2. Rent received of $300 had been credited to the sales account. 3. A repayment of $500 of the bank loan had been debited to the loan interest account. 4. A sales invoice for $640 had been omitted from the books. 5. Commission received of $70 had been entered twice in the cash book and twice in the commission received account. 6. Carriage outwards of $220 had been debited to the carriage inwards account. 7. Insurance of $360 paid by cheque had been debited to the drawings account. Prepare a statement of corrected profit and state the effect of the corrections on the statement of financial position.",
           steps: [
             "Step 1: Error 1 overstated purchases by $850, so cost of sales was too high and profit was understated. Add $850.",
-            "Step 2: Error 2 moved $300 between two income accounts. Total income is unchanged. No effect on profit (although revenue is overstated and rent received understated).",
+            "Step 2: Error 2 moved $300 between two income accounts. Total income is unchanged. No effect on profit for the year, although revenue, and so gross profit, is overstated by $300 and rent received is understated by $300.",
             "Step 3: Error 3 treated a reduction of a liability as an expense. Loan interest is overstated by $500. Add $500.",
             "Step 4: Error 4 understated revenue by $640. Add $640.",
             "Step 5: Error 5 overstated income by $70 because the second entry should not exist. Deduct $70.",
@@ -397,7 +415,7 @@ export const topic = {
             "Step 9: Statement of financial position effects: non-current assets up $850 (cabinet); trade receivables up $640 (invoice); bank loan down $500; bank balance down $70 (the duplicated receipt is removed); drawings down $360. Capital rises by the extra profit $1,560 plus the lower drawings $360 = $1,920.",
             "Step 10: Check that the statement still balances: assets change by 850 + 640 minus 70 = 1,420 and liabilities fall by 500, so assets minus liabilities rise by 1,920, which equals the rise in capital.",
           ],
-          answer: "Statement of corrected profit for the year ended 30 June 2026: draft profit 24,600; add error 1 850; error 2 no effect; add error 3 500; add error 4 640; less error 5 70; error 6 no effect; less error 7 360; corrected profit for the year $26,160. Effects on the statement of financial position: non-current assets up $850; trade receivables up $640; bank down $70; bank loan down $500; drawings down $360; closing capital up $1,920 (extra profit 1,560 plus lower drawings 360).",
+          answer: "Statement of corrected profit for the year ended 30 June 2026: draft profit 24,600; add error 1 850; error 2 no effect; add error 3 500; add error 4 640; less error 5 70; error 6 no effect; less error 7 360; corrected profit for the year $26,160 (errors 2 and 6 change gross profit but not profit for the year). Effects on the statement of financial position: non-current assets up $850; trade receivables up $640; bank down $70; bank loan down $500; drawings down $360; closing capital up $1,920 (extra profit 1,560 plus lower drawings 360).",
         },
       ],
       commonErrors: [
@@ -425,7 +443,7 @@ export const topic = {
         },
         {
           id: "ex-3.2-2", type: "entries", marks: 3,
-          prompt: "A motor van bought on credit from Wheels Ltd for $6,000 was debited to the purchases account. Prepare the journal entry, with a narrative, to correct the error, and name the type of error.",
+          prompt: "A motor van bought on credit from Wheels Ltd for $6,000 was debited to the purchases account. Prepare the journal entry, with a narrative, to correct the error, and identify the type of error.",
           model: "Journal: Debit Motor vehicles $6,000; Credit Purchases $6,000. Narrative: Correction of error of principle, motor van debited to purchases in error. The credit entry to Wheels Ltd was correct and is not changed.",
           points: ["Debit Motor vehicles $6,000 (1)", "Credit Purchases $6,000 (1)", "Narrative naming the error of principle (1)"],
         },
@@ -491,10 +509,10 @@ export const topic = {
           stimulus: "Mariam Adel prepared a trial balance at 31 December 2026. The debit column total exceeded the credit column total by $380 and the difference was placed in a suspense account. Her draft profit for the year was $27,350. The following errors were then discovered.\n1. The wages account had been overcast by $140.\n2. A credit purchase of $470 from K. Zaki had been entered in the purchases journal as $740.\n3. A cheque for $200 received from F. Nour had been entered in the cash book but not posted to F. Nour's account.\n4. Rent received of $80 had been entered correctly in the cash book but posted to the debit side of the rent received account.\n5. A computer costing $1,100 bought on credit from Tech Plus had been debited to the office expenses account.\n6. Discount allowed of $120 had been entered in the cash book but not posted to the discount allowed account.",
           parts: [
             {
-              label: "a", marks: 10,
+              label: "a", marks: 8,
               prompt: "Prepare journal entries to correct errors 1 to 6. Narratives are not required.",
               model: "1. Debit Suspense $140; Credit Wages $140.\n2. Debit K. Zaki $270; Credit Purchases $270 (740 minus 470).\n3. Debit Suspense $200; Credit F. Nour $200.\n4. Debit Suspense $160; Credit Rent received $160 (twice $80, wrong side).\n5. Debit Office equipment $1,100; Credit Office expenses $1,100.\n6. Debit Discount allowed $120; Credit Suspense $120.",
-              points: ["1. Credit Wages $140 (1)", "1. Debit Suspense $140 (1)", "2. Debit K. Zaki, Credit Purchases (1)", "2. Amount $270 (1)", "3. Credit F. Nour $200 (1)", "3. Debit Suspense $200 (1)", "4. Credit Rent received, Debit Suspense (1)", "4. Amount $160 (1)", "5. Debit Office equipment, Credit Office expenses $1,100 (1)", "6. Debit Discount allowed $120, Credit Suspense $120 (1)"],
+              points: ["1. Debit Suspense, Credit Wages $140 (1)", "2. Debit K. Zaki, Credit Purchases (1)", "2. Amount $270 (1)", "3. Debit Suspense, Credit F. Nour $200 (1)", "4. Credit Rent received, Debit Suspense (1)", "4. Amount $160 (1)", "5. Debit Office equipment, Credit Office expenses $1,100 (1)", "6. Debit Discount allowed $120, Credit Suspense $120 (1)"],
             },
             {
               label: "b", marks: 4,
@@ -503,10 +521,16 @@ export const topic = {
               points: ["Opening credit balance $380 (1)", "Wages $140, F. Nour $200 and rent received $160 on the debit side (1)", "Discount allowed $120 on the credit side (1)", "Both sides total $500 with no remaining balance (1)"],
             },
             {
-              label: "c", marks: 6,
+              label: "c", marks: 5,
               prompt: "Prepare a statement of corrected profit for the year ended 31 December 2026.",
               model: "Statement of corrected profit for the year ended 31 December 2026.\nDraft profit for the year 27,350.\n1. Wages overstated: add 140.\n2. Purchases overstated: add 270.\n3. Customer account only: no effect.\n4. Rent received understated by 160: add 160.\n5. Office expenses overstated: add 1,100.\n6. Discount allowed understated: deduct 120.\nCorrected profit for the year: 27,350 + 140 + 270 + 160 + 1,100 minus 120 = $28,900.",
-              points: ["Add $140 for error 1 (1)", "Add $270 for error 2 (1)", "Add $160 for error 4 (1)", "Add $1,100 for error 5 (1)", "No effect for error 3 and deduct $120 for error 6 (1)", "Corrected profit $28,900 (1)"],
+              points: ["Add $140 for error 1 and $270 for error 2 (1)", "Add $160 for error 4 (1)", "Add $1,100 for error 5 (1)", "No effect for error 3 and deduct $120 for error 6 (1)", "Corrected profit $28,900 (1)"],
+            },
+            {
+              label: "d", marks: 3,
+              prompt: "Before the errors were found, Mariam's assistant suggested transferring the $380 suspense balance to the statement of profit or loss instead of searching for the errors. Advise Mariam whether she should have done this.",
+              model: "Mariam should not have done this. The suspense balance is not income or an expense; it only shows that errors exist. Transferring the $380 credit balance would have raised profit to $27,730, but the corrected profit is $28,900, so profit would still have been wrong by $1,170. Errors that do not affect the suspense account, such as error 2 and error 5, would also have stayed in the books, leaving office equipment understated by $1,100, and individual accounts such as F. Nour's would remain wrong. Mariam should find and correct every error by journal entry, as she has done, so that her profit and her statement of financial position can be relied on.",
+              points: ["The suspense balance is a sign of errors, not income or an expense (1)", "Profit would be $27,730 instead of $28,900, or errors 2 and 5 and customer balances would stay wrong (1)", "Advice: find and correct each error by journal entry so the statements are reliable (1)"],
             },
           ],
         },
@@ -517,27 +541,33 @@ export const topic = {
           parts: [
             {
               label: "a", marks: 3,
-              prompt: "Name the type of error in items 1 and 4, and explain why neither of them affected the agreement of the trial balance.",
+              prompt: "Identify the type of error in items 1 and 4, and explain why neither of them affected the agreement of the trial balance.",
               model: "Item 1 is an error of principle: goods for resale (purchases) were treated as a non-current asset, a different class of account. Item 4 is a complete reversal of entries: the right accounts and amount were used but the debit and credit were swapped. Neither affected the trial balance because in each case a debit and an equal credit were made, so the two column totals were unchanged.",
               points: ["Item 1 error of principle (1)", "Item 4 complete reversal of entries (1)", "A debit and an equal credit were both made so the totals still agreed (1)"],
             },
             {
-              label: "b", marks: 8,
+              label: "b", marks: 6,
               prompt: "Prepare journal entries to correct errors 1 to 5. Narratives are not required.",
               model: "1. Debit Purchases $640; Credit Motor vehicles $640.\n2. Debit Sales $36; Credit Suspense $36 (851 minus 815).\n3. Debit Bank charges $59; Credit Suspense $59.\n4. Debit Sales returns $260; Credit L. Fahmy $260 (twice $130).\n5. Debit Drawings $210; Credit General expenses $210.",
-              points: ["1. Debit Purchases, Credit Motor vehicles $640 (1)", "2. Debit Sales $36 (1)", "2. Credit Suspense $36 (1)", "3. Debit Bank charges $59 (1)", "3. Credit Suspense $59 (1)", "4. Debit Sales returns, Credit L. Fahmy (1)", "4. Amount $260 (1)", "5. Debit Drawings, Credit General expenses $210 (1)"],
+              points: ["1. Debit Purchases, Credit Motor vehicles $640 (1)", "2. Debit Sales, Credit Suspense $36 (1)", "3. Debit Bank charges, Credit Suspense $59 (1)", "4. Debit Sales returns, Credit L. Fahmy (1)", "4. Amount $260 (1)", "5. Debit Drawings, Credit General expenses $210 (1)"],
             },
             {
-              label: "c", marks: 3,
+              label: "c", marks: 2,
               prompt: "Prepare the suspense account.",
               model: "Suspense account. Debit side: Balance b/d 95; total 95. Credit side: Sales 36; Bank charges 59; total 95. The account is cleared, which confirms that errors 2 and 3 together explain the whole difference.",
-              points: ["Opening debit balance $95 (1)", "Sales $36 and bank charges $59 on the credit side (1)", "Both sides total $95 and no balance remains (1)"],
+              points: ["Opening debit balance $95 (1)", "Sales $36 and bank charges $59 on the credit side, both sides total $95 with no balance remaining (1)"],
             },
             {
-              label: "d", marks: 6,
+              label: "d", marks: 5,
               prompt: "Prepare a statement of corrected profit for the year ended 30 April 2026.",
               model: "Statement of corrected profit for the year ended 30 April 2026.\nDraft profit for the year 19,640.\n1. Purchases understated: deduct 640.\n2. Revenue overstated: deduct 36.\n3. Bank charges omitted: deduct 59.\n4. Sales returns understated by 260 (a credit of 130 instead of a debit of 130): deduct 260.\n5. General expenses overstated: add 210.\nCorrected profit for the year: 19,640 minus 640 minus 36 minus 59 minus 260 plus 210 = $18,855.",
-              points: ["Deduct $640 for error 1 (1)", "Deduct $36 for error 2 (1)", "Deduct $59 for error 3 (1)", "Deduct $260 for error 4 (1)", "Add $210 for error 5 (1)", "Corrected profit $18,855 (1)"],
+              points: ["Deduct $640 for error 1 (1)", "Deduct $36 for error 2 and $59 for error 3 (1)", "Deduct $260 for error 4 (1)", "Add $210 for error 5 (1)", "Corrected profit $18,855 (1)"],
+            },
+            {
+              label: "e", marks: 4,
+              prompt: "Bassem has asked his bank for a loan, and the bank wants to see his statement of financial position. (i) State the effect of correcting errors 1 and 4 on the statement of financial position. (ii) Advise Bassem why he should give the bank corrected figures.",
+              model: "(i) Error 1: motor vehicles (non-current assets) were overstated by $640, so the correction reduces them by $640. Error 4: trade receivables (L. Fahmy) were overstated by $260, so the correction reduces them by $260. Closing capital also falls, because profit is $785 lower and drawings are $210 higher. (ii) The bank uses the statement of financial position to judge whether the business can repay the loan and what assets could act as security. The uncorrected figures overstate assets and profit, so the bank could make a wrong decision and Bassem would be giving it misleading information. He should correct the errors first so that the bank can rely on the figures.",
+              points: ["Motor vehicles (non-current assets) reduced by $640 (1)", "Trade receivables reduced by $260 (1)", "The bank uses the statement of financial position to judge security or ability to repay (1)", "Advice: give corrected figures, because uncorrected ones overstate assets and profit and could mislead the bank (1)"],
             },
           ],
         },
@@ -554,6 +584,7 @@ export const topic = {
         "Prepare a bank reconciliation statement starting from either the bank statement balance or the updated cash book balance.",
         "Deal with a bank overdraft and with errors made by the bank.",
         "Explain the uses of a bank reconciliation statement to a business.",
+        "Explain the impact of digital business transactions, such as card payments and online transfers, on the bank reconciliation process.",
       ],
       keyTerms: [
         { term: "Bank statement", definition: "A copy of the customer's account in the bank's own books, sent by the bank, which shows the bank's record of receipts, payments and the balance." },
@@ -566,6 +597,7 @@ export const topic = {
         { term: "Dishonoured cheque", definition: "A cheque that the bank refuses to pay, usually because the drawer has insufficient funds, so the amount is taken back out of the account." },
         { term: "Bank charges", definition: "Fees charged by the bank for running the account, deducted directly from the account." },
         { term: "Bank overdraft", definition: "A negative bank balance where the business has withdrawn more than it deposited; a credit balance in the cash book and a liability of the business." },
+        { term: "Bank error", definition: "A mistake made by the bank on the bank statement, such as another customer's payment charged to the account; it is not entered in the cash book but is shown in the bank reconciliation statement and reported to the bank." },
       ],
       notes: [
         {
@@ -623,6 +655,10 @@ export const topic = {
         {
           heading: "Why businesses prepare bank reconciliations",
           body: "A bank reconciliation is a control. It checks the accuracy of the cash book against an independent record, the bank's own books. It brings into the cash book items the business did not know about, so that the bank balance in the financial statements is correct. It finds errors made by the business, such as a transposed figure, and errors made by the bank, which can be reported and corrected. It reveals dishonoured cheques quickly, so the customer can be contacted and credit control tightened. It can also discourage fraud, because a person taking money from the account would be found when the records are compared.\n\nFor these reasons reconciliations are prepared regularly, often monthly, and in many businesses they are done by someone who does not write up the cash book. In the examination, a question on uses or benefits usually expects three or four of these points, each explained in a sentence rather than listed as single words.",
+        },
+        {
+          heading: "Digital transactions and the bank reconciliation",
+          body: "Most businesses now pay and receive money digitally, by card, online transfer, direct debit or mobile payment. This changes the reconciliation in four ways.\n\nFewer timing differences. Online transfers usually reach the account on the same day, so there are fewer unpresented cheques and uncredited deposits. However, card takings may reach the account a day or two after the sale, often after the card company has deducted its fee. The fee must be entered in the cash book, and any takings not yet received are a timing difference.\n\nMore items to record from the statement. Many payments and receipts are started by the bank or by other people, such as direct debits, card fees and customer transfers. The business often learns of them only from the bank statement, so updating the cash book is still essential.\n\nFaster and more frequent checks. Online banking lets the business see its statement at any time, and accounting software can import bank transactions and suggest matches with cash book entries. Reconciliation can be done daily or weekly instead of monthly.\n\nNew risks. An imported item can be matched to the wrong entry or recorded twice, a payment can be sent to the wrong account, and online fraud can go unnoticed. A person must still review every unmatched item, so the reconciliation remains an important control.",
         },
       ],
       workedExamples: [
@@ -713,9 +749,9 @@ export const topic = {
         },
         {
           id: "ex-3.3-6", type: "explain", marks: 4,
-          prompt: "(a) Explain what a dishonoured cheque is and state the entries made in the books of the business that received it. (b) Explain the difference between a standing order and a direct debit.",
-          model: "(a) A dishonoured cheque is a cheque received from a customer that the customer's bank refuses to pay, usually because there is not enough money in the account. The business had already debited bank and credited the customer, so it reverses the entry: credit bank and debit the customer's account, so the customer owes the money again. (b) A standing order is an instruction from the account holder to the bank to pay a fixed amount at regular intervals to a named payee. A direct debit is permission for a named payee to take amounts from the account, and the amount can vary each time.",
-          points: ["Dishonoured cheque is one the bank refuses to pay (1)", "Entries: credit bank, debit the customer (1)", "Standing order: fixed amount, regular, set up by the account holder (1)", "Direct debit: variable amounts taken by the payee with permission (1)"],
+          prompt: "(a) Explain what a dishonoured cheque is and state the entries made in the books of the business that received it. (b) Explain two ways in which the increased use of digital payments, such as card payments and online transfers, affects the bank reconciliation process.",
+          model: "(a) A dishonoured cheque is a cheque received from a customer that the customer's bank refuses to pay, usually because there is not enough money in the account. The business had already debited bank and credited the customer, so it reverses the entry: credit bank and debit the customer's account, so the customer owes the money again. (b) Digital payments usually reach the account quickly, so there are fewer unpresented cheques and uncredited deposits to show in the reconciliation statement. More items, such as direct debits, card fees and customer transfers, are started by the bank or by other people, so the business must update its cash book from the bank statement for them. Online banking and software that imports bank transactions also allow reconciliation to be done more often, but imported items must still be checked for wrong matches, duplicates or fraud.",
+          points: ["Dishonoured cheque is one the bank refuses to pay (1)", "Entries: credit bank, debit the customer (1)", "Fewer timing differences, such as unpresented cheques and uncredited deposits (1)", "More bank-initiated items to enter in the cash book, or more frequent reconciliation with imported items that still need checking (1)"],
         },
         {
           id: "ex-3.3-7", type: "statement", marks: 6,
@@ -725,13 +761,13 @@ export const topic = {
         },
         {
           id: "ex-3.3-8", type: "statement", marks: 8,
-          prompt: "On 31 October 2026 the cash book of Hoda's Boutique showed a debit bank balance of $5,860. On comparing the cash book with the bank statement the following were found. 1. A credit transfer of $1,120 from a customer appeared only on the bank statement. 2. Bank charges of $66 and a direct debit for the telephone of $205 had not been entered in the cash book. 3. A standing order of $450 for a loan repayment had not been entered in the cash book. 4. A cheque for $280 received from a customer had been dishonoured. 5. Interest received of $18 appeared only on the bank statement. 6. A receipt of $910 from a customer had been entered in the cash book as $190. 7. A deposit of $1,340 made on 31 October had not been credited by the bank. 8. Cheques for $602 and $371 had not been presented. The bank statement showed a credit balance of $6,350. (a) Update the cash book. (b) Prepare the bank reconciliation statement at 31 October 2026.",
+          prompt: "On 31 October 2026 the cash book of Hoda's Boutique showed a debit bank balance of $5,860. On comparing the cash book with the bank statement the following were found. 1. A credit transfer of $1,120 from a customer appeared only on the bank statement. 2. Bank charges of $66 and a direct debit for the telephone of $205 had not been entered in the cash book. 3. A standing order of $450 for a loan repayment had not been entered in the cash book. 4. A cheque for $280 received from a customer had been dishonoured. 5. Interest received of $18 appeared only on the bank statement. 6. A receipt of $910 from a customer had been entered in the cash book as $190. 7. A deposit of $1,340 made on 31 October had not been credited by the bank. 8. Cheques for $602 and $371 had not been presented. The bank statement showed a credit balance of $6,350. (a) Prepare the updated cash book (bank columns). (b) Prepare the bank reconciliation statement at 31 October 2026.",
           model: "(a) Updated cash book (bank columns). Debit side: balance b/d 5,860; credit transfer 1,120; interest received 18; error in receipt (910 minus 190) 720; total 7,718. Credit side: bank charges 66; telephone (direct debit) 205; loan repayment (standing order) 450; dishonoured cheque 280; balance c/d 6,717; total 7,718. Updated balance $6,717 debit.\n(b) Hoda's Boutique, Bank reconciliation statement at 31 October 2026. Balance per bank statement 6,350. Add uncredited deposit 1,340 = 7,690. Less unpresented cheques (602 + 371) 973. Balance per updated cash book $6,717.",
           points: ["Credit transfer $1,120 and interest $18 on the debit side (1)", "Cash book error corrected by a debit of $720 (1)", "Bank charges $66, direct debit $205 and standing order $450 on the credit side (1)", "Dishonoured cheque $280 on the credit side (1)", "Updated balance $6,717 debit (1)", "Statement starts with balance per bank statement $6,350 (1)", "Adds uncredited deposit $1,340 and deducts unpresented cheques $973 (1)", "Ends with balance per updated cash book $6,717 (1)"],
         },
         {
           id: "ex-3.3-9", type: "statement", marks: 8,
-          prompt: "On 30 November 2026 the cash book of Adham Motors showed a credit bank balance (overdraft) of $2,130. The following were discovered when the bank statement arrived. 1. Bank charges of $54 and a direct debit for insurance of $320 were not in the cash book. 2. A credit transfer of $980 from a customer was not in the cash book. 3. A cheque for $215 received from a customer had been dishonoured. 4. A cheque paid to a supplier had been entered in the cash book as $480; the correct amount paid by the bank was $840. 5. A standing order of $150 had not been entered in the cash book. 6. A deposit of $730 had not yet been credited by the bank. 7. Unpresented cheques totalled $1,185. 8. The bank had wrongly charged the account with a cheque for $100 drawn by another customer. The bank statement showed an overdraft of $1,894. (a) Update the cash book. (b) Prepare the bank reconciliation statement at 30 November 2026.",
+          prompt: "On 30 November 2026 the cash book of Adham Motors showed a credit bank balance (overdraft) of $2,130. The following were discovered when the bank statement arrived. 1. Bank charges of $54 and a direct debit for insurance of $320 were not in the cash book. 2. A credit transfer of $980 from a customer was not in the cash book. 3. A cheque for $215 received from a customer had been dishonoured. 4. A cheque paid to a supplier had been entered in the cash book as $480; the correct amount paid by the bank was $840. 5. A standing order of $150 had not been entered in the cash book. 6. A deposit of $730 had not yet been credited by the bank. 7. Unpresented cheques totalled $1,185. 8. The bank had wrongly charged the account with a cheque for $100 drawn by another customer. The bank statement showed an overdraft of $1,894. (a) Prepare the updated cash book (bank columns). (b) Prepare the bank reconciliation statement at 30 November 2026.",
           model: "(a) Updated cash book (bank columns). Credit side: balance b/d (overdraft) 2,130; bank charges 54; insurance (direct debit) 320; dishonoured cheque 215; error in payment (840 minus 480) 360; standing order 150; total 3,229. Debit side: credit transfer 980; balance c/d 2,249; total 3,229. Updated balance: overdraft $2,249 (credit balance b/d).\n(b) Adham Motors, Bank reconciliation statement at 30 November 2026. Overdraft per bank statement (1,894). Add uncredited deposit 730: (1,164). Less unpresented cheques 1,185: (2,349). Add bank error 100: (2,249). Overdraft per updated cash book $2,249.",
           points: ["Credit transfer $980 on the debit side (1)", "Bank charges $54, insurance $320 and standing order $150 on the credit side (1)", "Dishonoured cheque $215 on the credit side (1)", "Cash book error corrected by a credit of $360 (1)", "Updated overdraft $2,249 (1)", "Statement starts with overdraft per bank statement $1,894 and adds uncredited deposit $730 (1)", "Deducts unpresented cheques $1,185 (1)", "Adds bank error $100 and ends with overdraft per updated cash book $2,249 (1)"],
         },
@@ -745,7 +781,7 @@ export const topic = {
         { id: "mcq-3.3-6", question: "What is a standing order?", choices: ["An instruction to the bank to pay a fixed amount at regular intervals", "Permission for a payee to take variable amounts from the account", "A cheque that has not yet been presented", "A fee charged by the bank for running the account"], explanation: "A standing order is set up by the account holder for a fixed regular payment. Variable amounts taken by the payee describe a direct debit." },
         { id: "mcq-3.3-7", question: "The bank statement shows an overdraft of $400. Unpresented cheques are $250 and an uncredited deposit is $100. What is the updated cash book balance?", choices: ["Overdraft of $550", "Overdraft of $250", "Overdraft of $750", "Debit balance of $50"], explanation: "Minus 400 plus 100 minus 250 = minus 550. The same add and deduct rules apply; the signs make the overdraft larger." },
         { id: "mcq-3.3-8", question: "What is the main reason for preparing a bank reconciliation statement?", choices: ["To check the accuracy of the cash book and find errors or omissions", "To calculate the profit for the year", "To replace the cash book with the bank statement", "To work out how much customers owe"], explanation: "The reconciliation compares the business's record with the bank's independent record, which reveals errors, omissions and items such as charges. It has nothing to do with profit or trade receivables." },
-        { id: "mcq-3.3-9", question: "What is an unpresented cheque?", choices: ["A cheque paid by the business that the payee has not yet paid into the bank", "A cheque received that the bank has refused to pay", "A cheque received that has not yet been entered in the cash book", "A cheque that the bank has charged to the wrong account"], explanation: "The business has recorded the payment, but until the payee presents the cheque the bank has not deducted it. It appears in the reconciliation statement as a timing difference." },
+        { id: "mcq-3.3-9", question: "A business stops using cheques and now makes and receives all payments by online bank transfer. Which difference between its cash book and its bank statement is likely to become less common?", choices: ["Unpresented cheques", "Bank charges not yet entered in the cash book", "Direct debits not yet entered in the cash book", "Credit transfers from customers not yet entered in the cash book"], explanation: "Without cheques there is no delay while a payee pays a cheque in, so unpresented cheques largely disappear. Bank charges and direct debits are still taken by the bank, and customer transfers become more common, so the cash book must still be updated for all three." },
         { id: "mcq-3.3-10", question: "A customer pays $640 directly into the business bank account by credit transfer. Which entries does the business make when it discovers this on the bank statement?", choices: ["Debit bank $640, Credit customer $640", "Debit customer $640, Credit bank $640", "Debit bank $640, Credit sales $640", "No entry; show it in the reconciliation statement"], explanation: "The money has been received, so bank is debited and the customer's debt is reduced with a credit. It is a real receipt, not a timing difference." },
       ],
       structured: [
@@ -756,7 +792,7 @@ export const topic = {
           parts: [
             {
               label: "a", marks: 8,
-              prompt: "Update the cash book of Salma's Stationery at 31 July 2026, showing the updated balance.",
+              prompt: "Prepare the updated cash book of Salma's Stationery at 31 July 2026, showing the updated balance.",
               model: "Cash book (bank columns). Debit side: balance b/d 4,215; R. Khalil (credit transfer) 640; interest received 9; total 4,864. Credit side: bank charges 42; rates (direct debit) 275; rent (standing order) 600; M. Tahir (dishonoured cheque) 185; supplier, cheque 3312 error (392 minus 329) 63; balance c/d 3,699; total 4,864. Updated balance $3,699 debit. Item 10 is a bank error and is not entered in the cash book.",
               points: ["Opening balance b/d $4,215 on the debit side (1)", "Credit transfer $640 on the debit side (1)", "Interest received $9 on the debit side (1)", "Bank charges $42 on the credit side (1)", "Direct debit $275 and standing order $600 on the credit side (1)", "Dishonoured cheque $185 on the credit side (1)", "Cheque 3312 error $63 on the credit side (1)", "Updated balance c/d $3,699 debit with the bank error excluded (1)"],
             },
@@ -774,9 +810,9 @@ export const topic = {
             },
             {
               label: "d", marks: 3,
-              prompt: "Explain why item 10 is treated differently from items 1 to 7, and state one benefit to Salma of preparing a bank reconciliation statement each month.",
-              model: "Items 1 to 7 are genuine transactions or errors of the business, so they belong in Salma's cash book. Item 10 is a mistake made by the bank; the money is not Salma's, so it must not be entered in her books. It is shown in the reconciliation statement until the bank corrects it, and Salma should inform the bank. A monthly reconciliation lets Salma find errors and omissions quickly, learn about dishonoured cheques promptly so she can chase the customer, and be confident that the bank figure in her financial statements is correct.",
-              points: ["Bank error is not a transaction of the business, so no cash book entry (1)", "Shown in the reconciliation statement and reported to the bank (1)", "One clear benefit of regular reconciliation (1)"],
+              prompt: "Explain why item 10 is treated differently from items 1 to 7, and advise Salma whether she should prepare a bank reconciliation statement every month.",
+              model: "Items 1 to 7 are genuine transactions or errors of the business, so they belong in Salma's cash book. Item 10 is a mistake made by the bank; the money is not Salma's, so it must not be entered in her books. It is shown in the reconciliation statement until the bank corrects it, and Salma should inform the bank. Salma should reconcile every month: it lets her find errors and omissions such as the $63 on cheque 3312 quickly, learn about dishonoured cheques promptly so she can chase the customer, and be confident that the bank figure in her financial statements is correct.",
+              points: ["Bank error is not a transaction of the business, so no cash book entry (1)", "Shown in the reconciliation statement and reported to the bank (1)", "Advice to reconcile monthly, supported by one clear benefit (1)"],
             },
           ],
         },
@@ -787,7 +823,7 @@ export const topic = {
           parts: [
             {
               label: "a", marks: 7,
-              prompt: "Update the cash book of Tamer's Tyres at 28 February 2027.",
+              prompt: "Prepare the updated cash book of Tamer's Tyres at 28 February 2027.",
               model: "Cash book (bank columns). Credit side: balance b/d (overdraft) 1,580; bank charges 71; electricity (direct debit) 340; dishonoured cheque 420; insurance (standing order) 265; total 2,676. Debit side: credit transfer 1,250; undercast of receipts corrected 100; balance c/d 1,326; total 2,676. Updated balance: overdraft $1,326, brought down on the credit side. The bank error of $80 is not entered.",
               points: ["Opening overdraft $1,580 on the credit side (1)", "Bank charges $71 and direct debit $340 on the credit side (1)", "Dishonoured cheque $420 on the credit side (1)", "Standing order $265 on the credit side (1)", "Credit transfer $1,250 on the debit side (1)", "Undercast correction $100 on the debit side (1)", "Updated overdraft $1,326 correctly labelled (1)"],
             },
@@ -811,9 +847,9 @@ export const topic = {
             },
             {
               label: "e", marks: 3,
-              prompt: "Explain three ways in which preparing a bank reconciliation statement helps Tamer to control his business.",
-              model: "It checks the accuracy of the cash book against the bank's independent record, so errors such as the $100 undercast are found and corrected. It brings items the business did not know about, such as bank charges and the dishonoured cheque, into the records, so that the true bank position is known and the customer can be chased. It discovers errors made by the bank, such as the $80 of fees, so they can be reported and refunded. It also helps to deter fraud, because any unauthorised payment from the account would be noticed when the two records are compared.",
-              points: ["Finds errors in the cash book (1)", "Identifies items known only to the bank, such as charges or dishonoured cheques, so the true balance is known (1)", "Detects bank errors to report, or deters fraud (1)"],
+              prompt: "Tamer plans to stop accepting cheques, to take only card and online payments, and to use accounting software that imports his bank transactions automatically. He says he will then no longer need to prepare bank reconciliation statements. Evaluate Tamer's view.",
+              model: "Tamer is right that digital payments will reduce timing differences: without cheques there will be few unpresented cheques or uncredited deposits like items 7 and 8, and the software will match most transactions automatically, which saves time. However, he will still need to reconcile. Card takings may reach the bank later than the sale and after fees have been deducted, imported items can be matched wrongly or recorded twice, and bank errors such as the $80 of fees in item 9 will still happen and can only be found by comparing the two records. Reconciliation also helps to detect fraud. Tamer's view is therefore wrong: he should keep reconciling, and the software will let him do it more often, for example weekly.",
+              points: ["Digital payments reduce timing differences such as unpresented cheques, and automatic matching saves time (1)", "Reconciliation is still needed: card settlement delays or fees, wrong or duplicate matches, bank errors such as item 9, or fraud (1)", "Justified conclusion: he should continue to reconcile, possibly more often (1)"],
             },
           ],
         },
@@ -831,6 +867,7 @@ export const topic = {
         "Record a contra entry between the sales ledger and the purchases ledger and explain why it arises.",
         "Use a control account to find a missing figure such as credit sales or credit purchases.",
         "Explain the uses and the limitations of control accounts.",
+        "Explain the impact of digital recording of business transactions on the preparation and use of control accounts.",
       ],
       keyTerms: [
         { term: "Control account", definition: "A summary account, kept in the general ledger, that shows in total the entries made in the individual accounts of a particular ledger." },
@@ -879,7 +916,7 @@ export const topic = {
         },
         {
           heading: "The purchases ledger control account",
-          body: "The purchases ledger control account is the mirror image. It behaves like one large supplier account, so increases in what the business owes are credits and reductions are debits. Credits: opening credit balances, credit purchases, interest charged by suppliers on overdue accounts, and refunds received from suppliers who had been overpaid. Debits: payments to suppliers, discount received, purchases returns, contras with the sales ledger, and opening debit balances.\n\nThe credit balance carried down is the total trade payables. Any debit balances in the purchases ledger at the period end, where a supplier owes the business, are shown as a separate debit balance carried down on the credit side.\n\nWatch for distractors. Cash purchases, carriage, and the purchase of non-current assets on credit from a supplier who is not a trade supplier do not go through the purchases ledger control account. Also, a provision for doubtful debts is never entered in the sales ledger control account, because it is a general estimate and does not change what any particular customer owes.",
+          body: "The purchases ledger control account is the mirror image. It behaves like one large supplier account, so increases in what the business owes are credits and reductions are debits. Credits: opening credit balances, credit purchases, interest charged by suppliers on overdue accounts, and refunds received from suppliers who had been overpaid. Debits: payments to suppliers, discount received, purchases returns, contras with the sales ledger, and opening debit balances.\n\nThe credit balance carried down is the total trade payables. Any debit balances in the purchases ledger at the period end, where a supplier owes the business, are shown as a separate debit balance carried down on the credit side.\n\nWatch for distractors. Cash purchases, carriage, and the purchase of non-current assets on credit from a supplier who is not a trade supplier do not go through the purchases ledger control account. In the same way, an allowance for irrecoverable debts is never entered in the sales ledger control account, because it is a general estimate and does not change what any particular customer owes.",
         },
         {
           heading: "Contra entries: when a customer is also a supplier",
@@ -894,8 +931,8 @@ export const topic = {
           body: "Because a control account is complete for the period, any one missing figure can be found by balancing it. If a trader has not kept a sales journal but knows the opening and closing trade receivables, the receipts, discount allowed and returns, credit sales is the figure that makes the control account balance. Enter everything you know, total the larger side, and the gap on the other side is the missing figure.\n\nFor example, opening receivables $6,200, closing receivables $7,150, receipts $48,900, discount allowed $1,050, sales returns $800 and irrecoverable debts $300. Credit side: 48,900 + 1,050 + 800 + 300 + closing balance 7,150 = 58,200. Debit side: 6,200 + credit sales. Credit sales = 58,200 minus 6,200 = $52,000. The same method finds credit purchases from a purchases ledger control account. This technique is used again in incomplete records (section 5.6).",
         },
         {
-          heading: "What control accounts can and cannot do",
-          body: "Control accounts are powerful but limited. They locate errors to a ledger and prove its arithmetic. They provide totals quickly and act as a check on the work of the ledger clerks. But they cannot find every error. A transaction omitted from the sales journal is missing from both the control account and the customer's account, so the two still agree. An invoice posted to the wrong customer (error of commission) leaves the control account total correct. An error of original entry in the journal flows into both records equally. Compensating errors within the ledger also stay hidden.\n\nControl accounts are therefore used together with the other checks in this topic: the trial balance for the whole system and the bank reconciliation for the cash book. A business that keeps all three has a good chance of catching mistakes before the financial statements are prepared.",
+          heading: "Limitations, and the impact of digital recording",
+          body: "Control accounts are useful but limited. Some errors affect the control account and the individual accounts equally, so they stay hidden: a transaction omitted from a book of prime entry, an error of original entry, or an invoice posted to the wrong customer (error of commission). Control accounts are therefore used together with the trial balance and the bank reconciliation. At IGCSE you prepare control accounts and explain their uses; you are not asked to reconcile a control account balance with a list of individual ledger balances.\n\nMost businesses now record credit sales, purchases, receipts and payments digitally. When an invoice is entered once, accounting software posts it to the customer's account and to the control account at the same time. Totals for trade receivables and trade payables are then available at any moment, posting and addition errors largely disappear, and no time is spent preparing control accounts by hand. Card receipts and online payments can be matched to customer and supplier accounts automatically.\n\nHowever, a mistake made when data is entered, such as a wrong amount or the wrong customer, flows into both records, so the control account cannot reveal it. Access to the system must be controlled to prevent fraud, data must be backed up, and staff must be trained to review the figures the software produces.",
         },
       ],
       workedExamples: [
@@ -942,11 +979,11 @@ export const topic = {
         { error: "Putting a dishonoured cheque on the credit side of the sales ledger control account.", fix: "A dishonoured cheque means the customer owes the money again, so it increases receivables: debit the control account." },
         { error: "Recording the contra on the wrong sides, or in only one control account.", fix: "Debit the purchases ledger control account and credit the sales ledger control account with the same amount. Both debts fall." },
         { error: "Netting off credit balances in the sales ledger against the debit balances.", fix: "Show them separately as a credit balance carried down, and report them as a current liability in the statement of financial position." },
-        { error: "Entering the provision for doubtful debts in the sales ledger control account.", fix: "The provision is a general estimate and does not change any customer's balance. Only irrecoverable debts actually written off are entered." },
+        { error: "Entering the allowance for irrecoverable debts, or a change in it, in the sales ledger control account.", fix: "The allowance is a general estimate and does not change any customer's balance. Only irrecoverable debts actually written off are entered." },
         { error: "Using individual transactions instead of period totals.", fix: "Control account entries are totals from the books of prime entry, for example the sales journal total for the month." },
       ],
       examTips: [
-        "Before you start, cross out the distractors: cash sales, cash purchases, provision for doubtful debts, and purchases of non-current assets. They do not belong in the control accounts.",
+        "Before you start, cross out the distractors: cash sales, cash purchases, the allowance for irrecoverable debts, and purchases of non-current assets. They do not belong in the control accounts.",
         "Describe each entry by its source, for example Sales journal, Cash book, Discount allowed, Sales returns journal, Irrecoverable debts, Purchases ledger contra. Descriptions earn marks and show understanding.",
         "If the question gives closing credit balances in the sales ledger, enter them as a balance c/d on the debit side before you find the main debit balance. Forgetting them changes your closing figure.",
         "When asked for the source of an entry, name the book of prime entry, not the document. Credit sales come from the sales journal, not from the invoice.",
@@ -962,7 +999,7 @@ export const topic = {
         },
         {
           id: "ex-3.4-2", type: "explain", marks: 3,
-          prompt: "Name the book of prime entry that provides the total for each of the following entries in a sales ledger control account: (i) credit sales; (ii) sales returns; (iii) discount allowed; (iv) irrecoverable debts written off; (v) contra with the purchases ledger; (vi) receipts from customers.",
+          prompt: "Identify the book of prime entry that provides the total for each of the following entries in a sales ledger control account: (i) credit sales; (ii) sales returns; (iii) discount allowed; (iv) irrecoverable debts written off; (v) contra with the purchases ledger; (vi) receipts from customers.",
           model: "(i) Sales journal. (ii) Sales returns journal. (iii) Cash book (discount allowed column). (iv) General journal. (v) General journal. (vi) Cash book.",
           points: ["(i) sales journal and (ii) sales returns journal (1)", "(iii) and (vi) cash book (1)", "(iv) and (v) general journal (1)"],
         },
@@ -1011,15 +1048,15 @@ export const topic = {
       ],
       mcq: [
         { id: "mcq-3.4-1", question: "From which book of prime entry is the credit sales figure in the sales ledger control account taken?", choices: ["Sales journal", "Cash book", "General journal", "Sales returns journal"], explanation: "Credit sales are listed in the sales journal and its total is posted to the control account. The cash book gives receipts, the general journal gives items such as contras, and the sales returns journal gives returns." },
-        { id: "mcq-3.4-2", question: "On which side of the sales ledger control account is discount allowed entered?", choices: ["Credit side", "Debit side", "Both sides", "It is not entered"], explanation: "Discount allowed reduces the amount customers owe, so it is credited to the control account, in the same way as it is credited to each customer's account." },
+        { id: "mcq-3.4-2", question: "A supplier refunds $80 by bank transfer because the business had overpaid an invoice. Which entry is made in the purchases ledger control account?", choices: ["Credit $80", "Debit $80", "Credit $160", "No entry, because only the bank account is affected"], explanation: "The overpayment left a debit balance on the supplier's account (the supplier owed the business). The refund is recorded as Debit Bank, Credit the supplier, which clears that balance, so the control account is credited with $80. The amount is not doubled, and a refund from a credit supplier does pass through the purchases ledger." },
         { id: "mcq-3.4-3", question: "A customer's cheque for $300 is dishonoured. What is the entry in the sales ledger control account?", choices: ["Debit $300", "Credit $300", "Debit $600", "No entry"], explanation: "The receipt had reduced receivables. When the cheque is dishonoured the customer owes the money again, so the control account is debited." },
         { id: "mcq-3.4-4", question: "Which entries record a contra between the sales ledger and the purchases ledger?", choices: ["Debit purchases ledger control account, Credit sales ledger control account", "Debit sales ledger control account, Credit purchases ledger control account", "Debit purchases ledger control account, Credit bank", "Debit bank, Credit sales ledger control account"], explanation: "The contra reduces both the amount owed to the supplier (debit payables) and the amount owed by the customer (credit receivables). No money changes hands." },
         { id: "mcq-3.4-5", question: "Opening trade receivables are $5,000, credit sales $9,000, receipts from customers $8,200 and sales returns $300. What are the closing trade receivables?", choices: ["$5,500", "$6,100", "$4,900", "$5,800"], explanation: "5,000 + 9,000 minus 8,200 minus 300 = 5,500. Receipts and returns both reduce what customers owe." },
         { id: "mcq-3.4-6", question: "Which item does not appear in the purchases ledger control account?", choices: ["Cash purchases", "Discount received", "Purchases returns", "Credit purchases"], explanation: "Cash purchases are paid immediately and never create a supplier balance, so they do not pass through the purchases ledger. The other three all affect amounts owed to credit suppliers." },
         { id: "mcq-3.4-7", question: "Which of the following would cause a credit balance on a customer's account in the sales ledger?", choices: ["The customer paid the same invoice twice", "The customer's cheque was dishonoured", "Interest was charged on the customer's overdue account", "The customer was allowed a trade discount on an invoice"], explanation: "Paying twice means the business owes the customer the extra amount, a credit balance. A dishonoured cheque and interest charged increase the debit balance; trade discount is deducted on the invoice and never recorded separately." },
-        { id: "mcq-3.4-8", question: "An irrecoverable debt of $150 is written off. What is the entry in the sales ledger control account?", choices: ["Credit $150", "Debit $150", "Credit $300", "No entry, only the provision for doubtful debts changes"], explanation: "Writing off removes the amount from trade receivables, so the control account is credited and the irrecoverable debts account is debited. The provision for doubtful debts is not involved." },
+        { id: "mcq-3.4-8", question: "An irrecoverable debt of $150 is written off. What is the entry in the sales ledger control account?", choices: ["Credit $150", "Debit $150", "Credit $300", "No entry, only the allowance for irrecoverable debts changes"], explanation: "Writing off removes the amount from trade receivables, so the control account is credited and the irrecoverable debts account is debited. The allowance for irrecoverable debts is not involved." },
         { id: "mcq-3.4-9", question: "Opening trade payables are $3,200, credit purchases $7,500, payments to suppliers $6,900 and discount received $150. What are the closing trade payables?", choices: ["$3,650", "$3,950", "$3,350", "$4,100"], explanation: "3,200 + 7,500 minus 6,900 minus 150 = 3,650. Payments and discount received both reduce what is owed to suppliers." },
-        { id: "mcq-3.4-10", question: "Which error would not be revealed by comparing the sales ledger control account with the total of the customer balances?", choices: ["A credit sale completely omitted from the sales journal", "A receipt posted to the control account but not to the customer's account", "An addition error in one customer's account", "A sales journal total posted twice to the control account"], explanation: "An omitted sale is missing from both the control account and the individual account, so they still agree. The other three affect only one of the two records and create a difference." },
+        { id: "mcq-3.4-10", question: "A business uses accounting software that posts each credit sale to the customer's account and to the sales ledger control account at the same time. Which statement is correct?", choices: ["The total of trade receivables is available at any time without posting totals by hand", "An invoice entered with the wrong amount will be revealed by the control account", "Cash sales will now be included in the sales ledger control account", "Irrecoverable debts no longer need to be entered in the control account"], explanation: "Digital recording keeps the control account up to date automatically, so the receivables total is always available. An input error flows into both records and stays hidden, cash sales still do not pass through the sales ledger, and irrecoverable debts must still be written off." },
       ],
       structured: [
         {
@@ -1047,9 +1084,9 @@ export const topic = {
             },
             {
               label: "d", marks: 3,
-              prompt: "The total of the individual customer balances at 30 April 2026 did not agree with the control account balance. Suggest three possible causes.",
-              model: "A receipt or invoice may have been posted to the control account but omitted from a customer's account, or posted to a customer's account but omitted from the control account. A customer's account may have been added up wrongly. A total from a book of prime entry, such as the sales journal, may have been overcast or undercast, so the control account entry is wrong while the individual postings are right. A credit balance may have been listed as a debit balance when the individual balances were totalled.",
-              points: ["Item posted to one record but not the other (1)", "Addition error in an individual account or in the list of balances (1)", "Book of prime entry total overcast or undercast (1)"],
+              prompt: "Ehab is considering accounting software that records every sales invoice, credit note and receipt digitally and updates the sales ledger control account automatically. Evaluate whether this would make his sales ledger control account more useful.",
+              model: "Each transaction would be entered once and posted to the customer's account and to the control account at the same time, so posting and addition errors would largely disappear and the total of trade receivables would be available at any moment. This would help Ehab to see overdue amounts, such as R. Farouk's dishonoured cheque, and act on them quickly. However, a mistake made when an item is entered, such as the wrong amount or the wrong customer, goes into both records, so the control account cannot reveal it. Ehab would also need to train staff, control who can use the system and back up the data. On balance the software is likely to make the control account more useful and more up to date, provided Ehab checks the data that is entered.",
+              points: ["Benefit: automatic posting removes posting or addition errors, or gives up-to-date receivables totals at any time (1)", "Limitation: input errors flow into both records and are not revealed, or training, access control and back-up are needed (1)", "Justified conclusion (1)"],
             },
           ],
         },
@@ -1078,9 +1115,9 @@ export const topic = {
             },
             {
               label: "d", marks: 4,
-              prompt: "Explain two advantages and two limitations of keeping control accounts.",
-              model: "Advantages: control accounts give the totals of trade receivables and trade payables quickly without adding every individual account; they help to locate errors, because a difference between the control account and the list of balances points to that ledger; they help to prevent fraud when different people keep the control account and the individual accounts; and they allow missing figures such as credit sales to be found. Limitations: they cannot reveal an error of omission, because a missing transaction is absent from both records; they cannot reveal an error of commission between two customers or an error of original entry, because both records are equally wrong; and they do not prove that individual balances are correct, only that the totals agree.",
-              points: ["Advantage: quick totals for receivables and payables (1)", "Advantage: locating errors, deterring fraud or finding missing figures (1)", "Limitation: omission not revealed because both records lack the item (1)", "Limitation: commission, original entry or compensating errors not revealed (1)"],
+              prompt: "Ghada is thinking of stopping her control accounts to save time. Advise her whether she should continue to keep them. In your answer, explain two advantages and one limitation of control accounts.",
+              model: "Advantages: control accounts give the totals of trade receivables and trade payables quickly, without adding every individual account, for the trial balance and the statement of financial position. They also help to locate errors to one ledger, deter fraud when different people keep the control account and the individual accounts, and allow missing figures to be found, as in part (b), where Ghada had no sales journal. Limitation: they cannot reveal every error. A transaction omitted from a book of prime entry, an error of original entry or an invoice posted to the wrong customer affects both records equally and stays hidden. Advice: Ghada should keep her control accounts. The time saved by stopping is small compared with the benefit of quick totals and the missing figures they gave her this month; she should use them alongside other checks such as the trial balance.",
+              points: ["Advantage: quick totals for trade receivables and trade payables (1)", "Second advantage: locating errors, deterring fraud or finding missing figures such as credit sales (1)", "Limitation: omission, original entry or commission errors are not revealed (1)", "Justified advice to keep the control accounts (1)"],
             },
           ],
         },
